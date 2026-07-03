@@ -149,7 +149,7 @@ export function RoadmapDetailsPage() {
           
           <div className="relative">
             {/* The Central 'Snake' Line (Desktop) / Left Line (Mobile) */}
-            <div className="absolute left-6 md:left-1/2 top-4 bottom-4 w-1.5 bg-gradient-to-b from-slate-200 via-slate-300 to-slate-200 md:-translate-x-1/2 rounded-full hidden sm:block"></div>
+            <div className="absolute left-[44px] md:left-1/2 top-8 bottom-8 w-1.5 bg-gradient-to-b from-slate-200 via-slate-300 to-slate-200 md:-translate-x-1/2 rounded-full z-0 block"></div>
 
             <div className="space-y-12 md:space-y-0">
               {course.weeks.map((mod, idx) => {
@@ -159,7 +159,7 @@ export function RoadmapDetailsPage() {
                   <div key={idx} className={`relative flex flex-col md:flex-row items-center ${isEven ? 'md:flex-row-reverse' : ''} w-full`}>
                     
                     {/* Center Node (The "Snake" Joints) */}
-                    <div className="absolute left-6 md:left-1/2 w-10 h-10 rounded-full bg-white border-4 border-[var(--primary-maroon)] shadow-xl shadow-[var(--primary-maroon)]/20 -translate-x-1/2 z-20 flex items-center justify-center text-[var(--primary-maroon)] font-black text-sm transition-transform hover:scale-110 hidden sm:flex">
+                    <div className="absolute left-[24px] md:left-1/2 w-10 h-10 rounded-full bg-white border-4 border-[var(--primary-maroon)] shadow-xl shadow-[var(--primary-maroon)]/20 -translate-x-1/2 z-20 flex items-center justify-center text-[var(--primary-maroon)] font-black text-sm transition-transform hover:scale-110">
                       {mod.week}
                     </div>
 
@@ -167,7 +167,7 @@ export function RoadmapDetailsPage() {
                     <div className="hidden md:block w-1/2"></div>
                     
                     {/* Content Box */}
-                    <div className={`w-full md:w-1/2 sm:pl-16 md:pl-0 ${isEven ? 'md:pr-16 md:text-right' : 'md:pl-16 md:text-left'} py-4 relative z-10 group`}>
+                    <div className={`w-full md:w-1/2 pl-[80px] pr-4 md:px-0 py-4 relative z-10 group ${isEven ? 'md:pr-16 md:text-right' : 'md:pl-16 md:text-left'}`}>
                       <motion.div
                         initial={{ opacity: 0, x: isEven ? -40 : 40, y: 20 }}
                         whileInView={{ opacity: 1, x: 0, y: 0 }}
@@ -179,10 +179,10 @@ export function RoadmapDetailsPage() {
                         <div className={`absolute top-0 ${isEven ? 'right-0' : 'left-0'} w-32 h-32 bg-[var(--primary-maroon)]/5 rounded-full blur-3xl -translate-y-1/2 pointer-events-none`} />
 
                         <div className={`flex flex-col ${isEven ? 'md:items-end' : 'md:items-start'} mb-6 relative z-10`}>
-                          <span className="inline-flex items-center justify-center bg-[var(--primary-maroon)]/10 text-[var(--primary-maroon)] text-xs font-black uppercase tracking-widest px-3 py-1.5 rounded-full mb-4 sm:hidden">
+                          <span className="inline-flex items-center justify-center bg-[var(--primary-maroon)]/10 text-[var(--primary-maroon)] text-xs font-black uppercase tracking-widest px-3 py-1.5 rounded-full mb-4 md:hidden self-start">
                             Week {mod.week}
                           </span>
-                          <span className="text-sm font-bold text-[var(--primary-maroon)] uppercase tracking-wider mb-2 hidden sm:block">Week {mod.week}</span>
+                          <span className="text-sm font-bold text-[var(--primary-maroon)] uppercase tracking-wider mb-2 hidden md:block">Week {mod.week}</span>
                           <h4 className="text-2xl font-black text-slate-900 leading-tight mb-2">{mod.title}</h4>
                           <p className="text-slate-500 font-medium">{mod.subtitle}</p>
                         </div>

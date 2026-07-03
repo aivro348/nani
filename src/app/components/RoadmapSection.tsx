@@ -565,7 +565,7 @@ export function RoadmapSection() {
                     
                     {/* Vertical line for mobile */}
                     {i < 3 && (
-                      <div className="absolute top-[16px] left-1/2 bottom-[-100%] w-1 bg-slate-100 -translate-x-1/2 -z-10 md:hidden" />
+                      <div className="absolute top-[32px] left-1/2 bottom-[-2rem] w-1.5 bg-slate-100 -translate-x-1/2 -z-10 md:hidden" />
                     )}
                   </div>
 
