@@ -1,0 +1,345 @@
+@import "tailwindcss";
+
+:root {
+  --primary-maroon: #5C141D;
+  --primary-gold: #D4AF37;
+  --accent-gold: #E5C158;
+  --dark-maroon: #3A080F;
+  --light-gold: #F4DE8C;
+
+  /* Theme-aware custom colors */
+  --page-bg: #FAF7F2;
+  --page-fg: #2A0910;
+  --surface: #F3EFE9;
+  --surface-hover: #E9E2D8;
+  --surface-border: #DCD0C0;
+  --card-bg: #FAF7F2;
+  --card-border: #DCD0C0;
+  --heading-color: #5C141D;
+  --text-primary: #2A0910;
+  --text-secondary: #4A0E17;
+  --text-muted: #73303B;
+  --nav-bg: rgba(250, 247, 242, 0.85);
+  --nav-border: rgba(92, 20, 29, 0.1);
+  --hero-gradient-start: rgba(212, 175, 55, 0.1);
+  --hero-gradient-mid: #FAF7F2;
+  --hero-gradient-end: #FAF7F2;
+  --orb-maroon: rgba(92, 20, 29, 0.12);
+  --orb-gold: rgba(212, 175, 55, 0.12);
+  --grid-line: rgba(92, 20, 29, 0.06);
+  --particle-color: rgba(212, 175, 55, 0.25);
+  --scrollbar-track: #F3EFE9;
+  --scrollbar-thumb: linear-gradient(180deg, #5C141D 0%, #D4AF37 100%);
+  --scrollbar-thumb-hover: linear-gradient(180deg, #7A1A26 0%, #E5C158 100%);
+}
+
+.dark {
+  --page-bg: #16080A;
+  --page-fg: #FAF7F2;
+  --surface: rgba(42, 13, 19, 0.5);
+  --surface-hover: rgba(58, 20, 27, 0.5);
+  --surface-border: rgba(92, 20, 29, 0.6);
+  --card-bg: rgba(42, 13, 19, 0.5);
+  --card-border: rgba(92, 20, 29, 0.6);
+  --heading-color: #D4AF37;
+  --text-primary: #FAF7F2;
+  --text-secondary: #E0D5C1;
+  --text-muted: #A89886;
+  --nav-bg: rgba(22, 8, 10, 0.8);
+  --nav-border: rgba(212, 175, 55, 0.2);
+  --hero-gradient-start: rgba(212, 175, 55, 0.15);
+  --hero-gradient-mid: #16080A;
+  --hero-gradient-end: #16080A;
+  --orb-maroon: rgba(212, 175, 55, 0.2);
+  --orb-gold: rgba(229, 193, 88, 0.2);
+  --grid-line: rgba(212, 175, 55, 0.08);
+  --particle-color: rgba(212, 175, 55, 0.3);
+  --scrollbar-track: #16080A;
+  --scrollbar-thumb: linear-gradient(180deg, #3A080F 0%, #D4AF37 100%);
+  --scrollbar-thumb-hover: linear-gradient(180deg, #5C141D 0%, #E5C158 100%);
+}
+
+@theme inline {
+  --color-page-bg: var(--page-bg);
+  --color-page-fg: var(--page-fg);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-surface-border: var(--surface-border);
+  --color-card-bg: var(--card-bg);
+  --color-card-border: var(--card-border);
+  --color-heading: var(--heading-color);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-nav-bg: var(--nav-bg);
+  --color-nav-border: var(--nav-border);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    background-color: var(--page-bg);
+    color: var(--page-fg);
+    font-feature-settings: "rlig" 1, "calt" 1;
+    /* GPU acceleration for smooth scrolling */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  h1 {
+    @apply scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl;
+  }
+
+  h2 {
+    @apply scroll-m-20 text-3xl font-semibold tracking-tight;
+  }
+
+  h3 {
+    @apply scroll-m-20 text-2xl font-semibold tracking-tight;
+  }
+
+  h4 {
+    @apply scroll-m-20 text-xl font-semibold tracking-tight;
+  }
+
+  p {
+    @apply leading-7;
+  }
+}
+
+/* Performance optimizations */
+* {
+  /* Enable GPU acceleration */
+  will-change: auto;
+}
+
+/* Optimize animations */
+@media (prefers-reduced-motion: no-preference) {
+  * {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #0B4F8A 0%, #3BC5E8 100%);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #1E88E5 0%, #7DD3FC 100%);
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+  /* Improve rendering performance */
+  -webkit-overflow-scrolling: touch;
+  overflow-x: hidden;
+}
+
+/* Gradient animations - optimized */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient 6s ease infinite;
+  will-change: background-position;
+}
+
+/* Glow effect - optimized */
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(59, 197, 232, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(59, 197, 232, 0.8);
+  }
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+  will-change: box-shadow;
+}
+
+/* Float animation - optimized */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Theme transition for key elements */
+.theme-transition {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ─── Global Text Size Improvements ─── */
+@layer base {
+  body {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  p {
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+}
+
+/* ─── Fade In Up Animation ─── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* ─── Slide In Left Animation ─── */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.5s ease-out forwards;
+}
+
+/* ─── Scale In Animation ─── */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s ease-out forwards;
+}
+
+/* ─── Shimmer Effect ─── */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgba(59, 130, 246, 0.08) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* ─── Subtle Hover Effects for Cards ─── */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(59, 130, 246, 0.15);
+}
+
+/* ─── Subtle border glow on focus/hover ─── */
+.glow-border {
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.glow-border:hover {
+  border-color: rgba(59, 130, 246, 0.4);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
+}
+
+/* ─── Smooth Section Reveal ─── */
+.section-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.section-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Pulse glow for CTA buttons ─── */
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 20px 6px rgba(59, 130, 246, 0.2);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2.5s ease-in-out infinite;
+}
+
+/* ─── Improved link hover effects ─── */
+a {
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+/* ─── Smooth image loading ─── */
+img {
+  transition: opacity 0.3s ease;
+}
+
+img[src] {
+  opacity: 1;
+}
