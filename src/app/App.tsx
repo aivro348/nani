@@ -18,6 +18,7 @@ const ContactPage = lazy(() => import('./pages/ContactPage').then(m => ({ defaul
 
 const TrainerPage = lazy(() => import('./pages/TrainerPage').then(m => ({ default: m.TrainerPage })));
 const BlogsPage = lazy(() => import('./pages/BlogsPage').then(m => ({ default: m.BlogsPage })));
+const LoginPage = lazy(() => import('./pages/LoginPage').then(m => ({ default: m.LoginPage })));
 
 // Loading component
 const PageLoader = () => (
@@ -69,6 +70,7 @@ export default function App() {
             <Route path="/trainer" element={<TrainerPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/blogs" element={<BlogsPage />} />
+            <Route path="/login" element={<LoginPage />} />
             <Route path="*" element={<HomePage setActiveSection={() => {}} />} />
           </Routes>
         </Suspense>
@@ -80,7 +82,7 @@ export default function App() {
       <SocialWidgets />
 
       {/* AI Chatbot */}
-      <ChatBot />
+      {!location.pathname.startsWith('/business') && <ChatBot />}
     </div>
   );
 }

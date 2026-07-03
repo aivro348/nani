@@ -15,23 +15,74 @@ export function Navbar() {
   const location = useLocation();
 
   // Helper to determine active page
-  const activePage = location.pathname === '/' ? 'home' : location.pathname.substring(1);
+  const currentPath = location.pathname;
 
-  const navItems = [
-    { id: 'home', label: 'Home' },
-    { id: 'branches', label: 'Branches' },
-    { id: 'roadmap', label: 'Roadmap' },
-    { id: 'courses', label: 'Courses' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'papers', label: 'Papers' },
-    { id: 'ai', label: 'AI Tools' },
-    { id: 'trainer', label: 'Trainers' },
-    { id: 'blogs', label: 'Blogs' },
-  ];
+  let navItems: Array<{ id: string; label: string; path: string }> = [];
 
-  const navigateToPage = (pageId: string) => {
-    const path = pageId === 'home' ? '/' : `/${pageId}`;
-    navigate(path);
+  if (currentPath.startsWith('/ai')) {
+    navItems = [
+      { id: 'ai', label: 'AI Directory', path: '/ai' },
+      { id: 'home', label: 'Main Website', path: '/' },
+    ];
+  } else if (
+    currentPath.startsWith('/courses') || 
+    currentPath.startsWith('/branches') || 
+    currentPath.startsWith('/projects') || 
+    currentPath.startsWith('/roadmap') || 
+    currentPath.startsWith('/trainer') || 
+    currentPath.startsWith('/papers')
+  ) {
+    navItems = [
+      { id: 'courses', label: 'Courses', path: '/courses' },
+      { id: 'branches', label: 'Branches', path: '/branches' },
+      { id: 'projects', label: 'Internships & Projects', path: '/projects' },
+      { id: 'roadmap', label: 'Roadmaps', path: '/roadmap' },
+      { id: 'trainer', label: 'Trainers', path: '/trainer' },
+      { id: 'papers', label: 'Papers', path: '/papers' },
+      { id: 'home', label: 'Main Website', path: '/' },
+    ];
+  } else if (currentPath.startsWith('/business')) {
+    navItems = [
+      { id: 'home', label: 'Home', path: '/' },
+      { id: 'services', label: 'Services', path: '/business#services' },
+      { id: 'projects', label: 'Projects', path: '/business#projects' },
+      { id: 'team', label: 'Team', path: '/business#team' },
+      { id: 'contact', label: 'Contact', path: '/business#contact' },
+    ];
+  } else if (currentPath.startsWith('/blogs')) {
+    navItems = [
+      { id: 'blogs', label: 'Latest Blogs', path: '/blogs' },
+      { id: 'home', label: 'Main Website', path: '/' },
+    ];
+  } else if (currentPath.startsWith('/login')) {
+    navItems = [
+      { id: 'home', label: 'Back to Home', path: '/' },
+    ];
+  } else {
+    // Default / Home
+    navItems = [
+      { id: 'home', label: 'Home', path: '/' },
+      { id: 'business', label: 'Business', path: '/business' },
+      { id: 'courses', label: 'Scaro Academy', path: '/courses' },
+      { id: 'ai', label: 'AI Tools', path: '/ai' },
+      { id: 'blogs', label: 'Blogs', path: '/blogs' },
+      { id: 'contact', label: 'Contact Us', path: '/contact' },
+    ];
+  }
+
+  const navigateToPage = (path: string) => {
+    if (path.includes('#') && path.split('#')[0] === currentPath) {
+      const hash = path.split('#')[1];
+      const element = document.getElementById(hash);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+        window.history.pushState({}, '', path);
+      } else {
+        navigate(path);
+      }
+    } else {
+      navigate(path);
+    }
     setMobileMenuOpen(false);
   };
 
@@ -53,7 +104,7 @@ export function Navbar() {
       {/* Top Header Bar */}
       <div className="hidden md:flex justify-between items-center px-4 sm:px-6 lg:px-8 py-2 bg-page-bg dark:bg-page-bg border-b border-border transition-colors">
         {/* Left Side: Logo */}
-        <Logo onClick={() => navigateToPage('home')} textSize="text-3xl" iconSize={64} />
+        <Logo onClick={() => navigateToPage('/')} textSize="text-3xl" iconSize={64} />
 
         {/* Right Side: Contact Info */}
         <div className="flex items-center gap-8 text-base">
@@ -83,27 +134,38 @@ export function Navbar() {
 
             {/* Mobile Logo */}
             <div className="md:hidden">
-              <Logo onClick={() => navigateToPage('home')} iconSize={56} showName={false} />
+              <Logo onClick={() => navigateToPage('/')} iconSize={56} showName={false} />
             </div>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center justify-start gap-2 lg:gap-4 flex-wrap overflow-hidden">
-              {navItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => navigateToPage(item.id)}
-                  className={`px-2 lg:px-4 py-2 rounded-md text-xs lg:text-sm font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105 active:scale-95 ${activePage === item.id
-                      ? 'text-[var(--primary-gold)] border-b-2 border-[var(--primary-gold)]'
-                      : 'text-gray-200 hover:text-white hover:bg-white/10'
-                    }`}
-                >
-                  {item.label}
-                </button>
-              ))}
+              {navItems.map((item) => {
+                const isActive = currentPath === item.path || (currentPath === '/' && item.id === 'home');
+                return (
+                  <button
+                    key={item.id}
+                    onClick={() => navigateToPage(item.path)}
+                    className={`px-2 lg:px-4 py-2 rounded-md text-xs lg:text-sm font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105 active:scale-95 ${isActive
+                        ? 'text-[var(--primary-gold)] border-b-2 border-[var(--primary-gold)]'
+                        : 'text-gray-200 hover:text-white hover:bg-white/10'
+                      }`}
+                  >
+                    {item.label}
+                  </button>
+                );
+              })}
             </div>
 
-            {/* Right side: theme toggle + mobile menu */}
-            <div className="flex items-center gap-2 ml-auto">
+            {/* Right side: login + theme toggle + mobile menu */}
+            <div className="flex items-center gap-3 ml-auto">
+              {/* Login Button */}
+              <button
+                onClick={() => navigateToPage('/login')}
+                className="hidden md:flex items-center px-4 py-2 bg-white text-[var(--primary-maroon)] dark:bg-[var(--primary-gold)] dark:text-slate-900 text-sm font-bold uppercase tracking-wider rounded-lg hover:bg-gray-100 dark:hover:bg-yellow-400 transition-colors shadow-sm active:scale-95"
+              >
+                Login
+              </button>
+
               {/* Theme toggle */}
               <button
                 onClick={toggleTheme}
@@ -130,21 +192,30 @@ export function Navbar() {
           {/* Mobile Menu */}
           {mobileMenuOpen && (
             <div className="md:hidden py-4 space-y-1 border-t border-white/20">
-              {navItems.map((item) => (
+              {navItems.map((item) => {
+                const isActive = currentPath === item.path || (currentPath === '/' && item.id === 'home');
+                return (
+                  <button
+                    key={item.id}
+                    onClick={() => navigateToPage(item.path)}
+                    className={`block w-full text-left px-4 py-3 rounded-lg transition-all text-base uppercase font-medium tracking-wide ${isActive
+                        ? 'bg-red-500 text-white shadow-lg'
+                        : 'text-gray-200 hover:bg-white/10 hover:text-white'
+                      }`}
+                  >
+                    {item.label}
+                  </button>
+                );
+              })}
+              <div className="px-4 pt-4 border-t border-white/20 mt-2 space-y-2">
                 <button
-                  key={item.id}
-                  onClick={() => navigateToPage(item.id)}
-                  className={`block w-full text-left px-4 py-3 rounded-lg transition-all text-base uppercase font-medium tracking-wide ${activePage === item.id
-                      ? 'bg-red-500 text-white shadow-lg'
-                      : 'text-gray-200 hover:bg-white/10 hover:text-white'
-                    }`}
+                  onClick={() => navigateToPage('/login')}
+                  className="w-full flex justify-center items-center gap-2 bg-white text-[var(--primary-maroon)] hover:bg-gray-100 px-5 py-3 rounded-md font-bold text-base transition-all shadow-md uppercase tracking-wider"
                 >
-                  {item.label}
+                  Login / Verify
                 </button>
-              ))}
-              <div className="px-4 pt-4 border-t border-white/20 mt-2">
                 <button
-                  onClick={() => navigateToPage('contact')}
+                  onClick={() => navigateToPage('/contact')}
                   className="w-full flex justify-center items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-5 py-4 rounded-md font-bold text-lg transition-all shadow-md"
                 >
                   <Mail className="w-5 h-5" /> Contact Us

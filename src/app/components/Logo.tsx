@@ -5,10 +5,10 @@ export function Logo({ className = "", iconSize = 40, textSize = "text-xl", onCl
         src="/scaro_technologies .png" 
         alt="Scaro Technologies Logo" 
         style={{ height: iconSize }}
-        className="object-contain shrink-0"
+        className="object-contain shrink-0 drop-shadow-md"
       />
       {showName && (
-        <span className={`${textSize} text-slate-800 dark:text-white font-black uppercase tracking-tighter`}>
+        <span className={`${textSize} text-[var(--primary-maroon)] dark:text-white font-black uppercase tracking-tighter drop-shadow-sm`}>
           Scaro Technologies
         </span>
       )}

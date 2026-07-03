@@ -101,7 +101,13 @@ const BLOG_POSTS = [
   }
 ];
 
+import { useSEO } from '../utils/useSEO';
+
 export function BlogsPage() {
+  useSEO(
+    'Scaro Technologies | Engineering Blog & Insights',
+    'Stay updated with the latest trends in software engineering, artificial intelligence, sustainable tech, and professional growth.'
+  );
   const [selectedPost, setSelectedPost] = useState<typeof BLOG_POSTS[0] | null>(null);
 
   if (selectedPost) {
