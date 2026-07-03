@@ -101,7 +101,7 @@ const BLOG_POSTS = [
   }
 ];
 
-import { useSEO } from '../utils/useSEO';
+import { useSEO } from '../../app/utils/useSEO';
 
 export function BlogsPage() {
   useSEO(

@@ -1,4 +1,4 @@
-import { Cpu, Mail, MapPin, Phone, Github, Linkedin, Twitter, Youtube } from 'lucide-react';
+import { Mail, MapPin, Phone, Github, Linkedin, Twitter, Youtube, ArrowRight } from 'lucide-react';
 import { Logo } from './Logo';
 import { memo } from 'react';
 import { useLocation, useNavigate } from 'react-router';
@@ -153,40 +153,40 @@ export const Footer = memo(function Footer() {
   };
 
   return (
-    <footer className="bg-page-bg text-text-secondary border-t border-surface-border theme-transition">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <footer className="relative bg-[#0A0506] text-gray-300 overflow-hidden">
+      {/* Top gradient accent */}
+      <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[var(--primary-gold)]/50 to-transparent" />
+      
+      {/* Background glow */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[var(--primary-maroon)]/10 rounded-full blur-[150px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
         {/* Main footer content */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10 mb-16">
           {/* Brand section */}
           <div className="sm:col-span-2 md:col-span-3 lg:col-span-2">
-            <Logo onClick={() => handleNavigation('home')} iconSize={144} className="mb-4" />
-            <p className="text-base mb-6 text-text-muted leading-relaxed">
+            <Logo onClick={() => handleNavigation('home')} iconSize={144} className="mb-5" />
+            <p className="text-base mb-8 text-gray-400 leading-relaxed max-w-sm">
               {footerConfig.description}
             </p>
             
             {/* Contact info */}
-            <div className="space-y-2 text-sm text-text-muted">
-              <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-blue-400" />
-                <a href={`mailto:${footerConfig.email1}`} className="hover:text-heading transition-colors">
-                  {footerConfig.email1}
-                </a>
-              </div>
-              <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-blue-400" />
-                <a href={`mailto:${footerConfig.email2}`} className="hover:text-heading transition-colors">
-                  {footerConfig.email2}
-                </a>
-              </div>
-              <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-blue-400" />
-                <a href={`tel:${footerConfig.phone.split(' / ')[0]}`} className="hover:text-heading transition-colors">
-                  {footerConfig.phone}
-                </a>
-              </div>
-              <div className="flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-blue-400" />
-                <span>{footerConfig.address}</span>
+            <div className="space-y-3 text-sm">
+              <a href={`mailto:${footerConfig.email1}`} className="flex items-center gap-3 text-gray-400 hover:text-[var(--primary-gold)] transition-colors group">
+                <Mail className="w-4 h-4 text-[var(--primary-gold)]/60 group-hover:text-[var(--primary-gold)] transition-colors" />
+                {footerConfig.email1}
+              </a>
+              <a href={`mailto:${footerConfig.email2}`} className="flex items-center gap-3 text-gray-400 hover:text-[var(--primary-gold)] transition-colors group">
+                <Mail className="w-4 h-4 text-[var(--primary-gold)]/60 group-hover:text-[var(--primary-gold)] transition-colors" />
+                {footerConfig.email2}
+              </a>
+              <a href={`tel:${footerConfig.phone.split(' / ')[0]}`} className="flex items-center gap-3 text-gray-400 hover:text-[var(--primary-gold)] transition-colors group">
+                <Phone className="w-4 h-4 text-[var(--primary-gold)]/60 group-hover:text-[var(--primary-gold)] transition-colors" />
+                {footerConfig.phone}
+              </a>
+              <div className="flex items-center gap-3 text-gray-400">
+                <MapPin className="w-4 h-4 text-[var(--primary-gold)]/60" />
+                {footerConfig.address}
               </div>
             </div>
           </div>
@@ -194,11 +194,15 @@ export const Footer = memo(function Footer() {
           {/* Links sections */}
           {Object.entries(footerConfig.links).map(([category, links]) => (
             <div key={category}>
-              <h3 className="text-heading font-semibold mb-4 text-lg">{category}</h3>
-              <ul className="space-y-3 text-base text-text-muted">
+              <h3 className="text-white font-bold mb-5 text-sm uppercase tracking-[0.15em]">{category}</h3>
+              <ul className="space-y-3 text-sm">
                 {links.map((link) => (
                   <li key={link.name}>
-                    <a href="#" onClick={(e) => { e.preventDefault(); handleNavigation(link.page); }} className="hover:text-blue-500 transition-colors">
+                    <a 
+                      href="#" 
+                      onClick={(e) => { e.preventDefault(); handleNavigation(link.page); }} 
+                      className="text-gray-400 hover:text-[var(--primary-gold)] hover:translate-x-1 transition-all inline-block"
+                    >
                       {link.name}
                     </a>
                   </li>
@@ -210,20 +214,21 @@ export const Footer = memo(function Footer() {
 
         {/* Newsletter section */}
         {footerConfig.showNewsletter && (
-          <div className="border-t border-surface-border pt-8 mb-8">
-            <div className="max-w-md mx-auto lg:mx-0">
-              <h3 className="text-heading font-semibold mb-2">Stay Updated</h3>
-              <p className="text-sm text-text-muted mb-4">
+          <div className="border-t border-white/10 pt-10 mb-10">
+            <div className="max-w-lg mx-auto lg:mx-0">
+              <h3 className="text-white font-bold mb-2 text-lg">Stay Updated</h3>
+              <p className="text-sm text-gray-500 mb-5">
                 Get the latest courses, tips, and opportunities delivered to your inbox.
               </p>
-              <div className="flex flex-col sm:flex-row gap-2">
+              <div className="flex flex-col sm:flex-row gap-3">
                 <input
                   type="email"
                   placeholder="Enter your email"
-                  className="flex-1 px-4 py-2 sm:py-3 bg-surface border border-surface-border rounded-lg focus:outline-none focus:border-blue-500 text-heading placeholder:text-text-muted transition-colors"
+                  className="flex-1 px-5 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-[var(--primary-gold)]/50 focus:ring-1 focus:ring-[var(--primary-gold)]/30 text-white placeholder:text-gray-500 transition-all font-medium"
                 />
-                <button className="px-6 py-2 sm:py-3 bg-gradient-to-r from-blue-600 to-cyan-500 text-white rounded-lg hover:shadow-xl hover:shadow-blue-500/50 transition-all font-medium">
+                <button className="px-6 py-3 bg-gradient-to-r from-[var(--primary-maroon)] to-[var(--primary-gold)] text-white rounded-xl hover:shadow-[0_0_30px_-8px_var(--primary-gold)] transition-all font-bold flex items-center justify-center gap-2 group uppercase tracking-wider text-sm">
                   Subscribe
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
             </div>
@@ -231,19 +236,19 @@ export const Footer = memo(function Footer() {
         )}
 
         {/* Bottom section */}
-        <div className="border-t border-surface-border pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-text-muted text-center md:text-left">
-            © {footerConfig.copyrightYear} Scaro Technologies. All rights reserved.
+        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-6">
+          <p className="text-sm text-gray-500 text-center md:text-left">
+            © {footerConfig.copyrightYear} <span className="text-[var(--primary-gold)]/70">Scaro Technologies</span>. All rights reserved.
           </p>
 
           {/* Social links */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
             {socialLinks.map((social) => (
               <a
                 key={social.label}
                 href={social.href}
                 aria-label={social.label}
-                className="w-10 h-10 rounded-lg bg-surface border border-surface-border text-text-secondary hover:text-heading hover:border-blue-500/50 flex items-center justify-center transition-colors"
+                className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 text-gray-400 hover:text-[var(--primary-gold)] hover:border-[var(--primary-gold)]/30 hover:bg-[var(--primary-maroon)]/20 hover:scale-110 flex items-center justify-center transition-all duration-300"
               >
                 <social.icon className="w-5 h-5" />
               </a>

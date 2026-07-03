@@ -33,17 +33,15 @@ export function Navbar() {
     currentPath.startsWith('/papers')
   ) {
     navItems = [
-      { id: 'courses', label: 'Courses', path: '/courses' },
-      { id: 'branches', label: 'Branches', path: '/branches' },
-      { id: 'projects', label: 'Internships & Projects', path: '/projects' },
-      { id: 'roadmap', label: 'Roadmaps', path: '/roadmap' },
-      { id: 'trainer', label: 'Trainers', path: '/trainer' },
-      { id: 'papers', label: 'Papers', path: '/papers' },
-      { id: 'home', label: 'Main Website', path: '/' },
+      { id: 'home', label: 'Home', path: '/courses' },
+      { id: 'programs', label: 'Programs / Courses', path: '/courses#programs-section' },
+      { id: 'roadmap', label: 'Roadmap', path: '/roadmap' },
+      { id: 'college', label: 'College Connect', path: '/branches' },
+      { id: 'contact', label: 'Contact Us', path: '/courses#contact-section' },
     ];
   } else if (currentPath.startsWith('/business')) {
     navItems = [
-      { id: 'home', label: 'Home', path: '/' },
+      { id: 'home', label: 'Home', path: '/business' },
       { id: 'services', label: 'Services', path: '/business#services' },
       { id: 'projects', label: 'Projects', path: '/business#projects' },
       { id: 'team', label: 'Team', path: '/business#team' },
@@ -65,8 +63,7 @@ export function Navbar() {
       { id: 'business', label: 'Business', path: '/business' },
       { id: 'courses', label: 'Scaro Academy', path: '/courses' },
       { id: 'ai', label: 'AI Tools', path: '/ai' },
-      { id: 'blogs', label: 'Blogs', path: '/blogs' },
-      { id: 'contact', label: 'Contact Us', path: '/contact' },
+      { id: 'community', label: 'Community Hub', path: '/community' },
     ];
   }
 
@@ -101,40 +98,17 @@ export function Navbar() {
 
   return (
     <div className="sticky top-0 z-50 theme-transition shadow-lg shadow-black/5">
-      {/* Top Header Bar */}
-      <div className="hidden md:flex justify-between items-center px-4 sm:px-6 lg:px-8 py-2 bg-page-bg dark:bg-page-bg border-b border-border transition-colors">
-        {/* Left Side: Logo */}
-        <Logo onClick={() => navigateToPage('/')} textSize="text-3xl" iconSize={64} />
-
-        {/* Right Side: Contact Info */}
-        <div className="flex items-center gap-8 text-base">
-          <div className="flex items-center gap-3 text-text-secondary">
-            <PhoneCall className="w-10 h-10 text-[var(--primary-maroon)] dark:text-[var(--primary-gold)] border border-[var(--primary-maroon)] dark:border-[var(--primary-gold)] rounded-full p-2" />
-            <div>
-              <p className="font-bold text-heading">Call Us</p>
-              <p className="text-sm text-[var(--primary-maroon)] dark:text-[var(--primary-gold)] font-bold">+91 99899 99099</p>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-3 text-text-secondary border-l border-border pl-8">
-            <Clock className="w-10 h-10 text-[var(--primary-maroon)] dark:text-[var(--primary-gold)] border border-[var(--primary-maroon)] dark:border-[var(--primary-gold)] rounded-full p-2" />
-            <div>
-              <p className="font-bold text-heading">Working Hours</p>
-              <p className="text-sm text-text-muted">09.00am - 9.00pm (IST)</p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
       {/* Main Navigation Bar */}
       <nav className="bg-[var(--primary-maroon)] dark:bg-[var(--dark-maroon)] backdrop-blur-xl border-b border-white/10 transition-colors py-1">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-
-            {/* Mobile Logo */}
-            <div className="md:hidden">
-              <Logo onClick={() => navigateToPage('/')} iconSize={56} showName={false} />
+            {/* Logo */}
+            <div className="flex-shrink-0 mr-4 lg:mr-8">
+              <Logo onClick={() => {
+                const isBusinessSection = currentPath.startsWith('/business');
+                const isEducationSection = currentPath.startsWith('/courses') || currentPath.startsWith('/branches') || currentPath.startsWith('/roadmap') || currentPath.startsWith('/projects') || currentPath.startsWith('/trainer') || currentPath.startsWith('/papers');
+                navigateToPage(isBusinessSection ? '/business' : isEducationSection ? '/courses' : '/');
+              }} iconSize={44} textSize="text-xl hidden lg:block" />
             </div>
 
             {/* Desktop Navigation */}
@@ -156,16 +130,8 @@ export function Navbar() {
               })}
             </div>
 
-            {/* Right side: login + theme toggle + mobile menu */}
+            {/* Right side: theme toggle + mobile menu */}
             <div className="flex items-center gap-3 ml-auto">
-              {/* Login Button */}
-              <button
-                onClick={() => navigateToPage('/login')}
-                className="hidden md:flex items-center px-4 py-2 bg-white text-[var(--primary-maroon)] dark:bg-[var(--primary-gold)] dark:text-slate-900 text-sm font-bold uppercase tracking-wider rounded-lg hover:bg-gray-100 dark:hover:bg-yellow-400 transition-colors shadow-sm active:scale-95"
-              >
-                Login
-              </button>
-
               {/* Theme toggle */}
               <button
                 onClick={toggleTheme}
@@ -208,12 +174,6 @@ export function Navbar() {
                 );
               })}
               <div className="px-4 pt-4 border-t border-white/20 mt-2 space-y-2">
-                <button
-                  onClick={() => navigateToPage('/login')}
-                  className="w-full flex justify-center items-center gap-2 bg-white text-[var(--primary-maroon)] hover:bg-gray-100 px-5 py-3 rounded-md font-bold text-base transition-all shadow-md uppercase tracking-wider"
-                >
-                  Login / Verify
-                </button>
                 <button
                   onClick={() => navigateToPage('/contact')}
                   className="w-full flex justify-center items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-5 py-4 rounded-md font-bold text-lg transition-all shadow-md"

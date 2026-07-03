@@ -1,10 +1,10 @@
-import { useSEO } from '../utils/useSEO';
-import { BusinessHero } from '../components/business/BusinessHero';
-import { BusinessServices } from '../components/business/BusinessServices';
-import { BusinessProjects } from '../components/business/BusinessProjects';
-import { BusinessTeam } from '../components/business/BusinessTeam';
-import { BusinessCTA } from '../components/business/BusinessCTA';
-import { BusinessContact } from '../components/business/BusinessContact';
+import { useSEO } from '../../app/utils/useSEO';
+import { BusinessHero } from '../components/BusinessHero';
+import { BusinessServices } from '../components/BusinessServices';
+import { BusinessProjects } from '../components/BusinessProjects';
+import { BusinessTeam } from '../components/BusinessTeam';
+import { BusinessCTA } from '../components/BusinessCTA';
+import { BusinessContact } from '../components/BusinessContact';
 
 export function BusinessPage() {
   useSEO(

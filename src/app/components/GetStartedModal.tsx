@@ -1,7 +1,7 @@
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from './ui/dialog';
-import { Button } from './ui/button';
-import { Input } from './ui/input';
-import { Label } from './ui/label';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '../../app/components/ui/dialog';
+import { Button } from '../../app/components/ui/button';
+import { Input } from '../../app/components/ui/input';
+import { Label } from '../../app/components/ui/label';
 import { useState } from 'react';
 import { CheckCircle, Loader2, Rocket, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';

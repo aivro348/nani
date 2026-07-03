@@ -10,6 +10,7 @@ import {
 
 import { motion, AnimatePresence } from 'motion/react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router';
 
 type CourseTab = 'curriculum' | 'projects' | 'career' | 'tools';
 
@@ -22,7 +23,7 @@ const PHASE_CONFIG: Record<string, { bg: string; border: string; text: string; d
   Capstone:   { bg: 'bg-blue-50 dark:bg-cyan-800/20',  border: 'border-blue-200 dark:border-cyan-600/30',  text: 'text-blue-600 dark:text-cyan-300',  dot: 'bg-blue-500 dark:bg-cyan-400',  gradient: 'from-blue-500 to-cyan-400' },
 };
 
-const courses = [
+export const courses = [
   {
     id: 'java',
     title: 'Java Programming',
@@ -419,7 +420,7 @@ const courses = [
   },
 ];
 
-const COURSE_VISUALS: Record<string, { gradient: string; pattern: string; imageUrl: string }> = {
+export const COURSE_VISUALS: Record<string, { gradient: string; pattern: string; imageUrl: string }> = {
   java: { gradient: 'from-red-600 to-orange-600', pattern: 'dots', imageUrl: '/java.png' },
   python: { gradient: 'from-blue-600 to-indigo-600', pattern: 'grid', imageUrl: '/python.png' },
   frontend: { gradient: 'from-cyan-500 to-blue-500', pattern: 'waves', imageUrl: '/front.png' },
@@ -443,16 +444,13 @@ function CoursePattern({ imageUrl }: { imageUrl?: string }) {
 
 /* ─────────────────────── component ─────────────────────── */
 export function RoadmapSection() {
-  const [expandedCourse, setExpandedCourse] = useState<string | null>(null);
   const [filterDifficulty, setFilterDifficulty] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
-  const [courseTab, setCourseTab] = useState<Record<string, CourseTab>>({});
+  const navigate = useNavigate();
 
-  const toggleCourse = (id: string) => {
-    setExpandedCourse(id);
+  const navigateToCourse = (id: string) => {
+    navigate(`/roadmap/${id}`);
   };
-  const getTab = (id: string | null): CourseTab => (id ? courseTab[id] : 'curriculum') || 'curriculum';
-  const setTab = (id: string, tab: CourseTab) => setCourseTab(p => ({ ...p, [id]: tab }));
 
   const filtered = courses.filter(c => {
     const q = searchQuery.toLowerCase();
@@ -518,40 +516,75 @@ export function RoadmapSection() {
         </motion.div>
 
         {/* ════════ PHASE JOURNEY STRIP ════════ */}
-        <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-          className="bg-card-bg border border-card-border rounded-2xl p-6 mb-10">
-          <p className="text-center text-base font-medium text-text-muted mb-8 flex items-center justify-center gap-3">
-            <GitBranch className="w-5 h-5 text-blue-400 shrink-0" />
-            Every course follows the same structured 4-phase learning journey
-          </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            {([
-              { label: 'Foundation', weeks: 'Weeks 1 – 3',  desc: 'Core concepts, setup and fundamentals' },
-              { label: 'Core',       weeks: 'Weeks 4 – 7',  desc: 'Deep dive into key skills and topics' },
-              { label: 'Advanced',   weeks: 'Weeks 8 – 10', desc: 'Industry-level tools and techniques' },
-              { label: 'Capstone',   weeks: 'Weeks 11 – 12', desc: 'Real project and placement preparation' },
-            ] as const).map((ph, i) => {
-              const cfg = PHASE_CONFIG[ph.label];
-              return (
-                <div key={i} className="relative">
-                  <div className={`rounded-xl p-4 border h-full ${cfg.bg} ${cfg.border}`}>
-                    <div className="flex items-center gap-2.5 mb-3">
-                      <div className={`w-7 h-7 rounded-full bg-gradient-to-br ${cfg.gradient} flex items-center justify-center text-heading text-xs shrink-0`}>
-                        {i + 1}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }} 
+          whileInView={{ opacity: 1, y: 0 }} 
+          viewport={{ once: true }}
+          className="bg-white border border-slate-200 rounded-3xl p-8 md:p-12 mb-12 shadow-xl shadow-slate-200/40 relative overflow-hidden"
+        >
+          {/* Subtle background decoration */}
+          <div className="absolute top-0 right-0 w-64 h-64 bg-[var(--primary-maroon)]/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 pointer-events-none" />
+          
+          <div className="text-center mb-12 relative z-10">
+            <span className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--primary-maroon)]/10 text-[var(--primary-maroon)] rounded-full text-sm font-bold tracking-wide uppercase mb-4 border border-[var(--primary-maroon)]/20">
+              <GitBranch className="w-4 h-4" />
+              Proven Framework
+            </span>
+            <h3 className="text-2xl md:text-3xl font-black text-slate-900">
+              The 4-Phase Learning Journey
+            </h3>
+            <p className="text-slate-500 mt-3 font-medium text-lg">Every course follows this structured path from beginner to industry-ready.</p>
+          </div>
+
+          <div className="relative z-10">
+            {/* The horizontal connecting line (desktop) */}
+            <div className="hidden md:block absolute top-[28px] left-[12%] right-[12%] h-1.5 bg-slate-100 rounded-full">
+              <div className="absolute inset-0 bg-gradient-to-r from-[var(--primary-maroon)]/20 via-[var(--primary-maroon)]/50 to-[var(--primary-maroon)]/20 rounded-full" />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+              {[
+                { label: 'Foundation', weeks: 'Weeks 1 – 3', desc: 'Core concepts & setup', icon: BookOpen },
+                { label: 'Core', weeks: 'Weeks 4 – 7', desc: 'Deep dive into key skills', icon: Code },
+                { label: 'Advanced', weeks: 'Weeks 8 – 10', desc: 'Industry-level tools', icon: Rocket },
+                { label: 'Capstone', weeks: 'Weeks 11 – 12', desc: 'Real projects & placement', icon: Briefcase },
+              ].map((ph, i) => (
+                <div key={i} className="relative flex flex-row md:flex-col items-center md:text-center gap-6 md:gap-5 group">
+                  
+                  {/* Step Node */}
+                  <div className="relative shrink-0">
+                    <div className="w-16 h-16 bg-white rounded-full border-4 border-slate-100 flex items-center justify-center shadow-lg group-hover:border-[var(--primary-maroon)]/50 group-hover:scale-110 transition-all duration-300 z-10 relative">
+                      <div className="w-12 h-12 bg-[var(--primary-maroon)]/10 text-[var(--primary-maroon)] rounded-full flex items-center justify-center">
+                        <ph.icon className="w-6 h-6" />
                       </div>
-                      <span className={`text-sm ${cfg.text}`}>{ph.label}</span>
                     </div>
-                    <div className="text-sm text-text-muted mb-2 font-medium">{ph.weeks}</div>
-                    <div className="text-sm text-text-muted leading-relaxed">{ph.desc}</div>
+                    {/* Number Badge */}
+                    <div className="absolute -top-1 -right-1 w-6 h-6 bg-slate-800 text-white text-xs font-bold flex items-center justify-center rounded-full border-2 border-white shadow-md group-hover:bg-[var(--primary-maroon)] transition-colors z-20">
+                      {i + 1}
+                    </div>
+                    
+                    {/* Vertical line for mobile */}
+                    {i < 3 && (
+                      <div className="absolute top-[16px] left-1/2 bottom-[-100%] w-1 bg-slate-100 -translate-x-1/2 -z-10 md:hidden" />
+                    )}
                   </div>
-                  {i < 3 && (
-                    <div className="hidden md:flex absolute top-1/2 -right-3 z-10 -translate-y-1/2">
-                      <ChevronRight className="w-5 h-5 text-text-muted" />
+
+                  {/* Content */}
+                  <div className="flex-1 md:mt-2">
+                    <div className="inline-block text-[10px] font-black uppercase tracking-widest text-[var(--primary-maroon)] mb-2 bg-[var(--primary-maroon)]/10 px-2.5 py-1 rounded-md">
+                      {ph.weeks}
                     </div>
-                  )}
+                    <h4 className="text-xl font-black text-slate-900 mb-1.5 group-hover:text-[var(--primary-maroon)] transition-colors">
+                      {ph.label}
+                    </h4>
+                    <p className="text-sm text-slate-500 font-medium leading-relaxed max-w-[200px] mx-auto">
+                      {ph.desc}
+                    </p>
+                  </div>
+
                 </div>
-              );
-            })}
+              ))}
+            </div>
           </div>
         </motion.div>
 
@@ -599,7 +632,7 @@ export function RoadmapSection() {
                 <motion.div key={course.id} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: idx * 0.06 }} viewport={{ once: true }}
                   id={`course-card-${course.id}`}>
-                  <div onClick={() => toggleCourse(course.id)}
+                  <div onClick={() => navigateToCourse(course.id)}
                     className="h-full flex flex-col bg-card-bg border border-card-border rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-blue-500/15 hover:border-blue-500/40">
 
                     {/* ── CARD HEADER (Clear Image) ── */}
@@ -650,7 +683,7 @@ export function RoadmapSection() {
                           </div>
                         </div>
                         <button 
-                          onClick={(e) => { e.stopPropagation(); toggleCourse(course.id); }}
+                          onClick={(e) => { e.stopPropagation(); navigateToCourse(course.id); }}
                           className="p-2 rounded-lg bg-surface border border-surface-border hover:border-blue-500/40 hover:text-blue-400 transition-all"
                         >
                           <ChevronRight className="w-4 h-4" />
@@ -677,7 +710,7 @@ export function RoadmapSection() {
             beginners — covers data analysis, automation and real-world project work.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <button onClick={() => setExpandedCourse('python')}
+            <button onClick={() => navigate('/courses/python')}
               className="px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-500 text-heading rounded-xl text-sm hover:shadow-2xl hover:shadow-blue-500/40 transition-all hover:scale-105 flex items-center gap-2">
               <PlayCircle className="w-5 h-5" /> Start Python Course
             </button>
@@ -688,341 +721,6 @@ export function RoadmapSection() {
         </motion.div>
 
       </div>
-
-      {/* ════════ EXPANDED ROADMAP MODAL ════════ */}
-      <AnimatePresence>
-        {expandedCourse !== null && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-center justify-center p-0 sm:p-6"
-            onClick={() => setExpandedCourse(null)}
-          >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 40 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 40 }}
-              onClick={e => e.stopPropagation()}
-              className="bg-surface sm:rounded-3xl max-w-6xl w-full h-full sm:h-auto sm:max-h-[90vh] overflow-y-auto border border-card-border shadow-2xl relative"
-            >
-              {(() => {
-                const course = courses.find(c => c.id === expandedCourse);
-                if (!course) return null;
-                const diff = getDiff(course.difficulty);
-                const activeTab = getTab(expandedCourse);
-                
-                return (
-                  <div className="theme-transition">
-                    {/* Modal Header Section */}
-                    <div className="sticky top-0 z-20 bg-gradient-to-r from-blue-700 to-cyan-500 px-5 py-6 sm:px-8 sm:py-10">
-                      <div className="absolute inset-0 bg-black/20" />
-                      <div className="relative z-10 flex items-start justify-between gap-4">
-                        <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
-                          <div className="p-3 sm:p-4 bg-white/15 backdrop-blur-md rounded-xl sm:rounded-2xl shrink-0 shadow-xl">
-                            <course.icon className="w-8 h-8 sm:w-12 sm:h-12 text-heading" />
-                          </div>
-                          <div>
-                            <p className="text-heading/70 text-sm mb-2 font-medium tracking-wide uppercase">{course.hotBadge}</p>
-                            <h3 className="text-2xl sm:text-4xl text-heading font-bold mb-4">
-                              {course.title} <span className="text-heading/60 font-normal">Roadmap</span>
-                            </h3>
-                            <div className="flex flex-wrap items-center gap-2 sm:gap-4">
-                              <span className="flex items-center gap-1.5 text-[11px] sm:text-sm text-heading bg-white/10 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full border border-white/10">
-                                <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> {course.duration}
-                              </span>
-                              <span className="flex items-center gap-1.5 text-[11px] sm:text-sm text-heading bg-white/10 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full border border-white/10">
-                                <Star className="w-3.5 h-3.5 fill-amber-300 text-amber-300" /> {course.rating}
-                              </span>
-                              <span className="flex items-center gap-1.5 text-[11px] sm:text-sm text-heading bg-white/10 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full border border-white/10">
-                                <Users className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> {course.students}
-                              </span>
-                              <span className={`text-[10px] sm:text-xs font-semibold px-2 sm:px-3 py-1 sm:py-1.5 rounded-full border shadow-lg ${diff.cls}`}>
-                                {diff.label}
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                        <button 
-                          onClick={() => setExpandedCourse(null)}
-                          className="p-2 sm:p-3 bg-white/10 hover:bg-white/25 rounded-xl sm:rounded-2xl transition-all hover:rotate-90 text-heading shrink-0"
-                        >
-                          <X className="w-5 h-5 sm:w-6 sm:h-6" />
-                        </button>
-                      </div>
-                    </div>
-
-                    {/* Quick Stats Bar */}
-                    <div className="grid grid-cols-2 sm:grid-cols-4 bg-card-bg border-b border-card-border">
-                      {[
-                        { icon: Clock, label: 'Duration', value: course.duration },
-                        { icon: Flame, label: 'Intensity', value: course.hoursPerWeek },
-                        { icon: TrendingUp, label: 'Avg Salary', value: course.jobSalary },
-                        { icon: GraduationCap, label: 'Outcome', value: 'Certification' },
-                      ].map((item, i) => (
-                        <div key={i} className="flex items-center gap-3 sm:gap-4 px-4 sm:px-8 py-4 sm:py-6 border-r border-b sm:border-b-0 border-card-border last:border-r-0">
-                          <div className="p-2 sm:p-3 bg-blue-600/15 rounded-lg sm:rounded-xl">
-                            <item.icon className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400" />
-                          </div>
-                          <div>
-                            <div className="text-[10px] sm:text-xs text-text-muted font-medium mb-0.5 sm:mb-1 uppercase tracking-tight">{item.label}</div>
-                            <div className="text-xs sm:text-sm text-heading font-semibold">{item.value}</div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Tabs Navigation */}
-                    <div className="flex overflow-x-auto scrollbar-hide border-b border-card-border bg-surface/50 sticky top-0 sm:top-0 z-10 backdrop-blur-sm no-scrollbar">
-                      {TABS.map(tab => (
-                        <button 
-                          key={tab.id} 
-                          onClick={() => setTab(course.id, tab.id)}
-                          className={`flex-1 min-w-[120px] sm:min-w-0 py-4 sm:py-5 px-4 sm:px-6 text-xs sm:text-sm font-medium flex items-center justify-center gap-2 sm:gap-3 transition-all relative whitespace-nowrap ${
-                            activeTab === tab.id
-                              ? 'text-blue-400'
-                              : 'text-text-muted hover:text-heading hover:bg-surface'
-                          }`}
-                        >
-                          <tab.icon className="w-4 h-4 sm:w-5 sm:h-5" />
-                          <span>{tab.label}</span>
-                          {activeTab === tab.id && (
-                            <motion.div layoutId="activeTabRoadmap" className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-cyan-400" />
-                          )}
-                        </button>
-                      ))}
-                    </div>
-
-                    {/* Content Section */}
-                    <div className="p-5 sm:p-12 bg-surface">
-                      {activeTab === 'curriculum' && (
-                        <div className="space-y-12 max-w-4xl mx-auto">
-                          {/* Outcomes and Prerequisites */}
-                          <div className="grid md:grid-cols-2 gap-8">
-                            <div className="bg-card-bg rounded-3xl p-8 border border-card-border shadow-sm">
-                              <h4 className="text-lg text-heading font-bold mb-6 flex items-center gap-3">
-                                <div className="p-2 bg-blue-600/20 rounded-xl">
-                                  <CheckCircle className="w-5 h-5 text-blue-400" />
-                                </div>
-                                What You Will Master
-                              </h4>
-                              <ul className="space-y-4">
-                                {course.learningOutcomes.map((o, i) => (
-                                  <li key={i} className="flex items-start gap-3">
-                                    <CheckCircle2 className="w-5 h-5 text-emerald-500 mt-0.5 shrink-0" />
-                                    <span className="text-sm text-text-secondary leading-relaxed">{o}</span>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-
-                            <div className="bg-card-bg rounded-3xl p-8 border border-card-border shadow-sm">
-                              <h4 className="text-lg text-heading font-bold mb-6 flex items-center gap-3">
-                                <div className="p-2 bg-purple-600/20 rounded-xl">
-                                  <BookOpen className="w-5 h-5 text-purple-400" />
-                                </div>
-                                Getting Started
-                              </h4>
-                              <p className="text-sm text-text-muted mb-4 uppercase tracking-wider font-semibold">Prerequisites</p>
-                              <ul className="space-y-4 mb-8">
-                                {course.prerequisites.map((p, i) => (
-                                  <li key={i} className="flex items-start gap-3">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-blue-400 mt-2 shrink-0" />
-                                    <span className="text-sm text-text-secondary">{p}</span>
-                                  </li>
-                                ))}
-                              </ul>
-                              <div className="pt-6 border-t border-card-border">
-                                <p className="text-xs text-text-muted mb-4 uppercase tracking-widest font-bold">Skills Acquired</p>
-                                <div className="flex flex-wrap gap-2">
-                                  {course.skillsGained.map((s, i) => (
-                                    <span key={i} className="text-xs px-4 py-2 bg-blue-600/10 text-blue-400 rounded-xl border border-blue-500/20 font-medium">
-                                      {s}
-                                    </span>
-                                  ))}
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-                          {/* Roadmap Phases */}
-                          <div className="space-y-10">
-                            <h4 className="text-2xl text-heading font-bold text-center">Your 12-Week Roadmap</h4>
-                            {PHASES.map((phase, pi) => {
-                              const pw = course.weeks.filter(w => w.phase === phase);
-                              if (!pw.length) return null;
-                              const cfg = PHASE_CONFIG[phase];
-                              return (
-                                <div key={phase} className="relative">
-                                  <div className="flex items-center gap-4 mb-6">
-                                    <div className={`px-4 py-1.5 rounded-full border text-xs font-bold uppercase tracking-widest ${cfg.bg} ${cfg.border} ${cfg.text}`}>
-                                      Phase {pi + 1}: {phase}
-                                    </div>
-                                    <div className="flex-1 h-px bg-card-border" />
-                                  </div>
-                                  
-                                  <div className="grid gap-4">
-                                    {pw.map((week, wi) => (
-                                      <motion.div 
-                                        key={week.week}
-                                        initial={{ opacity: 0, y: 10 }}
-                                        whileInView={{ opacity: 1, y: 0 }}
-                                        transition={{ delay: wi * 0.1 }}
-                                        viewport={{ once: true }}
-                                        className="group bg-card-bg border border-card-border rounded-2xl p-5 sm:p-6 hover:border-blue-500/50 hover:shadow-xl transition-all flex flex-col sm:flex-row gap-4 sm:gap-6"
-                                      >
-                                        <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center text-heading font-bold text-base sm:text-lg shrink-0 shadow-lg group-hover:scale-110 transition-transform">
-                                          W{week.week}
-                                        </div>
-                                        <div className="flex-1">
-                                          <h5 className="text-lg text-heading font-semibold mb-2">{week.title}</h5>
-                                          <p className="text-sm text-text-muted mb-4 leading-relaxed">{week.subtitle}</p>
-                                          <div className="flex flex-wrap gap-2">
-                                            {week.topics.map((t, ti) => (
-                                              <span key={ti} className="text-xs px-3 py-1 bg-surface border border-card-border text-text-secondary rounded-lg group-hover:bg-blue-600/5 group-hover:border-blue-500/30 transition-colors">
-                                                {t}
-                                              </span>
-                                            ))}
-                                          </div>
-                                        </div>
-                                      </motion.div>
-                                    ))}
-                                  </div>
-                                </div>
-                              );
-                            })}
-                          </div>
-                        </div>
-                      )}
-
-                      {/* Projects Tab */}
-                      {activeTab === 'projects' && (
-                        <div className="space-y-8 max-w-4xl mx-auto">
-                          <div className="grid sm:grid-cols-2 gap-6">
-                            {course.projectExamples.map((proj, i) => (
-                              <motion.div 
-                                key={i}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: i * 0.1 }}
-                                className="bg-card-bg border border-card-border rounded-3xl p-8 hover:border-blue-500/50 transition-all shadow-sm group"
-                              >
-                                <div className="flex items-center justify-between mb-6">
-                                  <div className="p-3 bg-blue-600/15 rounded-2xl group-hover:bg-blue-600/25 transition-colors">
-                                    <Package className="w-6 h-6 text-blue-400" />
-                                  </div>
-                                  <span className={`text-xs font-bold px-4 py-1.5 rounded-full border ${
-                                    proj.level === 'Beginner' ? 'text-emerald-400 border-emerald-500/20 bg-emerald-500/5' :
-                                    proj.level === 'Mid' ? 'text-amber-400 border-amber-500/20 bg-amber-500/5' :
-                                    'text-red-400 border-red-500/20 bg-red-500/5'
-                                  }`}>{proj.level}</span>
-                                </div>
-                                <h5 className="text-xl text-heading font-bold mb-3">{proj.name}</h5>
-                                <p className="text-sm text-text-muted leading-relaxed">{proj.desc}</p>
-                              </motion.div>
-                            ))}
-                          </div>
-                          
-                          <div className="bg-gradient-to-br from-blue-600/10 to-cyan-500/5 border border-blue-500/20 rounded-3xl p-10 text-center">
-                            <Lightbulb className="w-10 h-10 text-amber-400 mx-auto mb-6" />
-                            <h4 className="text-xl text-heading font-bold mb-4">Interview Readiness</h4>
-                            <p className="text-text-secondary mb-8 max-w-lg mx-auto">Master these core topics to crack technical interviews for roles related to this stack.</p>
-                            <div className="flex flex-wrap justify-center gap-3">
-                              {course.interviewTopics.map((t, i) => (
-                                <span key={i} className="text-sm px-5 py-2.5 bg-surface border border-blue-500/20 text-blue-400 rounded-2xl font-semibold shadow-sm">
-                                  {t}
-                                </span>
-                              ))}
-                            </div>
-                          </div>
-                        </div>
-                      )}
-
-                      {/* Career Tab */}
-                      {activeTab === 'career' && (
-                        <div className="space-y-10 max-w-5xl mx-auto">
-                          <div className="grid md:grid-cols-2 gap-8">
-                            <div className="bg-card-bg rounded-3xl p-8 border border-card-border">
-                              <h4 className="text-lg text-heading font-bold mb-8 flex items-center gap-3">
-                                <Briefcase className="w-6 h-6 text-blue-400" /> Potential Career Paths
-                              </h4>
-                              <div className="grid gap-4">
-                                {course.careerPaths.map((c, i) => (
-                                  <div key={i} className="flex items-center justify-between bg-surface border border-card-border rounded-2xl p-5 hover:border-blue-500/40 transition-all group">
-                                    <span className="text-heading font-medium">{c}</span>
-                                    <ArrowRight className="w-5 h-5 text-blue-500 opacity-0 group-hover:opacity-100 transition-all transform translate-x-0 group-hover:translate-x-1" />
-                                  </div>
-                                ))}
-                              </div>
-                            </div>
-
-                            <div className="bg-card-bg rounded-3xl p-8 border border-card-border text-center flex flex-col items-center justify-center">
-                              <Building2 className="w-12 h-12 text-blue-400 mb-6" />
-                              <h4 className="text-xl text-heading font-bold mb-2">Hiring Partners</h4>
-                              <p className="text-sm text-text-muted mb-10">Top tech giants actively recruiting for this stack</p>
-                              <div className="flex flex-wrap justify-center gap-3">
-                                {course.topRecruiters.map((r, i) => (
-                                  <span key={i} className="text-sm px-6 py-3 bg-surface border border-card-border rounded-2xl text-heading font-semibold shadow-sm hover:border-blue-500/30 transition-all">
-                                    {r}
-                                  </span>
-                                ))}
-                              </div>
-                            </div>
-                          </div>
-
-                          <div className="bg-card-bg rounded-3xl p-6 sm:p-10 border border-card-border">
-                            <div className="flex flex-col md:flex-row items-center gap-10">
-                              <div className="relative shrink-0">
-                                <div className="w-24 h-24 rounded-3xl bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center text-heading text-4xl font-bold shadow-2xl">
-                                  {course.mentor.name.charAt(0)}
-                                </div>
-                                <div className="absolute -bottom-2 -right-2 bg-emerald-500 w-6 h-6 rounded-full border-4 border-card-bg" />
-                              </div>
-                              <div className="flex-1 text-center md:text-left">
-                                <p className="text-xs text-blue-400 font-bold uppercase tracking-widest mb-2">Industry Mentor</p>
-                                <h4 className="text-2xl text-heading font-bold mb-2">{course.mentor.name}</h4>
-                                <p className="text-lg text-text-secondary mb-4">{course.mentor.role} at <span className="text-heading font-bold">{course.mentor.company}</span></p>
-                                <div className="flex flex-wrap justify-center md:justify-start gap-4">
-                                  <div className="flex items-center gap-2 text-sm text-text-muted">
-                                    <Star className="w-4 h-4 text-amber-400 fill-amber-400" /> 4.9 Mentor Rating
-                                  </div>
-                                  <div className="flex items-center gap-2 text-sm text-text-muted">
-                                    <Trophy className="w-4 h-4 text-blue-400" /> {course.mentor.exp} Exp
-                                  </div>
-                                </div>
-                              </div>
-                              <button className="px-8 py-4 bg-blue-600 text-white rounded-2xl font-bold hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-600/30">
-                                Book 1:1 Session
-                              </button>
-                            </div>
-                          </div>
-
-                          <div className="bg-gradient-to-r from-blue-600 to-cyan-500 rounded-3xl p-8 sm:p-12 text-center text-heading shadow-2xl">
-                            <Rocket className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-6" />
-                            <h3 className="text-2xl sm:text-3xl font-bold mb-4">Ready to Start Your Journey?</h3>
-                            <p className="text-heading/80 mb-10 max-w-xl mx-auto text-base sm:text-lg leading-relaxed">
-                              Enroll now and get full access to the week-by-week curriculum, project reviews, and our exclusive placement community.
-                            </p>
-                            <div className="flex flex-col sm:flex-row justify-center gap-4">
-                              <button className="px-8 sm:px-10 py-4 sm:py-5 bg-white text-blue-600 rounded-2xl font-bold text-base sm:text-lg hover:scale-105 transition-all shadow-xl">
-                                Enroll for Free
-                              </button>
-                              <button className="px-8 sm:px-10 py-4 sm:py-5 bg-black/20 backdrop-blur-md border border-white/30 text-heading rounded-2xl font-bold text-base sm:text-lg hover:bg-black/30 transition-all">
-                                View Full Syllabus
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      )}
-
-                    </div>
-                  </div>
-                );
-              })()}
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </section>
   );
 }

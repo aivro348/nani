@@ -1,7 +1,7 @@
 import { lazy, Suspense } from 'react';
 import { HeroSectionPro } from '../components/HeroSectionPro';
-import { SectionSkeleton } from '../components/ui/skeleton';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '../components/ui/tabs';
+import { SectionSkeleton } from '../../app/components/ui/skeleton';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '../../app/components/ui/tabs';
 
 // Lazy load ALL sections below the fold for maximum performance
 const CompaniesSection = lazy(() => import('../components/CompaniesSection').then(m => ({ default: m.CompaniesSection })));
@@ -20,12 +20,6 @@ export function HomePage({ setActiveSection }: HomePageProps) {
     <div className="space-y-0">
       <section id="hero">
         <HeroSectionPro setActiveSection={setActiveSection} />
-      </section>
-      
-      <section id="placements">
-        <Suspense fallback={<SectionSkeleton />}>
-          <CompaniesSection />
-        </Suspense>
       </section>
 
       <section id="capabilities" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 relative z-10 scroll-mt-20">
@@ -72,6 +66,12 @@ export function HomePage({ setActiveSection }: HomePageProps) {
       <section id="faq-section">
         <Suspense fallback={<SectionSkeleton />}>
           <FAQSection />
+        </Suspense>
+      </section>
+
+      <section id="placements">
+        <Suspense fallback={<SectionSkeleton />}>
+          <CompaniesSection />
         </Suspense>
       </section>
     </div>

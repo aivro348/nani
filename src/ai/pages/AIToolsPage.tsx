@@ -1,4 +1,4 @@
-import { useSEO } from '../utils/useSEO';
+import { useSEO } from '../../app/utils/useSEO';
 import { AIToolsListSection } from '../components/AIToolsListSection';
 import { motion } from 'motion/react';
 import { Sparkles, Zap, Globe } from 'lucide-react';

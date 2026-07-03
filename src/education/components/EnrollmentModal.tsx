@@ -1,11 +1,11 @@
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from './ui/dialog';
-import { Button } from './ui/button';
-import { Input } from './ui/input';
-import { Label } from './ui/label';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '../../app/components/ui/dialog';
+import { Button } from '../../app/components/ui/button';
+import { Input } from '../../app/components/ui/input';
+import { Label } from '../../app/components/ui/label';
 import { useState } from 'react';
 import { CheckCircle, Loader2, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { projectId, publicAnonKey } from '../utils/supabase/info';
+import { projectId, publicAnonKey } from '@/app/utils/supabase/info';
 
 interface EnrollmentModalProps {
   isOpen: boolean;

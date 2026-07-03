@@ -4,8 +4,8 @@ import microsoftLogo from '@/assets/companies/microsoft.png';
 import amazonLogo from '@/assets/companies/amazon.png';
 import tcsLogo from '@/assets/companies/tcs.png';
 import wiproLogo from '@/assets/companies/wipro.png';
-import deloitteLogo from '@/assets/companies/deloitte.jpeg';
-import ibmLogo from '@/assets/companies/ibm.jpg';
+import deloitteLogo from '@/assets/companies/deloitte.png';
+import ibmLogo from '@/assets/companies/ibm.png';
 import cognizantLogo from '@/assets/companies/cognizant.png';
 import techmahindraLogo from '@/assets/companies/techmahindra.png';
 import hclLogo from '@/assets/companies/hcl.png';
@@ -58,24 +58,21 @@ export function CompaniesSection() {
             repeat: Infinity,
             ease: "linear",
           }}
-          className="flex gap-6 sm:gap-12 items-center w-max"
+          className="flex gap-4 sm:gap-8 items-center w-max"
         >
           {[...companies, ...companies, ...companies, ...companies].map((company, index) => (
             <div
               key={index}
-              className="flex-shrink-0 group py-6"
+              className="flex-shrink-0 group py-4 px-4 sm:px-6"
             >
-              <div className="flex flex-col items-center gap-4 min-w-[180px] sm:min-w-[240px] px-10 sm:px-14 py-8 sm:py-10 bg-surface/40 backdrop-blur-md border border-surface-border/50 rounded-3xl shadow-sm hover:shadow-2xl hover:border-blue-500/50 transition-all theme-transition group-hover:scale-110 group-hover:-translate-y-2">
+              <div className="flex items-center justify-center transition-all theme-transition group-hover:scale-110 opacity-60 hover:opacity-100 grayscale hover:grayscale-0">
                 <img 
                   src={company.logo} 
                   alt={company.name} 
                   loading="lazy"
                   decoding="async"
-                  className="h-12 sm:h-20 w-auto object-contain transition-all"
+                  className="h-8 sm:h-12 w-auto object-contain transition-all"
                 />
-                <span className="text-sm font-black text-text-muted group-hover:text-blue-400 transition-colors uppercase tracking-widest">
-                  {company.name}
-                </span>
               </div>
             </div>
           ))}
