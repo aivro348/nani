@@ -816,7 +816,7 @@ export const AIToolsListSection = memo(function AIToolsListSection() {
         </div>
 
         {/* Tools grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {filteredTools.map((tool, index) => (
             <motion.div
               key={index}
@@ -877,10 +877,10 @@ export const AIToolsListSection = memo(function AIToolsListSection() {
 
               {/* Content */}
               <div className="text-center">
-                <h3 className="text-2xl font-black text-heading mb-3 group-hover:text-purple-400 transition-colors">
+                <h3 className="text-xl font-black text-heading mb-2 group-hover:text-purple-400 transition-colors">
                   {tool.name}
                 </h3>
-                <p className="text-lg text-text-muted leading-relaxed mb-4 line-clamp-2">
+                <p className="text-base text-text-muted leading-relaxed mb-4 line-clamp-2">
                   {tool.description}
                 </p>
               </div>
