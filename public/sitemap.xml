@@ -1,72 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://scarotechnologies.com/</loc>
+    <loc>https://scarotechnologies.vercel.app/</loc>
     <priority>1.0</priority>
     <changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>https://scarotechnologies.com/business</loc>
+    <loc>https://scarotechnologies.vercel.app/business</loc>
     <priority>0.8</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://scarotechnologies.com/ai</loc>
+    <loc>https://scarotechnologies.vercel.app/ai</loc>
     <priority>0.8</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://scarotechnologies.com/branches</loc>
+    <loc>https://scarotechnologies.vercel.app/branches</loc>
     <priority>0.8</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://scarotechnologies.com/roadmap</loc>
+    <loc>https://scarotechnologies.vercel.app/roadmap</loc>
     <priority>0.8</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://scarotechnologies.com/community</loc>
+    <loc>https://scarotechnologies.vercel.app/community</loc>
     <priority>0.8</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://scarotechnologies.com/trainer</loc>
+    <loc>https://scarotechnologies.vercel.app/trainer</loc>
     <priority>0.8</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://scarotechnologies.com/contact</loc>
+    <loc>https://scarotechnologies.vercel.app/contact</loc>
     <priority>0.8</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://scarotechnologies.com/blogs</loc>
+    <loc>https://scarotechnologies.vercel.app/blogs</loc>
     <priority>0.8</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://scarotechnologies.com/login</loc>
+    <loc>https://scarotechnologies.vercel.app/login</loc>
     <priority>0.5</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://scarotechnologies.com/verify-certificate</loc>
+    <loc>https://scarotechnologies.vercel.app/verify-certificate</loc>
     <priority>0.5</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://scarotechnologies.com/courses</loc>
+    <loc>https://scarotechnologies.vercel.app/courses</loc>
     <priority>0.9</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://scarotechnologies.com/projects</loc>
+    <loc>https://scarotechnologies.vercel.app/projects</loc>
     <priority>0.9</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://scarotechnologies.com/papers</loc>
+    <loc>https://scarotechnologies.vercel.app/papers</loc>
     <priority>0.9</priority>
     <changefreq>weekly</changefreq>
   </url>
