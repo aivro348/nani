@@ -4,26 +4,42 @@ export function useSEO(title: string, description: string) {
   useEffect(() => {
     document.title = title;
     
-    // Update or create meta description
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', description);
-    } else {
-      metaDescription = document.createElement('meta');
-      metaDescription.setAttribute('name', 'description');
-      metaDescription.setAttribute('content', description);
-      document.head.appendChild(metaDescription);
-    }
+    // Helper function to update or create meta tags
+    const updateMeta = (selector: string, attribute: string, content: string, createIfMissing = true) => {
+      let element = document.querySelector(selector);
+      if (element) {
+        element.setAttribute(attribute, content);
+      } else if (createIfMissing) {
+        element = document.createElement(selector.startsWith('meta') ? 'meta' : 'link');
+        const isLink = selector.startsWith('link');
+        if (isLink) {
+          element.setAttribute('rel', 'canonical');
+        } else {
+          // Parse property/name from selector (e.g. meta[property="og:title"])
+          const match = selector.match(/\[(name|property)="([^"]+)"\]/);
+          if (match) {
+            element.setAttribute(match[1], match[2]);
+          }
+        }
+        element.setAttribute(attribute, content);
+        document.head.appendChild(element);
+      }
+    };
 
-    // Update Open Graph tags for better SEO representation
-    let ogTitle = document.querySelector('meta[property="og:title"]');
-    if (ogTitle) {
-      ogTitle.setAttribute('content', title);
-    }
+    updateMeta('meta[name="description"]', 'content', description);
+    
+    // Open Graph
+    updateMeta('meta[property="og:title"]', 'content', title);
+    updateMeta('meta[property="og:description"]', 'content', description);
+    updateMeta('meta[property="og:url"]', 'content', window.location.href);
 
-    let ogDesc = document.querySelector('meta[property="og:description"]');
-    if (ogDesc) {
-      ogDesc.setAttribute('content', description);
-    }
+    // Twitter
+    updateMeta('meta[name="twitter:title"]', 'content', title);
+    updateMeta('meta[name="twitter:description"]', 'content', description);
+    updateMeta('meta[name="twitter:url"]', 'content', window.location.href);
+
+    // Canonical
+    updateMeta('link[rel="canonical"]', 'href', window.location.href.split('?')[0]);
+
   }, [title, description]);
 }
