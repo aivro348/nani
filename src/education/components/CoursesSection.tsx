@@ -57,7 +57,7 @@ export const CoursesSection = memo(function CoursesSection({ previewOnly }: { pr
 
                     <button 
                       onClick={() => navigate(`/courses/${course.slug}`)}
-                      className="bg-black hover:bg-gray-800 text-white px-7 py-3 rounded-xl font-bold text-sm transition-all w-fit shadow-md hover:shadow-xl hover:-translate-y-0.5 active:scale-95"
+                      className="bg-[var(--primary-maroon)] hover:bg-[#ff3b00] text-white px-7 py-3 rounded-xl font-bold text-sm transition-all w-fit shadow-md hover:shadow-xl hover:-translate-y-0.5 active:scale-95"
                     >
                       Curriculum
                     </button>
@@ -72,7 +72,7 @@ export const CoursesSection = memo(function CoursesSection({ previewOnly }: { pr
           <div className="flex justify-center pt-8">
             <button 
               onClick={() => navigate('/all-courses')}
-              className="bg-black hover:bg-gray-800 text-white px-10 py-4 rounded-xl font-bold text-lg transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 active:scale-95"
+              className="bg-[var(--primary-maroon)] hover:bg-[#ff3b00] text-white px-10 py-4 rounded-xl font-bold text-lg transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 active:scale-95"
             >
               See All Programs
             </button>

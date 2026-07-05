@@ -55,7 +55,7 @@ export function CoursesPage() {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1] mb-6">
-              <span className="text-[#ff3b00]">Bridging</span> <span className="text-black dark:text-black">Education</span> <span className="text-[#ff3b00]">&</span><br />
+              <span className="text-[#ff3b00]">Bridging</span> <span className="text-[var(--primary-maroon)]">Education</span> <span className="text-[#ff3b00]">&</span><br />
               <span className="text-[#ff3b00]">Industry</span>
             </h1>
             
@@ -70,7 +70,7 @@ export function CoursesPage() {
               }}
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-black hover:bg-gray-800 text-white px-8 py-4 text-sm font-bold rounded-xl transition-all shadow-[0_10px_20px_rgba(0,0,0,0.1)] hover:shadow-[0_15px_30px_rgba(0,0,0,0.2)] w-fit flex items-center gap-2 group"
+              className="bg-[var(--primary-maroon)] hover:bg-[#ff3b00] text-white px-8 py-4 text-sm font-bold rounded-xl transition-all shadow-[0_10px_20px_rgba(92,20,29,0.15)] hover:shadow-[0_15px_30px_rgba(255,59,0,0.25)] w-fit flex items-center gap-2 group"
             >
               Explore Programs
               <motion.span 
@@ -109,7 +109,7 @@ export function CoursesPage() {
       </section>
 
       {/* Stats Section */}
-      <section className="w-full bg-gradient-to-r from-black via-[#5e0c04] to-[#f63700] py-20 px-4 sm:px-6 lg:px-8">
+      <section className="w-full bg-gradient-to-r from-[var(--primary-maroon)] via-[#7a1824] to-[#ff3b00] py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
