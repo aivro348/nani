@@ -33,14 +33,26 @@ export function CoursesPage() {
     <div className="min-h-screen bg-white">
       
       {/* Split-Screen Hero Section */}
-      <section className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 flex flex-col lg:flex-row items-center gap-12 bg-white">
+      <section className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 flex flex-col lg:flex-row items-center gap-12 bg-white overflow-visible">
         
+        {/* Animated Background Blobs */}
+        <motion.div 
+          animate={{ y: [-20, 20, -20], x: [-20, 20, -20], scale: [1, 1.1, 1] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute -top-10 -left-10 w-96 h-96 bg-[var(--primary-maroon)]/10 rounded-full blur-[80px] -z-10 pointer-events-none"
+        />
+        <motion.div 
+          animate={{ y: [20, -20, 20], x: [20, -20, 20], scale: [1, 1.2, 1] }}
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/2 right-0 w-96 h-96 bg-[#ff3b00]/10 rounded-full blur-[80px] -z-10 pointer-events-none translate-x-1/3 -translate-y-1/2"
+        />
+
         {/* Left Content Side */}
         <div className="w-full lg:w-[45%] flex flex-col justify-center z-20">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, x: -30, filter: "blur(10px)" }}
+            animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1] mb-6">
               <span className="text-[#ff3b00]">Bridging</span> <span className="text-black dark:text-black">Education</span> <span className="text-[#ff3b00]">&</span><br />
@@ -51,31 +63,47 @@ export function CoursesPage() {
               Scaro Technologies empowers students with industry-relevant skills through MOOCs, certified programs, internships, and expert-led professional training.
             </p>
             
-            <button 
+            <motion.button 
               onClick={() => {
                 const el = document.getElementById('programs-section');
                 if (el) el.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="bg-black hover:bg-gray-800 text-white px-8 py-4 text-sm font-bold rounded-xl transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 w-fit"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-black hover:bg-gray-800 text-white px-8 py-4 text-sm font-bold rounded-xl transition-all shadow-[0_10px_20px_rgba(0,0,0,0.1)] hover:shadow-[0_15px_30px_rgba(0,0,0,0.2)] w-fit flex items-center gap-2 group"
             >
               Explore Programs
-            </button>
+              <motion.span 
+                animate={{ x: [0, 5, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+                className="inline-block"
+              >
+                →
+              </motion.span>
+            </motion.button>
           </motion.div>
         </div>
 
         {/* Right Image Side */}
         <div className="w-full lg:w-[55%] relative z-10">
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="rounded-[2rem] overflow-hidden shadow-2xl"
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, type: "spring", stiffness: 100 }}
+            className="relative rounded-[2rem] overflow-hidden shadow-2xl group"
           >
-            <img
-              src="/hero-1.png"
-              alt="Students collaborating"
-              className="w-full h-auto object-cover object-center"
-            />
+            {/* Subtle continuous floating for the image container */}
+            <motion.div
+              animate={{ y: [-5, 5, -5] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-tr from-[var(--primary-maroon)]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10 pointer-events-none" />
+              <img
+                src="/hero-1.png"
+                alt="Students collaborating"
+                className="w-full h-auto object-cover object-center transform group-hover:scale-105 transition-transform duration-700"
+              />
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -95,50 +123,54 @@ export function CoursesPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {/* Stat 1 */}
             <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 30, scale: 0.9 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              whileHover={{ y: -10, scale: 1.05 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="bg-white rounded-[2rem] p-10 flex flex-col items-center justify-center text-center shadow-xl hover:scale-105 transition-transform duration-300"
+              transition={{ delay: 0.1, type: "spring", stiffness: 300 }}
+              className="bg-white/10 backdrop-blur-md border border-white/20 rounded-[2rem] p-10 flex flex-col items-center justify-center text-center shadow-2xl hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] transition-all duration-300 group"
             >
-              <div className="text-4xl sm:text-5xl font-black text-[#ff3b00] mb-4">200K+</div>
-              <div className="text-black font-black text-sm uppercase tracking-wide">Learners Trained</div>
+              <div className="text-4xl sm:text-5xl font-black text-white mb-4 drop-shadow-md group-hover:scale-110 transition-transform duration-300">200K+</div>
+              <div className="text-white/80 font-black text-sm uppercase tracking-wide">Learners Trained</div>
             </motion.div>
 
             {/* Stat 2 */}
             <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 30, scale: 0.9 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              whileHover={{ y: -10, scale: 1.05 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="bg-white rounded-[2rem] p-10 flex flex-col items-center justify-center text-center shadow-xl hover:scale-105 transition-transform duration-300"
+              transition={{ delay: 0.2, type: "spring", stiffness: 300 }}
+              className="bg-white/10 backdrop-blur-md border border-white/20 rounded-[2rem] p-10 flex flex-col items-center justify-center text-center shadow-2xl hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] transition-all duration-300 group"
             >
-              <div className="text-4xl sm:text-5xl font-black text-[#ff3b00] mb-4">100+</div>
-              <div className="text-black font-black text-sm uppercase tracking-wide leading-tight">Industry Experts<br/>Onboarded</div>
+              <div className="text-4xl sm:text-5xl font-black text-white mb-4 drop-shadow-md group-hover:scale-110 transition-transform duration-300">100+</div>
+              <div className="text-white/80 font-black text-sm uppercase tracking-wide leading-tight">Industry Experts<br/>Onboarded</div>
             </motion.div>
 
             {/* Stat 3 */}
             <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 30, scale: 0.9 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              whileHover={{ y: -10, scale: 1.05 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-              className="bg-white rounded-[2rem] p-10 flex flex-col items-center justify-center text-center shadow-xl hover:scale-105 transition-transform duration-300"
+              transition={{ delay: 0.3, type: "spring", stiffness: 300 }}
+              className="bg-white/10 backdrop-blur-md border border-white/20 rounded-[2rem] p-10 flex flex-col items-center justify-center text-center shadow-2xl hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] transition-all duration-300 group"
             >
-              <div className="text-4xl sm:text-5xl font-black text-[#ff3b00] mb-4">50+</div>
-              <div className="text-black font-black text-sm uppercase tracking-wide">Domains</div>
+              <div className="text-4xl sm:text-5xl font-black text-white mb-4 drop-shadow-md group-hover:scale-110 transition-transform duration-300">50+</div>
+              <div className="text-white/80 font-black text-sm uppercase tracking-wide">Domains</div>
             </motion.div>
 
             {/* Stat 4 */}
             <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 30, scale: 0.9 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              whileHover={{ y: -10, scale: 1.05 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-              className="bg-white rounded-[2rem] p-10 flex flex-col items-center justify-center text-center shadow-xl hover:scale-105 transition-transform duration-300"
+              transition={{ delay: 0.4, type: "spring", stiffness: 300 }}
+              className="bg-white/10 backdrop-blur-md border border-white/20 rounded-[2rem] p-10 flex flex-col items-center justify-center text-center shadow-2xl hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] transition-all duration-300 group"
             >
-              <div className="text-4xl sm:text-5xl font-black text-[#ff3b00] mb-4">150+</div>
-              <div className="text-black font-black text-sm uppercase tracking-wide">Hands-on Real Tasks</div>
+              <div className="text-4xl sm:text-5xl font-black text-white mb-4 drop-shadow-md group-hover:scale-110 transition-transform duration-300">150+</div>
+              <div className="text-white/80 font-black text-sm uppercase tracking-wide">Hands-on Real Tasks</div>
             </motion.div>
           </div>
         </div>
