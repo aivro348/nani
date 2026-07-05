@@ -20,12 +20,14 @@ const BRANCH_META: Record<string, { gradient: string; icon: React.ElementType; l
 
 
 
-const BRANCHES = ['All', 'CSE', 'AI/DS', 'ECE', 'EEE', 'Mechanical', 'Civil'];
+const BRANCHES = ['All', 'CSE', 'AI/DS', 'ECE', 'EEE', 'Mechanical', 'Civil', 'MBA'];
 const TYPES = ['All Types', 'Mini', 'Main'];
+const DEGREES = ['All Degrees', 'B.Tech', 'M.Tech', 'MBA'];
 
 export const ProjectsStoreSection = memo(function ProjectsStoreSection({ previewOnly }: { previewOnly?: boolean }) {
   const [branch, setBranch] = useState('All');
   const [type, setType] = useState('All Types');
+  const [degree, setDegree] = useState('All Degrees');
   const [search, setSearch] = useState('');
 
   const filtered = useMemo(() => {
@@ -33,10 +35,11 @@ export const ProjectsStoreSection = memo(function ProjectsStoreSection({ preview
       const q = search.toLowerCase();
       const matchBranch = branch === 'All' || p.branch === branch;
       const matchType = type === 'All Types' || p.type === type;
+      const matchDegree = degree === 'All Degrees' || p.degree === degree;
       const matchQ = !q || p.title.toLowerCase().includes(q) || p.tech.some(t => t.toLowerCase().includes(q));
-      return matchBranch && matchType && matchQ;
+      return matchBranch && matchType && matchDegree && matchQ;
     });
-  }, [branch, type, search]);
+  }, [branch, type, degree, search]);
 
   let miniProjects = filtered.filter(p => p.type === 'Mini');
   let mainProjects = filtered.filter(p => p.type === 'Main');
@@ -152,22 +155,42 @@ export const ProjectsStoreSection = memo(function ProjectsStoreSection({ preview
             })}
           </div>
 
-          {/* Type Tabs */}
-          <div className="flex justify-center gap-2">
-            <Filter className="w-4 h-4 text-slate-400 mt-2" />
-            {TYPES.map(t => (
-              <button
-                key={t}
-                onClick={() => setType(t)}
-                className={`px-4 py-2 rounded-xl text-sm font-bold transition-all ${
-                  type === t
-                    ? 'bg-slate-900 text-white shadow-md'
-                    : 'bg-white text-slate-600 border border-slate-200 hover:border-slate-400'
-                }`}
-              >
-                {t === 'All Types' ? 'All Types' : `${t} Projects`}
-              </button>
-            ))}
+          {/* Degree and Type Tabs */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="flex justify-center gap-2">
+              <Filter className="w-4 h-4 text-slate-400 mt-2" />
+              {DEGREES.map(d => (
+                <button
+                  key={d}
+                  onClick={() => setDegree(d)}
+                  className={`px-4 py-2 rounded-xl text-sm font-bold transition-all ${
+                    degree === d
+                      ? 'bg-slate-900 text-white shadow-md'
+                      : 'bg-white text-slate-600 border border-slate-200 hover:border-slate-400'
+                  }`}
+                >
+                  {d}
+                </button>
+              ))}
+            </div>
+
+            <div className="hidden sm:block w-px h-8 bg-slate-200" />
+
+            <div className="flex justify-center gap-2">
+              {TYPES.map(t => (
+                <button
+                  key={t}
+                  onClick={() => setType(t)}
+                  className={`px-4 py-2 rounded-xl text-sm font-bold transition-all ${
+                    type === t
+                      ? 'bg-slate-900 text-white shadow-md'
+                      : 'bg-white text-slate-600 border border-slate-200 hover:border-slate-400'
+                  }`}
+                >
+                  {t === 'All Types' ? 'All Types' : `${t} Projects`}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
         )}
@@ -177,6 +200,7 @@ export const ProjectsStoreSection = memo(function ProjectsStoreSection({ preview
           <div className="text-sm text-slate-500 mb-8 text-center">
             Showing <span className="font-bold text-slate-800">{filtered.length}</span> projects
             {branch !== 'All' && <> in <span className="font-bold text-[var(--primary-maroon)]">{branch}</span></>}
+            {degree !== 'All Degrees' && <> for <span className="font-bold">{degree}</span></>}
             {type !== 'All Types' && <> — <span className="font-bold">{type} Projects</span></>}
           </div>
         )}
@@ -302,6 +326,12 @@ function ProjectCard({ project, idx }: { project: Project; idx: number }) {
         <p className="text-sm text-slate-600 mb-4 line-clamp-2 leading-relaxed flex-1">
           {project.abstract}
         </p>
+
+        {/* Free Documentation Badge */}
+        <div className="flex items-center gap-1.5 text-xs font-bold text-emerald-600 bg-emerald-50 w-fit px-2.5 py-1.5 rounded-lg border border-emerald-100 mb-4">
+          <FileText className="w-3.5 h-3.5" />
+          Free Documentation Included
+        </div>
 
         {/* Delivery Time & Tech Stack */}
         <div className="space-y-4 mb-6">
