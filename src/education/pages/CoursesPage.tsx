@@ -3,6 +3,7 @@ import { CoursesSection } from '../components/CoursesSection';
 import { EducationContact } from '../components/EducationContact';
 import { ProjectsStoreSection } from '../components/ProjectsStoreSection';
 import { ProgramsOverview } from '../components/ProgramsOverview';
+import { ReviewsSection } from '../components/ReviewsSection';
 import { motion } from 'motion/react';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router';
@@ -151,6 +152,11 @@ export function CoursesPage() {
       {/* Projects Store */}
       <section id="projects-store-section">
         <ProjectsStoreSection previewOnly={true} />
+      </section>
+
+      {/* Past Reviews / Testimonials */}
+      <section id="reviews-section">
+        <ReviewsSection />
       </section>
       
       {/* Dedicated Education Contact Section */}
