@@ -5,6 +5,7 @@ import { motion } from 'motion/react';
 import { useNavigate } from 'react-router';
 import { GraduationCap, Briefcase, Cpu, Users, ArrowRight } from 'lucide-react';
 import { useSEO } from '../../app/utils/useSEO';
+import { ReviewsSection } from '../../education/components/ReviewsSection';
 
 // Lazy load the companies section
 const CompaniesSection = lazy(() => import('../components/CompaniesSection').then(m => ({ default: m.CompaniesSection })));
@@ -157,6 +158,11 @@ export function HomePage({ setActiveSection }: HomePageProps) {
         <Suspense fallback={<SectionSkeleton />}>
           <CompaniesSection />
         </Suspense>
+      </section>
+
+      {/* Reviews Section */}
+      <section id="reviews" className="bg-white">
+        <ReviewsSection />
       </section>
 
     </div>
