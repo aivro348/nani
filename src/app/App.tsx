@@ -10,6 +10,7 @@ const BranchesPage = lazy(() => import('./pages/BranchesPage').then(m => ({ defa
 const RoadmapPage = lazy(() => import('./pages/RoadmapPage').then(m => ({ default: m.RoadmapPage })));
 const CoursesPage = lazy(() => import('../education/pages/CoursesPage').then(m => ({ default: m.CoursesPage })));
 const ProjectsPage = lazy(() => import('../projects/pages/ProjectsPage').then(m => ({ default: m.ProjectsPage })));
+const ProjectDetailsPage = lazy(() => import('../education/pages/ProjectDetailsPage').then(m => ({ default: m.ProjectDetailsPage })));
 const PapersPage = lazy(() => import('./pages/PapersPage').then(m => ({ default: m.PapersPage })));
 const AIToolsPage = lazy(() => import('../ai/pages/AIToolsPage').then(m => ({ default: m.AIToolsPage })));
 const AllAICoursesPage = lazy(() => import('../ai/pages/AllAICoursesPage').then(m => ({ default: m.AllAICoursesPage })));
@@ -94,6 +95,7 @@ export default function App() {
             <Route path="/courses/:courseId" element={<CourseDetailsPage />} />
             <Route path="/all-projects" element={<AllProjectsPage />} />
             <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/projects/:projectId" element={<ProjectDetailsPage />} />
             <Route path="/papers" element={<PapersPage />} />
             <Route path="*" element={<HomePage setActiveSection={() => { }} />} />
           </Routes>

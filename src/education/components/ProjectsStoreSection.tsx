@@ -3,8 +3,10 @@ import { motion } from 'motion/react';
 import { 
   Code, Brain, Cpu, Zap, Wrench, Building2,
   IndianRupee, Search, Filter, ShoppingCart,
-  Star, Clock, Users, ChevronDown, X, Layers
+  Star, Clock, Users, ChevronDown, X, Layers, Gift, FileText, Calendar
 } from 'lucide-react';
+import { PROJECT_STORE, Project } from '../data/projectsData';
+import { Link } from 'react-router';
 
 /* ─────────────────────── branch config ─────────────────────── */
 const BRANCH_META: Record<string, { gradient: string; icon: React.ElementType; label: string }> = {
@@ -16,66 +18,7 @@ const BRANCH_META: Record<string, { gradient: string; icon: React.ElementType; l
   'Civil':      { gradient: 'from-rose-600 to-pink-600',     icon: Building2, label: 'Civil Engineering' },
 };
 
-/* ─────────────────────── project store data ─────────────────────── */
-const PROJECT_STORE = [
-  // ── CSE ──
-  { id: 1,  title: 'Student Result Management System',     branch: 'CSE', type: 'Mini',  tech: ['PHP', 'MySQL', 'Bootstrap'],            price: 1500 },
-  { id: 2,  title: 'Online Quiz Application',               branch: 'CSE', type: 'Mini',  tech: ['React', 'Firebase', 'CSS'],             price: 2000 },
-  { id: 3,  title: 'Expense Tracker with Charts',           branch: 'CSE', type: 'Mini',  tech: ['JavaScript', 'Chart.js', 'HTML/CSS'],   price: 1500 },
-  { id: 4,  title: 'Weather Forecasting App',               branch: 'CSE', type: 'Mini',  tech: ['React', 'OpenWeather API', 'CSS'],      price: 1000 },
-  { id: 5,  title: 'Portfolio Website Builder',              branch: 'CSE', type: 'Mini',  tech: ['HTML', 'CSS', 'JavaScript'],            price: 1000 },
-  { id: 6,  title: 'Library Management System',             branch: 'CSE', type: 'Mini',  tech: ['Java', 'MySQL', 'Swing'],               price: 2000 },
-  { id: 7,  title: 'Full-Stack E-Commerce Platform',        branch: 'CSE', type: 'Main',  tech: ['React', 'Node.js', 'MongoDB', 'Stripe'], price: 8000 },
-  { id: 8,  title: 'Hospital Management System',            branch: 'CSE', type: 'Main',  tech: ['Django', 'PostgreSQL', 'Bootstrap'],     price: 7000 },
-  { id: 9,  title: 'Online Learning Management System',     branch: 'CSE', type: 'Main',  tech: ['Next.js', 'Prisma', 'Tailwind'],        price: 9000 },
-  { id: 10, title: 'Real-Time Chat Application',            branch: 'CSE', type: 'Main',  tech: ['Socket.io', 'React', 'Express'],        price: 6000 },
-  { id: 11, title: 'Job Portal with Resume Parser',         branch: 'CSE', type: 'Main',  tech: ['Python', 'Django', 'NLP', 'React'],     price: 8500 },
-  { id: 12, title: 'Restaurant POS & Billing System',       branch: 'CSE', type: 'Main',  tech: ['Vue.js', 'Laravel', 'MySQL'],           price: 7500 },
 
-  // ── AI/DS ──
-  { id: 13, title: 'Handwritten Digit Recognition',         branch: 'AI/DS', type: 'Mini', tech: ['Python', 'TensorFlow', 'Keras'],       price: 2000 },
-  { id: 14, title: 'Spam Email Classifier',                  branch: 'AI/DS', type: 'Mini', tech: ['Python', 'scikit-learn', 'NLTK'],     price: 1500 },
-  { id: 15, title: 'Movie Recommendation System',            branch: 'AI/DS', type: 'Mini', tech: ['Python', 'Pandas', 'Cosine Similarity'], price: 2000 },
-  { id: 16, title: 'House Price Prediction',                 branch: 'AI/DS', type: 'Mini', tech: ['Python', 'scikit-learn', 'Flask'],    price: 2000 },
-  { id: 17, title: 'Customer Churn Prediction',              branch: 'AI/DS', type: 'Mini', tech: ['Python', 'XGBoost', 'Streamlit'],    price: 2500 },
-  { id: 18, title: 'AI-Powered Medical Diagnosis',          branch: 'AI/DS', type: 'Main', tech: ['TensorFlow', 'OpenCV', 'Flask'],      price: 10000 },
-  { id: 19, title: 'Face Recognition Attendance System',    branch: 'AI/DS', type: 'Main', tech: ['OpenCV', 'dlib', 'SQLite'],           price: 8000 },
-  { id: 20, title: 'Stock Price Prediction with LSTM',      branch: 'AI/DS', type: 'Main', tech: ['TensorFlow', 'Keras', 'Plotly'],     price: 9000 },
-  { id: 21, title: 'Sentiment Analysis Dashboard',          branch: 'AI/DS', type: 'Main', tech: ['NLTK', 'scikit-learn', 'Streamlit'], price: 7500 },
-  { id: 22, title: 'Object Detection Security System',      branch: 'AI/DS', type: 'Main', tech: ['YOLO', 'OpenCV', 'PyTorch'],         price: 12000 },
-
-  // ── ECE ──
-  { id: 23, title: 'LED Blinking Patterns with Arduino',    branch: 'ECE', type: 'Mini',  tech: ['Arduino', 'C++', 'LEDs'],               price: 800 },
-  { id: 24, title: 'Temperature & Humidity Monitor',         branch: 'ECE', type: 'Mini',  tech: ['Arduino', 'DHT11', 'LCD'],              price: 1200 },
-  { id: 25, title: 'IR Remote Controlled Car',              branch: 'ECE', type: 'Mini',  tech: ['Arduino', 'IR Sensor', 'Motors'],       price: 1500 },
-  { id: 26, title: 'Smart IoT Home Automation',             branch: 'ECE', type: 'Main',  tech: ['ESP32', 'MQTT', 'Firebase', 'Flutter'], price: 8000 },
-  { id: 27, title: 'FPGA-based Signal Processing',          branch: 'ECE', type: 'Main',  tech: ['Verilog', 'VHDL', 'Xilinx Vivado'],    price: 10000 },
-  { id: 28, title: 'Wireless Sensor Network (Agriculture)', branch: 'ECE', type: 'Main',  tech: ['Arduino', 'LoRa', 'ThingSpeak'],       price: 7000 },
-  { id: 29, title: 'Smart Traffic Light Controller',        branch: 'ECE', type: 'Main',  tech: ['Arduino', 'IR Sensors', 'C++'],         price: 6000 },
-
-  // ── EEE ──
-  { id: 30, title: 'Battery Charging Indicator',             branch: 'EEE', type: 'Mini',  tech: ['Arduino', 'LEDs', 'Voltage Sensor'],    price: 1000 },
-  { id: 31, title: 'Automatic Street Light Controller',      branch: 'EEE', type: 'Mini',  tech: ['LDR', 'Relay', 'Arduino'],              price: 1200 },
-  { id: 32, title: 'Solar MPPT Charge Controller',          branch: 'EEE', type: 'Main',  tech: ['Arduino', 'Buck Converter', 'MPPT'],    price: 8000 },
-  { id: 33, title: 'EV Charging Station Design',            branch: 'EEE', type: 'Main',  tech: ['MATLAB', 'Simulink', 'IoT'],            price: 10000 },
-  { id: 34, title: 'Smart Grid Energy Management',          branch: 'EEE', type: 'Main',  tech: ['MATLAB', 'SCADA', 'Python'],            price: 12000 },
-  { id: 35, title: 'Home Energy Monitoring System',         branch: 'EEE', type: 'Main',  tech: ['ESP32', 'Current Sensor', 'Blynk'],     price: 6000 },
-
-  // ── Mechanical ──
-  { id: 36, title: 'Hydraulic Jack 3D Model',               branch: 'Mechanical', type: 'Mini', tech: ['SolidWorks', 'AutoCAD'],            price: 1500 },
-  { id: 37, title: 'Gear Train Analysis',                    branch: 'Mechanical', type: 'Mini', tech: ['MATLAB', 'SolidWorks'],             price: 1500 },
-  { id: 38, title: 'Autonomous Mobile Robot',               branch: 'Mechanical', type: 'Main', tech: ['ROS', 'Python', 'LIDAR', 'RPi'],   price: 12000 },
-  { id: 39, title: '3D Printed Robotic Arm (6-DOF)',        branch: 'Mechanical', type: 'Main', tech: ['Arduino', '3D Printing', 'Python'], price: 10000 },
-  { id: 40, title: 'Quadcopter Drone Design',               branch: 'Mechanical', type: 'Main', tech: ['Flight Controller', 'PID', 'GPS'], price: 15000 },
-  { id: 41, title: 'CNC Drawing Machine',                   branch: 'Mechanical', type: 'Main', tech: ['Arduino', 'GRBL', 'Stepper Motors'], price: 8000 },
-
-  // ── Civil ──
-  { id: 42, title: 'Simple Beam Analysis Calculator',        branch: 'Civil', type: 'Mini', tech: ['Python', 'Matplotlib'],                 price: 1500 },
-  { id: 43, title: 'Building Floor Plan (AutoCAD)',          branch: 'Civil', type: 'Mini', tech: ['AutoCAD 2024'],                          price: 1000 },
-  { id: 44, title: 'BIM-based Building Information System', branch: 'Civil', type: 'Main', tech: ['Revit', 'Navisworks', 'Dynamo'],        price: 12000 },
-  { id: 45, title: 'Structural Analysis Software',          branch: 'Civil', type: 'Main', tech: ['Python', 'FEM', 'NumPy'],               price: 10000 },
-  { id: 46, title: 'Earthquake Resistant Building Design',  branch: 'Civil', type: 'Main', tech: ['ETABS', 'SAP2000', 'STAAD Pro'],       price: 15000 },
-];
 
 const BRANCHES = ['All', 'CSE', 'AI/DS', 'ECE', 'EEE', 'Mechanical', 'Civil'];
 const TYPES = ['All Types', 'Mini', 'Main'];
@@ -299,7 +242,7 @@ export const ProjectsStoreSection = memo(function ProjectsStoreSection({ preview
 });
 
 /* ─────────────────────── Project Card ─────────────────────── */
-function ProjectCard({ project, idx }: { project: typeof PROJECT_STORE[0]; idx: number }) {
+function ProjectCard({ project, idx }: { project: Project; idx: number }) {
   const meta = BRANCH_META[project.branch] ?? BRANCH_META['CSE'];
   const Icon = meta.icon;
   const isMini = project.type === 'Mini';
@@ -312,18 +255,35 @@ function ProjectCard({ project, idx }: { project: typeof PROJECT_STORE[0]; idx: 
       transition={{ delay: (idx % 8) * 0.05 }}
       className="bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden group flex flex-col"
     >
-      {/* Top Accent */}
-      <div className={`h-1.5 bg-gradient-to-r ${meta.gradient}`} />
+      {/* Project Image */}
+      <div className="relative h-48 w-full overflow-hidden">
+        <img 
+          src={project.image} 
+          alt={project.title} 
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
+        
+        {/* Top Accent line inside the image */}
+        <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${meta.gradient}`} />
+        
+        {/* Badges on image */}
+        <div className="absolute top-4 left-4 flex gap-2">
+          <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${meta.gradient} text-white flex items-center justify-center shadow-lg backdrop-blur-sm`}>
+            <Icon className="w-4 h-4" />
+          </div>
+          {project.isFree && (
+            <span className="px-3 py-1.5 rounded-lg bg-emerald-500 text-white text-xs font-black uppercase tracking-wider flex items-center gap-1 shadow-lg backdrop-blur-sm">
+              <Gift className="w-3.5 h-3.5" /> Free
+            </span>
+          )}
+        </div>
+      </div>
 
       <div className="p-6 flex flex-col flex-1">
         {/* Branch & Type pills */}
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-2">
-            <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${meta.gradient} text-white flex items-center justify-center`}>
-              <Icon className="w-4 h-4" />
-            </div>
-            <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">{project.branch}</span>
-          </div>
+        <div className="flex items-center justify-between mb-3">
+          <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">{project.branch}</span>
           <span className={`text-xs font-black uppercase tracking-wider px-3 py-1 rounded-full ${
             isMini 
               ? 'bg-emerald-50 text-emerald-600 border border-emerald-200' 
@@ -334,34 +294,62 @@ function ProjectCard({ project, idx }: { project: typeof PROJECT_STORE[0]; idx: 
         </div>
 
         {/* Title */}
-        <h3 className="text-lg font-bold text-slate-900 mb-4 leading-snug group-hover:text-[var(--primary-maroon)] transition-colors flex-1">
+        <h3 className="text-lg font-bold text-slate-900 mb-2 leading-snug group-hover:text-[var(--primary-maroon)] transition-colors line-clamp-2">
           {project.title}
         </h3>
 
-        {/* Tech Stack */}
-        <div className="flex flex-wrap gap-1.5 mb-6">
-          {project.tech.map((t, i) => (
-            <span key={i} className="text-xs px-2.5 py-1 bg-slate-50 text-slate-600 rounded-lg border border-slate-100 font-medium">
-              {t}
-            </span>
-          ))}
+        {/* Abstract */}
+        <p className="text-sm text-slate-600 mb-4 line-clamp-2 leading-relaxed flex-1">
+          {project.abstract}
+        </p>
+
+        {/* Delivery Time & Tech Stack */}
+        <div className="space-y-4 mb-6">
+          <div className="flex items-center gap-1.5 text-xs font-bold text-slate-500 bg-slate-50 w-fit px-2.5 py-1.5 rounded-lg border border-slate-100">
+            <Clock className="w-3.5 h-3.5" />
+            Delivery in {project.deliveryDays} Days
+          </div>
+          <div className="flex flex-wrap gap-1.5">
+            {project.tech.slice(0, 3).map((t, i) => (
+              <span key={i} className="text-xs px-2.5 py-1 bg-slate-50 text-slate-600 rounded-lg border border-slate-100 font-medium">
+                {t}
+              </span>
+            ))}
+            {project.tech.length > 3 && (
+              <span className="text-xs px-2.5 py-1 bg-slate-50 text-slate-400 rounded-lg border border-slate-100 font-medium">
+                +{project.tech.length - 3}
+              </span>
+            )}
+          </div>
         </div>
 
-        {/* Price & CTA */}
+        {/* CTA Section */}
         <div className="flex items-center justify-between mt-auto pt-4 border-t border-slate-100">
-          <div className="flex items-center gap-1">
-            <IndianRupee className="w-5 h-5 text-[var(--primary-maroon)]" />
-            <span className="text-2xl font-black text-slate-900">{project.price.toLocaleString('en-IN')}</span>
-          </div>
-          <a
-            href={`https://wa.me/919949167458?text=Hi! I'm interested in the project: "${project.title}" (${project.type} Project, ${project.branch}) - ₹${project.price.toLocaleString('en-IN')}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-2.5 bg-[var(--primary-maroon)] text-white text-sm font-bold rounded-xl hover:opacity-90 hover:shadow-lg transition-all active:scale-95"
-          >
-            <ShoppingCart className="w-4 h-4" />
-            Enquire
-          </a>
+          {project.isFree ? (
+            <Link
+              to={`/projects/${project.id}`}
+              className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-emerald-500 text-white text-sm font-bold rounded-xl hover:bg-emerald-600 hover:shadow-lg transition-all active:scale-95"
+            >
+              <FileText className="w-4 h-4" />
+              View Full Details
+            </Link>
+          ) : (
+            <>
+              <div className="flex items-center gap-0.5">
+                <IndianRupee className="w-4 h-4 text-slate-400" />
+                <span className="text-xl font-black text-slate-900">{project.price.toLocaleString('en-IN')}</span>
+              </div>
+              <a
+                href={`https://wa.me/919949167458?text=Hi! I'm interested in the project: "${project.title}" (${project.type} Project, ${project.branch}) - ₹${project.price.toLocaleString('en-IN')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-5 py-2.5 bg-slate-900 text-white text-sm font-bold rounded-xl hover:bg-[var(--primary-maroon)] hover:shadow-lg transition-all active:scale-95"
+              >
+                <ShoppingCart className="w-4 h-4" />
+                Get Now
+              </a>
+            </>
+          )}
         </div>
       </div>
     </motion.div>
