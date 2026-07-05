@@ -9,9 +9,9 @@ const reviews = [
     type: 'youtube', 
     platform: 'YouTube Shorts',
     videoId: 'kuo4itEiiLE', 
-    studentName: 'Student Review',
-    project: 'Scaro Academy Project',
-    text: "Building this project with Scaro helped me secure my skills and learn industry-standard practices with hands-on experience.",
+    studentName: 'Student Project Showcase',
+    project: 'Scaro Academy Build',
+    text: "I built this complete project from scratch during my training at Scaro Academy. The hands-on sessions gave me the confidence to build industry-grade applications.",
     rating: 5,
     isShort: true
   },
@@ -20,9 +20,9 @@ const reviews = [
     type: 'youtube',
     platform: 'YouTube Shorts',
     videoId: 'dp0sHkwF1hU', 
-    studentName: 'Student Testimonial',
-    project: 'Mini Project Development',
-    text: "The step-by-step guidance and real-world application made everything so easy to understand. Great experience overall!",
+    studentName: 'Student Project Showcase',
+    project: 'Mini Project Execution',
+    text: "This was my mini-project during the course. The step-by-step guidance helped me turn my idea into a fully working prototype in just a few weeks!",
     rating: 5,
     isShort: true
   },
@@ -31,9 +31,9 @@ const reviews = [
     type: 'youtube',
     platform: 'YouTube Shorts',
     videoId: 'S69O38UevV0', 
-    studentName: 'Student Feedback',
-    project: 'Main Project Execution',
-    text: "Just submitted my main project and it got approved instantly! Thank you Scaro for the amazing support.",
+    studentName: 'Student Project Showcase',
+    project: 'Main Project Delivery',
+    text: "Developed this as my main final-year project under the mentorship of Scaro experts. The hands-on approach made all the difference in understanding the core concepts.",
     rating: 5,
     isShort: true
   }
@@ -55,7 +55,7 @@ export const ReviewsSection = memo(function ReviewsSection() {
             className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--primary-maroon)]/10 text-[var(--primary-maroon)] rounded-full text-sm font-bold tracking-wide uppercase mb-6 border border-[var(--primary-maroon)]/20"
           >
             <MessageCircle className="w-4 h-4" />
-            Student Success
+            Student Showcase
           </motion.div>
           
           <motion.h2
@@ -64,7 +64,7 @@ export const ReviewsSection = memo(function ReviewsSection() {
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-black text-heading tracking-tight mb-6"
           >
-            Real Reviews from <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary-maroon)] to-[#ff3b00]">Real Students</span>
+            Projects Built by <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary-maroon)] to-[#ff3b00]">Our Students</span>
           </motion.h2>
           
           <motion.p
@@ -74,7 +74,7 @@ export const ReviewsSection = memo(function ReviewsSection() {
             transition={{ delay: 0.1 }}
             className="text-lg text-slate-600 leading-relaxed"
           >
-            Hear directly from our students about their experience building mini and main projects with Scaro Academy.
+            Take a look at the incredible mini and main projects our students have built hands-on during their courses at Scaro Academy.
           </motion.p>
         </div>
 
@@ -134,7 +134,7 @@ export const ReviewsSection = memo(function ReviewsSection() {
         {/* Channel Link Footer */}
         <div className="mt-16 text-center">
           <a 
-            href="https://www.youtube.com/@scaro_technologies" 
+            href="https://www.youtube.com/@scarotech" 
             target="_blank" 
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-[#FF0000] hover:bg-red-700 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 active:scale-95"
