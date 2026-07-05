@@ -6,34 +6,36 @@ import { Star, Youtube, Instagram, MessageCircle } from 'lucide-react';
 const reviews = [
   {
     id: 1,
-    type: 'youtube', // 'youtube' or 'insta'
-    platform: 'YouTube',
-    videoId: 'dQw4w9WgXcQ', // Placeholder ID - replace with your actual video ID
-    studentName: 'Rahul K.',
-    project: 'E-Commerce Full Stack Application',
-    text: "The project-based learning approach helped me secure an internship. The mentors were extremely helpful throughout the development phase.",
-    rating: 5
+    type: 'youtube', 
+    platform: 'YouTube Shorts',
+    videoId: 'kuo4itEiiLE', 
+    studentName: 'Student Review',
+    project: 'Scaro Academy Project',
+    text: "Building this project with Scaro helped me secure my skills and learn industry-standard practices with hands-on experience.",
+    rating: 5,
+    isShort: true
   },
   {
     id: 2,
     type: 'youtube',
     platform: 'YouTube Shorts',
-    videoId: 'LXb3EKWsInQ', // Placeholder Shorts ID
-    studentName: 'Sneha Reddy',
-    project: 'AI Chatbot Integration',
-    text: "Completed my mini-project in 2 weeks! The step-by-step guidance and real-world application made everything so easy to understand.",
+    videoId: 'dp0sHkwF1hU', 
+    studentName: 'Student Testimonial',
+    project: 'Mini Project Development',
+    text: "The step-by-step guidance and real-world application made everything so easy to understand. Great experience overall!",
     rating: 5,
     isShort: true
   },
   {
     id: 3,
-    type: 'insta',
-    platform: 'Instagram',
-    videoId: 'tgbNymZ7vqY', 
-    studentName: 'Vikram S.',
-    project: 'IoT Smart Home System',
-    text: "Just submitted my main project and it got approved instantly! Thank you Scaro for the amazing hardware support.",
-    rating: 5
+    type: 'youtube',
+    platform: 'YouTube Shorts',
+    videoId: 'S69O38UevV0', 
+    studentName: 'Student Feedback',
+    project: 'Main Project Execution',
+    text: "Just submitted my main project and it got approved instantly! Thank you Scaro for the amazing support.",
+    rating: 5,
+    isShort: true
   }
 ];
 
@@ -127,6 +129,19 @@ export const ReviewsSection = memo(function ReviewsSection() {
               </div>
             </motion.div>
           ))}
+        </div>
+
+        {/* Channel Link Footer */}
+        <div className="mt-16 text-center">
+          <a 
+            href="https://www.youtube.com/@scaro_technologies" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-[#FF0000] hover:bg-red-700 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 active:scale-95"
+          >
+            <Youtube className="w-6 h-6" />
+            Watch More on YouTube
+          </a>
         </div>
       </div>
     </div>
