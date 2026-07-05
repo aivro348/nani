@@ -24,21 +24,21 @@ export function AIToolsPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20 mb-8 font-semibold"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20 mb-8 font-bold tracking-widest uppercase text-sm"
           >
-            <Sparkles className="w-5 h-5" />
-            <span>AI Arsenal</span>
+            <Sparkles className="w-4 h-4" />
+            <span>Scaro AI Initiatives</span>
           </motion.div>
           
           <motion.h1 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-5xl md:text-7xl font-extrabold text-heading tracking-tight mb-8"
+            className="text-5xl md:text-6xl lg:text-7xl font-black text-heading tracking-tight mb-8 leading-[1.1]"
           >
-            Supercharge your <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-cyan-500">
-              engineering workflow.
+            Pioneering the next era of <br/>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-500 to-cyan-500">
+              Artificial Intelligence.
             </span>
           </motion.h1>
           
@@ -46,9 +46,9 @@ export function AIToolsPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-2xl text-text-secondary max-w-3xl mx-auto mb-12 leading-relaxed"
+            className="text-lg md:text-xl text-text-secondary max-w-3xl mx-auto mb-12 leading-relaxed"
           >
-            Discover the most powerful AI models, developer tools, and productivity suites trusted by modern engineering teams.
+            At Scaro Technologies, we build and integrate state-of-the-art AI solutions. From intelligent automation to machine learning pipelines, we help enterprises harness AI to solve complex challenges. Explore the ecosystem of tools powering our innovations below.
           </motion.p>
           
           <motion.div
@@ -57,13 +57,23 @@ export function AIToolsPage() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="flex flex-wrap justify-center gap-4"
           >
-            <div className="flex items-center gap-2 px-6 py-3 bg-card border border-border rounded-xl shadow-sm">
-              <Zap className="w-5 h-5 text-yellow-500" />
-              <span className="font-medium">100+ Tools</span>
+            <div className="flex items-center gap-3 px-6 py-3 bg-card border border-border rounded-xl shadow-sm">
+              <div className="w-8 h-8 rounded-full bg-purple-500/10 flex items-center justify-center">
+                <Zap className="w-4 h-4 text-purple-500" />
+              </div>
+              <div className="text-left">
+                <div className="font-bold text-sm text-heading">Enterprise Solutions</div>
+                <div className="text-xs text-text-muted">Custom AI Integration</div>
+              </div>
             </div>
-            <div className="flex items-center gap-2 px-6 py-3 bg-card border border-border rounded-xl shadow-sm">
-              <Globe className="w-5 h-5 text-blue-500" />
-              <span className="font-medium">9 Categories</span>
+            <div className="flex items-center gap-3 px-6 py-3 bg-card border border-border rounded-xl shadow-sm">
+              <div className="w-8 h-8 rounded-full bg-cyan-500/10 flex items-center justify-center">
+                <Globe className="w-4 h-4 text-cyan-500" />
+              </div>
+              <div className="text-left">
+                <div className="font-bold text-sm text-heading">100+ Tools</div>
+                <div className="text-xs text-text-muted">Extensive Directory</div>
+              </div>
             </div>
           </motion.div>
         </div>
