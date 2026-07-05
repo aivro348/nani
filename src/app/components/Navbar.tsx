@@ -1,7 +1,6 @@
-import { Menu, X, Sun, Moon, PhoneCall, Clock, Mail } from 'lucide-react';
+import { Menu, X, PhoneCall, Clock, Mail } from 'lucide-react';
 import { Logo } from './Logo';
 import { useState, useEffect, lazy, Suspense } from 'react';
-import { useTheme } from 'next-themes';
 import { useNavigate, useLocation } from 'react-router';
 
 // Lazy load the modal as it contains heavy logic and UI
@@ -10,7 +9,6 @@ const GetStartedModal = lazy(() => import('./GetStartedModal').then(m => ({ defa
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isGetStartedModalOpen, setIsGetStartedModalOpen] = useState(false);
-  const { theme, setTheme } = useTheme();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -88,9 +86,7 @@ export function Navbar() {
     setMobileMenuOpen(false);
   };
 
-  const toggleTheme = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark');
-  };
+
 
   useEffect(() => {
     const handleOpenModal = () => {
@@ -135,20 +131,8 @@ export function Navbar() {
               })}
             </div>
 
-            {/* Right side: theme toggle + mobile menu */}
+            {/* Right side: mobile menu */}
             <div className="flex items-center gap-3 ml-auto">
-              {/* Theme toggle */}
-              <button
-                onClick={toggleTheme}
-                className="p-2 rounded-lg bg-white/10 hover:bg-white/20 border border-white/20 text-white transition-all theme-transition"
-                aria-label="Toggle theme"
-              >
-                {theme === 'dark' ? (
-                  <Sun className="w-4 h-4 text-amber-300" />
-                ) : (
-                  <Moon className="w-4 h-4 text-blue-200" />
-                )}
-              </button>
 
               {/* Mobile Menu Button */}
               <button
