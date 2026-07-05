@@ -80,7 +80,7 @@ const PROJECT_STORE = [
 const BRANCHES = ['All', 'CSE', 'AI/DS', 'ECE', 'EEE', 'Mechanical', 'Civil'];
 const TYPES = ['All Types', 'Mini', 'Main'];
 
-export const ProjectsStoreSection = memo(function ProjectsStoreSection() {
+export const ProjectsStoreSection = memo(function ProjectsStoreSection({ previewOnly }: { previewOnly?: boolean }) {
   const [branch, setBranch] = useState('All');
   const [type, setType] = useState('All Types');
   const [search, setSearch] = useState('');
@@ -95,8 +95,13 @@ export const ProjectsStoreSection = memo(function ProjectsStoreSection() {
     });
   }, [branch, type, search]);
 
-  const miniProjects = filtered.filter(p => p.type === 'Mini');
-  const mainProjects = filtered.filter(p => p.type === 'Main');
+  let miniProjects = filtered.filter(p => p.type === 'Mini');
+  let mainProjects = filtered.filter(p => p.type === 'Main');
+
+  if (previewOnly) {
+    miniProjects = miniProjects.slice(0, 4);
+    mainProjects = mainProjects.slice(0, 4);
+  }
 
   return (
     <div id="projects-store" className="py-24 px-4 bg-slate-50 scroll-mt-24">
@@ -133,7 +138,9 @@ export const ProjectsStoreSection = memo(function ProjectsStoreSection() {
         </div>
 
         {/* Stats Strip */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+        {!previewOnly && (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+
           {[
             { value: `${PROJECT_STORE.length}+`, label: 'Projects', sub: 'Across 6 branches' },
             { value: `${PROJECT_STORE.filter(p => p.type === 'Mini').length}`, label: 'Mini Projects', sub: 'Quick & affordable' },
@@ -154,9 +161,11 @@ export const ProjectsStoreSection = memo(function ProjectsStoreSection() {
             </motion.div>
           ))}
         </div>
+        )}
 
         {/* Filters */}
-        <div className="space-y-4 mb-12">
+        {!previewOnly && (
+          <div className="space-y-4 mb-12">
           {/* Search */}
           <div className="relative max-w-xl mx-auto">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
@@ -218,13 +227,16 @@ export const ProjectsStoreSection = memo(function ProjectsStoreSection() {
             ))}
           </div>
         </div>
+        )}
 
         {/* Results Count */}
-        <div className="text-sm text-slate-500 mb-8 text-center">
-          Showing <span className="font-bold text-slate-800">{filtered.length}</span> projects
-          {branch !== 'All' && <> in <span className="font-bold text-[var(--primary-maroon)]">{branch}</span></>}
-          {type !== 'All Types' && <> — <span className="font-bold">{type} Projects</span></>}
-        </div>
+        {!previewOnly && (
+          <div className="text-sm text-slate-500 mb-8 text-center">
+            Showing <span className="font-bold text-slate-800">{filtered.length}</span> projects
+            {branch !== 'All' && <> in <span className="font-bold text-[var(--primary-maroon)]">{branch}</span></>}
+            {type !== 'All Types' && <> — <span className="font-bold">{type} Projects</span></>}
+          </div>
+        )}
 
         {/* Mini Projects */}
         {miniProjects.length > 0 && (
@@ -266,6 +278,18 @@ export const ProjectsStoreSection = memo(function ProjectsStoreSection() {
           <div className="text-center py-20">
             <p className="text-2xl font-bold text-slate-400 mb-2">No projects found</p>
             <p className="text-slate-500">Try adjusting your filters or search query.</p>
+          </div>
+        )}
+
+        {previewOnly && (
+          <div className="flex justify-center mt-16">
+            <a 
+              href="/all-projects"
+              className="bg-slate-900 hover:bg-slate-800 text-white px-10 py-4 rounded-xl font-bold text-lg transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 active:scale-95 inline-flex items-center gap-2"
+            >
+              <Layers className="w-5 h-5" />
+              See All Projects
+            </a>
           </div>
         )}
 

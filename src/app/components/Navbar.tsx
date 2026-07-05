@@ -27,6 +27,8 @@ export function Navbar() {
     ];
   } else if (
     currentPath.startsWith('/courses') || 
+    currentPath.startsWith('/all-courses') || 
+    currentPath.startsWith('/all-projects') || 
     currentPath.startsWith('/branches') || 
     currentPath.startsWith('/projects') || 
     currentPath.startsWith('/roadmap') || 
@@ -35,9 +37,9 @@ export function Navbar() {
   ) {
     navItems = [
       { id: 'home', label: 'Home', path: '/courses' },
-      { id: 'programs', label: 'Programs / Courses', path: '/courses#programs-section' },
+      { id: 'programs', label: 'Programs / Courses', path: '/all-courses' },
       { id: 'roadmap', label: 'Roadmap', path: '/roadmap' },
-      { id: 'projects', label: 'Projects', path: '/courses#projects-store' },
+      { id: 'projects', label: 'Projects', path: '/all-projects' },
       { id: 'college', label: 'College Connect', path: '/branches' },
     ];
   } else if (currentPath.startsWith('/business')) {
@@ -107,7 +109,7 @@ export function Navbar() {
             <div className="flex-shrink-0 mr-4 lg:mr-8">
               <Logo onClick={() => {
                 const isBusinessSection = currentPath.startsWith('/business');
-                const isEducationSection = currentPath.startsWith('/courses') || currentPath.startsWith('/branches') || currentPath.startsWith('/roadmap') || currentPath.startsWith('/projects') || currentPath.startsWith('/trainer') || currentPath.startsWith('/papers');
+                const isEducationSection = currentPath.startsWith('/courses') || currentPath.startsWith('/all-courses') || currentPath.startsWith('/all-projects') || currentPath.startsWith('/branches') || currentPath.startsWith('/roadmap') || currentPath.startsWith('/projects') || currentPath.startsWith('/trainer') || currentPath.startsWith('/papers');
                 navigateToPage(isBusinessSection ? '/business' : isEducationSection ? '/courses' : '/');
               }} iconSize={44} textSize="text-xl hidden lg:block" />
             </div>

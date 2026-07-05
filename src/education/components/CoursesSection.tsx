@@ -3,9 +3,13 @@ import { motion } from 'motion/react';
 import { useNavigate } from 'react-router';
 import { CATEGORIES, courses } from '../data/coursesData';
 
-export const CoursesSection = memo(function CoursesSection() {
+export const CoursesSection = memo(function CoursesSection({ previewOnly }: { previewOnly?: boolean }) {
   const navigate = useNavigate();
-  const activeCategories = CATEGORIES.filter(c => c.id !== 'all' && courses.some(course => course.category === c.id));
+  let activeCategories = CATEGORIES.filter(c => c.id !== 'all' && courses.some(course => course.category === c.id));
+
+  if (previewOnly) {
+    activeCategories = activeCategories.slice(0, 1);
+  }
 
   return (
     <div className="py-20 px-4">
@@ -13,6 +17,7 @@ export const CoursesSection = memo(function CoursesSection() {
         
         {activeCategories.map((category) => {
           const categoryCourses = courses.filter(c => c.category === category.id);
+          const displayCourses = previewOnly ? categoryCourses.slice(0, 3) : categoryCourses;
           
           return (
             <div key={category.id} className="space-y-12">
@@ -28,7 +33,7 @@ export const CoursesSection = memo(function CoursesSection() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {categoryCourses.map((course, idx) => (
+                {displayCourses.map((course, idx) => (
                   <motion.div
                     key={course.id}
                     initial={{ opacity: 0, y: 30 }}
@@ -63,6 +68,16 @@ export const CoursesSection = memo(function CoursesSection() {
           );
         })}
 
+        {previewOnly && (
+          <div className="flex justify-center pt-8">
+            <button 
+              onClick={() => navigate('/all-courses')}
+              className="bg-black hover:bg-gray-800 text-white px-10 py-4 rounded-xl font-bold text-lg transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 active:scale-95"
+            >
+              See All Programs
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

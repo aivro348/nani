@@ -145,12 +145,12 @@ export function CoursesPage() {
 
       {/* Detailed Course Directory */}
       <section id="programs-section" className="bg-page-bg">
-        <CoursesSection />
+        <CoursesSection previewOnly={true} />
       </section>
 
       {/* Projects Store */}
       <section id="projects-store-section">
-        <ProjectsStoreSection />
+        <ProjectsStoreSection previewOnly={true} />
       </section>
       
       {/* Dedicated Education Contact Section */}

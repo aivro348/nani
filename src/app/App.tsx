@@ -24,6 +24,8 @@ const CertificateVerificationPage = lazy(() => import('../certificate/pages/Cert
 const RoadmapDetailsPage = lazy(() => import('./pages/RoadmapDetailsPage').then(m => ({ default: m.RoadmapDetailsPage })));
 const AICourseDetailsPage = lazy(() => import('../ai/pages/AICourseDetailsPage').then(m => ({ default: m.AICourseDetailsPage })));
 const AIRoadmapDetailsPage = lazy(() => import('../ai/pages/AIRoadmapDetailsPage').then(m => ({ default: m.AIRoadmapDetailsPage })));
+const AllCoursesPage = lazy(() => import('../education/pages/AllCoursesPage').then(m => ({ default: m.AllCoursesPage })));
+const AllProjectsPage = lazy(() => import('../education/pages/AllProjectsPage').then(m => ({ default: m.AllProjectsPage })));
 
 // Loading component
 const PageLoader = () => (
@@ -82,7 +84,9 @@ export default function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/verify-certificate" element={<CertificateVerificationPage />} />
             <Route path="/courses" element={<CoursesPage />} />
+            <Route path="/all-courses" element={<AllCoursesPage />} />
             <Route path="/courses/:courseId" element={<CourseDetailsPage />} />
+            <Route path="/all-projects" element={<AllProjectsPage />} />
             <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/papers" element={<PapersPage />} />
             <Route path="*" element={<HomePage setActiveSection={() => { }} />} />
