@@ -1,5 +1,6 @@
 import { Mail, MapPin, Phone, Github, Linkedin, Twitter, Youtube, ArrowRight } from 'lucide-react';
 import { Logo } from './Logo';
+import { VisitorCounter } from './VisitorCounter';
 import { memo } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 
@@ -237,9 +238,11 @@ export const Footer = memo(function Footer() {
 
         {/* Bottom section */}
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-6">
-          <p className="text-sm text-gray-500 text-center md:text-left">
+          <p className="text-sm text-gray-500 text-center md:text-left flex-1">
             © {footerConfig.copyrightYear} <span className="text-[var(--primary-gold)]/70">Scaro Technologies</span>. All rights reserved.
           </p>
+
+          <VisitorCounter />
 
           {/* Social links */}
           <div className="flex items-center gap-3">
