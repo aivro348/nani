@@ -59,6 +59,18 @@ export function Navbar() {
     navItems = [
       { id: 'home', label: 'Back to Home', path: '/' },
     ];
+  } else if (
+    currentPath.startsWith('/ai') ||
+    currentPath.startsWith('/all-ai-courses') ||
+    currentPath.startsWith('/all-ai-roadmaps') ||
+    currentPath.startsWith('/all-ai-tools')
+  ) {
+    navItems = [
+      { id: 'home', label: 'Home', path: '/ai' },
+      { id: 'programs', label: 'Programs / Courses', path: '/all-ai-courses' },
+      { id: 'roadmap', label: 'Roadmap', path: '/all-ai-roadmaps' },
+      { id: 'tools', label: 'AI Tools', path: '/all-ai-tools' },
+    ];
   } else if (currentPath === '/') {
     // Default / Home - Hide nav items to force portal navigation
     navItems = [];
@@ -110,7 +122,8 @@ export function Navbar() {
               <Logo onClick={() => {
                 const isBusinessSection = currentPath.startsWith('/business');
                 const isEducationSection = currentPath.startsWith('/courses') || currentPath.startsWith('/all-courses') || currentPath.startsWith('/all-projects') || currentPath.startsWith('/branches') || currentPath.startsWith('/roadmap') || currentPath.startsWith('/projects') || currentPath.startsWith('/trainer') || currentPath.startsWith('/papers');
-                navigateToPage(isBusinessSection ? '/business' : isEducationSection ? '/courses' : '/');
+                const isAISection = currentPath.startsWith('/ai') || currentPath.startsWith('/all-ai-courses') || currentPath.startsWith('/all-ai-roadmaps') || currentPath.startsWith('/all-ai-tools');
+                navigateToPage(isBusinessSection ? '/business' : isEducationSection ? '/courses' : isAISection ? '/ai' : '/');
               }} iconSize={44} textSize="text-xl hidden lg:block" />
             </div>
 

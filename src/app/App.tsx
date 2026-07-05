@@ -12,6 +12,9 @@ const CoursesPage = lazy(() => import('../education/pages/CoursesPage').then(m =
 const ProjectsPage = lazy(() => import('../projects/pages/ProjectsPage').then(m => ({ default: m.ProjectsPage })));
 const PapersPage = lazy(() => import('./pages/PapersPage').then(m => ({ default: m.PapersPage })));
 const AIToolsPage = lazy(() => import('../ai/pages/AIToolsPage').then(m => ({ default: m.AIToolsPage })));
+const AllAICoursesPage = lazy(() => import('../ai/pages/AllAICoursesPage').then(m => ({ default: m.AllAICoursesPage })));
+const AllAIRoadmapsPage = lazy(() => import('../ai/pages/AllAIRoadmapsPage').then(m => ({ default: m.AllAIRoadmapsPage })));
+const AllAIToolsPage = lazy(() => import('../ai/pages/AllAIToolsPage').then(m => ({ default: m.AllAIToolsPage })));
 const BusinessPage = lazy(() => import('../business/pages/BusinessPage').then(m => ({ default: m.BusinessPage })));
 const ContactPage = lazy(() => import('./pages/ContactPage').then(m => ({ default: m.ContactPage })));
 const CourseDetailsPage = lazy(() => import('../education/pages/CourseDetailsPage').then(m => ({ default: m.CourseDetailsPage })));
@@ -72,6 +75,9 @@ export default function App() {
             <Route path="/" element={<HomePage setActiveSection={() => { }} />} />
             <Route path="/business" element={<BusinessPage />} />
             <Route path="/ai" element={<AIToolsPage />} />
+            <Route path="/all-ai-courses" element={<AllAICoursesPage />} />
+            <Route path="/all-ai-roadmaps" element={<AllAIRoadmapsPage />} />
+            <Route path="/all-ai-tools" element={<AllAIToolsPage />} />
             <Route path="/ai/courses/:courseId" element={<AICourseDetailsPage />} />
             <Route path="/ai/roadmap/:roadmapId" element={<AIRoadmapDetailsPage />} />
             <Route path="/branches" element={<BranchesPage />} />

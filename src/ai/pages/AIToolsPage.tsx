@@ -41,17 +41,17 @@ export function AIToolsPage() {
       
       {/* AI Hero Section */}
       <section className="relative pt-32 pb-24 overflow-hidden border-b border-border bg-surface">
-        <div className="absolute inset-0 bg-grid-purple-900/[0.04] dark:bg-grid-purple-100/[0.03] bg-[bottom_1px_center]" />
+        <div className="absolute inset-0 bg-[var(--primary-maroon)]/[0.03] bg-[bottom_1px_center]" />
         
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl opacity-50" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl opacity-50" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[var(--primary-maroon)]/10 rounded-full blur-3xl opacity-50" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#ff3b00]/10 rounded-full blur-3xl opacity-50" />
         
         <div className="max-w-7xl mx-auto px-4 relative z-10 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20 mb-8 font-bold tracking-widest uppercase text-sm"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--primary-maroon)]/10 text-[var(--primary-maroon)] border border-[var(--primary-maroon)]/20 mb-8 font-bold tracking-widest uppercase text-sm"
           >
             <Sparkles className="w-4 h-4" />
             <span>Scaro AI Division</span>
@@ -64,7 +64,7 @@ export function AIToolsPage() {
             className="text-5xl md:text-6xl lg:text-7xl font-black text-heading tracking-tight mb-8 leading-[1.1]"
           >
             Pioneering the next era of <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-500 to-cyan-500">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary-maroon)] to-[#ff3b00]">
               Artificial Intelligence.
             </span>
           </motion.h1>
@@ -108,12 +108,12 @@ export function AIToolsPage() {
 
       {/* AI Courses Section */}
       <section>
-        <AICoursesSection />
+        <AICoursesSection previewOnly={true} />
       </section>
 
       {/* AI Roadmaps Section */}
       <section>
-        <AIRoadmapsSection />
+        <AIRoadmapsSection previewOnly={true} />
       </section>
 
       {/* AI Tools Directory */}
@@ -124,7 +124,7 @@ export function AIToolsPage() {
               initial={{ opacity: 0, y: -10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-purple-500/10 text-purple-600 rounded-full text-sm font-bold tracking-wide uppercase mb-6 border border-purple-500/20"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--primary-maroon)]/10 text-[var(--primary-maroon)] rounded-full text-sm font-bold tracking-wide uppercase mb-6 border border-[var(--primary-maroon)]/20"
             >
               <Wrench className="w-4 h-4" />
               Tool Directory
@@ -135,7 +135,7 @@ export function AIToolsPage() {
               viewport={{ once: true }}
               className="text-4xl md:text-5xl font-black text-heading tracking-tight mb-6"
             >
-              Our AI <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-cyan-500">Tools Arsenal</span>
+              Our AI <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary-maroon)] to-[#ff3b00]">Tools Arsenal</span>
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -148,7 +148,7 @@ export function AIToolsPage() {
             </motion.p>
           </div>
         </div>
-        <AIToolsListSection />
+        <AIToolsListSection previewOnly={true} />
       </section>
 
       {/* Contact Section */}

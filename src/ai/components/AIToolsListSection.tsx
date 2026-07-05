@@ -1,6 +1,7 @@
 import { ExternalLink, Sparkles, Code, Palette, FileText, Brain, Video, Music, Database, Search, BookOpen, Presentation, Calculator, Globe, Search as SearchIcon } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useState, useMemo, memo } from 'react';
+import { useNavigate } from 'react-router';
 import lovableLogo from '@/assets/tools/lovable.png';
 import boltLogo from '@/assets/tools/bolt.png';
 import github_copilotLogo from '@/assets/tools/github_copilot.png';
@@ -694,7 +695,8 @@ const AI_TOOLS_DATA = [
     },
   ];
 
-export const AIToolsListSection = memo(function AIToolsListSection() {
+export const AIToolsListSection = memo(function AIToolsListSection({ previewOnly }: { previewOnly?: boolean }) {
+  const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -719,6 +721,10 @@ export const AIToolsListSection = memo(function AIToolsListSection() {
     });
   }, [selectedCategory, searchQuery]);
 
+  const displayTools = useMemo(() => {
+    return previewOnly ? filteredTools.slice(0, 8) : filteredTools;
+  }, [filteredTools, previewOnly]);
+
   return (
     <div className="py-20 bg-page-bg relative overflow-hidden theme-transition">
       {/* Background effects */}
@@ -732,10 +738,10 @@ export const AIToolsListSection = memo(function AIToolsListSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-purple-500/10 rounded-full border border-purple-500/20 mb-6"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--primary-maroon)]/10 rounded-full border border-[var(--primary-maroon)]/20 mb-6"
           >
-            <Sparkles className="w-4 h-4 text-purple-400" />
-            <span className="text-sm font-medium text-purple-400">Curated AI Ecosystem</span>
+            <Sparkles className="w-4 h-4 text-[var(--primary-maroon)]" />
+            <span className="text-sm font-medium text-[var(--primary-maroon)]">Curated AI Ecosystem</span>
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -744,7 +750,7 @@ export const AIToolsListSection = memo(function AIToolsListSection() {
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-bold text-heading mb-6"
           >
-            Ultimate AI Tools <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">Directory</span>
+            Ultimate AI Tools <span className="bg-gradient-to-r from-[var(--primary-maroon)] to-[#ff3b00] bg-clip-text text-transparent">Directory</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -758,66 +764,70 @@ export const AIToolsListSection = memo(function AIToolsListSection() {
           </motion.p>
         </div>
 
-          {/* Search bar */}
-          <div className="max-w-2xl mx-auto relative group mb-12">
-            <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-              <SearchIcon className="h-5 w-5 text-text-muted group-focus-within:text-purple-400 transition-colors" />
-            </div>
-            <input
-              type="text"
-              placeholder="Search for tools, features, or tasks..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="block w-full pl-12 pr-4 py-4 bg-surface/50 backdrop-blur-md border border-surface-border rounded-2xl text-heading placeholder:text-text-muted focus:ring-4 focus:ring-purple-500/10 focus:border-purple-500 transition-all shadow-sm group-hover:shadow-md theme-transition"
-            />
-            <div className="absolute right-4 top-1/2 -translate-y-1/2 px-2 py-1 bg-surface-hover rounded text-[10px] text-text-muted border border-surface-border hidden sm:block">
-              {filteredTools.length} Tools
-            </div>
-          </div>
-        
-        {/* Category filter */}
-        <div className="mb-12">
-          <div className="flex flex-wrap gap-3 justify-center">
-            {categories.map((category) => (
-              <button
-                key={category.id}
-                onClick={() => setSelectedCategory(category.id)}
-                className={`px-5 py-2.5 rounded-xl border transition-all duration-300 text-sm flex items-center gap-2 transform active:scale-95 ${
-                  selectedCategory === category.id
-                    ? 'bg-gradient-to-r from-purple-600 to-indigo-600 border-purple-500 text-white shadow-lg shadow-purple-500/30 -translate-y-0.5'
-                    : 'bg-surface/50 backdrop-blur-sm text-text-secondary border-surface-border hover:border-purple-500/40 hover:text-heading hover:bg-surface theme-transition'
-                }`}
-              >
-                {category.name}
-                <span className="ml-2 opacity-75">({category.count})</span>
-              </button>
-            ))}
-          </div>
-        </div>
+          {!previewOnly && (
+            <>
+              {/* Search bar */}
+              <div className="max-w-2xl mx-auto relative group mb-12">
+                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                  <SearchIcon className="h-5 w-5 text-text-muted group-focus-within:text-[var(--primary-maroon)] transition-colors" />
+                </div>
+                <input
+                  type="text"
+                  placeholder="Search for tools, features, or tasks..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="block w-full pl-12 pr-4 py-4 bg-surface/50 backdrop-blur-md border border-surface-border rounded-2xl text-heading placeholder:text-text-muted focus:ring-4 focus:ring-[var(--primary-maroon)]/10 focus:border-[var(--primary-maroon)] transition-all shadow-sm group-hover:shadow-md theme-transition"
+                />
+                <div className="absolute right-4 top-1/2 -translate-y-1/2 px-2 py-1 bg-surface-hover rounded text-[10px] text-text-muted border border-surface-border hidden sm:block">
+                  {filteredTools.length} Tools
+                </div>
+              </div>
+            
+              {/* Category filter */}
+              <div className="mb-12">
+                <div className="flex flex-wrap gap-3 justify-center">
+                  {categories.map((category) => (
+                    <button
+                      key={category.id}
+                      onClick={() => setSelectedCategory(category.id)}
+                      className={`px-5 py-2.5 rounded-xl border transition-all duration-300 text-sm flex items-center gap-2 transform active:scale-95 ${
+                        selectedCategory === category.id
+                          ? 'bg-gradient-to-r from-[var(--primary-maroon)] to-[#ff3b00] border-[var(--primary-maroon)] text-white shadow-lg shadow-[var(--primary-maroon)]/30 -translate-y-0.5'
+                          : 'bg-surface/50 backdrop-blur-sm text-text-secondary border-surface-border hover:border-[var(--primary-maroon)]/40 hover:text-heading hover:bg-surface theme-transition'
+                      }`}
+                    >
+                      {category.name}
+                      <span className="ml-2 opacity-75">({category.count})</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
 
-        {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-          <div className="bg-surface backdrop-blur-sm border border-surface-border rounded-xl p-4 text-center">
-            <div className="text-3xl font-bold text-heading mb-1">{filteredTools.length}</div>
-            <div className="text-base text-text-muted">AI Tools Available</div>
-          </div>
-          <div className="bg-surface backdrop-blur-sm border border-surface-border rounded-xl p-4 text-center">
-            <div className="text-3xl font-bold text-heading mb-1">{categories.length - 1}</div>
-            <div className="text-base text-text-muted">Categories</div>
-          </div>
-          <div className="bg-surface backdrop-blur-sm border border-surface-border rounded-xl p-4 text-center">
-            <div className="text-3xl font-bold text-heading mb-1">{filteredTools.filter(t => t.popular).length}</div>
-            <div className="text-base text-text-muted">Popular Tools</div>
-          </div>
-          <div className="bg-surface backdrop-blur-sm border border-surface-border rounded-xl p-4 text-center">
-            <div className="text-3xl font-bold text-heading mb-1">Free</div>
-            <div className="text-base text-text-muted">Most Have Free Tier</div>
-          </div>
-        </div>
+              {/* Stats */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+                <div className="bg-surface backdrop-blur-sm border border-surface-border rounded-xl p-4 text-center">
+                  <div className="text-3xl font-bold text-heading mb-1">{filteredTools.length}</div>
+                  <div className="text-base text-text-muted">AI Tools Available</div>
+                </div>
+                <div className="bg-surface backdrop-blur-sm border border-surface-border rounded-xl p-4 text-center">
+                  <div className="text-3xl font-bold text-heading mb-1">{categories.length - 1}</div>
+                  <div className="text-base text-text-muted">Categories</div>
+                </div>
+                <div className="bg-surface backdrop-blur-sm border border-surface-border rounded-xl p-4 text-center">
+                  <div className="text-3xl font-bold text-heading mb-1">{filteredTools.filter(t => t.popular).length}</div>
+                  <div className="text-base text-text-muted">Popular Tools</div>
+                </div>
+                <div className="bg-surface backdrop-blur-sm border border-surface-border rounded-xl p-4 text-center">
+                  <div className="text-3xl font-bold text-heading mb-1">Free</div>
+                  <div className="text-base text-text-muted">Most Have Free Tier</div>
+                </div>
+              </div>
+            </>
+          )}
 
         {/* Tools grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {filteredTools.map((tool, index) => (
+          {displayTools.map((tool, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
@@ -905,7 +915,7 @@ export const AIToolsListSection = memo(function AIToolsListSection() {
                   href={tool.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group/btn inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-600/10 to-blue-600/10 hover:from-purple-600 hover:to-blue-600 border border-purple-500/20 text-purple-600 dark:text-purple-400 hover:text-white rounded-xl text-xs font-semibold transition-all duration-300"
+                  className="group/btn inline-flex items-center gap-2 px-4 py-2 bg-[var(--primary-maroon)]/5 hover:bg-[var(--primary-maroon)] border border-[var(--primary-maroon)]/20 text-[var(--primary-maroon)] hover:text-white rounded-xl text-xs font-semibold transition-all duration-300"
                 >
                   Explore
                   <ExternalLink className="w-3 h-3 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
@@ -923,23 +933,34 @@ export const AIToolsListSection = memo(function AIToolsListSection() {
         )}
 
         {/* Bottom CTA */}
-        <div className="mt-16 text-center">
-          <div className="bg-gradient-to-r from-purple-600/10 to-cyan-600/10 border border-purple-500/20 rounded-2xl p-8">
-            <h3 className="text-2xl text-heading mb-3">
-              Want More AI Learning Resources?
-            </h3>
-            <p className="text-text-muted mb-6 max-w-2xl mx-auto">
-              Join Scaro Technologies to get personalized AI tool recommendations, exclusive tutorials, 
-              and learn how to integrate these tools into your study workflow.
-            </p>
+        {previewOnly ? (
+          <div className="mt-16 text-center">
             <button 
-              onClick={() => window.dispatchEvent(new CustomEvent('open-get-started'))}
-              className="px-8 py-4 bg-gradient-to-r from-purple-500 to-cyan-600 text-white rounded-xl hover:shadow-2xl hover:shadow-purple-500/50 transition-all transform hover:scale-105"
+              onClick={() => navigate('/all-ai-tools')}
+              className="bg-black hover:bg-gray-800 text-white px-10 py-4 rounded-xl font-bold text-lg transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 active:scale-95"
             >
-              Explore Scaro Technologies AI
+              See All AI Tools
             </button>
           </div>
-        </div>
+        ) : (
+          <div className="mt-16 text-center">
+            <div className="bg-[var(--primary-maroon)]/5 border border-[var(--primary-maroon)]/20 rounded-2xl p-8">
+              <h3 className="text-2xl text-heading mb-3 font-bold">
+                Want More AI Learning Resources?
+              </h3>
+              <p className="text-text-muted mb-6 max-w-2xl mx-auto">
+                Join Scaro Technologies to get personalized AI tool recommendations, exclusive tutorials, 
+                and learn how to integrate these tools into your study workflow.
+              </p>
+              <button 
+                onClick={() => window.dispatchEvent(new CustomEvent('open-get-started'))}
+                className="px-8 py-4 bg-gradient-to-r from-[var(--primary-maroon)] to-[#ff3b00] text-white rounded-xl hover:shadow-2xl hover:shadow-[var(--primary-maroon)]/30 transition-all transform hover:scale-105 font-bold"
+              >
+                Explore Scaro Technologies AI
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
