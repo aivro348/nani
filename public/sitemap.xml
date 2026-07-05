@@ -1,73 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Homepage -->
   <url>
-    <loc>https://scarotechnologies.vercel.app/</loc>
-    <priority>1.0</priority>
+    <loc>https://www.scarotech.com/</loc>
+    <lastmod>2026-07-05</lastmod>
     <changefreq>daily</changefreq>
+    <priority>1.0</priority>
   </url>
+  
+  <!-- Courses (Academy) -->
   <url>
-    <loc>https://scarotechnologies.vercel.app/business</loc>
-    <priority>0.8</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://scarotechnologies.vercel.app/ai</loc>
-    <priority>0.8</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://scarotechnologies.vercel.app/branches</loc>
-    <priority>0.8</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://scarotechnologies.vercel.app/roadmap</loc>
-    <priority>0.8</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://scarotechnologies.vercel.app/community</loc>
-    <priority>0.8</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://scarotechnologies.vercel.app/trainer</loc>
-    <priority>0.8</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://scarotechnologies.vercel.app/contact</loc>
-    <priority>0.8</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://scarotechnologies.vercel.app/blogs</loc>
-    <priority>0.8</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://scarotechnologies.vercel.app/login</loc>
-    <priority>0.5</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://scarotechnologies.vercel.app/verify-certificate</loc>
-    <priority>0.5</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://scarotechnologies.vercel.app/courses</loc>
+    <loc>https://www.scarotech.com/courses</loc>
+    <lastmod>2026-07-05</lastmod>
+    <changefreq>daily</changefreq>
     <priority>0.9</priority>
-    <changefreq>weekly</changefreq>
   </url>
+
+  <!-- Business Solutions -->
   <url>
-    <loc>https://scarotechnologies.vercel.app/projects</loc>
-    <priority>0.9</priority>
+    <loc>https://www.scarotech.com/business</loc>
+    <lastmod>2026-07-05</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
+
+  <!-- AI Tools -->
   <url>
-    <loc>https://scarotechnologies.vercel.app/papers</loc>
-    <priority>0.9</priority>
+    <loc>https://www.scarotech.com/ai</loc>
+    <lastmod>2026-07-05</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Community Hub -->
+  <url>
+    <loc>https://www.scarotech.com/community</loc>
+    <lastmod>2026-07-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- All Courses -->
+  <url>
+    <loc>https://www.scarotech.com/all-courses</loc>
+    <lastmod>2026-07-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- All Projects -->
+  <url>
+    <loc>https://www.scarotech.com/all-projects</loc>
+    <lastmod>2026-07-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>
