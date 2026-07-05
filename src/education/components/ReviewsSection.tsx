@@ -89,7 +89,7 @@ export const ReviewsSection = memo(function ReviewsSection() {
               className="bg-white rounded-3xl p-6 shadow-xl shadow-slate-200/50 border border-slate-100 flex flex-col h-full group hover:-translate-y-2 transition-transform duration-300"
             >
               {/* Video Embed */}
-              <div className={`relative w-full rounded-2xl overflow-hidden mb-6 bg-black ${review.isShort ? 'aspect-[9/16] max-h-[400px] mx-auto w-auto sm:w-[225px]' : 'aspect-video'} shadow-lg group-hover:shadow-2xl transition-shadow`}>
+              <div className={`relative w-full rounded-2xl overflow-hidden mb-6 bg-black ${review.isShort ? 'aspect-[9/16] max-w-[280px] mx-auto' : 'aspect-video'} shadow-lg group-hover:shadow-2xl transition-shadow`}>
                 <iframe
                   className="absolute top-0 left-0 w-full h-full"
                   src={`https://www.youtube.com/embed/${review.videoId}?rel=0`}
