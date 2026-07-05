@@ -56,8 +56,10 @@ export function Navbar() {
     navItems = [
       { id: 'home', label: 'Back to Home', path: '/' },
     ];
+  } else if (currentPath === '/') {
+    // Default / Home - Hide nav items to force portal navigation
+    navItems = [];
   } else {
-    // Default / Home
     navItems = [
       { id: 'home', label: 'Home', path: '/' },
       { id: 'business', label: 'Business', path: '/business' },

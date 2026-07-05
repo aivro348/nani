@@ -1,108 +1,74 @@
-import { motion, AnimatePresence } from 'motion/react';
-import { useState, useEffect } from 'react';
+import { motion } from 'motion/react';
 import { useNavigate } from 'react-router';
-import { MessageCircle } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 
 interface HeroSectionProProps {
   setActiveSection: (section: string) => void;
 }
 
-const slideImages = [
-  "/hero-1.png",
-  "/hero-2.png",
-  "/hero-3.png"
-];
-
 export function HeroSectionPro({ setActiveSection }: HeroSectionProProps) {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % slideImages.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const scrollToSection = (sectionId: string) => {
-    navigate(`/${sectionId}`);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  const scrollToDivisions = () => {
+    const el = document.getElementById('our-divisions');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
-    <section id="hero-main" className="relative w-full min-h-[90vh] lg:min-h-screen flex flex-col lg:flex-row bg-[#111111] overflow-hidden">
-
-      {/* Left Content Side */}
-      <div className="w-full lg:w-[40%] flex flex-col justify-center px-8 sm:px-16 lg:px-20 py-20 lg:py-0 z-20">
-        <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          className="max-w-md"
-        >
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.15] mb-8">
-            Interactive<br />
-            Online<br />
-            Courses
-          </h1>
-
-          <p className="text-lg text-gray-300 font-medium mb-8">
-            Unleash your potential with Scaro Technologies
-          </p>
-
-          {/* Decorative Red Line */}
-          <div className="w-16 h-1 bg-red-500 mb-8" />
-
-          <button
-            onClick={() => scrollToSection("courses")}
-            className="bg-[#f44336] hover:bg-red-600 text-white px-8 py-4 text-sm font-bold tracking-widest uppercase transition-colors"
-          >
-            Explore Courses
-          </button>
-        </motion.div>
+    <section id="hero-main" className="relative w-full min-h-screen flex items-center justify-center bg-[#0a0a0a] overflow-hidden">
+      
+      {/* Background Image with Overlay */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src="/corporate_hero.png" 
+          alt="Scaro Technologies Global Network" 
+          className="w-full h-full object-cover object-center opacity-70 mix-blend-screen"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent" />
       </div>
 
-      {/* Right Image Side */}
-      <div className="w-full lg:w-[60%] relative min-h-[50vh] lg:min-h-screen z-10">
-        <AnimatePresence mode="popLayout">
-          <motion.img
-            key={currentImageIndex}
-            src={slideImages[currentImageIndex]}
-            alt="Scaro Academy Students"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1.2, ease: "easeInOut" }}
-            className="absolute inset-0 w-full h-full object-cover object-center"
-          />
-        </AnimatePresence>
-
-        {/* Optional subtle gradient to blend edges slightly if needed, but the ref image is a hard split */}
-        {/* <div className="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-[#111111] to-transparent z-20 hidden lg:block" /> */}
-
-        {/* Navigation Indicators inside the image area */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 z-30">
-          {slideImages.map((_, idx) => (
-            <button
-              key={idx}
-              onClick={() => setCurrentImageIndex(idx)}
-              className={`w-12 h-1 rounded-full transition-all duration-300 ${idx === currentImageIndex ? 'bg-white' : 'bg-white/40 hover:bg-white/70'
-                }`}
-              aria-label={`Go to slide ${idx + 1}`}
-            />
-          ))}
-        </div>
-
-        {/* WhatsApp Floating Button (as seen in reference) */}
-        <a
-          href="https://wa.me/919989999099"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="absolute bottom-8 right-8 z-40 bg-[#25D366] hover:bg-[#1ebd57] text-white px-5 py-3 rounded-full flex items-center gap-2 font-bold shadow-lg transition-transform hover:scale-105"
+      {/* Main Content */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col justify-center h-full pt-20">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: 'easeOut' }}
+          className="max-w-3xl"
         >
-          <MessageCircle className="w-6 h-6 fill-current" />
-          Contact us
-        </a>
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+            className="inline-flex items-center gap-3 px-4 py-2 bg-[var(--primary-maroon)]/20 text-[var(--primary-maroon)] border border-[var(--primary-maroon)]/30 rounded-full text-xs sm:text-sm font-black tracking-widest uppercase mb-8 backdrop-blur-md shadow-[0_0_20px_rgba(139,0,0,0.3)]"
+          >
+            <span className="w-2 h-2 rounded-full bg-[var(--primary-gold)] animate-pulse" />
+            Global Innovation Ecosystem
+          </motion.div>
+
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tighter text-white leading-[1.1] mb-8 drop-shadow-2xl">
+            Empowering <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-300 to-gray-500">The Future.</span>
+          </h1>
+
+          <p className="text-lg sm:text-xl text-gray-300 font-medium mb-12 max-w-2xl leading-relaxed">
+            Scaro Technologies delivers enterprise-grade IT solutions, pioneering AI innovation, and transforms careers through elite skill-based education. 
+          </p>
+
+          <div className="flex flex-wrap items-center gap-6">
+            <button
+              onClick={scrollToDivisions}
+              className="group relative overflow-hidden bg-[var(--primary-maroon)] text-white px-8 py-4 rounded-xl font-bold tracking-widest uppercase transition-all shadow-[0_0_30px_rgba(139,0,0,0.4)] hover:shadow-[0_0_50px_rgba(139,0,0,0.6)] hover:-translate-y-1"
+            >
+              <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out" />
+              <span className="relative z-10 flex items-center gap-2">
+                Explore Divisions <ChevronDown className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
+              </span>
+            </button>
+          </div>
+        </motion.div>
       </div>
 
     </section>
