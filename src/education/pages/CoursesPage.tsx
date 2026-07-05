@@ -54,7 +54,7 @@ export function CoursesPage() {
             animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1] mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight leading-[1.1] mb-6">
               <span className="text-[#ff3b00]">Bridging</span> <span className="text-[var(--primary-maroon)]">Education</span> <span className="text-[#ff3b00]">&</span><br />
               <span className="text-[#ff3b00]">Industry</span>
             </h1>
