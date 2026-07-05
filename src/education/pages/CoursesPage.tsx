@@ -1,6 +1,7 @@
 import { useSEO } from '../../app/utils/useSEO';
 import { CoursesSection } from '../components/CoursesSection';
 import { EducationContact } from '../components/EducationContact';
+import { ProjectsStoreSection } from '../components/ProjectsStoreSection';
 import { ProgramsOverview } from '../components/ProgramsOverview';
 import { motion } from 'motion/react';
 import { useEffect } from 'react';
@@ -145,6 +146,11 @@ export function CoursesPage() {
       {/* Detailed Course Directory */}
       <section id="programs-section" className="bg-page-bg">
         <CoursesSection />
+      </section>
+
+      {/* Projects Store */}
+      <section id="projects-store-section">
+        <ProjectsStoreSection />
       </section>
       
       {/* Dedicated Education Contact Section */}

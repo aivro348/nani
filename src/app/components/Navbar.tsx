@@ -39,6 +39,7 @@ export function Navbar() {
       { id: 'home', label: 'Home', path: '/courses' },
       { id: 'programs', label: 'Programs / Courses', path: '/courses#programs-section' },
       { id: 'roadmap', label: 'Roadmap', path: '/roadmap' },
+      { id: 'projects', label: 'Projects', path: '/courses#projects-store' },
       { id: 'college', label: 'College Connect', path: '/branches' },
       { id: 'contact', label: 'Contact Us', path: '/courses#contact-section' },
     ];
