@@ -22,6 +22,8 @@ const LoginPage = lazy(() => import('../login/pages/LoginPage').then(m => ({ def
 const CommunityHubPage = lazy(() => import('./pages/CommunityHubPage').then(m => ({ default: m.CommunityHubPage })));
 const CertificateVerificationPage = lazy(() => import('../certificate/pages/CertificateVerificationPage').then(m => ({ default: m.CertificateVerificationPage })));
 const RoadmapDetailsPage = lazy(() => import('./pages/RoadmapDetailsPage').then(m => ({ default: m.RoadmapDetailsPage })));
+const AICourseDetailsPage = lazy(() => import('../ai/pages/AICourseDetailsPage').then(m => ({ default: m.AICourseDetailsPage })));
+const AIRoadmapDetailsPage = lazy(() => import('../ai/pages/AIRoadmapDetailsPage').then(m => ({ default: m.AIRoadmapDetailsPage })));
 
 // Loading component
 const PageLoader = () => (
@@ -68,6 +70,8 @@ export default function App() {
             <Route path="/" element={<HomePage setActiveSection={() => { }} />} />
             <Route path="/business" element={<BusinessPage />} />
             <Route path="/ai" element={<AIToolsPage />} />
+            <Route path="/ai/courses/:courseId" element={<AICourseDetailsPage />} />
+            <Route path="/ai/roadmap/:roadmapId" element={<AIRoadmapDetailsPage />} />
             <Route path="/branches" element={<BranchesPage />} />
             <Route path="/roadmap" element={<RoadmapPage />} />
             <Route path="/roadmap/:roadmapId" element={<RoadmapDetailsPage />} />

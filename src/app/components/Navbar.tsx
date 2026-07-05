@@ -21,8 +21,11 @@ export function Navbar() {
 
   if (currentPath.startsWith('/ai')) {
     navItems = [
-      { id: 'ai', label: 'AI Directory', path: '/ai' },
-      { id: 'home', label: 'Main Website', path: '/' },
+      { id: 'home', label: 'AI Home', path: '/ai' },
+      { id: 'courses', label: 'AI Courses', path: '/ai#courses' },
+      { id: 'roadmaps', label: 'Roadmaps', path: '/ai#roadmaps' },
+      { id: 'tools', label: 'AI Tools', path: '/ai#tools' },
+      { id: 'contact', label: 'Contact Us', path: '/ai#contact' },
     ];
   } else if (
     currentPath.startsWith('/courses') || 
