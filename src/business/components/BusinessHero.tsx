@@ -6,15 +6,14 @@ export function BusinessHero() {
     <section className="relative min-h-screen flex items-center overflow-hidden bg-[#0A0506]">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 z-0">
-        {/* Natural Corporate Background */}
         <img 
-          src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2400" 
-          alt="Modern corporate office" 
-          className="w-full h-full object-cover opacity-25"
+          src="/business-hero.png" 
+          alt="Modern corporate enterprise tech headquarters" 
+          className="w-full h-full object-cover object-center opacity-70 mix-blend-screen"
         />
-        {/* Maroon-Gold Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0A0506] via-[#1a0a0d]/95 to-[#0A0506]" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0A0506] via-transparent to-[#0A0506]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0506] via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0A0506] via-transparent to-transparent opacity-80" />
       </div>
 
       {/* Animated Orbs */}
