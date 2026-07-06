@@ -22,11 +22,11 @@ export function HeroSectionPro({ setActiveSection }: HeroSectionProProps) {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="/corporate_hero.png" 
+          src="/scaro_sectors_wide_banner.png" 
           alt="Scaro Technologies Global Network" 
-          className="w-full h-full object-cover object-center opacity-70 mix-blend-screen"
+          className="w-full h-full object-cover object-center opacity-60"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
+        <div className="absolute inset-0 bg-black/20" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent" />
       </div>
 
@@ -50,10 +50,10 @@ export function HeroSectionPro({ setActiveSection }: HeroSectionProProps) {
 
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tighter text-white leading-[1.1] mb-8 drop-shadow-2xl">
             Empowering <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-300 to-gray-500">The Future.</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--light-gold)] via-[var(--primary-gold)] to-[var(--primary-maroon)]">The Future.</span>
           </h1>
 
-          <p className="text-lg sm:text-xl text-gray-300 font-medium mb-12 max-w-2xl leading-relaxed">
+          <p className="text-lg sm:text-xl text-[var(--text-secondary)] font-medium mb-12 max-w-2xl leading-relaxed">
             Scaro Technologies delivers enterprise-grade IT solutions, pioneering AI innovation, and transforms careers through elite skill-based education. 
           </p>
 

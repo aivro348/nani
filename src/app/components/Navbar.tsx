@@ -46,7 +46,7 @@ export function Navbar() {
     navItems = [
       { id: 'home', label: 'Home', path: '/business' },
       { id: 'services', label: 'Services', path: '/business#services' },
-      { id: 'projects', label: 'Projects', path: '/business#projects' },
+      { id: 'projects', label: 'Projects', path: '/all-business-projects' },
       { id: 'team', label: 'Team', path: '/business#team' },
       { id: 'contact', label: 'Contact', path: '/business#contact' },
     ];
@@ -135,12 +135,14 @@ export function Navbar() {
                   <button
                     key={item.id}
                     onClick={() => navigateToPage(item.path)}
-                    className={`px-2 lg:px-4 py-2 rounded-md text-xs lg:text-sm font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105 active:scale-95 ${isActive
-                        ? 'text-[var(--primary-gold)] border-b-2 border-[var(--primary-gold)]'
-                        : 'text-gray-200 hover:text-white hover:bg-white/10'
-                      }`}
+                    className={`relative px-2 lg:px-4 py-2 text-xs lg:text-sm font-bold uppercase tracking-wider transition-colors duration-300 group ${
+                      isActive ? 'text-[var(--primary-gold)]' : 'text-gray-200 hover:text-white'
+                    }`}
                   >
                     {item.label}
+                    <span className={`absolute left-0 bottom-0 w-full h-[2px] transition-transform duration-300 origin-left ${
+                      isActive ? 'bg-[var(--primary-gold)] scale-x-100' : 'bg-white scale-x-0 group-hover:scale-x-100'
+                    }`} />
                   </button>
                 );
               })}

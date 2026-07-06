@@ -9,16 +9,24 @@ export function BusinessHero() {
         <img 
           src="/business-hero.png" 
           alt="Modern corporate enterprise tech headquarters" 
-          className="w-full h-full object-cover object-center opacity-70 mix-blend-screen"
+          className="w-full h-full object-cover object-center opacity-40"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0506] via-transparent to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0A0506] via-transparent to-transparent opacity-80" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0A0506] via-[#0A0506]/70 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0506] via-transparent to-transparent opacity-80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0A0506] via-transparent to-transparent opacity-50" />
       </div>
 
       {/* Animated Orbs */}
-      <div className="absolute top-1/4 -right-20 w-[500px] h-[500px] bg-[var(--primary-maroon)]/30 rounded-full blur-[120px] animate-pulse pointer-events-none" />
-      <div className="absolute -bottom-20 -left-20 w-[400px] h-[400px] bg-[var(--primary-gold)]/15 rounded-full blur-[100px] pointer-events-none" />
+      <motion.div 
+        animate={{ y: [0, -30, 0], opacity: [0.3, 0.5, 0.3] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/4 -right-20 w-[500px] h-[500px] bg-[var(--primary-maroon)] rounded-full blur-[120px] pointer-events-none" 
+      />
+      <motion.div 
+        animate={{ y: [0, 40, 0], x: [0, -20, 0], opacity: [0.15, 0.25, 0.15] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        className="absolute -bottom-20 -left-20 w-[400px] h-[400px] bg-[var(--primary-gold)] rounded-full blur-[100px] pointer-events-none" 
+      />
 
       {/* Grid Lines */}
       <div className="absolute inset-0 opacity-[0.03]" style={{
@@ -67,14 +75,22 @@ export function BusinessHero() {
               transition={{ duration: 0.8, delay: 0.45 }}
               className="flex flex-wrap items-center gap-5"
             >
-              <button className="px-8 py-4 bg-gradient-to-r from-[var(--primary-gold)] to-[var(--accent-gold)] text-[#0A0506] font-black rounded-2xl hover:shadow-[0_0_50px_-12px_var(--primary-gold)] transition-all flex items-center gap-3 text-lg group uppercase tracking-wider">
+              <motion.button 
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="px-8 py-4 bg-gradient-to-r from-[var(--primary-gold)] to-[var(--accent-gold)] text-[#0A0506] font-black rounded-2xl hover:shadow-[0_0_50px_-12px_var(--primary-gold)] transition-all flex items-center gap-3 text-lg group uppercase tracking-wider"
+              >
                 Start a Project 
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </button>
-              <button className="px-8 py-4 bg-white/5 text-white font-bold rounded-2xl border border-white/15 hover:bg-white/10 hover:border-[var(--primary-gold)]/40 transition-all backdrop-blur-sm text-lg flex items-center gap-2 group">
+              </motion.button>
+              <motion.button 
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="px-8 py-4 bg-white/5 text-white font-bold rounded-2xl border border-white/15 hover:bg-white/10 hover:border-[var(--primary-gold)]/40 transition-all backdrop-blur-sm text-lg flex items-center gap-2 group"
+              >
                 Our Capabilities
                 <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform text-[var(--primary-gold)]" />
-              </button>
+              </motion.button>
             </motion.div>
           </div>
 

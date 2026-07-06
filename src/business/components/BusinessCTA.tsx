@@ -9,8 +9,16 @@ export function BusinessCTA() {
       <div className="absolute inset-0 bg-gradient-to-t from-[#0A0506] via-[#0A0506]/80 to-[#0A0506]" />
       
       {/* Brand-colored orbs */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[var(--primary-maroon)]/25 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute top-1/3 right-1/4 w-[300px] h-[300px] bg-[var(--primary-gold)]/10 rounded-full blur-[100px] pointer-events-none animate-pulse" />
+      <motion.div 
+        animate={{ y: [0, -40, 0], opacity: [0.15, 0.25, 0.15] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[var(--primary-maroon)] rounded-full blur-[150px] pointer-events-none" 
+      />
+      <motion.div 
+        animate={{ scale: [1, 1.1, 1], opacity: [0.05, 0.1, 0.05] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+        className="absolute top-1/3 right-1/4 w-[300px] h-[300px] bg-[var(--primary-gold)] rounded-full blur-[100px] pointer-events-none" 
+      />
       
       <div className="max-w-4xl mx-auto relative z-10">
         <motion.div 
@@ -53,13 +61,21 @@ export function BusinessCTA() {
           transition={{ delay: 0.3 }}
           className="flex flex-wrap items-center justify-center gap-6"
         >
-          <button className="px-10 py-5 bg-gradient-to-r from-[var(--primary-gold)] to-[var(--accent-gold)] text-[#0A0506] font-black rounded-2xl hover:shadow-[0_0_60px_-12px_var(--primary-gold)] hover:scale-105 transition-all text-lg uppercase tracking-wider flex items-center gap-3 group">
+          <motion.button 
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="px-10 py-5 bg-gradient-to-r from-[var(--primary-gold)] to-[var(--accent-gold)] text-[#0A0506] font-black rounded-2xl hover:shadow-[0_0_60px_-12px_var(--primary-gold)] transition-all text-lg uppercase tracking-wider flex items-center gap-3 group"
+          >
             Start a Project
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </button>
-          <button className="px-10 py-5 bg-white/5 border border-[var(--primary-gold)]/20 text-white font-bold rounded-2xl hover:bg-[var(--primary-maroon)]/20 hover:border-[var(--primary-gold)]/40 transition-all text-lg uppercase tracking-wider backdrop-blur-md">
+          </motion.button>
+          <motion.button 
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="px-10 py-5 bg-white/5 border border-[var(--primary-gold)]/20 text-white font-bold rounded-2xl hover:bg-[var(--primary-maroon)]/20 hover:border-[var(--primary-gold)]/40 transition-all text-lg uppercase tracking-wider backdrop-blur-md"
+          >
             See Our Work
-          </button>
+          </motion.button>
         </motion.div>
       </div>
     </section>

@@ -4,6 +4,8 @@ import { EducationContact } from '../components/EducationContact';
 import { ProjectsStoreSection } from '../components/ProjectsStoreSection';
 import { ProgramsOverview } from '../components/ProgramsOverview';
 import { ReviewsSection } from '../components/ReviewsSection';
+import { EducationFAQ } from '../components/EducationFAQ';
+import { EducationBlogsSection } from '../components/EducationBlogsSection';
 import { motion } from 'motion/react';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router';
@@ -48,7 +50,7 @@ export function CoursesPage() {
         />
 
         {/* Left Content Side */}
-        <div className="w-full lg:w-[45%] flex flex-col justify-center z-20">
+        <div className="w-full lg:w-1/2 flex flex-col justify-center z-20">
           <motion.div
             initial={{ opacity: 0, x: -30, filter: "blur(10px)" }}
             animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
@@ -85,7 +87,7 @@ export function CoursesPage() {
         </div>
 
         {/* Right Image Side */}
-        <div className="w-full lg:w-[55%] relative z-10">
+        <div className="w-full lg:w-1/2 relative z-10">
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -101,7 +103,7 @@ export function CoursesPage() {
               <img
                 src="/hero-1.png"
                 alt="Students collaborating"
-                className="w-full h-auto object-cover object-center transform group-hover:scale-105 transition-transform duration-700"
+                className="w-full aspect-video object-cover object-center transform group-hover:scale-105 transition-transform duration-700"
               />
             </motion.div>
           </motion.div>
@@ -130,7 +132,7 @@ export function CoursesPage() {
               transition={{ delay: 0.1, type: "spring", stiffness: 300 }}
               className="bg-white/10 backdrop-blur-md border border-white/20 rounded-[2rem] p-10 flex flex-col items-center justify-center text-center shadow-2xl hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] transition-all duration-300 group"
             >
-              <div className="text-4xl sm:text-5xl font-black text-white mb-4 drop-shadow-md group-hover:scale-110 transition-transform duration-300">200K+</div>
+              <div className="text-4xl sm:text-5xl font-black text-white mb-4 drop-shadow-md group-hover:scale-110 transition-transform duration-300">5K+</div>
               <div className="text-white/80 font-black text-sm uppercase tracking-wide">Learners Trained</div>
             </motion.div>
 
@@ -143,7 +145,7 @@ export function CoursesPage() {
               transition={{ delay: 0.2, type: "spring", stiffness: 300 }}
               className="bg-white/10 backdrop-blur-md border border-white/20 rounded-[2rem] p-10 flex flex-col items-center justify-center text-center shadow-2xl hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] transition-all duration-300 group"
             >
-              <div className="text-4xl sm:text-5xl font-black text-white mb-4 drop-shadow-md group-hover:scale-110 transition-transform duration-300">100+</div>
+              <div className="text-4xl sm:text-5xl font-black text-white mb-4 drop-shadow-md group-hover:scale-110 transition-transform duration-300">25+</div>
               <div className="text-white/80 font-black text-sm uppercase tracking-wide leading-tight">Industry Experts<br/>Onboarded</div>
             </motion.div>
 
@@ -156,7 +158,7 @@ export function CoursesPage() {
               transition={{ delay: 0.3, type: "spring", stiffness: 300 }}
               className="bg-white/10 backdrop-blur-md border border-white/20 rounded-[2rem] p-10 flex flex-col items-center justify-center text-center shadow-2xl hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] transition-all duration-300 group"
             >
-              <div className="text-4xl sm:text-5xl font-black text-white mb-4 drop-shadow-md group-hover:scale-110 transition-transform duration-300">50+</div>
+              <div className="text-4xl sm:text-5xl font-black text-white mb-4 drop-shadow-md group-hover:scale-110 transition-transform duration-300">20+</div>
               <div className="text-white/80 font-black text-sm uppercase tracking-wide">Domains</div>
             </motion.div>
 
@@ -169,7 +171,7 @@ export function CoursesPage() {
               transition={{ delay: 0.4, type: "spring", stiffness: 300 }}
               className="bg-white/10 backdrop-blur-md border border-white/20 rounded-[2rem] p-10 flex flex-col items-center justify-center text-center shadow-2xl hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] transition-all duration-300 group"
             >
-              <div className="text-4xl sm:text-5xl font-black text-white mb-4 drop-shadow-md group-hover:scale-110 transition-transform duration-300">150+</div>
+              <div className="text-4xl sm:text-5xl font-black text-white mb-4 drop-shadow-md group-hover:scale-110 transition-transform duration-300">100+</div>
               <div className="text-white/80 font-black text-sm uppercase tracking-wide">Hands-on Real Tasks</div>
             </motion.div>
           </div>
@@ -189,6 +191,12 @@ export function CoursesPage() {
       <section id="reviews-section">
         <ReviewsSection />
       </section>
+
+      {/* FAQs */}
+      <EducationFAQ />
+
+      {/* Blogs / Resources */}
+      <EducationBlogsSection />
       
       {/* Dedicated Education Contact Section */}
       <EducationContact />

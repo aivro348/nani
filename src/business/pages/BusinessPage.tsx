@@ -2,6 +2,7 @@ import { useSEO } from '../../app/utils/useSEO';
 import { BusinessHero } from '../components/BusinessHero';
 import { BusinessServices } from '../components/BusinessServices';
 import { BusinessProjects } from '../components/BusinessProjects';
+import { BusinessReviews } from '../components/BusinessReviews';
 import { BusinessTeam } from '../components/BusinessTeam';
 import { BusinessCTA } from '../components/BusinessCTA';
 import { BusinessContact } from '../components/BusinessContact';
@@ -17,6 +18,7 @@ export function BusinessPage() {
       <BusinessHero />
       <BusinessServices />
       <BusinessProjects />
+      <BusinessReviews />
       <BusinessTeam />
       <BusinessContact />
       <BusinessCTA />

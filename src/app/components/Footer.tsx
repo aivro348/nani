@@ -16,21 +16,21 @@ export const Footer = memo(function Footer() {
     address: "Tirupati, AP, India",
     links: {
       Platform: [
-        { name: 'All Branches', page: 'branches' },
-        { name: 'Courses', page: 'courses' },
-        { name: 'Virtual Labs', page: 'projects' },
-        { name: 'AI Tools', page: 'ai' },
+        { name: 'All Branches', page: '/branches' },
+        { name: 'Courses', page: '/courses' },
+        { name: 'Virtual Labs', page: '/projects' },
+        { name: 'AI Website', page: '/ai' },
       ],
       Resources: [
-        { name: 'Success Stories', page: 'home' },
-        { name: 'FAQs', page: 'faq-section' },
-        { name: 'Blog', page: 'blogs' },
-        { name: 'Documentation', page: 'home' },
+        { name: 'Success Stories', page: '/courses#reviews-section' },
+        { name: 'FAQs', page: '/#faq' },
+        { name: 'Blog', page: '/blogs' },
+        { name: 'Documentation', page: '/courses' },
       ],
       Company: [
-        { name: 'About Us', page: 'home' },
-        { name: 'Contact', page: 'contact' },
-        { name: 'Trainers', page: 'trainer' },
+        { name: 'About Us', page: '/' },
+        { name: 'Contact', page: '/contact' },
+        { name: 'Trainers', page: '/trainer' },
       ],
       Legal: [
         { name: 'Privacy Policy', page: '/privacy' },
@@ -85,6 +85,7 @@ export const Footer = memo(function Footer() {
         Resources: [
           { name: 'Submit a Tool', page: 'contact' },
           { name: 'AI Guides', page: 'blogs' },
+          { name: 'Education Courses', page: '/courses' },
         ],
         Company: [
           { name: 'About Us', page: 'home' },

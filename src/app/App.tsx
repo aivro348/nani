@@ -17,6 +17,7 @@ const AllAICoursesPage = lazy(() => import('../ai/pages/AllAICoursesPage').then(
 const AllAIRoadmapsPage = lazy(() => import('../ai/pages/AllAIRoadmapsPage').then(m => ({ default: m.AllAIRoadmapsPage })));
 const AllAIToolsPage = lazy(() => import('../ai/pages/AllAIToolsPage').then(m => ({ default: m.AllAIToolsPage })));
 const BusinessPage = lazy(() => import('../business/pages/BusinessPage').then(m => ({ default: m.BusinessPage })));
+const AllBusinessProjectsPage = lazy(() => import('../business/pages/AllBusinessProjectsPage').then(m => ({ default: m.AllBusinessProjectsPage })));
 const ContactPage = lazy(() => import('./pages/ContactPage').then(m => ({ default: m.ContactPage })));
 const CourseDetailsPage = lazy(() => import('../education/pages/CourseDetailsPage').then(m => ({ default: m.CourseDetailsPage })));
 
@@ -64,9 +65,19 @@ export default function App() {
       window.location.replace(window.location.href);
     }
 
-    // Scroll to top on route change
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [location.pathname]);
+    // Handle scroll on route change or hash navigation
+    if (location.hash) {
+      setTimeout(() => {
+        const id = location.hash.replace('#', '');
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      window.scrollTo(0, 0); // Instant scroll to top
+    }
+  }, [location.pathname, location.hash]);
 
   return (
     <div className="min-h-screen bg-page-bg text-page-fg theme-transition overflow-x-hidden w-full flex flex-col">
@@ -77,6 +88,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<HomePage setActiveSection={() => { }} />} />
             <Route path="/business" element={<BusinessPage />} />
+            <Route path="/all-business-projects" element={<AllBusinessProjectsPage />} />
             <Route path="/ai" element={<AIToolsPage />} />
             <Route path="/all-ai-courses" element={<AllAICoursesPage />} />
             <Route path="/all-ai-roadmaps" element={<AllAIRoadmapsPage />} />

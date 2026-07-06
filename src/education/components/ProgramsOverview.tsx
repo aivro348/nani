@@ -6,7 +6,10 @@ import {
   Zap, 
   Cog, 
   Building, 
-  BarChart 
+  BarChart,
+  CalendarDays,
+  Clock,
+  BookOpen
 } from 'lucide-react';
 
 const programs = [
@@ -148,6 +151,47 @@ export function ProgramsOverview() {
             </motion.div>
           ))}
         </div>
+
+        {/* Workshops Banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-16 w-full relative overflow-hidden rounded-[2rem] bg-slate-900 shadow-2xl p-8 md:p-12 group flex flex-col md:flex-row items-center justify-between gap-8 border border-white/10"
+        >
+          {/* Background creative elements */}
+          <div className="absolute -top-24 -right-24 w-96 h-96 bg-[var(--primary-gold)]/20 rounded-full blur-[80px] pointer-events-none group-hover:bg-[var(--primary-gold)]/30 transition-colors duration-700" />
+          <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-[var(--primary-maroon)]/30 rounded-full blur-[80px] pointer-events-none group-hover:bg-[var(--primary-maroon)]/40 transition-colors duration-700" />
+          
+          <div className="relative z-10 md:w-2/3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 border border-white/20 rounded-full text-xs font-bold text-[var(--primary-gold)] uppercase tracking-wider mb-6">
+              <CalendarDays className="w-4 h-4" /> Customized Training
+            </div>
+            <h3 className="text-3xl md:text-5xl font-black text-white mb-4 leading-tight">
+              Interactive Tech <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary-gold)] to-white">Workshops</span>
+            </h3>
+            <p className="text-slate-300 text-lg max-w-2xl leading-relaxed font-medium">
+              We provide highly specialized, hands-on workshops tailored to your preference. Whether it's intensive technical deep-dives or foundational skills, we offer flexible durations of <strong className="text-white">1, 2, 3, 4, or 5 days</strong> based on your subject requirements.
+            </p>
+          </div>
+
+          <div className="relative z-10 flex flex-wrap md:flex-col gap-4 w-full md:w-1/3">
+             <div className="flex-1 bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur-sm flex items-center gap-4 hover:bg-white/10 transition-colors">
+               <Clock className="w-8 h-8 text-[var(--primary-gold)]" />
+               <div>
+                 <div className="text-white font-bold text-lg">Flexible Duration</div>
+                 <div className="text-slate-400 text-sm">1 to 5 Days Bootcamps</div>
+               </div>
+             </div>
+             <div className="flex-1 bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur-sm flex items-center gap-4 hover:bg-white/10 transition-colors">
+               <BookOpen className="w-8 h-8 text-[var(--primary-gold)]" />
+               <div>
+                 <div className="text-white font-bold text-lg">Subject Specific</div>
+                 <div className="text-slate-400 text-sm">Tailored to your needs</div>
+               </div>
+             </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
