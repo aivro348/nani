@@ -77,7 +77,8 @@ export function PlatformPreviewSection() {
     },
   ];
 
-  const activeFeature = features[activeTab];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const activeFeature = features[activeTab] as any;
 
   return (
     <div className="py-20 bg-page-bg relative overflow-hidden">
@@ -151,7 +152,7 @@ export function PlatformPreviewSection() {
 
               {/* Stats bars */}
               <div className="space-y-6">
-                {activeFeature.preview.stats.map((stat, index) => (
+                {activeFeature.preview.stats.map((stat: any, index: number) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, x: -20 }}
@@ -205,7 +206,7 @@ export function PlatformPreviewSection() {
               </div>
 
               <div className="space-y-4">
-                {activeFeature.preview.path.map((phase, index) => (
+                {activeFeature.preview.path.map((phase: any, index: number) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, x: -20 }}
@@ -273,7 +274,7 @@ export function PlatformPreviewSection() {
               </div>
 
               <div className="grid md:grid-cols-3 gap-6">
-                {activeFeature.preview.projects.map((project, index) => (
+                {activeFeature.preview.projects.map((project: any, index: number) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, y: 20 }}
@@ -318,7 +319,7 @@ export function PlatformPreviewSection() {
               </div>
 
               <div className="grid md:grid-cols-3 gap-6">
-                {activeFeature.preview.metrics.map((metric, index) => (
+                {activeFeature.preview.metrics.map((metric: any, index: number) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, scale: 0.9 }}

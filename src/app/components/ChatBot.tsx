@@ -146,7 +146,8 @@ function findBestResponse(query: string): Message {
   ];
 
   // Scoring algorithm
-  let bestMatch = null;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let bestMatch: any = null;
   let highestScore = 0;
 
   categories.forEach(cat => {

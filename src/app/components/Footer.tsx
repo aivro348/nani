@@ -8,7 +8,18 @@ export const Footer = memo(function Footer() {
   const location = useLocation();
   const currentPath = location.pathname;
 
-  let footerConfig = {
+  interface FooterConfig {
+    description: string;
+    email1: string;
+    email2: string;
+    phone: string;
+    address: string;
+    links: Record<string, { name: string; page: string }[]>;
+    showNewsletter?: boolean;
+    copyrightYear: string;
+  }
+
+  let footerConfig: FooterConfig = {
     description: "Your AI-Powered Learning Assistant. Empowering engineering students across all branches with personalized learning and guidance.",
     email1: "support@scaro.com",
     email2: "info@scaro.com",

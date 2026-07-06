@@ -1,8 +1,8 @@
 import { motion } from 'motion/react';
 
-export const Skeleton = ({ className }: { className?: string }) => {
+export const Skeleton = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
   return (
-    <div className={`relative overflow-hidden bg-surface-hover rounded-xl ${className}`}>
+    <div className={`relative overflow-hidden bg-surface-hover rounded-xl ${className}`} {...props}>
       <motion.div
         animate={{
           x: ['-100%', '100%'],
