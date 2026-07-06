@@ -3,6 +3,7 @@ import path from 'path'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
+import Sitemap from 'vite-plugin-sitemap'
 
 function figmaAssetResolver() {
   return {
@@ -21,6 +22,15 @@ export default defineConfig({
     figmaAssetResolver(),
     react(),
     tailwindcss(),
+    Sitemap({
+      hostname: 'https://scarotechnologies.vercel.app',
+      dynamicRoutes: [
+        '/business', '/ai', '/all-ai-courses', '/all-ai-roadmaps', '/all-ai-tools',
+        '/branches', '/roadmap', '/community', '/trainer', '/contact', '/blogs',
+        '/login', '/verify-certificate', '/courses', '/all-courses', '/all-projects',
+        '/projects', '/papers'
+      ]
+    }),
     VitePWA({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg'],

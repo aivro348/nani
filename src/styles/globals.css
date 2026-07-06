@@ -129,20 +129,9 @@
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--scrollbar-track);
-}
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #0B4F8A 0%, #3BC5E8 100%);
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #1E88E5 0%, #7DD3FC 100%);
+  display: none;
+  width: 0px;
+  background: transparent;
 }
 
 /* Smooth scroll behavior */
