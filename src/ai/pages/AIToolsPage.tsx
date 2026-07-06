@@ -40,68 +40,83 @@ export function AIToolsPage() {
     <div className="min-h-screen bg-page-bg text-page-fg pb-0">
       
       {/* AI Hero Section */}
-      <section className="relative pt-32 pb-24 overflow-hidden border-b border-border bg-surface">
-        <div className="absolute inset-0 bg-[var(--primary-maroon)]/[0.03] bg-[bottom_1px_center]" />
+      <section className="relative w-full min-h-[90vh] flex items-center justify-center bg-[#0a0a0a] overflow-hidden">
         
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[var(--primary-maroon)]/10 rounded-full blur-3xl opacity-50" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#ff3b00]/10 rounded-full blur-3xl opacity-50" />
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/ai-hero.png" 
+            alt="Futuristic AI Brain Core" 
+            className="w-full h-full object-cover object-center opacity-70 mix-blend-screen"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-transparent to-transparent opacity-80" />
+        </div>
         
-        <div className="max-w-7xl mx-auto px-4 relative z-10 text-center">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col justify-center h-full pt-32 pb-24">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--primary-maroon)]/10 text-[var(--primary-maroon)] border border-[var(--primary-maroon)]/20 mb-8 font-bold tracking-widest uppercase text-sm"
+            transition={{ duration: 1, ease: 'easeOut' }}
+            className="max-w-3xl"
           >
-            <Sparkles className="w-4 h-4" />
-            <span>Scaro AI Division</span>
-          </motion.div>
-          
-          <motion.h1 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-5xl md:text-6xl lg:text-7xl font-black text-heading tracking-tight mb-8 leading-[1.1]"
-          >
-            Pioneering the next era of <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary-maroon)] to-[#ff3b00]">
-              Artificial Intelligence.
-            </span>
-          </motion.h1>
-          
-          <motion.p 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-lg md:text-xl text-text-secondary max-w-3xl mx-auto mb-12 leading-relaxed"
-          >
-            At Scaro Technologies, we build and integrate state-of-the-art AI solutions. From intelligent automation to machine learning pipelines, we help enterprises harness AI to solve complex challenges. Explore our comprehensive AI ecosystem below.
-          </motion.p>
-          
-          {/* Quick Navigation Links */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="flex flex-wrap justify-center gap-4"
-          >
-            {QUICK_LINKS.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                onClick={(e) => {
-                  e.preventDefault();
-                  const el = document.getElementById(link.href.replace('#', ''));
-                  if (el) el.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="flex items-center gap-3 px-6 py-3 bg-card border border-border rounded-xl shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all cursor-pointer"
-              >
-                <div className={`w-8 h-8 rounded-full ${link.bg} flex items-center justify-center`}>
-                  <link.icon className={`w-4 h-4 ${link.color}`} />
-                </div>
-                <span className="font-bold text-sm text-heading">{link.label}</span>
-              </a>
-            ))}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+              className="inline-flex items-center gap-3 px-4 py-2 bg-[var(--primary-maroon)]/20 text-[var(--primary-maroon)] border border-[var(--primary-maroon)]/30 rounded-full text-xs sm:text-sm font-black tracking-widest uppercase mb-8 backdrop-blur-md shadow-[0_0_20px_rgba(139,0,0,0.3)]"
+            >
+              <Sparkles className="w-4 h-4" />
+              <span>Scaro AI Division</span>
+            </motion.div>
+            
+            <motion.h1 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tighter text-white leading-[1.1] mb-8 drop-shadow-2xl"
+            >
+              Pioneering the next era of <br/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary-maroon)] via-[#ff3b00] to-orange-400">
+                Artificial Intelligence.
+              </span>
+            </motion.h1>
+            
+            <motion.p 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-lg sm:text-xl text-gray-300 font-medium mb-12 max-w-2xl leading-relaxed"
+            >
+              At Scaro Technologies, we build and integrate state-of-the-art AI solutions. From intelligent automation to machine learning pipelines, we help enterprises harness AI to solve complex challenges. Explore our comprehensive AI ecosystem below.
+            </motion.p>
+            
+            {/* Quick Navigation Links */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="flex flex-wrap items-center gap-4"
+            >
+              {QUICK_LINKS.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const el = document.getElementById(link.href.replace('#', ''));
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className={`flex items-center gap-3 px-6 py-3 rounded-xl font-bold text-sm tracking-wide transition-all shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:shadow-lg hover:-translate-y-0.5 cursor-pointer backdrop-blur-md border border-white/10 text-white bg-black/40 hover:bg-black/60`}
+                >
+                  <div className={`w-6 h-6 rounded-full flex items-center justify-center`}>
+                    <link.icon className={`w-4 h-4 ${link.color}`} />
+                  </div>
+                  {link.label}
+                </a>
+              ))}
+            </motion.div>
           </motion.div>
         </div>
       </section>
