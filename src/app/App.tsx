@@ -30,6 +30,8 @@ const AICourseDetailsPage = lazy(() => import('../ai/pages/AICourseDetailsPage')
 const AIRoadmapDetailsPage = lazy(() => import('../ai/pages/AIRoadmapDetailsPage').then(m => ({ default: m.AIRoadmapDetailsPage })));
 const AllCoursesPage = lazy(() => import('../education/pages/AllCoursesPage').then(m => ({ default: m.AllCoursesPage })));
 const AllProjectsPage = lazy(() => import('../education/pages/AllProjectsPage').then(m => ({ default: m.AllProjectsPage })));
+const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage').then(m => ({ default: m.PrivacyPolicyPage })));
+const TermsOfServicePage = lazy(() => import('./pages/TermsOfServicePage').then(m => ({ default: m.TermsOfServicePage })));
 
 // Loading component
 const PageLoader = () => (
@@ -97,6 +99,8 @@ export default function App() {
             <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/projects/:projectId" element={<ProjectDetailsPage />} />
             <Route path="/papers" element={<PapersPage />} />
+            <Route path="/privacy" element={<PrivacyPolicyPage />} />
+            <Route path="/terms" element={<TermsOfServicePage />} />
             <Route path="*" element={<HomePage setActiveSection={() => { }} />} />
           </Routes>
         </Suspense>

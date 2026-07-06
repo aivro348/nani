@@ -33,8 +33,8 @@ export const Footer = memo(function Footer() {
         { name: 'Trainers', page: 'trainer' },
       ],
       Legal: [
-        { name: 'Privacy Policy', page: 'home' },
-        { name: 'Terms of Service', page: 'home' },
+        { name: 'Privacy Policy', page: '/privacy' },
+        { name: 'Terms of Service', page: '/terms' },
       ],
     },
     showNewsletter: true,
@@ -65,8 +65,8 @@ export const Footer = memo(function Footer() {
           { name: 'Get in Touch', page: '/business#contact' }
         ],
         Legal: [
-          { name: 'Privacy Policy', page: 'home' },
-          { name: 'Terms of Service', page: 'home' },
+          { name: 'Privacy Policy', page: '/privacy' },
+          { name: 'Terms of Service', page: '/terms' },
         ]
       },
       showNewsletter: false,
@@ -91,8 +91,8 @@ export const Footer = memo(function Footer() {
           { name: 'Contact', page: 'contact' },
         ],
         Legal: [
-          { name: 'Privacy Policy', page: 'home' },
-          { name: 'Terms of Service', page: 'home' },
+          { name: 'Privacy Policy', page: '/privacy' },
+          { name: 'Terms of Service', page: '/terms' },
         ]
       }
     };
@@ -114,8 +114,8 @@ export const Footer = memo(function Footer() {
           { name: 'Contact', page: 'contact' },
         ],
         Legal: [
-          { name: 'Privacy Policy', page: 'home' },
-          { name: 'Terms of Service', page: 'home' },
+          { name: 'Privacy Policy', page: '/privacy' },
+          { name: 'Terms of Service', page: '/terms' },
         ]
       }
     };
