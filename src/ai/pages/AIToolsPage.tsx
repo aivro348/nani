@@ -40,7 +40,7 @@ export function AIToolsPage() {
     <div className="min-h-screen bg-page-bg text-page-fg pb-0">
       
       {/* AI Hero Section */}
-      <section className="relative w-full min-h-[90vh] flex items-center justify-center bg-[#0a0a0a] overflow-hidden">
+      <section className="relative w-full min-h-screen flex items-center justify-center bg-[#0a0a0a] overflow-hidden">
         
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
