@@ -176,10 +176,9 @@ export function CoursesPage() {
         </div>
       </section>
 
-      {/* Detailed Course Directory */}
-      <section id="programs-section" className="bg-page-bg">
-        <CoursesSection previewOnly={true} />
-      </section>
+      {/* Offered Programs & Courses */}
+      <ProgramsOverview />
+
 
       {/* Projects Store */}
       <section id="projects-store-section">

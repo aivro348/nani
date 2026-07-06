@@ -20,7 +20,7 @@ export const CoursesSection = memo(function CoursesSection({ previewOnly }: { pr
           const displayCourses = previewOnly ? categoryCourses.slice(0, 3) : categoryCourses;
           
           return (
-            <div key={category.id} className="space-y-12">
+            <div key={category.id} id={`category-${category.id}`} className="space-y-12 scroll-mt-24">
               <div className="flex justify-center">
                 <motion.div 
                   initial={{ opacity: 0, scale: 0.9 }}
