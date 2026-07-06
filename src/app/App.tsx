@@ -53,15 +53,27 @@ export default function App() {
     const storedVersion = localStorage.getItem('app_version');
 
     if (storedVersion !== APP_VERSION) {
+      // Guard against infinite reload: if we already attempted a reload this session, stop.
+      if (sessionStorage.getItem('version_reload_attempted')) {
+        // Storage is broken (e.g. private browsing); just set what we can and move on.
+        try { localStorage.setItem('app_version', APP_VERSION); } catch { /* ignore */ }
+        return;
+      }
+
       console.log('New version detected, clearing cache explicitly...');
-      localStorage.clear();
-      sessionStorage.clear();
-      localStorage.setItem('app_version', APP_VERSION);
+      try {
+        localStorage.clear();
+        localStorage.setItem('app_version', APP_VERSION);
+      } catch { /* ignore storage errors */ }
+      
       if ('serviceWorker' in navigator) {
         caches.keys().then((names) => {
           for (const name of names) caches.delete(name);
         });
       }
+      
+      // Mark that we've already attempted a reload this session
+      try { sessionStorage.setItem('version_reload_attempted', '1'); } catch { /* ignore */ }
       window.location.replace(window.location.href);
     }
 

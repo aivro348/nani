@@ -1,4 +1,4 @@
-import { Menu, X, PhoneCall, Clock, Mail } from 'lucide-react';
+import { Menu, X, Mail } from 'lucide-react';
 import { Logo } from './Logo';
 import { useState, useEffect, lazy, Suspense } from 'react';
 import { useNavigate, useLocation } from 'react-router';
@@ -17,7 +17,18 @@ export function Navbar() {
 
   let navItems: Array<{ id: string; label: string; path: string }> = [];
 
-  if (currentPath.startsWith('/ai')) {
+  if (
+    currentPath.startsWith('/all-ai-courses') ||
+    currentPath.startsWith('/all-ai-roadmaps') ||
+    currentPath.startsWith('/all-ai-tools')
+  ) {
+    navItems = [
+      { id: 'home', label: 'AI Home', path: '/ai' },
+      { id: 'programs', label: 'Programs / Courses', path: '/all-ai-courses' },
+      { id: 'roadmap', label: 'Roadmap', path: '/all-ai-roadmaps' },
+      { id: 'tools', label: 'AI Tools', path: '/all-ai-tools' },
+    ];
+  } else if (currentPath.startsWith('/ai')) {
     navItems = [
       { id: 'home', label: 'AI Home', path: '/ai' },
       { id: 'courses', label: 'AI Courses', path: '/ai#courses' },
@@ -42,6 +53,14 @@ export function Navbar() {
       { id: 'projects', label: 'Projects', path: '/all-projects' },
       { id: 'college', label: 'College Connect', path: '/branches' },
     ];
+  } else if (currentPath.startsWith('/all-business-projects')) {
+    navItems = [
+      { id: 'home', label: 'Home', path: '/business' },
+      { id: 'services', label: 'Services', path: '/business#services' },
+      { id: 'projects', label: 'Projects', path: '/all-business-projects' },
+      { id: 'team', label: 'Team', path: '/business#team' },
+      { id: 'contact', label: 'Contact', path: '/business#contact' },
+    ];
   } else if (currentPath.startsWith('/business')) {
     navItems = [
       { id: 'home', label: 'Home', path: '/business' },
@@ -58,18 +77,6 @@ export function Navbar() {
   } else if (currentPath.startsWith('/login')) {
     navItems = [
       { id: 'home', label: 'Back to Home', path: '/' },
-    ];
-  } else if (
-    currentPath.startsWith('/ai') ||
-    currentPath.startsWith('/all-ai-courses') ||
-    currentPath.startsWith('/all-ai-roadmaps') ||
-    currentPath.startsWith('/all-ai-tools')
-  ) {
-    navItems = [
-      { id: 'home', label: 'Home', path: '/ai' },
-      { id: 'programs', label: 'Programs / Courses', path: '/all-ai-courses' },
-      { id: 'roadmap', label: 'Roadmap', path: '/all-ai-roadmaps' },
-      { id: 'tools', label: 'AI Tools', path: '/all-ai-tools' },
     ];
   } else if (currentPath === '/') {
     // Default / Home - Hide nav items to force portal navigation

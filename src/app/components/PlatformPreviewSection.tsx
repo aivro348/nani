@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { BarChart3, Brain, Target, Award, TrendingUp, BookOpen, Code2, Zap } from 'lucide-react';
+import { Brain, Target, Award, TrendingUp, BookOpen, Code2, Zap } from 'lucide-react';
 import { useState } from 'react';
 
 export function PlatformPreviewSection() {
