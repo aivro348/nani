@@ -39,7 +39,7 @@ export const AIRoadmapsSection = memo(function AIRoadmapsSection({ previewOnly }
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-black text-heading tracking-tight mb-6"
           >
-            AI Career <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary-maroon)] to-[#ff3b00]">Roadmaps</span>
+            AI Career <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary-maroon)] to-[var(--primary-gold)]">Roadmaps</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -74,7 +74,7 @@ export const AIRoadmapsSection = memo(function AIRoadmapsSection({ previewOnly }
 
           <div className="relative z-10">
             <div className="hidden md:block absolute top-[28px] left-[12%] right-[12%] h-1.5 bg-slate-100 rounded-full">
-              <div className="absolute inset-0 bg-gradient-to-r from-[var(--primary-maroon)]/20 via-[var(--primary-maroon)]/50 to-[#ff3b00]/20 rounded-full" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[var(--primary-maroon)]/20 via-[var(--primary-maroon)]/50 to-[var(--primary-gold)]/20 rounded-full" />
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -137,7 +137,7 @@ export const AIRoadmapsSection = memo(function AIRoadmapsSection({ previewOnly }
                       <IconComp className="w-8 h-8" />
                     </div>
                     {roadmap.hotBadge && (
-                      <span className="bg-[#ff3b00] text-white text-xs font-black px-3 py-1.5 rounded-full shadow-md">
+                      <span className="bg-[var(--primary-gold)] text-white text-xs font-black px-3 py-1.5 rounded-full shadow-md">
                         {roadmap.hotBadge}
                       </span>
                     )}

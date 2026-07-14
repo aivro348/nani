@@ -6,7 +6,7 @@ import {
   Award, CheckCircle2, Wrench, BookOpen
 } from 'lucide-react';
 import { aiRoadmaps } from '../data/aiData';
-import { useSEO } from '../../app/utils/useSEO';
+import { useSEO } from '../../main/utils/useSEO';
 import { EducationContact } from '../../education/components/EducationContact';
 
 export function AIRoadmapDetailsPage() {

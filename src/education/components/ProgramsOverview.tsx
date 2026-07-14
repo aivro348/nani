@@ -101,7 +101,7 @@ export function ProgramsOverview() {
   const navigate = useNavigate();
 
   return (
-    <section className="bg-[#fafcfc] w-full py-20 px-4">
+    <section id="programs-section" className="bg-[#fafcfc] w-full py-20 px-4">
       <div className="max-w-7xl mx-auto">
         <div className="mb-12">
           <div className="flex items-center gap-4 mb-4">

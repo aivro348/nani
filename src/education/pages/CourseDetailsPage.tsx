@@ -3,15 +3,33 @@ import { motion, AnimatePresence } from 'motion/react';
 import { useState, useEffect } from 'react';
 import { MonitorPlay, GitBranch, Users, Briefcase, CheckCircle2, ChevronDown, ArrowLeft } from 'lucide-react';
 import { courses } from '../data/coursesData';
-import { useSEO } from '../../app/utils/useSEO';
+import { useSEO } from '../../main/utils/useSEO';
 import { EducationContact } from '../components/EducationContact';
+import { useLms } from '@/student-portal/lms/context/LmsContext';
+import { EnrollmentModal } from '../components/EnrollmentModal';
+
 
 export function CourseDetailsPage() {
   const { courseId } = useParams<{ courseId: string }>();
   const navigate = useNavigate();
   const [activeModule, setActiveModule] = useState<number | null>(0);
+  const [isEnrollModalOpen, setIsEnrollModalOpen] = useState(false);
+  const { user, enrollments } = useLms();
 
   const course = courses.find(c => c.slug === courseId);
+  const isEnrolled = !!(user && course && enrollments.includes(course.title));
+
+  const handleEnrollClick = () => {
+    if (!course) return;
+    if (!user) {
+      navigate('/login', { state: { from: `/courses/${course.slug}` } });
+    } else if (isEnrolled) {
+      navigate(`/lms/course/${course.slug}`);
+    } else {
+      setIsEnrollModalOpen(true);
+    }
+  };
+
 
   useSEO(
     course ? `${course.title} | Scaro Academy` : 'Course Not Found',
@@ -49,14 +67,24 @@ export function CourseDetailsPage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             
             {/* Left: Text Content */}
-            <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} className="max-w-2xl">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#ff3b00] mb-6 leading-tight">
-                {course.title}
-              </h1>
-              <p className="text-lg md:text-xl text-slate-300 leading-relaxed font-medium">
-                {course.tagline}
-              </p>
+            <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} className="max-w-2xl space-y-6">
+              <div>
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-[var(--primary-gold)] mb-6 leading-tight">
+                  {course.title}
+                </h1>
+                <p className="text-lg md:text-xl text-slate-300 leading-relaxed font-medium">
+                  {course.tagline}
+                </p>
+              </div>
+
+              <button
+                onClick={handleEnrollClick}
+                className="bg-[var(--primary-gold)] hover:bg-[#e63500] text-white font-bold px-8 py-3.5 rounded-xl transition-all shadow-lg hover:shadow-xl active:scale-95 text-sm uppercase tracking-wider block"
+              >
+                {isEnrolled ? 'Open LMS Workspace' : 'Enroll in Program'}
+              </button>
             </motion.div>
+
 
             {/* Right: Hero Image Card matching screenshot */}
             <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.2 }} className="relative mx-auto w-full max-w-lg lg:ml-auto">
@@ -67,7 +95,7 @@ export function CourseDetailsPage() {
                   
                   {/* Red Pill Overlay */}
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="bg-[#ff3b00] text-white px-6 py-2.5 rounded-full text-lg font-bold shadow-xl tracking-wide uppercase">
+                    <div className="bg-[var(--primary-gold)] text-white px-6 py-2.5 rounded-full text-lg font-bold shadow-xl tracking-wide uppercase">
                       {course.title}
                     </div>
                   </div>
@@ -95,7 +123,7 @@ export function CourseDetailsPage() {
           <div className="lg:col-span-7 space-y-8">
             <div>
               <h2 className="text-3xl font-black text-slate-900 mb-6 flex items-center gap-3">
-                <span className="w-8 h-1 bg-[#ff3b00] rounded-full"></span>
+                <span className="w-8 h-1 bg-[var(--primary-gold)] rounded-full"></span>
                 About the Course
               </h2>
               <p className="text-slate-600 text-lg leading-relaxed">
@@ -120,8 +148,11 @@ export function CourseDetailsPage() {
              <div className="sticky top-32 bg-white rounded-2xl shadow-xl border border-slate-100 p-8">
                 <h3 className="text-2xl font-bold text-slate-900 mb-2">Ready to start?</h3>
                 <p className="text-slate-500 mb-6">Enroll now and start your journey towards mastering {course.title}.</p>
-                <button className="w-full bg-[#ff3b00] text-white font-bold text-lg py-4 rounded-xl hover:bg-[#e63500] hover:shadow-lg transition-all active:scale-95">
-                  Enroll Now
+                <button 
+                  onClick={handleEnrollClick}
+                  className="w-full bg-[var(--primary-gold)] text-white font-bold text-lg py-4 rounded-xl hover:bg-[#e63500] hover:shadow-lg transition-all active:scale-95"
+                >
+                  {isEnrolled ? 'Open LMS Workspace' : 'Enroll Now'}
                 </button>
              </div>
           </div>
@@ -160,7 +191,7 @@ export function CourseDetailsPage() {
                           <ul className="space-y-3">
                             {mod.topics.map((topic, tidx) => (
                               <li key={tidx} className="flex items-start gap-3 text-slate-600">
-                                <span className="w-1.5 h-1.5 rounded-full bg-[#ff3b00] mt-2 shrink-0" />
+                                <span className="w-1.5 h-1.5 rounded-full bg-[var(--primary-gold)] mt-2 shrink-0" />
                                 <span className="leading-relaxed">{topic}</span>
                               </li>
                             ))}
@@ -189,7 +220,7 @@ export function CourseDetailsPage() {
                 viewport={{ once: true }}
                 className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
               >
-                <div className="w-12 h-12 bg-red-50 text-[#ff3b00] rounded-xl flex items-center justify-center mb-6">
+                <div className="w-12 h-12 bg-red-50 text-[var(--primary-gold)] rounded-xl flex items-center justify-center mb-6">
                   <GitBranch className="w-6 h-6" />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3">{proj.title}</h3>
@@ -208,7 +239,7 @@ export function CourseDetailsPage() {
             {course.testimonials.map((test, idx) => (
               <div key={idx} className="bg-slate-800/50 p-8 rounded-2xl border border-slate-700">
                 <p className="text-xl italic text-slate-300 mb-6">"{test.quote}"</p>
-                <p className="font-bold text-[#ff3b00]">- {test.author}</p>
+                <p className="font-bold text-[var(--primary-gold)]">- {test.author}</p>
               </div>
             ))}
           </div>
@@ -217,6 +248,16 @@ export function CourseDetailsPage() {
 
       {/* Contact Section at bottom */}
       <EducationContact />
+
+      {/* Enrollment modal rendering */}
+      {isEnrollModalOpen && (
+        <EnrollmentModal
+          isOpen={true}
+          onClose={() => setIsEnrollModalOpen(false)}
+          courseName={course.title}
+          coursePrice="Free (Academy Trial)"
+        />
+      )}
     </div>
   );
 }
@@ -229,7 +270,7 @@ function StatCard({ icon: Icon, title, desc, delay }: { icon: any, title: string
       transition={{ delay }}
       className="bg-white p-6 rounded-2xl shadow-xl shadow-slate-200/50 border border-slate-100 flex flex-col items-center text-center hover:-translate-y-1 transition-transform"
     >
-      <div className="w-14 h-14 rounded-full bg-red-50 text-[#ff3b00] flex items-center justify-center mb-4">
+      <div className="w-14 h-14 rounded-full bg-red-50 text-[var(--primary-gold)] flex items-center justify-center mb-4">
         <Icon className="w-6 h-6" />
       </div>
       <h3 className="text-lg font-bold text-slate-900 mb-2">{title}</h3>

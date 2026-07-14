@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { useState, useEffect } from 'react';
 import { MonitorPlay, GitBranch, Users, Briefcase, CheckCircle2, ChevronDown, ArrowLeft } from 'lucide-react';
 import { aiCourses } from '../data/aiData';
-import { useSEO } from '../../app/utils/useSEO';
+import { useSEO } from '../../main/utils/useSEO';
 import { EducationContact } from '../../education/components/EducationContact';
 
 export function AICourseDetailsPage() {

@@ -54,9 +54,9 @@ export function BusinessHero() {
               transition={{ duration: 0.8, delay: 0.15 }}
               className="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tighter mb-8 leading-[1.05]"
             >
-              Build Smarter, <br/>
+              AI-Powered Websites <br/>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary-gold)] via-[var(--accent-gold)] to-[var(--light-gold)]">
-                Scale Faster.
+                That Grow Your Business.
               </span>
             </motion.h1>
 
@@ -66,7 +66,7 @@ export function BusinessHero() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="text-xl md:text-2xl text-gray-300/90 mb-12 leading-relaxed max-w-xl font-light"
             >
-              We engineer AI-powered enterprise platforms that transform how your business operates at scale.
+              Premium website design, e-commerce development & AI automation for ambitious brands in Bangalore, Chennai and across India. Trusted by forward-thinking companies.
             </motion.p>
 
             <motion.div
@@ -111,10 +111,10 @@ export function BusinessHero() {
                 
                 <div className="grid grid-cols-2 gap-8 relative z-10">
                   {[
-                    { value: '35+', label: 'Projects Shipped', icon: '🚀' },
-                    { value: '98%', label: 'Client Satisfaction', icon: '⭐' },
-                    { value: '24/7', label: 'Support & SLA', icon: '🛡️' },
-                    { value: '10+', label: 'Industry Experts', icon: '👨‍💻' }
+                    { value: '50+', label: 'Websites Delivered', icon: '🚀' },
+                    { value: '40+', label: 'Happy Clients', icon: '⭐' },
+                    { value: '3+', label: 'Years Experience', icon: '🛡️' },
+                    { value: '10+', label: 'Industries Served', icon: '👨‍💻' }
                   ].map((stat, idx) => (
                     <motion.div 
                       key={idx}

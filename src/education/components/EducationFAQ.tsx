@@ -4,10 +4,6 @@ import { ChevronDown, HelpCircle } from 'lucide-react';
 
 const faqs = [
   {
-    question: "Does Scaro Academy offer Guaranteed Placement Assistance?",
-    answer: "Absolutely. We are committed to bridging the gap between education and industry. Our dedicated placement cell works tirelessly to connect our top-performing certified students with leading tech companies and enterprises across the globe."
-  },
-  {
     question: "How do Virtual Labs differ from traditional college labs?",
     answer: "Our Virtual Labs provide an immersive, hands-on environment using the latest simulation and VR technology. Unlike traditional labs that may have outdated hardware, our virtual environments allow you to experiment with enterprise-grade cloud architecture, advanced robotics, and AI models in real-time without physical constraints."
   },

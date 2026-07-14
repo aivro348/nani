@@ -1,4 +1,4 @@
-import { useSEO } from '../../app/utils/useSEO';
+import { useSEO } from '../../main/utils/useSEO';
 import { CoursesSection } from '../components/CoursesSection';
 import { EducationContact } from '../components/EducationContact';
 import { ProjectsStoreSection } from '../components/ProjectsStoreSection';
@@ -6,6 +6,8 @@ import { ProgramsOverview } from '../components/ProgramsOverview';
 import { ReviewsSection } from '../components/ReviewsSection';
 import { EducationFAQ } from '../components/EducationFAQ';
 import { EducationBlogsSection } from '../components/EducationBlogsSection';
+import { CoursesDemoSessions } from '../components/CoursesDemoSessions';
+import { WorkshopsSection } from '../components/WorkshopsSection';
 import { motion } from 'motion/react';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router';
@@ -35,148 +37,75 @@ export function CoursesPage() {
     <div className="min-h-screen bg-white">
       
       {/* Split-Screen Hero Section */}
-      <section className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 flex flex-col lg:flex-row items-center gap-12 bg-white overflow-visible">
-        
-        {/* Animated Background Blobs */}
-        <motion.div 
-          animate={{ y: [-20, 20, -20], x: [-20, 20, -20], scale: [1, 1.1, 1] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -top-10 -left-10 w-96 h-96 bg-[var(--primary-maroon)]/10 rounded-full blur-[80px] -z-10 pointer-events-none"
-        />
-        <motion.div 
-          animate={{ y: [20, -20, 20], x: [20, -20, 20], scale: [1, 1.2, 1] }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/2 right-0 w-96 h-96 bg-[#ff3b00]/10 rounded-full blur-[80px] -z-10 pointer-events-none translate-x-1/3 -translate-y-1/2"
-        />
+      <section className="relative w-full min-h-[600px] xl:min-h-[700px] flex items-center overflow-hidden">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 z-0">
+          <img src="/hero-1.png" alt="Students collaborating" className="w-full h-full object-cover object-center" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/80 to-transparent" />
+          <div className="absolute inset-0 bg-black/40" />
+        </div>
 
-        {/* Left Content Side */}
-        <div className="w-full lg:w-1/2 flex flex-col justify-center z-20">
+        {/* Content */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-32">
           <motion.div
-            initial={{ opacity: 0, x: -30, filter: "blur(10px)" }}
-            animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-2xl text-white"
           >
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight leading-[1.1] mb-6">
-              <span className="text-[#ff3b00]">Bridging</span> <span className="text-[var(--primary-maroon)]">Education</span> <span className="text-[#ff3b00]">&</span><br />
-              <span className="text-[#ff3b00]">Industry</span>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1] mb-6 drop-shadow-lg">
+              Bridging Education <br />
+              & Industry
             </h1>
             
-            <p className="text-lg text-gray-600 font-medium mb-10 max-w-lg leading-relaxed">
+            <p className="text-lg text-slate-200 font-medium mb-10 leading-relaxed max-w-xl">
               Scaro Technologies empowers students with industry-relevant skills through MOOCs, certified programs, internships, and expert-led professional training.
             </p>
             
-            <motion.button 
-              onClick={() => {
-                const el = document.getElementById('programs-section');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-              }}
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-[var(--primary-maroon)] hover:bg-[#ff3b00] text-white px-8 py-4 text-sm font-bold rounded-xl transition-all shadow-[0_10px_20px_rgba(92,20,29,0.15)] hover:shadow-[0_15px_30px_rgba(255,59,0,0.25)] w-fit flex items-center gap-2 group"
-            >
-              Explore Programs
-              <motion.span 
-                animate={{ x: [0, 5, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-                className="inline-block"
+            <div className="flex flex-wrap gap-4">
+              <motion.button 
+                onClick={() => {
+                  const el = document.getElementById('programs-section');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-[var(--primary-gold)] hover:bg-yellow-500 text-slate-900 px-6 py-3 rounded-full font-bold transition-all shadow-lg flex items-center gap-2 group"
               >
-                →
-              </motion.span>
-            </motion.button>
+                Explore Programs
+                <span className="w-6 h-6 rounded-full bg-white flex items-center justify-center group-hover:translate-x-1 transition-transform">
+                  <svg className="w-4 h-4 text-slate-900" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
+                </span>
+              </motion.button>
+
+              <motion.button 
+                onClick={() => {
+                  const el = document.getElementById('projects-store');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-transparent border border-white hover:bg-white/10 text-white px-6 py-3 rounded-full font-bold transition-all shadow-lg flex items-center gap-2 group"
+              >
+                View Recent Projects
+                <span className="w-6 h-6 rounded-full bg-white flex items-center justify-center group-hover:translate-x-1 transition-transform">
+                  <svg className="w-4 h-4 text-slate-900" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M12 5l7 7-7 7" /></svg>
+                </span>
+              </motion.button>
+            </div>
           </motion.div>
         </div>
 
-        {/* Right Image Side */}
-        <div className="w-full lg:w-1/2 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, type: "spring", stiffness: 100 }}
-            className="relative rounded-[2rem] overflow-hidden shadow-2xl group"
-          >
-            {/* Subtle continuous floating for the image container */}
-            <motion.div
-              animate={{ y: [-5, 5, -5] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-tr from-[var(--primary-maroon)]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10 pointer-events-none" />
-              <img
-                src="/hero-1.png"
-                alt="Students collaborating"
-                className="w-full aspect-video object-cover object-center transform group-hover:scale-105 transition-transform duration-700"
-              />
-            </motion.div>
-          </motion.div>
+        {/* Slanted Curved Divider (Matches Image 1) */}
+        <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-20 pointer-events-none">
+          <svg className="relative block w-full h-[100px] md:h-[150px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M1200 120H0V71.5C0 71.5 350.5 140 1200 0V120Z" fill="#ffffff" />
+          </svg>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="w-full bg-gradient-to-r from-[var(--primary-maroon)] via-[#7a1824] to-[#ff3b00] py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center text-4xl sm:text-5xl font-black text-white mb-16"
-          >
-            Our Impact So Far
-          </motion.h2>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-            {/* Stat 1 */}
-            <motion.div 
-              initial={{ opacity: 0, y: 30, scale: 0.9 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              whileHover={{ y: -10, scale: 1.05 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1, type: "spring", stiffness: 300 }}
-              className="bg-white/10 backdrop-blur-md border border-white/20 rounded-[2rem] p-10 flex flex-col items-center justify-center text-center shadow-2xl hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] transition-all duration-300 group"
-            >
-              <div className="text-4xl sm:text-5xl font-black text-white mb-4 drop-shadow-md group-hover:scale-110 transition-transform duration-300">5K+</div>
-              <div className="text-white/80 font-black text-sm uppercase tracking-wide">Learners Trained</div>
-            </motion.div>
-
-            {/* Stat 2 */}
-            <motion.div 
-              initial={{ opacity: 0, y: 30, scale: 0.9 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              whileHover={{ y: -10, scale: 1.05 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2, type: "spring", stiffness: 300 }}
-              className="bg-white/10 backdrop-blur-md border border-white/20 rounded-[2rem] p-10 flex flex-col items-center justify-center text-center shadow-2xl hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] transition-all duration-300 group"
-            >
-              <div className="text-4xl sm:text-5xl font-black text-white mb-4 drop-shadow-md group-hover:scale-110 transition-transform duration-300">25+</div>
-              <div className="text-white/80 font-black text-sm uppercase tracking-wide leading-tight">Industry Experts<br/>Onboarded</div>
-            </motion.div>
-
-            {/* Stat 3 */}
-            <motion.div 
-              initial={{ opacity: 0, y: 30, scale: 0.9 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              whileHover={{ y: -10, scale: 1.05 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3, type: "spring", stiffness: 300 }}
-              className="bg-white/10 backdrop-blur-md border border-white/20 rounded-[2rem] p-10 flex flex-col items-center justify-center text-center shadow-2xl hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] transition-all duration-300 group"
-            >
-              <div className="text-4xl sm:text-5xl font-black text-white mb-4 drop-shadow-md group-hover:scale-110 transition-transform duration-300">20+</div>
-              <div className="text-white/80 font-black text-sm uppercase tracking-wide">Domains</div>
-            </motion.div>
-
-            {/* Stat 4 */}
-            <motion.div 
-              initial={{ opacity: 0, y: 30, scale: 0.9 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              whileHover={{ y: -10, scale: 1.05 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4, type: "spring", stiffness: 300 }}
-              className="bg-white/10 backdrop-blur-md border border-white/20 rounded-[2rem] p-10 flex flex-col items-center justify-center text-center shadow-2xl hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] transition-all duration-300 group"
-            >
-              <div className="text-4xl sm:text-5xl font-black text-white mb-4 drop-shadow-md group-hover:scale-110 transition-transform duration-300">100+</div>
-              <div className="text-white/80 font-black text-sm uppercase tracking-wide">Hands-on Real Tasks</div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+      {/* Watch Free Demo Sessions */}
+      <CoursesDemoSessions />
 
       {/* Offered Programs & Courses */}
       <ProgramsOverview />
@@ -190,6 +119,11 @@ export function CoursesPage() {
       {/* Past Reviews / Testimonials */}
       <section id="reviews-section">
         <ReviewsSection />
+      </section>
+
+      {/* Workshops & LMS Banner */}
+      <section id="workshops-section">
+        <WorkshopsSection />
       </section>
 
       {/* FAQs */}

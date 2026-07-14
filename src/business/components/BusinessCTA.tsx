@@ -38,9 +38,9 @@ export function BusinessCTA() {
           transition={{ delay: 0.1 }}
           className="text-5xl md:text-7xl lg:text-8xl font-black mb-10 leading-[1.05] tracking-tighter"
         >
-          Ready to Build<br/>
+          Ready To Grow<br/>
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary-gold)] via-[var(--accent-gold)] to-[var(--light-gold)]">
-            Something Extraordinary?
+            Your Business Online?
           </span>
         </motion.h3>
         
@@ -51,7 +51,7 @@ export function BusinessCTA() {
           transition={{ delay: 0.2 }}
           className="text-xl md:text-2xl text-gray-300/80 mb-14 max-w-2xl mx-auto font-light leading-relaxed"
         >
-          From high-performance web apps to AI-native SaaS platforms — tell us your vision and we'll engineer the future together.
+          Get a free website & AI consultation today. Call, WhatsApp or request a free quote — we respond within 24 hours.
         </motion.p>
         
         <motion.div 
@@ -66,15 +66,15 @@ export function BusinessCTA() {
             whileTap={{ scale: 0.98 }}
             className="px-10 py-5 bg-gradient-to-r from-[var(--primary-gold)] to-[var(--accent-gold)] text-[#0A0506] font-black rounded-2xl hover:shadow-[0_0_60px_-12px_var(--primary-gold)] transition-all text-lg uppercase tracking-wider flex items-center gap-3 group"
           >
-            Start a Project
+            Request Free Quote
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </motion.button>
           <motion.button 
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="px-10 py-5 bg-white/5 border border-[var(--primary-gold)]/20 text-white font-bold rounded-2xl hover:bg-[var(--primary-maroon)]/20 hover:border-[var(--primary-gold)]/40 transition-all text-lg uppercase tracking-wider backdrop-blur-md"
+            className="px-10 py-5 bg-[#25D366] text-white font-bold rounded-2xl hover:bg-[#20b958] transition-all text-lg tracking-wider flex items-center gap-2 group shadow-lg shadow-[#25D366]/20"
           >
-            See Our Work
+            💬 WhatsApp Us
           </motion.button>
         </motion.div>
       </div>

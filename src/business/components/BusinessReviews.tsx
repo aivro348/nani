@@ -3,46 +3,62 @@ import { Star, Quote } from 'lucide-react';
 
 const reviews = [
   {
-    company: 'Geo-Silicon',
-    role: 'Enterprise Technology Director',
-    content: 'Scaro Technologies completely transformed our enterprise data visualization capabilities. Their solution was highly scalable, delivering seamless real-time control that our entire team relies on daily.',
+    company: 'Saree Boutique · Bangalore',
+    role: 'Founder (Priya R.)',
+    content: 'Scaro Technologies redesigned our Shopify store and our conversions jumped 40% in the first month. Highly recommended.',
     rating: 5,
   },
   {
-    company: 'IIT Kanpur & AP Govt (KADA)',
-    role: 'Project Lead',
-    content: 'The digital platform built for the Kuppam Area Development Authority exceeded our expectations. The attention to detail and intelligent product discovery features have significantly modernized our regional initiatives.',
+    company: 'Dental Clinic · Chennai',
+    role: 'Owner (Dr. Rakesh M.)',
+    content: 'Their AI WhatsApp chatbot handles 80% of our customer queries automatically. A real game-changer for our clinic.',
     rating: 5,
   },
   {
-    company: 'Balu Associates',
-    role: 'Managing Partner',
-    content: 'A truly professional corporate presence. The architecture they provided is highly optimized and perfectly aligned with our brand. Their team\'s technical expertise is unmatched in the industry.',
+    company: 'EdTech Startup · Whitefield',
+    role: 'Founder (Sanjay K.)',
+    content: 'They built our entire WordPress site + Android app + admin panel in just 5 weeks. Excellent team.',
     rating: 5,
   },
   {
-    company: 'Bhagwathi IT Solution',
-    role: 'Operations Head',
-    content: 'Reliability and security were our top priorities, and Scaro delivered exactly that. Their comprehensive IT solutions platform has empowered our global scale operations flawlessly.',
+    company: 'Manufacturing · Mahadevapura',
+    role: 'Operations (Anita M.)',
+    content: 'We\'ve been working with Ravi\'s team since 2014. They simply deliver, every single time.',
     rating: 5,
   },
   {
-    company: 'Naveen Textiles',
-    role: 'CEO',
-    content: 'Our transition to a digital storefront was seamless. The inventory integration provided by Scaro has optimized our supply chain and given our retail business a premium online presence.',
+    company: 'SaaS Startup · Bangalore',
+    role: 'Founder (Vikram S.)',
+    content: 'Their AI agent now qualifies all our incoming leads and books demos directly into our CRM. Brilliant work.',
     rating: 5,
   },
   {
-    company: 'HKGN EGG Shop',
-    role: 'Business Owner',
-    content: 'Fast, dynamic, and perfectly tailored to our needs. The web application is incredibly smooth, providing a modern frontend experience that our customers absolutely love using.',
+    company: 'Restaurant · KR Puram',
+    role: 'Owner (Naveen J.)',
+    content: 'Affordable, professional and super responsive. Our restaurant site looks and works fantastic on mobile.',
     rating: 5,
   }
 ];
 
 export function BusinessReviews() {
   return (
-    <section className="py-16 md:py-32 px-4 bg-[#0A0506] relative overflow-hidden">
+    <section className="py-16 md:py-32 bg-[#0A0506] relative overflow-hidden">
+      {/* CSS Marquee Styles */}
+      <style>{`
+        @keyframes marquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .animate-marquee-reviews {
+          display: flex;
+          width: max-content;
+          animation: marquee 40s linear infinite;
+        }
+        .animate-marquee-reviews:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
+
       {/* Background Glow */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[var(--primary-gold)]/5 rounded-full blur-[150px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[var(--primary-maroon)]/10 rounded-full blur-[120px] pointer-events-none" />
@@ -78,35 +94,41 @@ export function BusinessReviews() {
             See what our enterprise partners and clients have to say about the digital solutions we've built for them.
           </motion.p>
         </div>
+        
+        {/* Horizontal scrolling marquee */}
+        <div className="relative w-full overflow-hidden">
+          {/* Gradient overlays for smooth fading at edges */}
+          <div className="absolute left-0 top-0 bottom-0 w-24 sm:w-48 z-10 bg-gradient-to-r from-[#0A0506] via-[#0A0506]/80 to-transparent pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-24 sm:w-48 z-10 bg-gradient-to-l from-[#0A0506] via-[#0A0506]/80 to-transparent pointer-events-none" />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {reviews.map((review, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="bg-white/5 border border-white/10 rounded-2xl p-8 hover:border-[var(--primary-gold)]/50 transition-all duration-300 group relative"
-            >
-              <Quote className="absolute top-6 right-6 w-12 h-12 text-[var(--primary-gold)]/10 group-hover:text-[var(--primary-gold)]/20 transition-colors" />
-              
-              <div className="flex gap-1 mb-6">
-                {[...Array(review.rating)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-[var(--primary-gold)] text-[var(--primary-gold)]" />
-                ))}
+          <div className="animate-marquee-reviews flex gap-8 py-4">
+            {/* Double the array for seamless scrolling */}
+            {[...reviews, ...reviews].map((review, idx) => (
+              <div
+                key={idx}
+                className="bg-white/5 border border-white/10 rounded-2xl p-8 hover:border-[var(--primary-gold)]/50 transition-all duration-300 group relative w-[350px] sm:w-[450px] h-[320px] flex flex-col justify-between shrink-0"
+              >
+                <Quote className="absolute top-6 right-6 w-12 h-12 text-[var(--primary-gold)]/10 group-hover:text-[var(--primary-gold)]/20 transition-colors" />
+                
+                <div>
+                  <div className="flex gap-1 mb-6">
+                    {[...Array(review.rating)].map((_, i) => (
+                      <Star key={i} className="w-5 h-5 fill-[var(--primary-gold)] text-[var(--primary-gold)]" />
+                    ))}
+                  </div>
+                  
+                  <p className="text-gray-300 text-base sm:text-lg leading-relaxed relative z-10 font-light italic">
+                    "{review.content}"
+                  </p>
+                </div>
+                
+                <div className="mt-8 pt-6 border-t border-white/5">
+                  <div className="font-bold text-white text-base sm:text-lg">{review.company}</div>
+                  <div className="text-[var(--primary-gold)] text-xs sm:text-sm uppercase tracking-wider mt-1 font-semibold">{review.role}</div>
+                </div>
               </div>
-              
-              <p className="text-gray-300 text-lg leading-relaxed mb-8 relative z-10">
-                "{review.content}"
-              </p>
-              
-              <div className="mt-auto">
-                <div className="font-bold text-white text-lg">{review.company}</div>
-                <div className="text-[var(--primary-gold)] text-sm uppercase tracking-wider mt-1 font-semibold">{review.role}</div>
-              </div>
-            </motion.div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

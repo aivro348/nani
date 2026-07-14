@@ -1,11 +1,10 @@
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '../../app/components/ui/dialog';
-import { Button } from '../../app/components/ui/button';
-import { Input } from '../../app/components/ui/input';
-import { Label } from '../../app/components/ui/label';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '../../main/components/ui/dialog';
+import { Button } from '../../main/components/ui/button';
+import { Input } from '../../main/components/ui/input';
+import { Label } from '../../main/components/ui/label';
 import { useState } from 'react';
 import { CheckCircle, Loader2, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { projectId, publicAnonKey } from '@/app/utils/supabase/info';
 
 interface EnrollmentModalProps {
   isOpen: boolean;
@@ -45,17 +44,14 @@ export function EnrollmentModal({ isOpen, onClose, courseName, coursePrice }: En
       };
 
       // Try to submit to backend
-      const response = await fetch(
-        `https://${projectId}.supabase.co/functions/v1/make-server-8fc8fb29/enroll`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${publicAnonKey}`,
-          },
-          body: JSON.stringify(enrollmentData),
-        }
-      );
+      const baseUrl = import.meta.env.BASE_URL || '/';
+      const response = await fetch(`${baseUrl}api.php?action=enroll`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(enrollmentData),
+      });
 
       const contentType = response.headers.get('content-type');
       let result;
@@ -64,15 +60,14 @@ export function EnrollmentModal({ isOpen, onClose, courseName, coursePrice }: En
         result = await response.json();
       } else {
         const text = await response.text();
-        console.log('Response text:', text);
-        result = { error: text };
+        console.error('Expected JSON but got:', text.substring(0, 200) + '...');
+        throw new Error('Server configuration error. API is not reachable.');
       }
 
-      if (!response.ok) {
+      if (!response.ok || !result.success) {
         // If 404, show helpful message
         if (response.status === 404) {
-          console.error('Backend endpoint not found. Please wait for deployment to complete.');
-          throw new Error('Service is starting up. Please try again in a moment.');
+          throw new Error('Backend API not found. Please check deployment.');
         }
         throw new Error(result.error || 'Failed to submit enrollment');
       }

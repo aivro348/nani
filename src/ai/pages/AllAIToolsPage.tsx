@@ -1,4 +1,4 @@
-import { useSEO } from '../../app/utils/useSEO';
+import { useSEO } from '../../main/utils/useSEO';
 import { AIToolsListSection } from '../components/AIToolsListSection';
 import { EducationContact } from '../../education/components/EducationContact';
 

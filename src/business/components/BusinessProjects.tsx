@@ -85,7 +85,7 @@ export function ProjectCard({ project, idx }: { project: typeof projects[0], idx
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '-100%' }}
             transition={{ duration: 0.8, ease: 'easeInOut' }}
-            className="absolute inset-0 w-full h-full object-contain p-2 bg-black/40 transform group-hover:scale-105 transition-transform duration-700 ease-out z-10"
+            className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out z-10"
           />
         </AnimatePresence>
         
@@ -155,8 +155,8 @@ export function BusinessProjects() {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-12 mb-12">
-          {projects.slice(0, 3).map((project, idx) => (
+        <div className="grid md:grid-cols-2 gap-8 xl:gap-12 mb-12">
+          {projects.slice(0, 4).map((project, idx) => (
             <ProjectCard key={idx} project={project} idx={idx} />
           ))}
         </div>

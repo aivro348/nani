@@ -30,7 +30,7 @@ export const AICoursesSection = memo(function AICoursesSection({ previewOnly }: 
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-black text-heading tracking-tight mb-6"
           >
-            Master <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary-maroon)] to-[#ff3b00]">Artificial Intelligence</span>
+            Master <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary-maroon)] to-[var(--primary-gold)]">Artificial Intelligence</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -54,7 +54,7 @@ export const AICoursesSection = memo(function AICoursesSection({ previewOnly }: 
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
-                  className="bg-[#ff3b00] text-white px-10 py-3 rounded-xl text-2xl md:text-3xl font-bold shadow-lg text-center"
+                  className="bg-[var(--primary-gold)] text-white px-10 py-3 rounded-xl text-2xl md:text-3xl font-bold shadow-lg text-center"
                 >
                   {category.label} Programs
                 </motion.div>
@@ -70,7 +70,7 @@ export const AICoursesSection = memo(function AICoursesSection({ previewOnly }: 
                     transition={{ delay: idx * 0.1 }}
                     className="bg-white dark:bg-card rounded-[1.5rem] p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 dark:border-border flex flex-col h-full hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 group"
                   >
-                    <h3 className="text-[1.35rem] font-black text-[#ff3b00] mb-6 tracking-tight leading-tight">
+                    <h3 className="text-[1.35rem] font-black text-[var(--primary-gold)] mb-6 tracking-tight leading-tight">
                       {course.title}
                     </h3>
                     

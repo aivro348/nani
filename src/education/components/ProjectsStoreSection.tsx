@@ -50,7 +50,7 @@ export const ProjectsStoreSection = memo(function ProjectsStoreSection({ preview
   }
 
   return (
-    <div id="projects-store" className="py-24 px-4 bg-slate-50 scroll-mt-24">
+    <div id="projects-store" className="pb-24 pt-8 md:pt-12 px-4 bg-slate-50 scroll-mt-24">
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}
@@ -215,7 +215,7 @@ export const ProjectsStoreSection = memo(function ProjectsStoreSection({ preview
                 <span className="text-xs bg-white/20 px-2 py-0.5 rounded-full ml-1">{miniProjects.length}</span>
               </div>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {miniProjects.map((project, idx) => (
                 <ProjectCard key={project.id} project={project} idx={idx} />
               ))}
@@ -233,7 +233,7 @@ export const ProjectsStoreSection = memo(function ProjectsStoreSection({ preview
                 <span className="text-xs bg-white/20 px-2 py-0.5 rounded-full ml-1">{mainProjects.length}</span>
               </div>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {mainProjects.map((project, idx) => (
                 <ProjectCard key={project.id} project={project} idx={idx} />
               ))}
@@ -269,119 +269,109 @@ export const ProjectsStoreSection = memo(function ProjectsStoreSection({ preview
 function ProjectCard({ project, idx }: { project: Project; idx: number }) {
   const meta = BRANCH_META[project.branch] ?? BRANCH_META['CSE'];
   const Icon = meta.icon;
-  const isMini = project.type === 'Mini';
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ delay: (idx % 8) * 0.05 }}
-      className="bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden group flex flex-col"
+      transition={{ delay: (idx % 4) * 0.1 }}
+      className="bg-[#041f20] rounded-[2rem] overflow-hidden group border border-[#0a383a] shadow-2xl flex flex-col h-full relative"
     >
-      {/* Project Image */}
-      <div className="relative h-48 w-full overflow-hidden">
+      {/* Image Section */}
+      <div className="relative h-64 w-full shrink-0">
         <img 
           src={project.image} 
           alt={project.title} 
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          className="w-full h-full object-cover opacity-80 group-hover:scale-105 group-hover:opacity-100 transition-all duration-700"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
+        {/* Gradient fade into dark background */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#041f20] via-transparent to-transparent pointer-events-none" />
         
         {/* Top Accent line inside the image */}
         <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${meta.gradient}`} />
-        
-        {/* Badges on image */}
-        <div className="absolute top-4 left-4 flex gap-2">
-          <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${meta.gradient} text-white flex items-center justify-center shadow-lg backdrop-blur-sm`}>
-            <Icon className="w-4 h-4" />
-          </div>
-          {project.isFree && (
-            <span className="px-3 py-1.5 rounded-lg bg-emerald-500 text-white text-xs font-black uppercase tracking-wider flex items-center gap-1 shadow-lg backdrop-blur-sm">
-              <Gift className="w-3.5 h-3.5" /> Free
-            </span>
-          )}
-        </div>
       </div>
 
-      <div className="p-6 flex flex-col flex-1">
-        {/* Branch & Type pills */}
-        <div className="flex items-center justify-between mb-3">
-          <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">{project.branch}</span>
-          <span className={`text-xs font-black uppercase tracking-wider px-3 py-1 rounded-full ${
-            isMini 
-              ? 'bg-emerald-50 text-emerald-600 border border-emerald-200' 
-              : 'bg-[var(--primary-maroon)]/10 text-[var(--primary-maroon)] border border-[var(--primary-maroon)]/20'
-          }`}>
-            {project.type}
-          </span>
+      {/* Floating Pill (Overlapping image and content) */}
+      <div className="absolute top-[14rem] right-0 z-20 flex flex-col items-end gap-2">
+        <div className="bg-white text-slate-900 text-sm font-bold px-6 py-3 rounded-l-full shadow-xl">
+          {project.branch} • {project.type} Project
         </div>
+        {project.isFree && (
+          <div className="bg-emerald-500 text-white text-sm font-bold px-6 py-2 rounded-l-full shadow-lg flex items-center gap-2">
+            <Gift className="w-4 h-4" /> Free Project
+          </div>
+        )}
+      </div>
 
-        {/* Title */}
-        <h3 className="text-lg font-bold text-slate-900 mb-2 leading-snug group-hover:text-[var(--primary-maroon)] transition-colors line-clamp-2">
+      {/* Content Section */}
+      <div className="relative flex flex-col flex-grow px-8 pb-8 pt-6 z-10">
+        <h3 className="text-3xl font-black text-white mb-6 leading-tight pr-4">
           {project.title}
         </h3>
 
-        {/* Abstract */}
-        <p className="text-sm text-slate-600 mb-4 line-clamp-2 leading-relaxed flex-1">
+        {/* Meta Info */}
+        <div className="space-y-4 mb-6">
+          <div className="text-emerald-400 font-medium">
+            500+ Students Downloaded
+          </div>
+          
+          <div className="flex items-center gap-3 text-slate-200 font-medium">
+            <Clock className="w-5 h-5 text-slate-400 shrink-0" />
+            <span>Delivery in {project.deliveryDays} Days</span>
+          </div>
+
+          <div className="flex items-center gap-3 text-slate-200 font-medium">
+            <Code className="w-5 h-5 text-slate-400 shrink-0" />
+            <div className="flex flex-wrap gap-x-2">
+              {project.tech.map((t, i) => (
+                <span key={i}>{t}{i < project.tech.length - 1 ? ',' : ''}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Description */}
+        <p className="text-slate-400 text-base leading-relaxed mb-8">
           {project.abstract}
         </p>
 
-        {/* Free Documentation Badge */}
-        <div className="flex items-center gap-1.5 text-xs font-bold text-emerald-600 bg-emerald-50 w-fit px-2.5 py-1.5 rounded-lg border border-emerald-100 mb-4">
-          <FileText className="w-3.5 h-3.5" />
-          Free Documentation Included
-        </div>
-
-        {/* Delivery Time & Tech Stack */}
-        <div className="space-y-4 mb-6">
-          <div className="flex items-center gap-1.5 text-xs font-bold text-slate-500 bg-slate-50 w-fit px-2.5 py-1.5 rounded-lg border border-slate-100">
-            <Clock className="w-3.5 h-3.5" />
-            Delivery in {project.deliveryDays} Days
-          </div>
-          <div className="flex flex-wrap gap-1.5">
-            {project.tech.slice(0, 3).map((t, i) => (
-              <span key={i} className="text-xs px-2.5 py-1 bg-slate-50 text-slate-600 rounded-lg border border-slate-100 font-medium">
-                {t}
-              </span>
-            ))}
-            {project.tech.length > 3 && (
-              <span className="text-xs px-2.5 py-1 bg-slate-50 text-slate-400 rounded-lg border border-slate-100 font-medium">
-                +{project.tech.length - 3}
-              </span>
-            )}
-          </div>
-        </div>
-
         {/* CTA Section */}
-        <div className="flex items-center justify-between mt-auto pt-4 border-t border-slate-100">
+        <div className="mt-auto flex justify-between items-center pt-4 border-t border-white/5">
+          {/* Price */}
+          {!project.isFree && (
+            <div className="flex items-center gap-1 text-white">
+              <IndianRupee className="w-5 h-5 text-slate-400" />
+              <span className="text-2xl font-black">{project.price.toLocaleString('en-IN')}</span>
+            </div>
+          )}
+
           {project.isFree ? (
             <Link
               to={`/projects/${project.id}`}
-              className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-emerald-500 text-white text-sm font-bold rounded-xl hover:bg-emerald-600 hover:shadow-lg transition-all active:scale-95"
+              className="ml-auto inline-flex items-center gap-4 bg-[#072d2e] border border-[#0d4d4f] text-white rounded-full pl-6 pr-1.5 py-1.5 hover:bg-[#0a383a] hover:border-emerald-500/50 transition-all group/btn shadow-lg"
             >
-              <FileText className="w-4 h-4" />
-              View Full Details
+              <span className="font-bold text-sm tracking-wide">View Details</span>
+              <div className="w-10 h-10 rounded-full bg-emerald-500 flex items-center justify-center group-hover/btn:scale-110 transition-transform">
+                <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+              </div>
             </Link>
           ) : (
-            <>
-              <div className="flex items-center gap-0.5">
-                <IndianRupee className="w-4 h-4 text-slate-400" />
-                <span className="text-xl font-black text-slate-900">{project.price.toLocaleString('en-IN')}</span>
+            <a
+              href={`https://wa.me/919949167458?text=Hi! I'm interested in the project: "${project.title}" (${project.type} Project, ${project.branch}) - ₹${project.price.toLocaleString('en-IN')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ml-auto inline-flex items-center gap-4 bg-[#072d2e] border border-[#0d4d4f] text-white rounded-full pl-6 pr-1.5 py-1.5 hover:bg-[#0a383a] hover:border-emerald-500/50 transition-all group/btn shadow-lg"
+            >
+              <span className="font-bold text-sm tracking-wide">Get Now</span>
+              <div className="w-10 h-10 rounded-full bg-emerald-500 flex items-center justify-center group-hover/btn:scale-110 transition-transform">
+                <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
               </div>
-              <a
-                href={`https://wa.me/919949167458?text=Hi! I'm interested in the project: "${project.title}" (${project.type} Project, ${project.branch}) - ₹${project.price.toLocaleString('en-IN')}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 px-5 py-2.5 bg-slate-900 text-white text-sm font-bold rounded-xl hover:bg-[var(--primary-maroon)] hover:shadow-lg transition-all active:scale-95"
-              >
-                <ShoppingCart className="w-4 h-4" />
-                Get Now
-              </a>
-            </>
+            </a>
           )}
         </div>
       </div>
     </motion.div>
   );
 }
+

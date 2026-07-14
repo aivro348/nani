@@ -1,50 +1,58 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Globe, Smartphone, Server, Brain, Activity, ArrowRight } from 'lucide-react';
+import { Globe, Smartphone, Server, Brain, Activity, ArrowRight, ShoppingCart, Zap, MapPin } from 'lucide-react';
 
 export function BusinessServices() {
   const [activeService, setActiveService] = useState(0);
 
   const services = [
     {
-      title: 'Web App Development',
-      description: 'Full-stack web applications built with modern frameworks — from responsive frontends to robust backends — engineered for performance and scale.',
-      tags: ['React / Next.js', 'Node.js', 'REST & GraphQL'],
+      title: 'Website Design & Development',
+      description: 'Static, WordPress, PHP, React, Next.js — full website design and development services.',
+      tags: ['9 Services →'],
       icon: Globe,
-      image: 'https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&q=80&w=1600',
+      image: '/generated/web_design.png',
       number: '01'
     },
     {
-      title: 'Mobile App Development',
-      description: 'Cross-platform and native mobile apps for iOS & Android — smooth UX, offline-first architecture, and seamless backend integration.',
-      tags: ['React Native', 'Flutter', 'iOS & Android'],
-      icon: Smartphone,
-      image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=1600',
+      title: 'E-Commerce Development',
+      description: 'Shopify, WooCommerce and custom online stores built to convert browsers into buyers.',
+      tags: ['3 Services →'],
+      icon: ShoppingCart,
+      image: '/generated/ecommerce_dev.png',
       number: '02'
     },
     {
-      title: 'SaaS Product Engineering',
-      description: 'Multi-tenant SaaS platforms with subscription billing, role-based access, white-labelling, and enterprise-grade security built to scale from day one.',
-      tags: ['Multi-tenant', 'Microservices', 'API-first'],
-      icon: Server,
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1600',
+      title: 'Mobile App Development',
+      description: 'Native Android, Flutter and FlutterFlow apps that ship to Play Store & App Store.',
+      tags: ['4 Services →'],
+      icon: Smartphone,
+      image: '/generated/mobile_app.png',
       number: '03'
     },
     {
-      title: 'AI & ML Integration',
-      description: 'Embed intelligence into your products — LLM-powered features, computer vision, recommendation engines, and NLP pipelines with production-grade MLOps.',
-      tags: ['LLM / GPT', 'NLP & Vision', 'MLOps'],
+      title: 'AI Solutions & Agentic Automation',
+      description: 'Chatbots, voice bots, WhatsApp automation, custom AI agents and workflow automation.',
+      tags: ['9 Services →'],
       icon: Brain,
-      image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=1600',
+      image: '/generated/ai_automation.png',
       number: '04'
     },
     {
-      title: 'Data & Analytics Platforms',
-      description: 'Real-time dashboards, data pipelines, and BI solutions that turn raw data into decisions — powered by modern warehousing and streaming infrastructure.',
-      tags: ['BI Dashboards', 'ETL Pipelines', 'Real-time Streaming'],
-      icon: Activity,
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1600',
+      title: 'AI Builder Services',
+      description: 'Production-grade builds on Lovable, Cursor, Bolt.new, Replit and Emergent.',
+      tags: ['5 Services →'],
+      icon: Zap,
+      image: '/generated/ai_builder.png',
       number: '05'
+    },
+    {
+      title: 'Local Web Design Services',
+      description: 'On-site & remote support across Bangalore (Whitefield, Mahadevapura, KR Puram) and Chennai.',
+      tags: ['Bangalore', 'Chennai'],
+      icon: MapPin,
+      image: '/generated/local_web.png',
+      number: '06'
     }
   ];
 
@@ -64,7 +72,7 @@ export function BusinessServices() {
             className="flex items-center gap-4 mb-6"
           >
             <div className="w-12 h-[2px] bg-gradient-to-r from-[var(--primary-gold)] to-transparent" />
-            <span className="text-sm font-bold text-[var(--primary-gold)] uppercase tracking-[0.2em]">What We Build</span>
+            <span className="text-sm font-bold text-[var(--primary-gold)] uppercase tracking-[0.2em]">Our Services</span>
           </motion.div>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
@@ -73,7 +81,8 @@ export function BusinessServices() {
             transition={{ delay: 0.1 }}
             className="text-5xl md:text-7xl font-black text-white mb-6 tracking-tight"
           >
-            Engineering <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary-gold)] to-[var(--accent-gold)]">Excellence</span>
+            Six Service Hubs,<br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary-gold)] to-[var(--accent-gold)]">One Trusted Partner</span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}

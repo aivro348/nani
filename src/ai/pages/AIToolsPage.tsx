@@ -1,19 +1,80 @@
-import { useSEO } from '../../app/utils/useSEO';
-import { AIToolsListSection } from '../components/AIToolsListSection';
-import { AICoursesSection } from '../components/AICoursesSection';
-import { AIRoadmapsSection } from '../components/AIRoadmapsSection';
-import { EducationContact } from '../../education/components/EducationContact';
-import { motion } from 'motion/react';
-import { Sparkles, Zap, Globe, GraduationCap, Map, Wrench, MessageSquare } from 'lucide-react';
-import { useEffect } from 'react';
+import { useSEO } from '../../main/utils/useSEO';
+import { motion, AnimatePresence } from 'motion/react';
+import { 
+  Sparkles, Users, Code, Award, Check, ArrowRight, 
+  HelpCircle, ChevronDown, BookOpen, MessageSquare, Terminal, Map, Wrench
+} from 'lucide-react';
+import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router';
+
+import { AIToolsListSection } from '../components/AIToolsListSection';
+
+import chatgptLogo from '@/shared/assets/tools/chatgpt.png';
+import google_geminiLogo from '@/shared/assets/tools/google_gemini.png';
+import claudeLogo from '@/shared/assets/tools/claude.png';
+import canvaLogo from '@/shared/assets/tools/canva.png';
+import midjourneyLogo from '@/shared/assets/tools/midjourney.png';
+import runwayLogo from '@/shared/assets/tools/runway.png';
+import gammaLogo from '@/shared/assets/tools/gamma.png';
+import lovableLogo from '@/shared/assets/tools/lovable.png';
+
+// AI Tools Ticker List
+const aiToolsTicker = [
+  { name: 'ChatGPT', logo: chatgptLogo },
+  { name: 'Claude', logo: claudeLogo },
+  { name: 'Gemini', logo: google_geminiLogo },
+  { name: 'Midjourney', logo: midjourneyLogo },
+  { name: 'Runway', logo: runwayLogo },
+  { name: 'Canva', logo: canvaLogo },
+  { name: 'Gamma', logo: gammaLogo },
+  { name: 'Lovable', logo: lovableLogo }
+];
+
+const doubleTicker = [...aiToolsTicker, ...aiToolsTicker, ...aiToolsTicker, ...aiToolsTicker];
+
+// FAQS
+const faqs = [
+  {
+    question: 'What is Scaro AI Academy?',
+    answer: 'Scaro AI Academy is Scaro Technologies\' premium AI learning ecosystem designed to teach students, creators, and freelancers practical AI skills to boost their studies, careers, and digital income.'
+  },
+  {
+    question: 'Who can join Scaro AI Academy?',
+    answer: 'Anyone! Students, job seekers, working professionals, content creators, and freelancers who want to future-proof their careers and leverage AI for daily productivity.'
+  },
+  {
+    question: 'Do I need coding knowledge to learn AI?',
+    answer: 'Absolutely not. 90% of the tools we cover (like ChatGPT, Canva, Gamma, Midjourney) require zero coding. We focus on prompt engineering and no-code tool stacks.'
+  },
+  {
+    question: 'Is the AI Masterclass free?',
+    answer: 'Yes! The 2-hour Live AI Masterclass is 100% free of cost. We share prompts, custom roadmaps, and actionable templates during the session.'
+  },
+  {
+    question: 'Can students earn using AI?',
+    answer: 'Yes. We teach practical digital income models, including AI freelancing, automated content creation, design projects, and LinkedIn client acquisition.'
+  },
+  {
+    question: 'Do you teach AI in Kannada?',
+    answer: 'Yes, we explain complex concepts in simple, conversational Kannada and English (Kanglinglish) to ensure local students understand everything perfectly.'
+  },
+  {
+    question: 'What AI tools will I learn?',
+    answer: 'You will master 20+ industry-leading tools, including ChatGPT, Claude, Gemini, Midjourney, Runway, Suno, Canva, Lovable, Gamma, and Pika.'
+  },
+  {
+    question: 'How can AI help my career?',
+    answer: 'It helps you build ATS-friendly resumes, create outstanding presentations in seconds, automate repetitive workflows, and design high-quality visual content that makes your CV stand out.'
+  }
+];
 
 export function AIToolsPage() {
   const location = useLocation();
+  const [openFaqIdx, setOpenFaqIdx] = useState<number | null>(0);
 
   useSEO(
-    'Scaro AI Division | Pioneering Artificial Intelligence',
-    'Explore Scaro Technologies\' AI division — AI courses, career roadmaps, enterprise AI tools, and expert mentorship to launch your AI career.'
+    'Scaro AI Academy | Premium AI Learning Ecosystem',
+    'Learn practical AI skills, master ChatGPT, Claude, Midjourney, and build digital income systems with Charan at Scaro AI Academy.'
   );
 
   // Handle hash scrolling
@@ -29,146 +90,275 @@ export function AIToolsPage() {
     }
   }, [location]);
 
-  const QUICK_LINKS = [
-    { icon: GraduationCap, label: 'AI Courses', href: '#courses', color: 'text-blue-500', bg: 'bg-blue-500/10' },
-    { icon: Map, label: 'Roadmaps', href: '#roadmaps', color: 'text-emerald-500', bg: 'bg-emerald-500/10' },
-    { icon: Wrench, label: 'AI Tools', href: '#tools', color: 'text-purple-500', bg: 'bg-purple-500/10' },
-    { icon: MessageSquare, label: 'Contact', href: '#contact', color: 'text-amber-500', bg: 'bg-amber-500/10' },
-  ];
-
   return (
-    <div className="min-h-screen bg-page-bg text-page-fg pb-0">
+    <div className="min-h-screen bg-[#0A0506] text-[#E2E8F0] selection:bg-[var(--primary-gold)] selection:text-black relative overflow-hidden">
       
-      {/* AI Hero Section */}
-      <section className="relative w-full min-h-screen flex items-center justify-center bg-[#0a0a0a] overflow-hidden">
-        
-        {/* Background Image with Overlay */}
-        <div className="absolute inset-0 z-0">
-          <img 
-            src="/ai-hero.png" 
-            alt="Futuristic AI Brain Core" 
-            className="w-full h-full object-cover object-center opacity-70 mix-blend-screen"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-transparent to-transparent opacity-80" />
-        </div>
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col justify-center h-full pt-32 pb-24">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: 'easeOut' }}
-            className="max-w-3xl"
-          >
+      {/* Background glow lines */}
+      <div className="absolute top-0 left-1/4 w-[1000px] h-[500px] bg-[var(--primary-maroon)]/5 rounded-full blur-[180px] pointer-events-none" />
+      <div className="absolute top-[40%] right-1/4 w-[800px] h-[600px] bg-[var(--primary-gold)]/5 rounded-full blur-[180px] pointer-events-none" />
+
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center pt-28 pb-20 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 grid lg:grid-cols-12 gap-12 items-center">
+          
+          <div className="lg:col-span-7 space-y-8">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.3, duration: 0.8 }}
-              className="inline-flex items-center gap-3 px-4 py-2 bg-[var(--primary-maroon)]/20 text-[var(--primary-maroon)] border border-[var(--primary-maroon)]/30 rounded-full text-xs sm:text-sm font-black tracking-widest uppercase mb-8 backdrop-blur-md shadow-[0_0_20px_rgba(139,0,0,0.3)]"
+              className="inline-flex items-center gap-2.5 px-4 py-2 bg-[var(--primary-maroon)]/20 text-[var(--primary-gold)] border border-[var(--primary-gold)]/30 rounded-full text-xs font-black uppercase tracking-widest"
             >
-              <Sparkles className="w-4 h-4" />
-              <span>Scaro AI Division</span>
+              <Sparkles className="w-4 h-4 text-[var(--primary-gold)] animate-pulse" />
+              <span>Scaro AI Academy</span>
             </motion.div>
-            
+
             <motion.h1 
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 25 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tighter text-white leading-[1.1] mb-8 drop-shadow-2xl"
+              transition={{ delay: 0.1 }}
+              className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1] text-white"
             >
-              Pioneering the next era of <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary-maroon)] via-[#ff3b00] to-orange-400">
-                Artificial Intelligence.
+              Scaro's Premium <br/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary-maroon)] via-[var(--primary-gold)] to-orange-400">
+                AI Learning Ecosystem
               </span>
             </motion.h1>
-            
+
             <motion.p 
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 25 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-lg sm:text-xl text-gray-300 font-medium mb-12 max-w-2xl leading-relaxed"
+              transition={{ delay: 0.2 }}
+              className="text-lg md:text-xl text-gray-300 font-light leading-relaxed max-w-2xl"
             >
-              At Scaro Technologies, we build and integrate state-of-the-art AI solutions. From intelligent automation to machine learning pipelines, we help enterprises harness AI to solve complex challenges. Explore our comprehensive AI ecosystem below.
+              Learn AI. Build Skills. Earn Digitally. Join our premium ecosystem and master practical AI skills for studies, careers, content creation, and freelancing. Access updates on our AI Blog or download free templates instantly.
             </motion.p>
-            
-            {/* Quick Navigation Links */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
+
+            <motion.div 
+              initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="flex flex-wrap items-center gap-4"
+              transition={{ delay: 0.3 }}
+              className="flex flex-wrap gap-4"
             >
-              {QUICK_LINKS.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    const el = document.getElementById(link.href.replace('#', ''));
-                    if (el) el.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                  className={`flex items-center gap-3 px-6 py-3 rounded-xl font-bold text-sm tracking-wide transition-all shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:shadow-lg hover:-translate-y-0.5 cursor-pointer backdrop-blur-md border border-white/10 text-white bg-black/40 hover:bg-black/60`}
+              <a href="/ai-masterclass">
+                <motion.button 
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-4 bg-gradient-to-r from-[var(--primary-maroon)] to-[var(--primary-gold)] text-white font-bold rounded-xl hover:shadow-[0_0_35px_rgba(139,0,0,0.4)] transition-all text-sm uppercase tracking-wider flex items-center gap-2 border border-[var(--primary-maroon)]"
                 >
-                  <div className={`w-6 h-6 rounded-full flex items-center justify-center`}>
-                    <link.icon className={`w-4 h-4 ${link.color}`} />
-                  </div>
-                  {link.label}
-                </a>
-              ))}
+                  Join Free Masterclass
+                  <ArrowRight className="w-5 h-5" />
+                </motion.button>
+              </a>
+              <a href="/ai-courses">
+                <motion.button 
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-4 bg-white/5 border border-white/10 hover:border-[var(--primary-gold)]/30 text-white font-bold rounded-xl transition-all text-sm uppercase tracking-wider"
+                >
+                  Explore Courses
+                </motion.button>
+              </a>
             </motion.div>
-          </motion.div>
-        </div>
-      </section>
 
-      {/* AI Courses Section */}
-      <section>
-        <AICoursesSection previewOnly={true} />
-      </section>
-
-      {/* AI Roadmaps Section */}
-      <section>
-        <AIRoadmapsSection previewOnly={true} />
-      </section>
-
-      {/* AI Tools Directory */}
-      <section id="tools" className="scroll-mt-24">
-        <div className="max-w-7xl mx-auto px-4 pt-24 pb-8">
-          <div className="text-center max-w-3xl mx-auto mb-4">
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--primary-maroon)]/10 text-[var(--primary-maroon)] rounded-full text-sm font-bold tracking-wide uppercase mb-6 border border-[var(--primary-maroon)]/20"
+            {/* Quick Metrics */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4 }}
+              className="flex items-center gap-8 pt-6 border-t border-white/5 text-gray-400 text-sm"
             >
-              <Wrench className="w-4 h-4" />
-              Tool Directory
+              <div className="flex items-center gap-2">
+                <Users className="w-5 h-5 text-[var(--primary-gold)]" />
+                <span><strong className="text-white">1000+</strong> Students</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Code className="w-5 h-5 text-[var(--primary-gold)]" />
+                <span><strong className="text-white">20+</strong> AI Tools Covered</span>
+              </div>
             </motion.div>
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-4xl md:text-5xl font-black text-heading tracking-tight mb-6"
-            >
-              Our AI <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary-maroon)] to-[#ff3b00]">Tools Arsenal</span>
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="text-lg text-text-secondary leading-relaxed"
-            >
-              Discover the most powerful AI models, developer tools, and productivity suites trusted by modern engineering teams.
-            </motion.p>
           </div>
+
+          {/* Graphical Visual Column */}
+          <div className="lg:col-span-5 flex justify-center relative">
+            <div className="absolute inset-0 bg-[var(--primary-maroon)]/20 rounded-full blur-[100px] pointer-events-none" />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8 }}
+              className="relative w-full max-w-[420px] aspect-square rounded-3xl overflow-hidden border border-white/10 shadow-2xl"
+            >
+              <img 
+                src="/scaro_ai_concept.png" 
+                alt="Artificial Intelligence Visual" 
+                className="w-full h-full object-cover"
+              />
+            </motion.div>
+          </div>
+
         </div>
-        <AIToolsListSection previewOnly={true} />
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="scroll-mt-24">
-        <EducationContact />
+      {/* Infinite Scrolling Ticker */}
+      <div className="relative w-full py-8 bg-black/40 border-y border-white/5 overflow-hidden">
+        <style>{`
+          @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+          .animate-ticker {
+            display: flex;
+            width: max-content;
+            animation: ticker 25s linear infinite;
+          }
+        `}</style>
+        <div className="animate-ticker gap-16 items-center flex">
+          {doubleTicker.map((tool, idx) => (
+            <div key={idx} className="flex items-center shrink-0 px-4">
+              <img 
+                src={tool.logo} 
+                alt={tool.name} 
+                className="h-10 w-auto object-contain filter brightness-100 grayscale hover:grayscale-0 transition-all duration-300"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Main Hub Dashboard Grid (Direct subpages navigation) */}
+      <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="flex items-center justify-center gap-4 mb-6">
+            <div className="w-12 h-[2px] bg-[var(--primary-gold)]" />
+            <span className="text-sm font-bold text-[var(--primary-gold)] uppercase tracking-[0.2em]">Explore Academy</span>
+            <div className="w-12 h-[2px] bg-[var(--primary-gold)]" />
+          </div>
+          <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
+            Explore Scaro AI Academy
+          </h2>
+          <p className="text-gray-400 text-lg font-light">
+            Click through our dedicated sections to discover programs, resources, and live session calendars.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {[
+            {
+              title: 'About the Founder',
+              desc: 'Meet Charan, Lead AI Educator, and review stats, educational objectives and strategy details.',
+              path: '/ai-about',
+              icon: Users
+            },
+            {
+              title: 'Premium Courses',
+              desc: 'Explore the 3 main cohorts, direct mentorship strategies, and the winding syllabus roadmap.',
+              path: '/ai-courses',
+              icon: Map
+            },
+            {
+              title: 'Free Masterclass',
+              desc: 'Learn about the 2-hour Live Free masterclass program and the 6-step Journey flowchart.',
+              path: '/ai-masterclass',
+              icon: Award
+            },
+            {
+              title: 'Free Resources',
+              desc: 'Download high-quality prompt libraries, ATS CV templates, slides deck outlines, and website layouts.',
+              path: '/ai-resources',
+              icon: Wrench
+            },
+            {
+              title: 'WhatsApp Community',
+              desc: 'Join 1,000+ local students sharing daily prompt updates, b-roll footage, and freelancing leads.',
+              path: '/ai-community',
+              icon: MessageSquare
+            },
+            {
+              title: 'AI Tutorials Blog',
+              desc: 'Read articles and playbooks covering prompt structures, automation pipelines, and client acquisition.',
+              path: '/ai-blog',
+              icon: BookOpen
+            }
+          ].map((item, idx) => (
+            <motion.div
+              key={idx}
+              whileHover={{ scale: 1.03 }}
+              className="bg-white/5 border border-white/5 hover:border-[var(--primary-gold)]/20 rounded-2xl p-8 flex flex-col justify-between group transition-all duration-300"
+            >
+              <div>
+                <div className="w-12 h-12 rounded-xl bg-[var(--primary-maroon)]/10 border border-[var(--primary-gold)]/20 text-[var(--primary-gold)] flex items-center justify-center mb-6">
+                  <item.icon className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[var(--primary-gold)] transition-colors">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-gray-400 font-light leading-relaxed mb-6">
+                  {item.desc}
+                </p>
+              </div>
+              <a href={item.path} className="text-xs font-bold text-[var(--primary-gold)] flex items-center gap-1.5 hover:underline mt-auto">
+                Explore Section
+                <ArrowRight className="w-4 h-4" />
+              </a>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* AI Tools List Section */}
+      <AIToolsListSection />
+
+      {/* FAQ Section */}
+      <section id="faq" className="py-24 max-w-4xl mx-auto px-4 sm:px-6 scroll-mt-20">
+        <div className="text-center mb-16">
+          <div className="flex items-center justify-center gap-4 mb-6">
+            <div className="w-12 h-[2px] bg-[var(--primary-gold)]" />
+            <span className="text-sm font-bold text-[var(--primary-gold)] uppercase tracking-[0.2em]">Faq</span>
+            <div className="w-12 h-[2px] bg-[var(--primary-gold)]" />
+          </div>
+          <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight mb-4">
+            Frequently Asked Questions
+          </h2>
+          <p className="text-gray-400 font-light text-lg">
+            Got questions about Scaro AI Academy? Find answers to the most common queries below.
+          </p>
+        </div>
+
+        {/* FAQs Accordion */}
+        <div className="space-y-4">
+          {faqs.map((faq, idx) => {
+            const isOpen = openFaqIdx === idx;
+            return (
+              <div key={idx} className="bg-white/5 border border-white/5 rounded-2xl overflow-hidden hover:border-white/10 transition-colors">
+                <button
+                  onClick={() => setOpenFaqIdx(isOpen ? null : idx)}
+                  className="w-full px-6 py-5 flex items-center justify-between text-left gap-4"
+                >
+                  <div className="flex items-center gap-3">
+                    <HelpCircle className="w-5 h-5 text-[var(--primary-gold)] shrink-0" />
+                    <span className="font-bold text-white text-base sm:text-lg leading-snug">{faq.question}</span>
+                  </div>
+                  <ChevronDown className={`w-5 h-5 text-gray-400 shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180 text-[var(--primary-gold)]' : ''}`} />
+                </button>
+
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ height: 0 }}
+                      animate={{ height: 'auto' }}
+                      exit={{ height: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <div className="px-6 pb-6 pt-0 border-t border-white/5">
+                        <p className="text-gray-300 font-light leading-relaxed text-sm sm:text-base pt-4">
+                          {faq.answer}
+                        </p>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            );
+          })}
+        </div>
       </section>
       
     </div>

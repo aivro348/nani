@@ -1,9 +1,7 @@
-import { useSEO } from '../../app/utils/useSEO';
-import { BusinessHero } from '../components/BusinessHero';
-import { BusinessServices } from '../components/BusinessServices';
+import { useSEO } from '../../main/utils/useSEO';
+import { BusinessServicesSlideshow } from '../components/BusinessServicesSlideshow';
 import { BusinessProjects } from '../components/BusinessProjects';
 import { BusinessReviews } from '../components/BusinessReviews';
-import { BusinessTeam } from '../components/BusinessTeam';
 import { BusinessCTA } from '../components/BusinessCTA';
 import { BusinessContact } from '../components/BusinessContact';
 
@@ -15,11 +13,9 @@ export function BusinessPage() {
 
   return (
     <div className="min-h-screen bg-page-bg text-page-fg selection:bg-[var(--primary-maroon)] selection:text-white">
-      <BusinessHero />
-      <BusinessServices />
+      <BusinessServicesSlideshow />
       <BusinessProjects />
       <BusinessReviews />
-      <BusinessTeam />
       <BusinessContact />
       <BusinessCTA />
     </div>

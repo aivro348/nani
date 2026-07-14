@@ -1,7 +1,7 @@
 import { motion } from 'motion/react';
 import { ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router';
-import { useSEO } from '../../app/utils/useSEO';
+import { useSEO } from '../../main/utils/useSEO';
 import { projects, ProjectCard } from '../components/BusinessProjects';
 
 export function AllBusinessProjectsPage() {
@@ -53,7 +53,7 @@ export function AllBusinessProjectsPage() {
         </div>
 
         {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-12">
+        <div className="grid md:grid-cols-2 gap-8 xl:gap-12">
           {projects.map((project, idx) => (
             <ProjectCard key={project.title} project={project} idx={idx} />
           ))}

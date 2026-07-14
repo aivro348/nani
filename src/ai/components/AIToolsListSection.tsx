@@ -2,62 +2,62 @@ import { ExternalLink, Sparkles, Code, Palette, FileText, Brain, Video, Music, D
 import { motion } from 'motion/react';
 import { useState, useMemo, memo } from 'react';
 import { useNavigate } from 'react-router';
-import lovableLogo from '@/assets/tools/lovable.png';
-import boltLogo from '@/assets/tools/bolt.png';
-import github_copilotLogo from '@/assets/tools/github_copilot.png';
-import cursorLogo from '@/assets/tools/cursor.png';
-import replitLogo from '@/assets/tools/replit.png';
-import codeiumLogo from '@/assets/tools/codeium.png';
-import tabnineLogo from '@/assets/tools/tabnine.png';
-import amazon_codewhispererLogo from '@/assets/tools/amazon_codewhisperer.png';
-import piecesLogo from '@/assets/tools/pieces.png';
-import codexLogo from '@/assets/tools/codex.png';
-import figLogo from '@/assets/tools/fig.png';
-import sourcegraph_codyLogo from '@/assets/tools/sourcegraph_cody.png';
-import chatgptLogo from '@/assets/tools/chatgpt.png';
-import google_geminiLogo from '@/assets/tools/google_gemini.png';
-import claudeLogo from '@/assets/tools/claude.png';
-import microsoft_copilotLogo from '@/assets/tools/microsoft_copilot.png';
-import perplexityLogo from '@/assets/tools/perplexity.png';
-import grammarlyLogo from '@/assets/tools/grammarly.png';
-import quillbotLogo from '@/assets/tools/quillbot.png';
-import jasperLogo from '@/assets/tools/jasper.png';
-import copyaiLogo from '@/assets/tools/copyai.png';
-import notion_aiLogo from '@/assets/tools/notion_ai.png';
-import canvaLogo from '@/assets/tools/canva.png';
-import midjourneyLogo from '@/assets/tools/midjourney.png';
-import dalle3Logo from '@/assets/tools/dalle3.png';
-import leonardoLogo from '@/assets/tools/leonardo.png';
-import stable_diffusionLogo from '@/assets/tools/stable_diffusion.png';
-import adobe_fireflyLogo from '@/assets/tools/adobe_firefly.png';
-import figma_aiLogo from '@/assets/tools/figma_ai.png';
-import removebgLogo from '@/assets/tools/removebg.png';
-import runwayLogo from '@/assets/tools/runway.png';
-import elevenlabsLogo from '@/assets/tools/elevenlabs.png';
-import descriptLogo from '@/assets/tools/descript.png';
-import pictoryLogo from '@/assets/tools/pictory.png';
-import synthesiaLogo from '@/assets/tools/synthesia.png';
-import murfLogo from '@/assets/tools/murf.png';
-import consensusLogo from '@/assets/tools/consensus.png';
-import elicitLogo from '@/assets/tools/elicit.png';
-import sciteLogo from '@/assets/tools/scite.png';
-import explainpaperLogo from '@/assets/tools/explainpaper.png';
-import quizletLogo from '@/assets/tools/quizlet.png';
-import wolframLogo from '@/assets/tools/wolfram.png';
-import scholarcyLogo from '@/assets/tools/scholarcy.png';
-import semantic_scholarLogo from '@/assets/tools/semantic_scholar.png';
-import gammaLogo from '@/assets/tools/gamma.png';
-import beautiful_aiLogo from '@/assets/tools/beautiful_ai.png';
-import slidesgoLogo from '@/assets/tools/slidesgo.png';
-import tomeLogo from '@/assets/tools/tome.png';
-import otterLogo from '@/assets/tools/otter.png';
-import todoistLogo from '@/assets/tools/todoist.png';
-import juliusLogo from '@/assets/tools/julius.png';
-import tableauLogo from '@/assets/tools/tableau.png';
-import datarobotLogo from '@/assets/tools/datarobot.png';
-import monkeylearnLogo from '@/assets/tools/monkeylearn.png';
-import deeplLogo from '@/assets/tools/deepl.png';
-import duolingoLogo from '@/assets/tools/duolingo.png';
+import lovableLogo from '@/shared/assets/tools/lovable.png';
+import boltLogo from '@/shared/assets/tools/bolt.png';
+import github_copilotLogo from '@/shared/assets/tools/github_copilot.png';
+import cursorLogo from '@/shared/assets/tools/cursor.png';
+import replitLogo from '@/shared/assets/tools/replit.png';
+import codeiumLogo from '@/shared/assets/tools/codeium.png';
+import tabnineLogo from '@/shared/assets/tools/tabnine.png';
+import amazon_codewhispererLogo from '@/shared/assets/tools/amazon_codewhisperer.png';
+import piecesLogo from '@/shared/assets/tools/pieces.png';
+import codexLogo from '@/shared/assets/tools/codex.png';
+import figLogo from '@/shared/assets/tools/fig.png';
+import sourcegraph_codyLogo from '@/shared/assets/tools/sourcegraph_cody.png';
+import chatgptLogo from '@/shared/assets/tools/chatgpt.png';
+import google_geminiLogo from '@/shared/assets/tools/google_gemini.png';
+import claudeLogo from '@/shared/assets/tools/claude.png';
+import microsoft_copilotLogo from '@/shared/assets/tools/microsoft_copilot.png';
+import perplexityLogo from '@/shared/assets/tools/perplexity.png';
+import grammarlyLogo from '@/shared/assets/tools/grammarly.png';
+import quillbotLogo from '@/shared/assets/tools/quillbot.png';
+import jasperLogo from '@/shared/assets/tools/jasper.png';
+import copyaiLogo from '@/shared/assets/tools/copyai.png';
+import notion_aiLogo from '@/shared/assets/tools/notion_ai.png';
+import canvaLogo from '@/shared/assets/tools/canva.png';
+import midjourneyLogo from '@/shared/assets/tools/midjourney.png';
+import dalle3Logo from '@/shared/assets/tools/dalle3.png';
+import leonardoLogo from '@/shared/assets/tools/leonardo.png';
+import stable_diffusionLogo from '@/shared/assets/tools/stable_diffusion.png';
+import adobe_fireflyLogo from '@/shared/assets/tools/adobe_firefly.png';
+import figma_aiLogo from '@/shared/assets/tools/figma_ai.png';
+import removebgLogo from '@/shared/assets/tools/removebg.png';
+import runwayLogo from '@/shared/assets/tools/runway.png';
+import elevenlabsLogo from '@/shared/assets/tools/elevenlabs.png';
+import descriptLogo from '@/shared/assets/tools/descript.png';
+import pictoryLogo from '@/shared/assets/tools/pictory.png';
+import synthesiaLogo from '@/shared/assets/tools/synthesia.png';
+import murfLogo from '@/shared/assets/tools/murf.png';
+import consensusLogo from '@/shared/assets/tools/consensus.png';
+import elicitLogo from '@/shared/assets/tools/elicit.png';
+import sciteLogo from '@/shared/assets/tools/scite.png';
+import explainpaperLogo from '@/shared/assets/tools/explainpaper.png';
+import quizletLogo from '@/shared/assets/tools/quizlet.png';
+import wolframLogo from '@/shared/assets/tools/wolfram.png';
+import scholarcyLogo from '@/shared/assets/tools/scholarcy.png';
+import semantic_scholarLogo from '@/shared/assets/tools/semantic_scholar.png';
+import gammaLogo from '@/shared/assets/tools/gamma.png';
+import beautiful_aiLogo from '@/shared/assets/tools/beautiful_ai.png';
+import slidesgoLogo from '@/shared/assets/tools/slidesgo.png';
+import tomeLogo from '@/shared/assets/tools/tome.png';
+import otterLogo from '@/shared/assets/tools/otter.png';
+import todoistLogo from '@/shared/assets/tools/todoist.png';
+import juliusLogo from '@/shared/assets/tools/julius.png';
+import tableauLogo from '@/shared/assets/tools/tableau.png';
+import datarobotLogo from '@/shared/assets/tools/datarobot.png';
+import monkeylearnLogo from '@/shared/assets/tools/monkeylearn.png';
+import deeplLogo from '@/shared/assets/tools/deepl.png';
+import duolingoLogo from '@/shared/assets/tools/duolingo.png';
 
 
 // AI Tools Database
@@ -750,7 +750,7 @@ export const AIToolsListSection = memo(function AIToolsListSection({ previewOnly
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-bold text-heading mb-6"
           >
-            Ultimate AI Tools <span className="bg-gradient-to-r from-[var(--primary-maroon)] to-[#ff3b00] bg-clip-text text-transparent">Directory</span>
+            Ultimate AI Tools <span className="bg-gradient-to-r from-[var(--primary-maroon)] to-[var(--primary-gold)] bg-clip-text text-transparent">Directory</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -792,7 +792,7 @@ export const AIToolsListSection = memo(function AIToolsListSection({ previewOnly
                       onClick={() => setSelectedCategory(category.id)}
                       className={`px-5 py-2.5 rounded-xl border transition-all duration-300 text-sm flex items-center gap-2 transform active:scale-95 ${
                         selectedCategory === category.id
-                          ? 'bg-gradient-to-r from-[var(--primary-maroon)] to-[#ff3b00] border-[var(--primary-maroon)] text-white shadow-lg shadow-[var(--primary-maroon)]/30 -translate-y-0.5'
+                          ? 'bg-gradient-to-r from-[var(--primary-maroon)] to-[var(--primary-gold)] border-[var(--primary-maroon)] text-white shadow-lg shadow-[var(--primary-maroon)]/30 -translate-y-0.5'
                           : 'bg-surface/50 backdrop-blur-sm text-text-secondary border-surface-border hover:border-[var(--primary-maroon)]/40 hover:text-heading hover:bg-surface theme-transition'
                       }`}
                     >
@@ -954,7 +954,7 @@ export const AIToolsListSection = memo(function AIToolsListSection({ previewOnly
               </p>
               <button 
                 onClick={() => window.dispatchEvent(new CustomEvent('open-get-started'))}
-                className="px-8 py-4 bg-gradient-to-r from-[var(--primary-maroon)] to-[#ff3b00] text-white rounded-xl hover:shadow-2xl hover:shadow-[var(--primary-maroon)]/30 transition-all transform hover:scale-105 font-bold"
+                className="px-8 py-4 bg-gradient-to-r from-[var(--primary-maroon)] to-[var(--primary-gold)] text-white rounded-xl hover:shadow-2xl hover:shadow-[var(--primary-maroon)]/30 transition-all transform hover:scale-105 font-bold"
               >
                 Explore Scaro Technologies AI
               </button>

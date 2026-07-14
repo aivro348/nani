@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { ProjectsStoreSection } from '../components/ProjectsStoreSection';
 import { EducationContact } from '../components/EducationContact';
-import { useSEO } from '../../app/utils/useSEO';
+import { useSEO } from '../../main/utils/useSEO';
 
 export function AllProjectsPage() {
   useSEO(
