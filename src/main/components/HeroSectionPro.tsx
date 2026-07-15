@@ -31,21 +31,15 @@ export function HeroSectionPro({ setActiveSection }: HeroSectionProProps) {
 
       {/* Main Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col justify-center h-full pt-20">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: 'easeOut' }}
-          className="max-w-3xl"
+        <div
+          className="max-w-3xl animate-fade-in-up"
         >
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-            className="inline-flex items-center gap-3 px-4 py-2 bg-[var(--primary-maroon)]/20 text-[var(--primary-maroon)] border border-[var(--primary-maroon)]/30 rounded-full text-xs sm:text-sm font-black tracking-widest uppercase mb-8 backdrop-blur-md shadow-[0_0_20px_rgba(139,0,0,0.3)]"
+          <div
+            className="inline-flex items-center gap-3 px-4 py-2 bg-[var(--primary-maroon)]/20 text-[var(--primary-maroon)] border border-[var(--primary-maroon)]/30 rounded-full text-xs sm:text-sm font-black tracking-widest uppercase mb-8 backdrop-blur-md shadow-[0_0_20px_rgba(139,0,0,0.3)] animate-fade-in"
           >
             <span className="w-2 h-2 rounded-full bg-[var(--primary-gold)] animate-pulse" />
             Global Innovation Ecosystem
-          </motion.div>
+          </div>
 
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tighter text-white leading-[1.1] mb-8 drop-shadow-2xl">
             Empowering <br />
@@ -57,7 +51,7 @@ export function HeroSectionPro({ setActiveSection }: HeroSectionProProps) {
           </p>
 
           <div className="flex flex-wrap items-center gap-6">
-            <button aria-label="Action button"
+            <button aria-label="Explore Divisions"
               onClick={scrollToDivisions}
               className="group relative overflow-hidden bg-[var(--primary-maroon)] text-white px-8 py-4 rounded-xl font-bold tracking-widest uppercase transition-all shadow-[0_0_30px_rgba(139,0,0,0.4)] hover:shadow-[0_0_50px_rgba(139,0,0,0.6)] hover:-translate-y-1"
             >
@@ -67,7 +61,7 @@ export function HeroSectionPro({ setActiveSection }: HeroSectionProProps) {
               </span>
             </button>
           </div>
-        </motion.div>
+        </div>
       </div>
 
     </section>

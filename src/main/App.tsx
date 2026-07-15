@@ -63,6 +63,10 @@ const PodcastPage = lazy(() => import('../education/pages/subsections/PodcastPag
 const WorkshopsPage = lazy(() => import('../education/pages/subsections/WorkshopsPage').then(m => ({ default: m.WorkshopsPage })));
 const EducationBlogsPage = lazy(() => import('../education/pages/subsections/EducationBlogsPage').then(m => ({ default: m.EducationBlogsPage })));
 
+// Auth Pages
+const SignInPage = lazy(() => import('../auth/pages/SignInPage').then(m => ({ default: m.SignInPage })));
+const SignUpPage = lazy(() => import('../auth/pages/SignUpPage').then(m => ({ default: m.SignUpPage })));
+
 // Loading component
 const PageLoader = () => (
   <div className="min-h-screen flex items-center justify-center bg-page-bg">
@@ -165,7 +169,7 @@ export default function App() {
     <LmsProvider>
       <ScrollToTop />
       <div className="min-h-screen bg-page-bg text-page-fg theme-transition overflow-x-hidden w-full flex flex-col">
-        <Navbar />
+        {!location.pathname.startsWith('/sign-') && <Navbar />}
 
         <main className="flex-grow">
           <Suspense fallback={<PageLoader />}>
@@ -211,6 +215,13 @@ export default function App() {
               <Route path="/privacy" element={<PrivacyPolicyPage />} />
               <Route path="/terms" element={<TermsOfServicePage />} />
               
+              {/* Main Website Routes */}
+              <Route path="/" element={<><Navbar /><HomePage /><Footer /></>} />
+              
+              {/* Auth Routes */}
+              <Route path="/sign-in/*" element={<SignInPage />} />
+              <Route path="/sign-up/*" element={<SignUpPage />} />
+
               {/* New Education Routes */}
               <Route path="/about" element={<AboutUsPage />} />
               <Route path="/partners" element={<PartnersPage />} />
@@ -230,11 +241,12 @@ export default function App() {
           </Suspense>
         </main>
 
-        <Footer />
-
-        {/* Social Widgets - WhatsApp, Instagram, Email */}
-        <SocialWidgets />
-
+        {!location.pathname.startsWith('/sign-') && (
+          <>
+            <Footer />
+            <SocialWidgets />
+          </>
+        )}
       </div>
     </LmsProvider>
   );

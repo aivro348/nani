@@ -3,6 +3,7 @@ import { Logo } from './Logo';
 import { useState, useEffect, lazy, Suspense } from 'react';
 import { useNavigate, useLocation } from 'react-router';
 import { useLms } from '../../student-portal/lms/context/LmsContext';
+import { SignInButton, SignUpButton, SignedIn, SignedOut, UserButton } from '@clerk/clerk-react';
 
 
 // Lazy load the modal as it contains heavy logic and UI
@@ -289,6 +290,17 @@ export function Navbar() {
                     <svg className="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                   </div>
                 </button>
+              )}
+              {!isBusinessSection && (
+                <div className="hidden lg:flex items-center gap-3">
+                  <SignedOut>
+                    <button onClick={() => navigateToPage('/sign-in')} className="text-sm font-bold text-white hover:text-[var(--primary-gold)] transition-colors">Sign In</button>
+                    <button onClick={() => navigateToPage('/sign-up')} className="bg-white/10 hover:bg-white/20 text-white px-4 py-1.5 rounded-full text-sm font-bold transition-all border border-white/20">Sign Up</button>
+                  </SignedOut>
+                  <SignedIn>
+                    <UserButton afterSignOutUrl="/" />
+                  </SignedIn>
+                </div>
               )}
 
               {/* Mobile Menu Button */}

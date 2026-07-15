@@ -37,42 +37,33 @@ export function BusinessHero() {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left Content */}
           <div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-[var(--primary-maroon)]/20 border border-[var(--primary-maroon)]/30 mb-10 backdrop-blur-md"
+            <div
+              className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-[var(--primary-maroon)]/20 border border-[var(--primary-maroon)]/30 mb-10 backdrop-blur-md animate-fade-in-up"
             >
               <Zap className="w-4 h-4 text-[var(--primary-gold)]" />
               <span className="text-sm font-bold text-[var(--primary-gold)] uppercase tracking-[0.15em]">Enterprise Solutions</span>
-            </motion.div>
+            </div>
 
-            <motion.h1 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.15 }}
-              className="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tighter mb-8 leading-[1.05]"
+            <h1 
+              className="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tighter mb-8 leading-[1.05] animate-fade-in-up"
+              style={{ animationDelay: '0.15s' }}
             >
               AI-Powered Websites <br/>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary-gold)] via-[var(--accent-gold)] to-[var(--light-gold)]">
                 That Grow Your Business.
               </span>
-            </motion.h1>
+            </h1>
 
-            <motion.p 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-xl md:text-2xl text-gray-300/90 mb-12 leading-relaxed max-w-xl font-light"
+            <p 
+              className="text-xl md:text-2xl text-gray-300/90 mb-12 leading-relaxed max-w-xl font-light animate-fade-in-up"
+              style={{ animationDelay: '0.3s' }}
             >
               Premium website design, e-commerce development & AI automation for ambitious brands in Bangalore, Chennai and across India. Trusted by forward-thinking companies.
-            </motion.p>
+            </p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.45 }}
-              className="flex flex-wrap items-center gap-5"
+            <div
+              className="flex flex-wrap items-center gap-5 animate-fade-in-up"
+              style={{ animationDelay: '0.45s' }}
             >
               <motion.button 
                 whileHover={{ scale: 1.02 }}
@@ -90,15 +81,13 @@ export function BusinessHero() {
                 Our Capabilities
                 <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform text-[var(--primary-gold)]" />
               </motion.button>
-            </motion.div>
+            </div>
           </div>
 
           {/* Right - Floating Stats Card */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9, y: 30 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="hidden lg:block"
+          <div 
+            className="hidden lg:block animate-fade-in-up"
+            style={{ animationDelay: '0.6s' }}
           >
             <div className="relative">
               {/* Glowing border card */}
@@ -130,7 +119,7 @@ export function BusinessHero() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

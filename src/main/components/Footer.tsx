@@ -1,149 +1,14 @@
-import { Mail, MapPin, Phone, Github, Linkedin, Twitter, Youtube, ArrowRight } from 'lucide-react';
+import { Mail, MapPin, Phone, Github, Linkedin, Twitter, Youtube, ArrowRight, Sparkles, Building2, BookOpen } from 'lucide-react';
 import { Logo } from './Logo';
 import { VisitorCounter } from './VisitorCounter';
 import { memo } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 
-export const Footer = memo(function Footer() {
-  const location = useLocation();
-  const currentPath = location.pathname;
-
-  interface FooterConfig {
-    description: string;
-    email1: string;
-    email2: string;
-    phone: string;
-    address: string;
-    links: Record<string, { name: string; page: string }[]>;
-    showNewsletter?: boolean;
-    copyrightYear: string;
-  }
-
-  let footerConfig: FooterConfig = {
-    description: "Your AI-Powered Learning Assistant. Empowering engineering students across all branches with personalized learning and guidance.",
-    email1: "support@scaro.com",
-    email2: "info@scaro.com",
-    phone: "+91 9949167458",
-    address: "Tirupati, AP, India",
-    links: {
-      Platform: [
-        { name: 'All Branches', page: '/branches' },
-        { name: 'Courses', page: '/courses' },
-        { name: 'Virtual Labs', page: '/projects' },
-        { name: 'AI Website', page: '/ai' },
-      ],
-      Resources: [
-        { name: 'Success Stories', page: '/courses#reviews-section' },
-        { name: 'FAQs', page: '/#faq' },
-        { name: 'Blog', page: '/blogs' },
-        { name: 'Documentation', page: '/courses' },
-      ],
-      Company: [
-        { name: 'About Us', page: '/' },
-        { name: 'Contact', page: '/contact' },
-        { name: 'Trainers', page: '/trainer' },
-      ],
-      Legal: [
-        { name: 'Privacy Policy', page: '/privacy' },
-        { name: 'Terms of Service', page: '/terms' },
-      ],
-    },
-    showNewsletter: true,
-    copyrightYear: "2025"
-  };
-
-  if (currentPath.startsWith('/business')) {
-    footerConfig = {
-      description: "Enterprise AI & automation agency building the platforms that power next-generation businesses.",
-      email1: "hr@scaro.in",
-      email2: "support@scaro.com",
-      phone: "+91 81067 95810 / +91 73530 77676",
-      address: "Tirupati, AP, India",
-      links: {
-        Company: [
-          { name: 'Home', page: '/' },
-          { name: 'Projects', page: '/business#projects' },
-          { name: 'Team', page: '/business#team' },
-          { name: 'Contact', page: '/business#contact' },
-        ],
-        Services: [
-          { name: 'Web App Development', page: '/business#services' },
-          { name: 'Mobile Apps', page: '/business#services' },
-          { name: 'SaaS Engineering', page: '/business#services' },
-          { name: 'AI & ML Integration', page: '/business#services' },
-        ],
-        Contact: [
-          { name: 'Get in Touch', page: '/business#contact' }
-        ],
-        Legal: [
-          { name: 'Privacy Policy', page: '/privacy' },
-          { name: 'Terms of Service', page: '/terms' },
-        ]
-      },
-      showNewsletter: false,
-      copyrightYear: "2026"
-    };
-  } else if (currentPath.startsWith('/ai')) {
-    footerConfig = {
-      ...footerConfig,
-      description: "Your definitive directory for discovering, comparing, and utilizing the best AI tools on the web.",
-      links: {
-        Directory: [
-          { name: 'Coding & Dev', page: 'ai' },
-          { name: 'Design & Image', page: 'ai' },
-          { name: 'Chatbots', page: 'ai' },
-        ],
-        Resources: [
-          { name: 'Submit a Tool', page: 'contact' },
-          { name: 'AI Guides', page: 'blogs' },
-          { name: 'Education Courses', page: '/courses' },
-        ],
-        Company: [
-          { name: 'About Us', page: 'home' },
-          { name: 'Contact', page: 'contact' },
-        ],
-        Legal: [
-          { name: 'Privacy Policy', page: '/privacy' },
-          { name: 'Terms of Service', page: '/terms' },
-        ]
-      }
-    };
-  } else if (currentPath.startsWith('/blogs')) {
-    footerConfig = {
-      ...footerConfig,
-      description: "Insights, tutorials, and engineering deep-dives from the team at Scaro Technologies.",
-      links: {
-        Categories: [
-          { name: 'Software Engineering', page: 'blogs' },
-          { name: 'Artificial Intelligence', page: 'blogs' },
-        ],
-        Resources: [
-          { name: 'Write for Us', page: 'contact' },
-          { name: 'RSS Feed', page: 'blogs' },
-        ],
-        Company: [
-          { name: 'About Us', page: 'home' },
-          { name: 'Contact', page: 'contact' },
-        ],
-        Legal: [
-          { name: 'Privacy Policy', page: '/privacy' },
-          { name: 'Terms of Service', page: '/terms' },
-        ]
-      }
-    };
-  }
-
-  const socialLinks = [
-    { icon: Github, href: 'https://github.com/Scaro Technologies', label: 'GitHub' },
-    { icon: Linkedin, href: 'https://linkedin.com/company/scaro', label: 'LinkedIn' },
-    { icon: Twitter, href: 'https://twitter.com/scaro', label: 'Twitter' },
-    { icon: Youtube, href: 'https://youtube.com/@scaro', label: 'YouTube' },
-  ];
-
+// Helper for smooth navigation
+const useFooterNavigation = () => {
   const navigate = useNavigate();
-
-  const handleNavigation = (path: string) => {
-    // If it's a hash link for the current page, scroll to it smoothly
+  const currentPath = useLocation().pathname;
+  return (path: string) => {
     if (path.includes('#') && path.split('#')[0] === currentPath) {
       const hash = path.split('#')[1];
       const element = document.getElementById(hash);
@@ -153,124 +18,223 @@ export const Footer = memo(function Footer() {
         return;
       }
     }
-    
-    // Otherwise, let React Router handle the transition and scroll to top
     navigate(path);
-    if (!path.includes('#')) {
-      window.scrollTo({ top: 0, behavior: 'instant' });
-    }
-    
-    // Maintain legacy custom event support if anything is relying on it
-    const event = new CustomEvent('navigate', { detail: path.replace('/', '') || 'home' });
-    window.dispatchEvent(event);
+    if (!path.includes('#')) window.scrollTo({ top: 0, behavior: 'instant' });
   };
+};
 
+const Socials = ({ lightMode = false }: { lightMode?: boolean }) => (
+  <div className="flex items-center gap-3">
+    {[
+      { icon: Github, href: 'https://github.com/ScaroTechnologies' },
+      { icon: Linkedin, href: 'https://linkedin.com/company/scaro' },
+      { icon: Twitter, href: 'https://twitter.com/scaro' },
+      { icon: Youtube, href: 'https://youtube.com/@scaro' },
+    ].map((social, idx) => (
+      <a 
+        key={idx} 
+        href={social.href} 
+        className={`w-10 h-10 rounded-full flex items-center justify-center transition-all ${
+          lightMode 
+            ? 'bg-slate-100 text-slate-500 hover:bg-slate-900 hover:text-white' 
+            : 'bg-white/5 text-gray-400 hover:bg-[var(--primary-gold)] hover:text-black'
+        }`}
+      >
+        <social.icon className="w-4 h-4" />
+      </a>
+    ))}
+  </div>
+);
+
+// 1. ACADEMY FOOTER (Education / Default)
+const AcademyFooter = () => {
+  const nav = useFooterNavigation();
   return (
-    <footer className="relative bg-[#0A0506] text-gray-300 overflow-hidden">
-      {/* Top gradient accent */}
-      <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[var(--primary-gold)]/50 to-transparent" />
-      
-      {/* Background glow */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[var(--primary-maroon)]/10 rounded-full blur-[150px] pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
-        {/* Main footer content */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10 mb-16">
-          {/* Brand section */}
-          <div className="sm:col-span-2 md:col-span-3 lg:col-span-2">
-            <Logo onClick={() => handleNavigation('home')} iconSize={144} className="mb-5" />
-            <p className="text-base mb-8 text-gray-400 leading-relaxed max-w-sm">
-              {footerConfig.description}
+    <footer className="relative bg-[#0A0506] pt-24 pb-10 overflow-hidden">
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[var(--primary-maroon)]/5 rounded-full blur-[150px] pointer-events-none" />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid lg:grid-cols-12 gap-12 mb-16">
+          <div className="lg:col-span-5">
+            <Logo onClick={() => nav('/')} iconSize={120} className="mb-8" />
+            <p className="text-gray-400 leading-relaxed mb-8 max-w-sm text-sm">
+              Empowering the next generation of engineers with real-world projects, expert mentorship, and cutting-edge curriculum.
             </p>
-            
-            {/* Contact info */}
-            <div className="space-y-3 text-sm">
-              <a href={`mailto:${footerConfig.email1}`} className="flex items-center gap-3 text-gray-400 hover:text-[var(--primary-gold)] transition-colors group">
-                <Mail className="w-4 h-4 text-[var(--primary-gold)]/60 group-hover:text-[var(--primary-gold)] transition-colors" />
-                {footerConfig.email1}
-              </a>
-              <a href={`mailto:${footerConfig.email2}`} className="flex items-center gap-3 text-gray-400 hover:text-[var(--primary-gold)] transition-colors group">
-                <Mail className="w-4 h-4 text-[var(--primary-gold)]/60 group-hover:text-[var(--primary-gold)] transition-colors" />
-                {footerConfig.email2}
-              </a>
-              <a href={`tel:${footerConfig.phone.split(' / ')[0]}`} className="flex items-center gap-3 text-gray-400 hover:text-[var(--primary-gold)] transition-colors group">
-                <Phone className="w-4 h-4 text-[var(--primary-gold)]/60 group-hover:text-[var(--primary-gold)] transition-colors" />
-                {footerConfig.phone}
-              </a>
-              <div className="flex items-center gap-3 text-gray-400">
-                <MapPin className="w-4 h-4 text-[var(--primary-gold)]/60" />
-                {footerConfig.address}
-              </div>
+            <div className="flex flex-col gap-4 text-sm text-gray-400 mb-8 font-medium">
+              <span className="flex items-center gap-3"><Mail className="w-4 h-4 text-[var(--primary-gold)]"/> support@scaro.com</span>
+              <span className="flex items-center gap-3"><Phone className="w-4 h-4 text-[var(--primary-gold)]"/> +91 9949167458</span>
             </div>
+            <Socials />
+          </div>
+          
+          <div className="lg:col-span-3 pt-4">
+            <h4 className="text-white font-bold mb-6 flex items-center gap-2 tracking-wider uppercase text-sm">
+              <BookOpen className="w-4 h-4 text-[var(--primary-gold)]"/> Learning Paths
+            </h4>
+            <ul className="space-y-4 text-sm text-gray-400 font-medium">
+              <li><a href="#" onClick={(e) => { e.preventDefault(); nav('/courses'); }} className="hover:text-[var(--primary-gold)] hover:translate-x-1 transition-all inline-block">Explore Courses</a></li>
+              <li><a href="#" onClick={(e) => { e.preventDefault(); nav('/projects'); }} className="hover:text-[var(--primary-gold)] hover:translate-x-1 transition-all inline-block">Virtual Labs & Projects</a></li>
+              <li><a href="#" onClick={(e) => { e.preventDefault(); nav('/ai'); }} className="hover:text-[var(--primary-gold)] hover:translate-x-1 transition-all inline-block">AI Masterclasses</a></li>
+              <li><a href="#" onClick={(e) => { e.preventDefault(); nav('/blogs'); }} className="hover:text-[var(--primary-gold)] hover:translate-x-1 transition-all inline-block">Student Resources & Blogs</a></li>
+            </ul>
           </div>
 
-          {/* Links sections */}
-          {Object.entries(footerConfig.links).map(([category, links]) => (
-            <div key={category}>
-              <h3 className="text-white font-bold mb-5 text-sm uppercase tracking-[0.15em]">{category}</h3>
-              <ul className="space-y-3 text-sm">
-                {links.map((link) => (
-                  <li key={link.name}>
-                    <a 
-                      href="#" 
-                      onClick={(e) => { e.preventDefault(); handleNavigation(link.page); }} 
-                      className="text-gray-400 hover:text-[var(--primary-gold)] hover:translate-x-1 transition-all inline-block"
-                    >
-                      {link.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+          <div className="lg:col-span-4 bg-white/[0.02] border border-white/10 p-8 rounded-3xl backdrop-blur-sm">
+            <h4 className="text-white font-bold mb-2 text-lg">Join the Academy</h4>
+            <p className="text-sm text-gray-400 mb-6 leading-relaxed">Get free learning resources, tech updates, and exclusive opportunities delivered to your inbox.</p>
+            <div className="flex flex-col gap-3">
+              <input type="email" placeholder="Enter your email" className="bg-black/50 border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white focus:border-[var(--primary-gold)] outline-none transition-colors" />
+              <button className="bg-gradient-to-r from-[var(--primary-maroon)] to-[var(--primary-gold)] text-white font-bold py-3.5 rounded-xl hover:shadow-[0_0_20px_rgba(255,183,0,0.3)] transition-all uppercase tracking-wider text-sm flex items-center justify-center gap-2 group">
+                Subscribe Now <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </button>
             </div>
-          ))}
+          </div>
         </div>
-
-        {/* Newsletter section */}
-        {footerConfig.showNewsletter && (
-          <div className="border-t border-white/10 pt-10 mb-10">
-            <div className="max-w-lg mx-auto lg:mx-0">
-              <h3 className="text-white font-bold mb-2 text-lg">Stay Updated</h3>
-              <p className="text-sm text-gray-500 mb-5">
-                Get the latest courses, tips, and opportunities delivered to your inbox.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="flex-1 px-5 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-[var(--primary-gold)]/50 focus:ring-1 focus:ring-[var(--primary-gold)]/30 text-white placeholder:text-gray-500 transition-all font-medium"
-                />
-                <button aria-label="Action button" className="px-6 py-3 bg-gradient-to-r from-[var(--primary-maroon)] to-[var(--primary-gold)] text-white rounded-xl hover:shadow-[0_0_30px_-8px_var(--primary-gold)] transition-all font-bold flex items-center justify-center gap-2 group uppercase tracking-wider text-sm">
-                  Subscribe
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Bottom section */}
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-6">
-          <p className="text-sm text-gray-500 text-center md:text-left flex-1">
-            © {footerConfig.copyrightYear} <span className="text-[var(--primary-gold)]/70">Scaro Technologies</span>. All rights reserved.
-          </p>
-
+        
+        <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/10 text-xs text-gray-500 gap-6">
+          <p>© 2025 Scaro Technologies. All rights reserved.</p>
           <VisitorCounter />
-
-          {/* Social links */}
-          <div className="flex items-center gap-3">
-            {socialLinks.map((social) => (
-              <a
-                key={social.label}
-                href={social.href}
-                aria-label={social.label}
-                className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 text-gray-400 hover:text-[var(--primary-gold)] hover:border-[var(--primary-gold)]/30 hover:bg-[var(--primary-maroon)]/20 hover:scale-110 flex items-center justify-center transition-all duration-300"
-              >
-                <social.icon className="w-5 h-5" />
-              </a>
-            ))}
+          <div className="flex gap-6">
+            <a href="#" onClick={(e) => { e.preventDefault(); nav('/privacy'); }} className="hover:text-white transition-colors">Privacy Policy</a>
+            <a href="#" onClick={(e) => { e.preventDefault(); nav('/terms'); }} className="hover:text-white transition-colors">Terms of Service</a>
           </div>
         </div>
       </div>
     </footer>
   );
+};
+
+// 2. BUSINESS FOOTER (Corporate)
+const BusinessFooter = () => {
+  const nav = useFooterNavigation();
+  return (
+    <footer className="bg-white text-slate-800 pt-24 pb-12 border-t border-slate-200">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid md:grid-cols-12 gap-12 mb-20">
+          <div className="md:col-span-4">
+            <div className="flex items-center gap-3 mb-6">
+              <Building2 className="w-8 h-8 text-[var(--primary-maroon)]" />
+              <span className="text-2xl font-black tracking-tighter text-slate-900 uppercase">Scaro Enterprise</span>
+            </div>
+            <p className="text-slate-500 text-sm leading-relaxed mb-8 max-w-sm">
+              Building scalable, AI-driven architectures and cutting-edge software solutions for modern businesses worldwide.
+            </p>
+            <Socials lightMode={true} />
+          </div>
+          
+          <div className="md:col-span-2">
+            <h4 className="font-bold text-slate-900 mb-6 text-xs uppercase tracking-widest">Solutions</h4>
+            <ul className="space-y-4 text-sm text-slate-500 font-medium">
+              <li><a href="#" onClick={(e) => { e.preventDefault(); nav('/business#services'); }} className="hover:text-[var(--primary-maroon)] transition-colors">Custom Software</a></li>
+              <li><a href="#" onClick={(e) => { e.preventDefault(); nav('/business#services'); }} className="hover:text-[var(--primary-maroon)] transition-colors">AI Integrations</a></li>
+              <li><a href="#" onClick={(e) => { e.preventDefault(); nav('/business#services'); }} className="hover:text-[var(--primary-maroon)] transition-colors">Cloud Architecture</a></li>
+              <li><a href="#" onClick={(e) => { e.preventDefault(); nav('/business#services'); }} className="hover:text-[var(--primary-maroon)] transition-colors">Mobile Apps</a></li>
+            </ul>
+          </div>
+
+          <div className="md:col-span-2">
+            <h4 className="font-bold text-slate-900 mb-6 text-xs uppercase tracking-widest">Company</h4>
+            <ul className="space-y-4 text-sm text-slate-500 font-medium">
+              <li><a href="#" onClick={(e) => { e.preventDefault(); nav('/business#team'); }} className="hover:text-[var(--primary-maroon)] transition-colors">Our Team</a></li>
+              <li><a href="#" onClick={(e) => { e.preventDefault(); nav('/business#projects'); }} className="hover:text-[var(--primary-maroon)] transition-colors">Case Studies</a></li>
+              <li><a href="#" onClick={(e) => { e.preventDefault(); nav('/privacy'); }} className="hover:text-[var(--primary-maroon)] transition-colors">Legal & Privacy</a></li>
+            </ul>
+          </div>
+
+          <div className="md:col-span-4 bg-slate-50 p-8 rounded-3xl border border-slate-100">
+            <h4 className="font-bold text-slate-900 mb-6 text-xs uppercase tracking-widest flex items-center gap-2">
+              <MapPin className="w-4 h-4 text-[var(--primary-maroon)]" /> Global Headquarters
+            </h4>
+            <div className="space-y-4 text-sm text-slate-600 mb-8 font-medium">
+              <p className="flex items-center gap-3"><Mail className="w-4 h-4 text-slate-400"/> hr@scaro.in</p>
+              <p className="flex items-center gap-3"><Phone className="w-4 h-4 text-slate-400"/> +91 81067 95810</p>
+              <p className="flex items-center gap-3"><MapPin className="w-4 h-4 text-slate-400"/> Tirupati, AP, India</p>
+            </div>
+            <button aria-label="Action button" onClick={() => nav('/business#contact')} className="w-full bg-slate-900 text-white font-bold py-3.5 rounded-xl hover:bg-[var(--primary-maroon)] hover:shadow-lg transition-all text-xs uppercase tracking-wider">
+              Start a Project
+            </button>
+          </div>
+        </div>
+        <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-slate-200 text-xs text-slate-400">
+          <p>© 2026 Scaro Technologies. Enterprise Solutions.</p>
+          <div className="mt-4 md:mt-0 font-medium">ISO 9001:2015 Certified Architecture</div>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+// 3. AI ACADEMY FOOTER (Dark/Grid)
+const AIFooter = () => {
+  const nav = useFooterNavigation();
+  return (
+    <footer className="relative bg-[#020202] pt-24 pb-12 overflow-hidden border-t border-[var(--primary-gold)]/20">
+      {/* Grid background for AI aesthetic */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="flex flex-col md:flex-row justify-between items-start gap-16 mb-20">
+          <div className="max-w-md">
+            <div className="flex items-center gap-3 mb-6">
+              <Sparkles className="w-8 h-8 text-[var(--primary-gold)]" />
+              <span className="text-3xl font-black text-white tracking-tight">Scaro <span className="text-[var(--primary-gold)]">AI</span></span>
+            </div>
+            <p className="text-gray-400 text-sm leading-relaxed mb-8">
+              The ultimate directory and academy for mastering Artificial Intelligence. Discover trending tools, build autonomous agents, and automate the future.
+            </p>
+            <Socials />
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-12 flex-1 w-full md:w-auto md:ml-12 pt-4">
+            <div>
+              <h4 className="text-white font-bold mb-6 text-xs uppercase tracking-widest text-[var(--primary-gold)]">Directory</h4>
+              <ul className="space-y-4 text-sm text-gray-500 font-medium">
+                <li><a href="#" onClick={(e) => e.preventDefault()} className="hover:text-white transition-colors">Developer Tools</a></li>
+                <li><a href="#" onClick={(e) => e.preventDefault()} className="hover:text-white transition-colors">Generative Art</a></li>
+                <li><a href="#" onClick={(e) => e.preventDefault()} className="hover:text-white transition-colors">Business Automation</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-white font-bold mb-6 text-xs uppercase tracking-widest text-[var(--primary-gold)]">Academy</h4>
+              <ul className="space-y-4 text-sm text-gray-500 font-medium">
+                <li><a href="#" onClick={(e) => { e.preventDefault(); nav('/ai'); }} className="hover:text-white transition-colors">AI Cohorts</a></li>
+                <li><a href="#" onClick={(e) => { e.preventDefault(); nav('/blogs'); }} className="hover:text-white transition-colors">Prompt Guides</a></li>
+                <li><a href="#" onClick={(e) => { e.preventDefault(); nav('/courses'); }} className="hover:text-white transition-colors">Agent Tutorials</a></li>
+              </ul>
+            </div>
+            <div className="col-span-2 md:col-span-1 border-l border-white/10 pl-12 hidden md:block">
+              <h4 className="text-white font-bold mb-4 text-sm">Have a tool?</h4>
+              <p className="text-xs text-gray-500 mb-6">Submit your AI tool to reach our directory of 10,000+ engineers.</p>
+              <button aria-label="Action button" className="w-full bg-[var(--primary-gold)]/10 text-[var(--primary-gold)] border border-[var(--primary-gold)]/30 hover:bg-[var(--primary-gold)] hover:text-black font-bold py-3 px-6 rounded-xl transition-all flex items-center justify-center gap-2 text-sm">
+                <Sparkles className="w-4 h-4" />
+                Submit Tool
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/10 text-xs text-gray-600">
+          <p>© 2026 Scaro AI. Empowering the intelligent web.</p>
+          <div className="flex gap-6 mt-4 md:mt-0 font-medium">
+            <a href="#" onClick={(e) => { e.preventDefault(); nav('/privacy'); }} className="hover:text-gray-400 transition-colors">Privacy Policy</a>
+            <a href="#" onClick={(e) => { e.preventDefault(); nav('/terms'); }} className="hover:text-gray-400 transition-colors">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export const Footer = memo(function Footer() {
+  const currentPath = useLocation().pathname;
+  
+  // Render entirely different UI components based on the root section
+  if (currentPath.startsWith('/business')) {
+    return <BusinessFooter />;
+  }
+  if (currentPath.startsWith('/ai')) {
+    return <AIFooter />;
+  }
+  
+  // Default for /, /courses, /blogs, etc.
+  return <AcademyFooter />;
 });

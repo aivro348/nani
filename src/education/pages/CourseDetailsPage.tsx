@@ -21,13 +21,7 @@ export function CourseDetailsPage() {
 
   const handleEnrollClick = () => {
     if (!course) return;
-    if (!user) {
-      navigate('/login', { state: { from: `/courses/${course.slug}` } });
-    } else if (isEnrolled) {
-      navigate(`/lms/course/${course.slug}`);
-    } else {
-      setIsEnrollModalOpen(true);
-    }
+    setIsEnrollModalOpen(true);
   };
 
 

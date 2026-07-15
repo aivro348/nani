@@ -98,11 +98,9 @@ export function AIToolsPage() {
         
         <div className="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="space-y-6"
+            <div
+              className="space-y-6 animate-fade-in-up"
+              style={{ animationDelay: '0.2s' }}
             >
               <div className="flex items-center gap-3 mb-2">
                 <div className="w-10 h-[2px] bg-gradient-to-r from-[var(--primary-gold)] to-transparent" />
@@ -141,7 +139,7 @@ export function AIToolsPage() {
                   </motion.button>
                 </a>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>

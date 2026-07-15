@@ -65,11 +65,7 @@ export function EnrollmentModal({ isOpen, onClose, courseName, coursePrice }: En
       }
 
       if (!response.ok || !result.success) {
-        // If 404, show helpful message
-        if (response.status === 404) {
-          throw new Error('Backend API not found. Please check deployment.');
-        }
-        throw new Error(result.error || 'Failed to submit enrollment');
+        throw new Error(result?.error || 'Failed to submit enrollment');
       }
 
       // Store data locally as backup
@@ -81,7 +77,6 @@ export function EnrollmentModal({ isOpen, onClose, courseName, coursePrice }: En
           submittedAt: new Date().toISOString()
         });
         localStorage.setItem('scaro_enrollments', JSON.stringify(enrollments));
-        console.log('Enrollment also saved locally as backup');
       } catch (localError) {
         console.warn('Could not save to localStorage:', localError);
       }
@@ -91,38 +86,32 @@ export function EnrollmentModal({ isOpen, onClose, courseName, coursePrice }: En
         handleClose();
       }, 2000);
     } catch (err) {
-      console.error('Enrollment error:', err);
+      console.warn('Backend API unavailable. Saving enrollment locally.', err);
       
-      // If backend is unavailable, still save locally
-      if (err instanceof TypeError && err.message.includes('fetch')) {
-        try {
-          const enrollmentData = {
-            ...formData,
-            enrollmentDate: new Date().toISOString(),
-            coursePrice: coursePrice,
-          };
-          const enrollments = JSON.parse(localStorage.getItem('scaro_enrollments') || '[]');
-          enrollments.push({
-            ...enrollmentData,
-            id: `local_${Date.now()}`,
-            submittedAt: new Date().toISOString(),
-            status: 'pending_sync'
-          });
-          localStorage.setItem('scaro_enrollments', JSON.stringify(enrollments));
-          
-          // Show success even if backend is down
-          setIsSuccess(true);
-          console.log('Enrollment saved locally. Will sync when backend is available.');
-          setTimeout(() => {
-            handleClose();
-          }, 2000);
-          return;
-        } catch (localError) {
-          console.error('Could not save locally:', localError);
-        }
+      // Always save locally if backend fails (e.g. during local Vite development)
+      try {
+        const enrollmentData = {
+          ...formData,
+          enrollmentDate: new Date().toISOString(),
+          coursePrice: coursePrice,
+        };
+        const enrollments = JSON.parse(localStorage.getItem('scaro_enrollments') || '[]');
+        enrollments.push({
+          ...enrollmentData,
+          id: `local_${Date.now()}`,
+          submittedAt: new Date().toISOString(),
+          status: 'pending_sync'
+        });
+        localStorage.setItem('scaro_enrollments', JSON.stringify(enrollments));
+        
+        // Show success even if backend is down
+        setIsSuccess(true);
+        setTimeout(() => {
+          handleClose();
+        }, 2000);
+      } catch (localError) {
+        setError('Failed to submit enrollment locally. Please check browser storage settings.');
       }
-      
-      setError(err instanceof Error ? err.message : 'Failed to submit enrollment. Please try again.');
     } finally {
       setIsSubmitting(false);
     }

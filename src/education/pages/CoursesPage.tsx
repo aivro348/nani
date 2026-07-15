@@ -47,11 +47,8 @@ export function CoursesPage() {
 
         {/* Content */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-32">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-2xl text-white"
+          <div
+            className="max-w-2xl text-white animate-slide-in-left"
           >
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1] mb-6 drop-shadow-lg">
               Bridging Education <br />
@@ -93,7 +90,7 @@ export function CoursesPage() {
                 </span>
               </motion.button>
             </div>
-          </motion.div>
+          </div>
         </div>
 
         {/* Slanted Curved Divider (Matches Image 1) */}

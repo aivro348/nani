@@ -47,6 +47,80 @@
 
       gtag('config', 'G-MP7F5MC4VQ');
     </script>
+    
+    <!-- Structured Data for Google Sitelinks -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://scarotechnologies.vercel.app/#website",
+          "url": "https://scarotechnologies.vercel.app/",
+          "name": "Scaro Academy",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://scarotechnologies.vercel.app/courses?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://scarotechnologies.vercel.app/#organization",
+          "name": "Scaro Academy",
+          "url": "https://scarotechnologies.vercel.app/",
+          "logo": "https://scarotechnologies.vercel.app/scaro_technologies%20.png"
+        },
+        {
+          "@type": "ItemList",
+          "itemListElement": [
+            {
+              "@type": "SiteNavigationElement",
+              "position": 1,
+              "name": "Scaro Academy Courses",
+              "description": "Explore premium engineering and AI courses at Scaro Academy.",
+              "url": "https://scarotechnologies.vercel.app/courses"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 2,
+              "name": "AI Tools & Masterclass",
+              "description": "Join our AI Masterclass and discover the best AI tools.",
+              "url": "https://scarotechnologies.vercel.app/ai"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 3,
+              "name": "About Us",
+              "description": "Learn more about Scaro Academy and our mission.",
+              "url": "https://scarotechnologies.vercel.app/about"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 4,
+              "name": "Login to Portal",
+              "description": "Sign in to your Scaro Academy account to access your courses.",
+              "url": "https://scarotechnologies.vercel.app/login"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 5,
+              "name": "Contact Us",
+              "description": "Get in touch with the Scaro Academy team.",
+              "url": "https://scarotechnologies.vercel.app/contact"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 6,
+              "name": "Scaro Business Solutions",
+              "description": "Enterprise AI, Automation, and Web Development services for businesses.",
+              "url": "https://scarotechnologies.vercel.app/business"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
     <div id="root">
