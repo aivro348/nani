@@ -9,7 +9,7 @@ export function VideoShowcaseSection() {
   const videos = [
     {
       title: 'From Zero to Software Engineer',
-      thumbnail: 'https://images.unsplash.com/photo-1758874385197-07d99c183a6f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdHVkZW50cyUyMGxlYXJuaW5nJTIwb25saW5lfGVufDF8fHx8MTc2NTYxNjE5M3ww&ixlib=rb-4.1.0&q=80&w=1080',
+      thumbnail: '/unsplash/img_a0d575de6c.webp',
       duration: '12:34',
       views: '45K',
       rating: 4.9,
@@ -17,7 +17,7 @@ export function VideoShowcaseSection() {
     },
     {
       title: 'Inside Our Virtual Labs',
-      thumbnail: 'https://images.unsplash.com/photo-1598981457915-aea220950616?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbmdpbmVlcmluZyUyMHN0dWRlbnRzJTIwc3R1ZHlpbmd8ZW58MXx8fHwxNzY1Njg3NjU3fDA&ixlib=rb-4.1.0&q=80&w=1080',
+      thumbnail: '/unsplash/img_397d4e8cab.webp',
       duration: '8:15',
       views: '32K',
       rating: 4.8,
@@ -25,7 +25,7 @@ export function VideoShowcaseSection() {
     },
     {
       title: 'Live Project Walkthrough',
-      thumbnail: 'https://images.unsplash.com/photo-1653564142033-ab3532091515?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2RpbmclMjBwcm9ncmFtbWluZyUyMHdvcmtzcGFjZXxlbnwxfHx8fDE3NjU2ODc2NTh8MA&ixlib=rb-4.1.0&q=80&w=1080',
+      thumbnail: '/unsplash/img_ec9801474c.webp',
       duration: '15:22',
       views: '28K',
       rating: 5.0,
@@ -33,7 +33,7 @@ export function VideoShowcaseSection() {
     },
     {
       title: 'Meet Our Mentors',
-      thumbnail: 'https://images.unsplash.com/photo-1728933102332-a4f1a281a621?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZWFtd29yayUyMGNvbGxhYm9yYXRpb24lMjB0ZWNobm9sb2d5fGVufDF8fHx8MTc2NTY4NzY1OHww&ixlib=rb-4.1.0&q=80&w=1080',
+      thumbnail: '/unsplash/img_836695f980.webp',
       duration: '10:45',
       views: '38K',
       rating: 4.9,

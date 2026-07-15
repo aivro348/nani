@@ -7,29 +7,10 @@ import {
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router';
 
-import { AIToolsListSection } from '../components/AIToolsListSection';
+import { AIToolsListSection, AI_TOOLS_DATA } from '../components/AIToolsListSection';
 
-import chatgptLogo from '@/shared/assets/tools/chatgpt.png';
-import google_geminiLogo from '@/shared/assets/tools/google_gemini.png';
-import claudeLogo from '@/shared/assets/tools/claude.png';
-import canvaLogo from '@/shared/assets/tools/canva.png';
-import midjourneyLogo from '@/shared/assets/tools/midjourney.png';
-import runwayLogo from '@/shared/assets/tools/runway.png';
-import gammaLogo from '@/shared/assets/tools/gamma.png';
-import lovableLogo from '@/shared/assets/tools/lovable.png';
-
-// AI Tools Ticker List
-const aiToolsTicker = [
-  { name: 'ChatGPT', logo: chatgptLogo },
-  { name: 'Claude', logo: claudeLogo },
-  { name: 'Gemini', logo: google_geminiLogo },
-  { name: 'Midjourney', logo: midjourneyLogo },
-  { name: 'Runway', logo: runwayLogo },
-  { name: 'Canva', logo: canvaLogo },
-  { name: 'Gamma', logo: gammaLogo },
-  { name: 'Lovable', logo: lovableLogo }
-];
-
+// Create a double ticker list from the exported AI_TOOLS_DATA that have logos
+const aiToolsTicker = AI_TOOLS_DATA.filter(t => t.logo);
 const doubleTicker = [...aiToolsTicker, ...aiToolsTicker, ...aiToolsTicker, ...aiToolsTicker];
 
 // FAQS
@@ -93,112 +74,80 @@ export function AIToolsPage() {
   return (
     <div className="min-h-screen bg-[#0A0506] text-[#E2E8F0] selection:bg-[var(--primary-gold)] selection:text-black relative overflow-hidden">
       
+
+
       {/* Background glow lines */}
-      <div className="absolute top-0 left-1/4 w-[1000px] h-[500px] bg-[var(--primary-maroon)]/5 rounded-full blur-[180px] pointer-events-none" />
-      <div className="absolute top-[40%] right-1/4 w-[800px] h-[600px] bg-[var(--primary-gold)]/5 rounded-full blur-[180px] pointer-events-none" />
+      <div className="absolute top-0 left-1/4 w-[1000px] h-[500px] bg-[var(--primary-maroon)]/5 rounded-full blur-[180px] pointer-events-none z-0" />
+      
+      {/* Hero Section styled as a single slide */}
+      <section className="relative w-full min-h-screen bg-[#0A0506] flex items-center pt-28 pb-20 overflow-hidden z-10">
+        
+        {/* Background Image confined to Hero Section */}
+        <div className="absolute inset-0 z-0">
+          <img loading="eager" decoding="sync" src="/scaro_ai_concept.webp" 
+            alt="AI Brain Concept"
+            className="w-full h-full object-cover"
+          />
+          {/* Gradients matching the Business Slideshow for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0A0506]/95 via-[#0A0506]/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0A0506]/90 via-transparent to-transparent" />
+        </div>
 
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center pt-28 pb-20 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 grid lg:grid-cols-12 gap-12 items-center">
-          
-          <div className="lg:col-span-7 space-y-8">
+        {/* Background glow lines */}
+        <div className="absolute top-0 left-1/4 w-[1000px] h-[500px] bg-[var(--primary-maroon)]/10 rounded-full blur-[180px] pointer-events-none z-0" />
+        
+        <div className="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl">
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="inline-flex items-center gap-2.5 px-4 py-2 bg-[var(--primary-maroon)]/20 text-[var(--primary-gold)] border border-[var(--primary-gold)]/30 rounded-full text-xs font-black uppercase tracking-widest"
-            >
-              <Sparkles className="w-4 h-4 text-[var(--primary-gold)] animate-pulse" />
-              <span>Scaro AI Academy</span>
-            </motion.div>
-
-            <motion.h1 
-              initial={{ opacity: 0, y: 25 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1] text-white"
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="space-y-6"
             >
-              Scaro's Premium <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary-maroon)] via-[var(--primary-gold)] to-orange-400">
-                AI Learning Ecosystem
-              </span>
-            </motion.h1>
-
-            <motion.p 
-              initial={{ opacity: 0, y: 25 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-lg md:text-xl text-gray-300 font-light leading-relaxed max-w-2xl"
-            >
-              Learn AI. Build Skills. Earn Digitally. Join our premium ecosystem and master practical AI skills for studies, careers, content creation, and freelancing. Access updates on our AI Blog or download free templates instantly.
-            </motion.p>
-
-            <motion.div 
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="flex flex-wrap gap-4"
-            >
-              <a href="/ai-masterclass">
-                <motion.button 
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 bg-gradient-to-r from-[var(--primary-maroon)] to-[var(--primary-gold)] text-white font-bold rounded-xl hover:shadow-[0_0_35px_rgba(139,0,0,0.4)] transition-all text-sm uppercase tracking-wider flex items-center gap-2 border border-[var(--primary-maroon)]"
-                >
-                  Join Free Masterclass
-                  <ArrowRight className="w-5 h-5" />
-                </motion.button>
-              </a>
-              <a href="/ai-courses">
-                <motion.button 
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 bg-white/5 border border-white/10 hover:border-[var(--primary-gold)]/30 text-white font-bold rounded-xl transition-all text-sm uppercase tracking-wider"
-                >
-                  Explore Courses
-                </motion.button>
-              </a>
-            </motion.div>
-
-            {/* Quick Metrics */}
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
-              className="flex items-center gap-8 pt-6 border-t border-white/5 text-gray-400 text-sm"
-            >
-              <div className="flex items-center gap-2">
-                <Users className="w-5 h-5 text-[var(--primary-gold)]" />
-                <span><strong className="text-white">1000+</strong> Students</span>
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-10 h-[2px] bg-gradient-to-r from-[var(--primary-gold)] to-transparent" />
+                <span className="text-xs font-bold text-[var(--primary-gold)] uppercase tracking-[0.2em]">Scaro AI Academy</span>
               </div>
-              <div className="flex items-center gap-2">
-                <Code className="w-5 h-5 text-[var(--primary-gold)]" />
-                <span><strong className="text-white">20+</strong> AI Tools Covered</span>
+
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tight leading-[1.1] drop-shadow-2xl">
+                Scaro's Premium <br/>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary-maroon)] via-[var(--primary-gold)] to-[var(--accent-gold)]">
+                  AI Learning Ecosystem
+                </span>
+              </h1>
+
+              <p className="text-lg md:text-xl text-gray-300 font-light leading-relaxed max-w-2xl drop-shadow-md pb-4">
+                Learn AI. Build Skills. Earn Digitally. Join our premium ecosystem and master practical AI skills for studies, careers, content creation, and freelancing.
+              </p>
+
+              <div className="flex flex-wrap items-center gap-5">
+                <a href="/ai-masterclass">
+                  <motion.button 
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="px-8 py-4 bg-gradient-to-r from-[var(--primary-gold)] to-[var(--accent-gold)] text-[#0A0506] font-black rounded-xl hover:shadow-[0_0_30px_-5px_var(--primary-gold)] transition-all text-sm uppercase tracking-wider flex items-center gap-3 group"
+                  >
+                    Join Free Masterclass
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </motion.button>
+                </a>
+                <a href="/ai-courses">
+                  <motion.button 
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="px-8 py-4 bg-white/5 border border-white/10 hover:bg-white/10 hover:border-[var(--primary-gold)] text-white font-bold rounded-xl backdrop-blur-md transition-all text-sm uppercase tracking-wider shadow-xl"
+                  >
+                    Explore Courses
+                  </motion.button>
+                </a>
               </div>
             </motion.div>
           </div>
-
-          {/* Graphical Visual Column */}
-          <div className="lg:col-span-5 flex justify-center relative">
-            <div className="absolute inset-0 bg-[var(--primary-maroon)]/20 rounded-full blur-[100px] pointer-events-none" />
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8 }}
-              className="relative w-full max-w-[420px] aspect-square rounded-3xl overflow-hidden border border-white/10 shadow-2xl"
-            >
-              <img 
-                src="/scaro_ai_concept.png" 
-                alt="Artificial Intelligence Visual" 
-                className="w-full h-full object-cover"
-              />
-            </motion.div>
-          </div>
-
         </div>
       </section>
 
-      {/* Infinite Scrolling Ticker */}
-      <div className="relative w-full py-8 bg-black/40 border-y border-white/5 overflow-hidden">
+      {/* Infinite Scrolling Ticker (All Tools) */}
+      <div className="relative w-full py-10 bg-black/60 backdrop-blur-xl border-y border-white/10 overflow-hidden z-10 shadow-2xl">
         <style>{`
           @keyframes ticker {
             0% { transform: translateX(0); }
@@ -207,16 +156,15 @@ export function AIToolsPage() {
           .animate-ticker {
             display: flex;
             width: max-content;
-            animation: ticker 25s linear infinite;
+            animation: ticker 60s linear infinite;
           }
         `}</style>
         <div className="animate-ticker gap-16 items-center flex">
           {doubleTicker.map((tool, idx) => (
             <div key={idx} className="flex items-center shrink-0 px-4">
-              <img 
-                src={tool.logo} 
+              <img loading="lazy" decoding="async" src={tool.logo} 
                 alt={tool.name} 
-                className="h-10 w-auto object-contain filter brightness-100 grayscale hover:grayscale-0 transition-all duration-300"
+                className="h-12 md:h-16 w-auto object-contain filter brightness-110 drop-shadow-md hover:scale-110 transition-transform duration-300"
               />
             </div>
           ))}
@@ -241,6 +189,12 @@ export function AIToolsPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {[
+            {
+              title: 'Ultimate AI Tools Directory',
+              desc: 'Explore our comprehensive database of 60+ curated AI tools, sorted by category and use case.',
+              path: '/all-ai-tools',
+              icon: Sparkles
+            },
             {
               title: 'About the Founder',
               desc: 'Meet Charan, Lead AI Educator, and review stats, educational objectives and strategy details.',

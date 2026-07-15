@@ -7,42 +7,42 @@ export const projects = [
   {
     title: 'Geo-Silicon',
     category: 'Enterprise Tech',
-    images: ['/business-projects/geo-silicon.png', '/business-projects/geo-silicon1.png'],
+    images: ['/business-projects/geo-silicon.webp', '/business-projects/geo-silicon1.webp'],
     link: 'https://geo-silicon.com',
     description: 'Next-generation enterprise technology portal with advanced data visualization and control.'
   },
   {
     title: 'Balu Associates',
     category: 'Corporate Website',
-    images: ['/business-projects/baluassocities1.png', '/business-projects/baluassocities2.png'],
+    images: ['/business-projects/baluassocities1.webp', '/business-projects/baluassocities2.webp'],
     link: 'https://baluassociates.net',
     description: 'Professional corporate presence with highly optimized performance and scalable architecture.'
   },
   {
     title: 'Kadagwrs',
     category: 'Government Initiative',
-    images: ['/business-projects/kadagwrs.png', '/business-projects/kadagwrs1.png'],
+    images: ['/business-projects/kadagwrs.webp', '/business-projects/kadagwrs1.webp'],
     link: 'https://kadagwrs.vercel.app',
     description: 'Digital platform developed for IIT Kanpur in collaboration with the AP Govt for the KADA (Kuppam Area Development Authority).'
   },
   {
     title: 'HKGN EGG Shop',
     category: 'Web Application',
-    images: ['/business-projects/apii1.png', '/business-projects/apii11.png'],
+    images: ['/business-projects/apii1.webp', '/business-projects/apii11.webp'],
     link: 'https://appi123.vercel.app/',
     description: 'Dynamic web application showcasing modern frontend architecture and seamless user experiences.'
   },
   {
     title: 'Bhagwathi IT Solution',
     category: 'IT Solutions Platform',
-    images: ['/business-projects/bhagwathi it solution.png', '/business-projects/bhagwathi it solution2.png'],
+    images: ['/business-projects/bhagwathi it solution.webp', '/business-projects/bhagwathi it solution2.webp'],
     link: 'https://nani-348.github.io/Shiva_anna/',
     description: 'Comprehensive IT solutions platform engineered for reliability, security, and global scale.'
   },
   {
     title: 'Naveen Textiles',
     category: 'Digital Storefront',
-    images: ['/business-projects/naveentextiles1.png', '/business-projects/naveentextiles2.png'],
+    images: ['/business-projects/naveentextiles1.webp', '/business-projects/naveentextiles2.webp'],
     link: 'https://naveentextiles.online',
     description: 'Premium digital storefront tailored for the textile industry with seamless inventory integration.'
   }

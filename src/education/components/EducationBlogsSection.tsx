@@ -7,7 +7,7 @@ const blogs = [
     id: 1,
     title: 'Top 5 Tech Skills Every Engineering Student Needs in 2026',
     excerpt: 'The tech landscape is evolving rapidly. From generative AI architecture to cloud-native development, discover the critical skills that will make your resume stand out to top recruiters this year.',
-    image: '/blog_tech_skills.png',
+    image: '/blog_tech_skills.webp',
     date: 'July 2, 2026',
     category: 'Career Advice',
     icon: TrendingUp,
@@ -17,7 +17,7 @@ const blogs = [
     id: 2,
     title: 'How Virtual Labs Bridge the University-Industry Gap',
     excerpt: 'Traditional labs often lack the enterprise-grade infrastructure used in the real world. Learn how VR and cloud-simulated environments at Scaro Academy give you the practical hands-on experience companies demand.',
-    image: '/blog_virtual_labs.png',
+    image: '/blog_virtual_labs.webp',
     date: 'June 28, 2026',
     category: 'Learning Tech',
     icon: BookOpen,
@@ -27,7 +27,7 @@ const blogs = [
     id: 3,
     title: 'From Campus to Corporate: Inspiring Success Stories',
     excerpt: 'Transitioning from student life to corporate responsibilities can be daunting. Read how our alumni successfully navigated this jump, securing high-paying roles through dedicated mentorship and real-world projects.',
-    image: '/blog_success_stories.png',
+    image: '/blog_success_stories.webp',
     date: 'June 15, 2026',
     category: 'Success Stories',
     icon: Clock,
@@ -76,8 +76,7 @@ export function EducationBlogsSection() {
               {/* Image Container */}
               <div className="relative h-56 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent z-10" />
-                <img 
-                  src={blog.image} 
+                <img loading="lazy" decoding="async" src={blog.image} 
                   alt={blog.title} 
                   className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                 />

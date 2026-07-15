@@ -280,8 +280,7 @@ function ProjectCard({ project, idx }: { project: Project; idx: number }) {
     >
       {/* Image Section */}
       <div className="relative h-64 w-full shrink-0">
-        <img 
-          src={project.image} 
+        <img loading="lazy" decoding="async" src={project.image} 
           alt={project.title} 
           className="w-full h-full object-cover opacity-80 group-hover:scale-105 group-hover:opacity-100 transition-all duration-700"
         />

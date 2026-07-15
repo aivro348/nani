@@ -9,7 +9,7 @@ const services = [
     description: 'Static, WordPress, PHP, React, Next.js — full website design and development services.',
     tags: ['9 Services →'],
     icon: Globe,
-    image: '/generated/web_design.png',
+    image: '/generated/web_design.webp',
     number: '01'
   },
   {
@@ -17,7 +17,7 @@ const services = [
     description: 'Shopify, WooCommerce and custom online stores built to convert browsers into buyers.',
     tags: ['3 Services →'],
     icon: ShoppingCart,
-    image: '/generated/ecommerce_dev.png',
+    image: '/generated/ecommerce_dev.webp',
     number: '02'
   },
   {
@@ -25,7 +25,7 @@ const services = [
     description: 'Native Android, Flutter and FlutterFlow apps that ship to Play Store & App Store.',
     tags: ['4 Services →'],
     icon: Smartphone,
-    image: '/generated/mobile_app.png',
+    image: '/generated/mobile_app.webp',
     number: '03'
   },
   {
@@ -33,7 +33,7 @@ const services = [
     description: 'Chatbots, voice bots, WhatsApp automation, custom AI agents and workflow automation.',
     tags: ['9 Services →'],
     icon: Brain,
-    image: '/generated/ai_automation.png',
+    image: '/generated/ai_automation.webp',
     number: '04'
   },
   {
@@ -41,7 +41,7 @@ const services = [
     description: 'Production-grade builds on Lovable, Cursor, Bolt.new, Replit and Emergent.',
     tags: ['5 Services →'],
     icon: Zap,
-    image: '/generated/ai_builder.png',
+    image: '/generated/ai_builder.webp',
     number: '05'
   },
   {
@@ -49,7 +49,7 @@ const services = [
     description: 'On-site & remote support across Bangalore (Whitefield, Mahadevapura, KR Puram) and Chennai.',
     tags: ['Bangalore', 'Chennai'],
     icon: MapPin,
-    image: '/generated/local_web.png',
+    image: '/generated/local_web.webp',
     number: '06'
   }
 ];

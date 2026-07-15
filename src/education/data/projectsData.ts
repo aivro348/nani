@@ -25,7 +25,7 @@ export const PROJECT_STORE: Project[] = [
     degree: 'B.Tech',
     abstract: 'A web-based application to manage student results securely, allowing administrators to upload marks and students to view their performance online.',
     deliveryDays: 5,
-    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop',
+    image: '/unsplash/img_b16cd8fa7c.webp',
     isFree: true,
     features: ['Admin Dashboard', 'Student Login', 'PDF Result Generation', 'Responsive Design']
   },
@@ -39,7 +39,7 @@ export const PROJECT_STORE: Project[] = [
     degree: 'B.Tech',
     abstract: 'An interactive quiz platform supporting multiple-choice questions, real-time scoring, and leaderboard tracking.',
     deliveryDays: 6,
-    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=800&auto=format&fit=crop',
+    image: '/unsplash/img_a819468fae.webp',
     isFree: false
   },
   { 
@@ -52,7 +52,7 @@ export const PROJECT_STORE: Project[] = [
     degree: 'B.Tech',
     abstract: 'Track daily expenses with visual analytics using Chart.js to help users manage their personal finances effectively.',
     deliveryDays: 4,
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop',
+    image: '/unsplash/img_8c3e2caa37.webp',
     isFree: false 
   },
   { 
@@ -65,7 +65,7 @@ export const PROJECT_STORE: Project[] = [
     degree: 'B.Tech',
     abstract: 'A sleek web app providing real-time weather updates and 5-day forecasts utilizing the OpenWeather API.',
     deliveryDays: 3,
-    image: 'https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?q=80&w=800&auto=format&fit=crop',
+    image: '/unsplash/img_8f732add7a.webp',
     isFree: false 
   },
   { 
@@ -78,7 +78,7 @@ export const PROJECT_STORE: Project[] = [
     degree: 'B.Tech',
     abstract: 'A customizable template engine for students and professionals to quickly launch their personal portfolio websites.',
     deliveryDays: 3,
-    image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=800&auto=format&fit=crop',
+    image: '/unsplash/img_2c4da1993e.webp',
     isFree: true,
     features: ['Multiple Themes', 'Contact Form Integration', 'SEO Optimized', 'Mobile Responsive']
   },
@@ -92,7 +92,7 @@ export const PROJECT_STORE: Project[] = [
     degree: 'B.Tech',
     abstract: 'A desktop application to manage book inventory, member records, and issue/return transactions seamlessly.',
     deliveryDays: 7,
-    image: 'https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=800&auto=format&fit=crop',
+    image: '/unsplash/img_9f835188fd.webp',
     isFree: false 
   },
   { 
@@ -105,7 +105,7 @@ export const PROJECT_STORE: Project[] = [
     degree: 'B.Tech',
     abstract: 'A comprehensive online store featuring user authentication, product search, cart management, and secure Stripe payment gateway.',
     deliveryDays: 14,
-    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=800&auto=format&fit=crop',
+    image: '/unsplash/img_f42c7d16ee.webp',
     isFree: false 
   },
   { 
@@ -118,7 +118,7 @@ export const PROJECT_STORE: Project[] = [
     degree: 'B.Tech',
     abstract: 'A centralized portal for hospitals to manage patient appointments, doctor schedules, and medical records efficiently.',
     deliveryDays: 12,
-    image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=800&auto=format&fit=crop',
+    image: '/unsplash/img_5b4c8c3494.webp',
     isFree: false 
   },
   { 
@@ -131,7 +131,7 @@ export const PROJECT_STORE: Project[] = [
     degree: 'B.Tech',
     abstract: 'An advanced educational platform enabling instructors to upload courses and students to track their learning progress.',
     deliveryDays: 15,
-    image: 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?q=80&w=800&auto=format&fit=crop',
+    image: '/unsplash/img_5dbbc6f433.webp',
     isFree: false 
   },
   { 
@@ -144,7 +144,7 @@ export const PROJECT_STORE: Project[] = [
     degree: 'B.Tech',
     abstract: 'A responsive chat application supporting private messaging, group chats, and real-time typing indicators.',
     deliveryDays: 10,
-    image: 'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?q=80&w=800&auto=format&fit=crop',
+    image: '/unsplash/img_d702553f17.webp',
     isFree: false 
   },
   { 
@@ -157,7 +157,7 @@ export const PROJECT_STORE: Project[] = [
     degree: 'B.Tech',
     abstract: 'A modern job portal that utilizes Natural Language Processing to automatically extract and score candidates based on their resumes.',
     deliveryDays: 14,
-    image: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=800&auto=format&fit=crop',
+    image: '/unsplash/img_a8aafbab27.webp',
     isFree: false 
   },
   { 
@@ -170,7 +170,7 @@ export const PROJECT_STORE: Project[] = [
     degree: 'B.Tech',
     abstract: 'A Point-of-Sale software designed for restaurants to handle table bookings, order management, and invoicing.',
     deliveryDays: 10,
-    image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=800&auto=format&fit=crop',
+    image: '/unsplash/img_7cc2ce3281.webp',
     isFree: false 
   },
 
@@ -185,7 +185,7 @@ export const PROJECT_STORE: Project[] = [
     degree: 'B.Tech',
     abstract: 'A deep learning model utilizing Convolutional Neural Networks (CNNs) to accurately classify handwritten digits from the MNIST dataset.',
     deliveryDays: 5,
-    image: 'https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?q=80&w=800&auto=format&fit=crop',
+    image: '/unsplash/img_344660f354.webp',
     isFree: true,
     features: ['CNN Architecture', 'Model Checkpointing', 'Accuracy Visualization', 'Interactive Canvas Input']
   },
@@ -199,7 +199,7 @@ export const PROJECT_STORE: Project[] = [
     degree: 'B.Tech',
     abstract: 'A Natural Language Processing tool that uses Naive Bayes classification to filter out spam emails effectively.',
     deliveryDays: 4,
-    image: 'https://images.unsplash.com/photo-1557200134-90327ee9fafa?q=80&w=800&auto=format&fit=crop',
+    image: '/unsplash/img_7d15359d08.webp',
     isFree: false 
   },
   { 
@@ -212,7 +212,7 @@ export const PROJECT_STORE: Project[] = [
     degree: 'B.Tech',
     abstract: 'A collaborative and content-based filtering system that suggests movies based on user preferences and viewing history.',
     deliveryDays: 6,
-    image: 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=800&auto=format&fit=crop',
+    image: '/unsplash/img_094d64ea43.webp',
     isFree: false 
   },
   { 
@@ -225,7 +225,7 @@ export const PROJECT_STORE: Project[] = [
     degree: 'B.Tech',
     abstract: 'An end-to-end machine learning project deploying regression models to predict real estate prices based on various housing features.',
     deliveryDays: 5,
-    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=800&auto=format&fit=crop',
+    image: '/unsplash/img_369627a733.webp',
     isFree: false 
   },
   { 
@@ -238,7 +238,7 @@ export const PROJECT_STORE: Project[] = [
     degree: 'B.Tech',
     abstract: 'A predictive analytics dashboard helping telecom companies identify customers at high risk of churning using XGBoost.',
     deliveryDays: 7,
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop',
+    image: '/unsplash/img_8e8681fb93.webp',
     isFree: false 
   },
   { 
@@ -251,7 +251,7 @@ export const PROJECT_STORE: Project[] = [
     degree: 'M.Tech',
     abstract: 'An advanced computer vision system capable of analyzing X-Ray and MRI scans to assist doctors in identifying anomalies like tumors.',
     deliveryDays: 16,
-    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=800&auto=format&fit=crop',
+    image: '/unsplash/img_1557a0dda4.webp',
     isFree: false 
   },
   { 
@@ -264,7 +264,7 @@ export const PROJECT_STORE: Project[] = [
     degree: 'B.Tech',
     abstract: 'An automated attendance solution using facial recognition algorithms to verify student identities and log entries securely.',
     deliveryDays: 12,
-    image: 'https://images.unsplash.com/photo-1507146153580-69a1fe6d8aa1?q=80&w=800&auto=format&fit=crop',
+    image: '/unsplash/img_b187b6a1bc.webp',
     isFree: false 
   },
   { 
@@ -277,7 +277,7 @@ export const PROJECT_STORE: Project[] = [
     degree: 'B.Tech',
     abstract: 'A time-series forecasting application employing Long Short-Term Memory networks to predict short-term stock market trends.',
     deliveryDays: 14,
-    image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=800&auto=format&fit=crop',
+    image: '/unsplash/img_5dacf5f452.webp',
     isFree: false 
   },
   { 
@@ -290,7 +290,7 @@ export const PROJECT_STORE: Project[] = [
     degree: 'B.Tech',
     abstract: 'A live dashboard that scrapes social media data and visualizes public sentiment towards specific brands or keywords.',
     deliveryDays: 10,
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop',
+    image: '/unsplash/img_8e8681fb93.webp',
     isFree: false 
   },
   { 
@@ -303,7 +303,7 @@ export const PROJECT_STORE: Project[] = [
     degree: 'M.Tech',
     abstract: 'A real-time security surveillance system leveraging YOLO models to detect unauthorized intrusions and send automated alerts.',
     deliveryDays: 18,
-    image: 'https://images.unsplash.com/photo-1557597774-9d273605dfa9?q=80&w=800&auto=format&fit=crop',
+    image: '/unsplash/img_1aaef66200.webp',
     isFree: false 
   },
 
@@ -318,7 +318,7 @@ export const PROJECT_STORE: Project[] = [
     degree: 'B.Tech',
     abstract: 'A fundamental embedded systems project teaching GPIO control, delay functions, and basic C++ programming using Arduino.',
     deliveryDays: 2,
-    image: 'https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?q=80&w=800&auto=format&fit=crop',
+    image: '/unsplash/img_eea418f810.webp',
     isFree: true,
     features: ['Code Documentation', 'Circuit Diagram', 'Simulation Support', 'Hardware Guide']
   },
@@ -332,7 +332,7 @@ export const PROJECT_STORE: Project[] = [
     degree: 'B.Tech',
     abstract: 'A digital weather station using DHT11 sensors to read environmental data and display it in real-time on a 16x2 LCD screen.',
     deliveryDays: 4,
-    image: 'https://images.unsplash.com/photo-1616423640778-28d1b53229bd?q=80&w=800&auto=format&fit=crop',
+    image: '/unsplash/img_d419961f1a.webp',
     isFree: false 
   },
   { 
@@ -345,7 +345,7 @@ export const PROJECT_STORE: Project[] = [
     degree: 'B.Tech',
     abstract: 'A mobile robotics project demonstrating motor driver interfacing and infrared remote decoding for wireless vehicle control.',
     deliveryDays: 6,
-    image: 'https://images.unsplash.com/photo-1527443154391-507e9dc6c5cc?q=80&w=800&auto=format&fit=crop',
+    image: '/unsplash/img_4d22dbb73e.webp',
     isFree: false 
   },
   { 
@@ -358,7 +358,7 @@ export const PROJECT_STORE: Project[] = [
     degree: 'B.Tech',
     abstract: 'A complete IoT ecosystem allowing users to control and monitor home appliances remotely using a mobile app via MQTT protocols.',
     deliveryDays: 14,
-    image: 'https://images.unsplash.com/photo-1558002038-1055907df827?q=80&w=800&auto=format&fit=crop',
+    image: '/unsplash/img_9126c1b66b.webp',
     isFree: false 
   },
   { 
@@ -371,7 +371,7 @@ export const PROJECT_STORE: Project[] = [
     degree: 'M.Tech',
     abstract: 'Implementation of high-speed digital filters (FIR/IIR) on FPGA boards to process real-time audio and communication signals.',
     deliveryDays: 15,
-    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop',
+    image: '/unsplash/img_ecf13dd998.webp',
     isFree: false 
   },
   { 
@@ -411,7 +411,7 @@ export const PROJECT_STORE: Project[] = [
     degree: 'B.Tech',
     abstract: 'A hardware circuit designed to safely monitor battery voltage levels and display the charging state using LED indicators.',
     deliveryDays: 4,
-    image: 'https://images.unsplash.com/photo-1593941707882-a5bba14938c7?q=80&w=800&auto=format&fit=crop',
+    image: '/unsplash/img_0786e48de6.webp',
     isFree: true,
     features: ['Hardware Schematic', 'Breadboard Layout', 'Safety Analysis', 'C++ Logic']
   },
@@ -451,7 +451,7 @@ export const PROJECT_STORE: Project[] = [
     degree: 'M.Tech',
     abstract: 'A MATLAB simulation model integrating fast-charging converter topologies and IoT-based grid load monitoring for Electric Vehicles.',
     deliveryDays: 16,
-    image: 'https://images.unsplash.com/photo-1593941707882-a5bba14938c7?q=80&w=800&auto=format&fit=crop',
+    image: '/unsplash/img_0786e48de6.webp',
     isFree: false 
   },
   { 
@@ -464,7 +464,7 @@ export const PROJECT_STORE: Project[] = [
     degree: 'M.Tech',
     abstract: 'An advanced simulation analyzing power distribution, fault detection, and load balancing across a decentralized micro-grid system.',
     deliveryDays: 20,
-    image: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=800&auto=format&fit=crop',
+    image: '/unsplash/img_e1d11edc09.webp',
     isFree: false 
   },
   { 
@@ -477,7 +477,7 @@ export const PROJECT_STORE: Project[] = [
     degree: 'B.Tech',
     abstract: 'A practical IoT solution to monitor domestic power consumption in real-time, providing usage analytics and anomaly alerts.',
     deliveryDays: 10,
-    image: 'https://images.unsplash.com/photo-1558002038-1055907df827?q=80&w=800&auto=format&fit=crop',
+    image: '/unsplash/img_9126c1b66b.webp',
     isFree: false 
   },
 
@@ -492,7 +492,7 @@ export const PROJECT_STORE: Project[] = [
     degree: 'B.Tech',
     abstract: 'A comprehensive 3D CAD design and stress analysis of a hydraulic jack system, optimizing for payload capacity and safety factors.',
     deliveryDays: 5,
-    image: 'https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=800&auto=format&fit=crop',
+    image: '/unsplash/img_a8226ab280.webp',
     isFree: true,
     features: ['SolidWorks Assembly', 'FEA Analysis', 'Drafting Sheets', 'Material Selection Guide']
   },
@@ -506,7 +506,7 @@ export const PROJECT_STORE: Project[] = [
     degree: 'B.Tech',
     abstract: 'Kinematic and dynamic modeling of a compound gear train to analyze torque multiplication and rotational velocities.',
     deliveryDays: 6,
-    image: 'https://images.unsplash.com/photo-1581092162384-8987c1d64718?q=80&w=800&auto=format&fit=crop',
+    image: '/unsplash/img_6d4ac61ef8.webp',
     isFree: false 
   },
   { 
@@ -519,7 +519,7 @@ export const PROJECT_STORE: Project[] = [
     degree: 'M.Tech',
     abstract: 'An interdisciplinary robotics project implementing SLAM mapping and pathfinding on a custom-designed differential drive chassis.',
     deliveryDays: 20,
-    image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=800&auto=format&fit=crop',
+    image: '/unsplash/img_29ff8fbdc4.webp',
     isFree: false 
   },
   { 
@@ -532,7 +532,7 @@ export const PROJECT_STORE: Project[] = [
     degree: 'M.Tech',
     abstract: 'A fully functional 6-Degree-of-Freedom robotic manipulator utilizing 3D-printed parts and servo motors for pick-and-place tasks.',
     deliveryDays: 15,
-    image: 'https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?q=80&w=800&auto=format&fit=crop',
+    image: '/unsplash/img_778a5082ae.webp',
     isFree: false 
   },
   { 
@@ -545,7 +545,7 @@ export const PROJECT_STORE: Project[] = [
     degree: 'M.Tech',
     abstract: 'Structural design, aerodynamic analysis, and hardware assembly of a stable drone capable of autonomous waypoint navigation.',
     deliveryDays: 21,
-    image: 'https://images.unsplash.com/photo-1527977966376-1c8408f9f108?q=80&w=800&auto=format&fit=crop',
+    image: '/unsplash/img_9de501f2ed.webp',
     isFree: false 
   },
   { 
@@ -558,7 +558,7 @@ export const PROJECT_STORE: Project[] = [
     degree: 'B.Tech',
     abstract: 'A 2-axis plotter machine utilizing stepper motors, belts, and GRBL firmware to convert G-Code into precise physical sketches.',
     deliveryDays: 14,
-    image: 'https://images.unsplash.com/photo-1581092335397-9583eb92d232?q=80&w=800&auto=format&fit=crop',
+    image: '/unsplash/img_c5f7a51470.webp',
     isFree: false 
   },
 
@@ -573,7 +573,7 @@ export const PROJECT_STORE: Project[] = [
     degree: 'B.Tech',
     abstract: 'A Python script utilizing structural engineering principles to calculate and plot shear force and bending moment diagrams for beams.',
     deliveryDays: 4,
-    image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800&auto=format&fit=crop',
+    image: '/unsplash/img_772746946a.webp',
     isFree: true,
     features: ['SFD/BMD Plotting', 'Point & Distributed Loads', 'Python Source Code', 'Engineering Validation']
   },
@@ -587,7 +587,7 @@ export const PROJECT_STORE: Project[] = [
     degree: 'B.Tech',
     abstract: 'A complete architectural drafting package containing 2D floor plans, elevations, and cross-sections for a modern residential building.',
     deliveryDays: 3,
-    image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800&auto=format&fit=crop',
+    image: '/unsplash/img_772746946a.webp',
     isFree: false 
   },
   { 
@@ -612,7 +612,7 @@ export const PROJECT_STORE: Project[] = [
     degree: 'M.Tech',
     abstract: 'Development of a custom Finite Element Method solver in Python to compute stresses and deformations in 2D trusses and frames.',
     deliveryDays: 16,
-    image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800&auto=format&fit=crop',
+    image: '/unsplash/img_772746946a.webp',
     isFree: false 
   },
   { 
@@ -640,7 +640,7 @@ export const PROJECT_STORE: Project[] = [
     price: 6000,
     abstract: 'A comprehensive data analysis project exploring factors driving employee turnover and recommending retention strategies.',
     deliveryDays: 10,
-    image: 'https://images.unsplash.com/photo-1552581234-26160f608093?q=80&w=800&auto=format&fit=crop',
+    image: '/unsplash/img_c5712caf01.webp',
     isFree: true,
     features: ['Tableau Dashboard', 'Statistical Analysis', 'Action Plan Report']
   },
@@ -667,7 +667,7 @@ export const PROJECT_STORE: Project[] = [
     price: 9000,
     abstract: 'A quantitative finance project simulating market volatility to assess the Value at Risk (VaR) for investment portfolios.',
     deliveryDays: 14,
-    image: 'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=80&w=800&auto=format&fit=crop',
+    image: '/unsplash/img_d19a9f1df6.webp',
     isFree: false 
   }
 ];

@@ -13,7 +13,7 @@ export const aiCourses = [
     title: 'Generative AI Foundations',
     category: 'genai',
     skills: ['Large Language Model Architecture', 'Prompt Engineering & Design', 'RAG Pipeline Construction', 'AI Safety & Ethics'],
-    heroImage: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2070&auto=format&fit=crop',
+    heroImage: '/unsplash/img_058697314a.webp',
     tagline: 'Understand how LLMs work, master prompt engineering, and build your first AI-powered applications from the ground up.',
     stats: {
       learningMode: 'Online',
@@ -84,7 +84,7 @@ export const aiCourses = [
     title: 'AI-Powered Application Development',
     category: 'genai',
     skills: ['OpenAI & Gemini API Integration', 'Full-Stack AI App Architecture', 'Chatbot & Agent Development', 'AI Workflow Automation'],
-    heroImage: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2070&auto=format&fit=crop',
+    heroImage: '/unsplash/img_ea04859d91.webp',
     tagline: 'Build production-grade, full-stack applications powered by AI — from intelligent chatbots to automated workflows.',
     stats: {
       learningMode: 'Online',
@@ -154,7 +154,7 @@ export const aiCourses = [
     title: 'Enterprise Machine Learning',
     category: 'ml',
     skills: ['Supervised & Unsupervised Learning', 'Feature Engineering', 'Model Selection & Tuning', 'Scikit-Learn & XGBoost'],
-    heroImage: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=2070&auto=format&fit=crop',
+    heroImage: '/unsplash/img_585e6d96a2.webp',
     tagline: 'Master the full ML pipeline — from data preprocessing to deploying production models at enterprise scale.',
     stats: {
       learningMode: 'Online',
@@ -200,7 +200,7 @@ export const aiCourses = [
     title: 'Deep Learning & Neural Networks',
     category: 'ml',
     skills: ['Neural Network Architecture', 'TensorFlow & PyTorch', 'CNNs & RNNs', 'Transfer Learning'],
-    heroImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2070&auto=format&fit=crop',
+    heroImage: '/unsplash/img_cd76b1b6ca.webp',
     tagline: 'Dive into the mathematics and implementation of neural networks powering modern AI breakthroughs.',
     stats: {
       learningMode: 'Online',
@@ -246,7 +246,7 @@ export const aiCourses = [
     title: 'Computer Vision & NLP',
     category: 'vision',
     skills: ['Image Processing with OpenCV', 'Object Detection (YOLO)', 'Text Analytics & Sentiment Analysis', 'Hugging Face Transformers'],
-    heroImage: 'https://images.unsplash.com/photo-1535378917042-10a22c95931a?q=80&w=2070&auto=format&fit=crop',
+    heroImage: '/unsplash/img_3d9624c9a6.webp',
     tagline: 'Master the two most impactful domains of applied AI — teaching machines to see and understand language.',
     stats: {
       learningMode: 'Online',
@@ -292,7 +292,7 @@ export const aiCourses = [
     title: 'MLOps & AI Infrastructure',
     category: 'ops',
     skills: ['ML Pipeline Automation', 'Docker & Kubernetes for ML', 'Model Versioning & Registry', 'CI/CD for AI Systems'],
-    heroImage: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2070&auto=format&fit=crop',
+    heroImage: '/unsplash/img_28a68f2b19.webp',
     tagline: 'Bridge the gap between ML experimentation and production — learn to operationalize AI at scale.',
     stats: {
       learningMode: 'Online',

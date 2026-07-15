@@ -6,8 +6,7 @@ export function BusinessHero() {
     <section className="relative min-h-screen flex items-center overflow-hidden bg-[#0A0506]">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src="/business-hero.png" 
+        <img fetchPriority="high" decoding="async" src="/business-hero.webp" 
           alt="Modern corporate enterprise tech headquarters" 
           className="w-full h-full object-cover object-center opacity-40"
         />

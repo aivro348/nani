@@ -38,8 +38,7 @@ export function ProjectDetailsPage() {
         >
           {/* Header Image */}
           <div className="relative h-64 sm:h-80 w-full bg-slate-900">
-            <img 
-              src={project.image} 
+            <img loading="lazy" decoding="async" src={project.image} 
               alt={project.title} 
               className="w-full h-full object-cover opacity-80"
             />

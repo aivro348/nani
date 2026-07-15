@@ -90,7 +90,7 @@ export function CourseDetailsPage() {
             <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.2 }} className="relative mx-auto w-full max-w-lg lg:ml-auto">
               <div className="bg-white rounded-2xl p-2 shadow-2xl">
                 <div className="relative rounded-xl overflow-hidden aspect-[4/3]">
-                  <img src={course.heroImage} alt={course.title} className="w-full h-full object-cover" />
+                  <img loading="lazy" decoding="async" src={course.heroImage} alt={course.title} className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-black/40" />
                   
                   {/* Red Pill Overlay */}

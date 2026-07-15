@@ -12,7 +12,7 @@ export function AboutUsPage() {
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 bg-slate-900 text-white overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center opacity-20" />
+        <div className="absolute inset-0 bg-[url('/unsplash/img_a15e9c1b8a.webp')] bg-cover bg-center opacity-20" />
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-900/50" />
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

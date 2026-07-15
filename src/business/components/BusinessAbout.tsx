@@ -49,8 +49,7 @@ export function BusinessAbout() {
             className="relative"
           >
             <div className="absolute -inset-4 bg-gradient-to-r from-[var(--primary-gold)]/20 to-[var(--primary-maroon)]/10 rounded-[2.5rem] blur-xl" />
-            <img 
-              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1600" 
+            <img loading="lazy" decoding="async" src="/unsplash/img_0b5d0c4c35.webp" 
               alt="Team collaborating" 
               className="relative w-full h-[500px] object-cover rounded-[2.5rem] border border-slate-100 shadow-2xl"
             />

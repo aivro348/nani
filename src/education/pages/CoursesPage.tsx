@@ -40,7 +40,7 @@ export function CoursesPage() {
       <section className="relative w-full min-h-[600px] xl:min-h-[700px] flex items-center overflow-hidden">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
-          <img src="/hero-1.png" alt="Students collaborating" className="w-full h-full object-cover object-center" />
+          <img fetchPriority="high" decoding="async" src="/hero-1.webp" alt="Students collaborating" className="w-full h-full object-cover object-center" />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/80 to-transparent" />
           <div className="absolute inset-0 bg-black/40" />
         </div>

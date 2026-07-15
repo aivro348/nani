@@ -40,6 +40,7 @@ export function Navbar() {
         id: 'ai-tools-dropdown',
         label: 'AI Tools',
         subItems: [
+          { label: 'Ultimate AI Tools Directory', path: '/all-ai-tools' },
           { label: 'ChatGPT', path: 'https://chat.openai.com' },
           { label: 'Claude AI', path: 'https://claude.ai' },
           { label: 'Google Gemini', path: 'https://gemini.google.com' },
@@ -240,7 +241,10 @@ export function Navbar() {
                 return (
                   <div key={item.id} className="relative group">
                     <button
-                      onClick={() => item.path && navigateToPage(item.path)}
+                      onClick={() => {
+                        if (item.path) navigateToPage(item.path);
+                        else if (hasSubItems) navigateToPage(item.subItems![0].path);
+                      }}
                       className={`relative px-1.5 lg:px-2.5 py-2 flex items-center gap-0.5 text-[10px] lg:text-xs font-bold uppercase tracking-wider transition-colors duration-300 ${isActive ? 'text-[var(--primary-gold)]' : 'text-gray-200 hover:text-white'
                         }`}
                     >
@@ -310,8 +314,7 @@ export function Navbar() {
                         if (item.path) {
                           navigateToPage(item.path);
                         } else if (hasSubItems) {
-                          // Allow mobile users to open the first subitem as a default action if no path, 
-                          // or let's just make it a non-clickable header that reveals subItems
+                          navigateToPage(item.subItems[0].path);
                         }
                       }}
                       className={`block w-full text-left px-4 py-3 rounded-lg transition-all text-base uppercase font-medium tracking-wide ${isActive

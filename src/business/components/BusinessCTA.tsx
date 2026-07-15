@@ -5,7 +5,7 @@ export function BusinessCTA() {
   return (
     <section className="py-32 px-4 bg-[#0A0506] text-white text-center relative overflow-hidden">
       {/* Premium Background */}
-      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=2500')] bg-cover bg-center opacity-20 mix-blend-screen" />
+      <div className="absolute inset-0 bg-[url('/unsplash/img_c46041f223.webp')] bg-cover bg-center opacity-20 mix-blend-screen" />
       <div className="absolute inset-0 bg-gradient-to-t from-[#0A0506] via-[#0A0506]/80 to-[#0A0506]" />
       
       {/* Brand-colored orbs */}

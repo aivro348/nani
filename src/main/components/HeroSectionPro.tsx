@@ -21,8 +21,7 @@ export function HeroSectionPro({ setActiveSection }: HeroSectionProProps) {
       
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src="/scaro_sectors_wide_banner.png" 
+        <img fetchPriority="high" decoding="async" src="/scaro_sectors_wide_banner.webp" 
           alt="Scaro Technologies Global Network" 
           className="w-full h-full object-cover object-center opacity-60"
         />

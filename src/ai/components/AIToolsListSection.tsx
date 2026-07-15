@@ -2,66 +2,66 @@ import { ExternalLink, Sparkles, Code, Palette, FileText, Brain, Video, Music, D
 import { motion } from 'motion/react';
 import { useState, useMemo, memo } from 'react';
 import { useNavigate } from 'react-router';
-import lovableLogo from '@/shared/assets/tools/lovable.png';
-import boltLogo from '@/shared/assets/tools/bolt.png';
-import github_copilotLogo from '@/shared/assets/tools/github_copilot.png';
-import cursorLogo from '@/shared/assets/tools/cursor.png';
-import replitLogo from '@/shared/assets/tools/replit.png';
+import lovableLogo from '@/shared/assets/tools/lovable.webp';
+import boltLogo from '@/shared/assets/tools/bolt.webp';
+import github_copilotLogo from '@/shared/assets/tools/github_copilot.webp';
+import cursorLogo from '@/shared/assets/tools/cursor.webp';
+import replitLogo from '@/shared/assets/tools/replit.webp';
 import codeiumLogo from '@/shared/assets/tools/codeium.png';
-import tabnineLogo from '@/shared/assets/tools/tabnine.png';
-import amazon_codewhispererLogo from '@/shared/assets/tools/amazon_codewhisperer.png';
-import piecesLogo from '@/shared/assets/tools/pieces.png';
-import codexLogo from '@/shared/assets/tools/codex.png';
-import figLogo from '@/shared/assets/tools/fig.png';
-import sourcegraph_codyLogo from '@/shared/assets/tools/sourcegraph_cody.png';
-import chatgptLogo from '@/shared/assets/tools/chatgpt.png';
+import tabnineLogo from '@/shared/assets/tools/tabnine.webp';
+import amazon_codewhispererLogo from '@/shared/assets/tools/amazon_codewhisperer.webp';
+import piecesLogo from '@/shared/assets/tools/pieces.webp';
+import codexLogo from '@/shared/assets/tools/codex.webp';
+import figLogo from '@/shared/assets/tools/fig.webp';
+import sourcegraph_codyLogo from '@/shared/assets/tools/sourcegraph_cody.webp';
+import chatgptLogo from '@/shared/assets/tools/chatgpt.webp';
 import google_geminiLogo from '@/shared/assets/tools/google_gemini.png';
-import claudeLogo from '@/shared/assets/tools/claude.png';
+import claudeLogo from '@/shared/assets/tools/claude.webp';
 import microsoft_copilotLogo from '@/shared/assets/tools/microsoft_copilot.png';
 import perplexityLogo from '@/shared/assets/tools/perplexity.png';
-import grammarlyLogo from '@/shared/assets/tools/grammarly.png';
-import quillbotLogo from '@/shared/assets/tools/quillbot.png';
-import jasperLogo from '@/shared/assets/tools/jasper.png';
-import copyaiLogo from '@/shared/assets/tools/copyai.png';
-import notion_aiLogo from '@/shared/assets/tools/notion_ai.png';
+import grammarlyLogo from '@/shared/assets/tools/grammarly.webp';
+import quillbotLogo from '@/shared/assets/tools/quillbot.webp';
+import jasperLogo from '@/shared/assets/tools/jasper.webp';
+import copyaiLogo from '@/shared/assets/tools/copyai.webp';
+import notion_aiLogo from '@/shared/assets/tools/notion_ai.webp';
 import canvaLogo from '@/shared/assets/tools/canva.png';
-import midjourneyLogo from '@/shared/assets/tools/midjourney.png';
-import dalle3Logo from '@/shared/assets/tools/dalle3.png';
-import leonardoLogo from '@/shared/assets/tools/leonardo.png';
-import stable_diffusionLogo from '@/shared/assets/tools/stable_diffusion.png';
+import midjourneyLogo from '@/shared/assets/tools/midjourney.webp';
+import dalle3Logo from '@/shared/assets/tools/dalle3.webp';
+import leonardoLogo from '@/shared/assets/tools/leonardo.webp';
+import stable_diffusionLogo from '@/shared/assets/tools/stable_diffusion.webp';
 import adobe_fireflyLogo from '@/shared/assets/tools/adobe_firefly.png';
-import figma_aiLogo from '@/shared/assets/tools/figma_ai.png';
-import removebgLogo from '@/shared/assets/tools/removebg.png';
-import runwayLogo from '@/shared/assets/tools/runway.png';
+import figma_aiLogo from '@/shared/assets/tools/figma_ai.webp';
+import removebgLogo from '@/shared/assets/tools/removebg.webp';
+import runwayLogo from '@/shared/assets/tools/runway.webp';
 import elevenlabsLogo from '@/shared/assets/tools/elevenlabs.png';
-import descriptLogo from '@/shared/assets/tools/descript.png';
+import descriptLogo from '@/shared/assets/tools/descript.webp';
 import pictoryLogo from '@/shared/assets/tools/pictory.png';
-import synthesiaLogo from '@/shared/assets/tools/synthesia.png';
-import murfLogo from '@/shared/assets/tools/murf.png';
-import consensusLogo from '@/shared/assets/tools/consensus.png';
-import elicitLogo from '@/shared/assets/tools/elicit.png';
-import sciteLogo from '@/shared/assets/tools/scite.png';
-import explainpaperLogo from '@/shared/assets/tools/explainpaper.png';
+import synthesiaLogo from '@/shared/assets/tools/synthesia.webp';
+import murfLogo from '@/shared/assets/tools/murf.webp';
+import consensusLogo from '@/shared/assets/tools/consensus.webp';
+import elicitLogo from '@/shared/assets/tools/elicit.webp';
+import sciteLogo from '@/shared/assets/tools/scite.webp';
+import explainpaperLogo from '@/shared/assets/tools/explainpaper.webp';
 import quizletLogo from '@/shared/assets/tools/quizlet.png';
 import wolframLogo from '@/shared/assets/tools/wolfram.png';
-import scholarcyLogo from '@/shared/assets/tools/scholarcy.png';
-import semantic_scholarLogo from '@/shared/assets/tools/semantic_scholar.png';
+import scholarcyLogo from '@/shared/assets/tools/scholarcy.webp';
+import semantic_scholarLogo from '@/shared/assets/tools/semantic_scholar.webp';
 import gammaLogo from '@/shared/assets/tools/gamma.png';
-import beautiful_aiLogo from '@/shared/assets/tools/beautiful_ai.png';
-import slidesgoLogo from '@/shared/assets/tools/slidesgo.png';
-import tomeLogo from '@/shared/assets/tools/tome.png';
-import otterLogo from '@/shared/assets/tools/otter.png';
-import todoistLogo from '@/shared/assets/tools/todoist.png';
+import beautiful_aiLogo from '@/shared/assets/tools/beautiful_ai.webp';
+import slidesgoLogo from '@/shared/assets/tools/slidesgo.webp';
+import tomeLogo from '@/shared/assets/tools/tome.webp';
+import otterLogo from '@/shared/assets/tools/otter.webp';
+import todoistLogo from '@/shared/assets/tools/todoist.webp';
 import juliusLogo from '@/shared/assets/tools/julius.png';
 import tableauLogo from '@/shared/assets/tools/tableau.png';
-import datarobotLogo from '@/shared/assets/tools/datarobot.png';
-import monkeylearnLogo from '@/shared/assets/tools/monkeylearn.png';
-import deeplLogo from '@/shared/assets/tools/deepl.png';
-import duolingoLogo from '@/shared/assets/tools/duolingo.png';
+import datarobotLogo from '@/shared/assets/tools/datarobot.webp';
+import monkeylearnLogo from '@/shared/assets/tools/monkeylearn.webp';
+import deeplLogo from '@/shared/assets/tools/deepl.webp';
+import duolingoLogo from '@/shared/assets/tools/duolingo.webp';
 
 
 // AI Tools Database
-const AI_TOOLS_DATA = [
+export const AI_TOOLS_DATA = [
   // Coding & Development - 12 tools
     {
     name: 'Lovable.ai',
@@ -699,6 +699,7 @@ export const AIToolsListSection = memo(function AIToolsListSection({ previewOnly
   const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState('');
+  const [visibleCount, setVisibleCount] = useState(12);
 
   const categories = useMemo(() => [
     { id: 'All', name: 'All Tools', count: AI_TOOLS_DATA.length },
@@ -721,9 +722,14 @@ export const AIToolsListSection = memo(function AIToolsListSection({ previewOnly
     });
   }, [selectedCategory, searchQuery]);
 
+  // Reset pagination on search or filter change
+  useMemo(() => {
+    setVisibleCount(12);
+  }, [selectedCategory, searchQuery]);
+
   const displayTools = useMemo(() => {
-    return previewOnly ? filteredTools.slice(0, 8) : filteredTools;
-  }, [filteredTools, previewOnly]);
+    return previewOnly ? filteredTools.slice(0, 8) : filteredTools.slice(0, visibleCount);
+  }, [filteredTools, previewOnly, visibleCount]);
 
   return (
     <div className="py-20 bg-page-bg relative overflow-hidden theme-transition">
@@ -929,6 +935,18 @@ export const AIToolsListSection = memo(function AIToolsListSection({ previewOnly
         {filteredTools.length === 0 && (
           <div className="text-center py-12">
             <p className="text-text-muted">No tools found in this category.</p>
+          </div>
+        )}
+
+        {/* Load More Button */}
+        {!previewOnly && visibleCount < filteredTools.length && (
+          <div className="mt-12 text-center">
+            <button
+              onClick={() => setVisibleCount(prev => prev + 12)}
+              className="px-8 py-3 bg-surface hover:bg-surface-hover border border-surface-border text-heading rounded-xl font-semibold transition-all shadow-lg hover:shadow-xl hover:-translate-y-1"
+            >
+              Load More Tools ({filteredTools.length - visibleCount} remaining)
+            </button>
           </div>
         )}
 

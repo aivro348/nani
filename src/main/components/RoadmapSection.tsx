@@ -421,21 +421,21 @@ export const courses = [
 ];
 
 export const COURSE_VISUALS: Record<string, { gradient: string; pattern: string; imageUrl: string }> = {
-  java: { gradient: 'from-red-600 to-orange-600', pattern: 'dots', imageUrl: '/java.png' },
-  python: { gradient: 'from-blue-600 to-indigo-600', pattern: 'grid', imageUrl: '/python.png' },
-  frontend: { gradient: 'from-cyan-500 to-blue-500', pattern: 'waves', imageUrl: '/front.png' },
-  testing: { gradient: 'from-emerald-500 to-teal-600', pattern: 'plus', imageUrl: '/software testing.png' },
-  iot: { gradient: 'from-amber-500 to-orange-500', pattern: 'circuit', imageUrl: '/iot.png' },
-  embedded: { gradient: 'from-slate-700 to-slate-900', pattern: 'hex', imageUrl: '/embedded.png' },
-  vlsi: { gradient: 'from-purple-600 to-fuchsia-600', pattern: 'lines', imageUrl: '/vlsi.png' },
-  autocad: { gradient: 'from-indigo-500 to-purple-500', pattern: 'blueprint', imageUrl: '/autocad.png' },
+  java: { gradient: 'from-red-600 to-orange-600', pattern: 'dots', imageUrl: '/java.webp' },
+  python: { gradient: 'from-blue-600 to-indigo-600', pattern: 'grid', imageUrl: '/python.webp' },
+  frontend: { gradient: 'from-cyan-500 to-blue-500', pattern: 'waves', imageUrl: '/front.webp' },
+  testing: { gradient: 'from-emerald-500 to-teal-600', pattern: 'plus', imageUrl: '/software testing.webp' },
+  iot: { gradient: 'from-amber-500 to-orange-500', pattern: 'circuit', imageUrl: '/iot.webp' },
+  embedded: { gradient: 'from-slate-700 to-slate-900', pattern: 'hex', imageUrl: '/embedded.webp' },
+  vlsi: { gradient: 'from-purple-600 to-fuchsia-600', pattern: 'lines', imageUrl: '/vlsi.webp' },
+  autocad: { gradient: 'from-indigo-500 to-purple-500', pattern: 'blueprint', imageUrl: '/autocad.webp' },
 };
 
 function CoursePattern({ imageUrl }: { imageUrl?: string }) {
   if (imageUrl) {
     return (
       <div className="absolute inset-0 overflow-hidden">
-        <img src={imageUrl} alt="" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+        <img loading="lazy" decoding="async" src={imageUrl} alt="" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
       </div>
     );
   }

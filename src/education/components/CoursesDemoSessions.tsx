@@ -3,10 +3,10 @@ import { Play } from 'lucide-react';
 
 export function CoursesDemoSessions() {
   const sessions = [
-    { title: 'Full Stack Development Demo', tag: 'Web Dev', img: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=800&auto=format&fit=crop', targetId: 'programs-section' },
-    { title: 'Introduction to PCB Design', tag: 'Electronics', img: 'https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?q=80&w=800&auto=format&fit=crop', targetId: 'programs-section' },
-    { title: 'Machine Learning Basics', tag: 'AI', img: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=800&auto=format&fit=crop', targetId: 'programs-section' },
-    { title: 'Embedded Systems Workshop', tag: 'Hardware', img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop', targetId: 'programs-section' }
+    { title: 'Full Stack Development Demo', tag: 'Web Dev', img: '/unsplash/img_72af8855b0.webp', targetId: 'programs-section' },
+    { title: 'Introduction to PCB Design', tag: 'Electronics', img: '/unsplash/img_eea418f810.webp', targetId: 'programs-section' },
+    { title: 'Machine Learning Basics', tag: 'AI', img: '/unsplash/img_04ac10ca00.webp', targetId: 'programs-section' },
+    { title: 'Embedded Systems Workshop', tag: 'Hardware', img: '/unsplash/img_ecf13dd998.webp', targetId: 'programs-section' }
   ];
 
   const handleSessionClick = (id: string) => {
@@ -59,7 +59,7 @@ export function CoursesDemoSessions() {
                   className="snap-start flex-none w-72 sm:w-80 group cursor-pointer"
                 >
                   <div className="relative rounded-2xl overflow-hidden shadow-lg border border-slate-200">
-                    <img src={session.img} alt={session.title} className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-700" />
+                    <img loading="lazy" decoding="async" src={session.img} alt={session.title} className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-700" />
                     
                     {/* Dark Overlay & Play Button */}
                     <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors flex items-center justify-center">

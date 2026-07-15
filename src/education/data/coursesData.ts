@@ -15,7 +15,7 @@ export const courses = [
     title: 'Python Programming Mastery',
     category: 'cse',
     skills: ['Python Fundamentals', 'Data Structures & Algorithms', 'Web Development with Django', 'API Development'],
-    heroImage: '/python-hero.png',
+    heroImage: '/python-hero.webp',
     tagline: 'Learn Python programming from basics to advanced concepts and gain hands-on experience with real-time projects and practical applications.',
     stats: {
       learningMode: 'Online',
@@ -172,7 +172,7 @@ export const courses = [
     title: 'Java Full Stack Development',
     category: 'cse',
     skills: ['HTML5, CSS3 & JavaScript', 'React.js & Node.js', 'Database Integration', 'Cloud Deployment'],
-    heroImage: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2070&auto=format&fit=crop',
+    heroImage: '/unsplash/img_0751239d67.webp',
     tagline: 'Master enterprise Java, Spring Boot, and modern front-end frameworks to build scalable full-stack applications.',
     stats: {
       learningMode: 'Online',
@@ -202,7 +202,7 @@ export const courses = [
     title: 'C Programming Fundamentals',
     category: 'cse',
     skills: ['C Language Syntax', 'Pointers & Memory', 'Data Structures in C', 'System Programming'],
-    heroImage: 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=2069&auto=format&fit=crop',
+    heroImage: '/unsplash/img_7cc5b5c7a0.webp',
     tagline: 'Build a strong foundation in computer science with C language syntax, pointers, memory management, and data structures.',
     stats: {
       learningMode: 'Online',
@@ -226,7 +226,7 @@ export const courses = [
     title: 'Data Science & Machine Learning',
     category: 'cse',
     skills: ['Python for Data Science', 'Pandas & NumPy', 'Data Visualization', 'Statistical Analysis'],
-    heroImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop',
+    heroImage: '/unsplash/img_bb3411c922.webp',
     tagline: 'Dive deep into data analytics, statistical modeling, and machine learning using Python.',
     stats: {
       learningMode: 'Online',
@@ -250,7 +250,7 @@ export const courses = [
     title: 'Frontend Web Development',
     category: 'web',
     skills: ['HTML, CSS & JavaScript Fundamentals', 'React, Angular & Vue.js', 'Responsive UI Design', 'Projects, Deployment & SEO'],
-    heroImage: 'https://images.unsplash.com/photo-1593720213428-28a5b9e94613?q=80&w=2070&auto=format&fit=crop',
+    heroImage: '/unsplash/img_d424ff7160.webp',
     tagline: 'Craft beautiful, responsive, and interactive user interfaces.',
     stats: {
       learningMode: 'Online',
@@ -274,7 +274,7 @@ export const courses = [
     title: 'React & Advanced JavaScript',
     category: 'web',
     skills: ['Modern ES6+ JavaScript', 'React Hooks & Patterns', 'Redux State Management', 'Performance Optimization'],
-    heroImage: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=2070&auto=format&fit=crop',
+    heroImage: '/unsplash/img_fe842954c0.webp',
     tagline: 'Elevate your frontend skills with complex state management and React architecture.',
     stats: {
       learningMode: 'Online',
@@ -298,7 +298,7 @@ export const courses = [
     title: 'IoT & Embedded Systems',
     category: 'embedded',
     skills: ['Arduino & ESP32 Programming', 'Sensor Integration', 'MQTT & IoT Protocols', 'Cloud Dashboards'],
-    heroImage: 'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop',
+    heroImage: '/unsplash/img_1f9f3c2129.webp',
     tagline: 'Connect the physical world to the digital realm with smart IoT devices.',
     stats: {
       learningMode: 'Online',
@@ -346,7 +346,7 @@ export const courses = [
     title: 'VLSI Design & Verification',
     category: 'ece',
     skills: ['Digital Logic Design', 'Verilog HDL', 'RTL Simulation', 'FPGA Implementation'],
-    heroImage: 'https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?q=80&w=2069&auto=format&fit=crop',
+    heroImage: '/unsplash/img_260f49f4d9.webp',
     tagline: 'Design complex silicon chips using hardware description languages.',
     stats: {
       learningMode: 'Online',
@@ -370,7 +370,7 @@ export const courses = [
     title: 'Digital Electronics & Communication',
     category: 'ece',
     skills: ['Boolean Algebra & K-Maps', 'Sequential Circuits', 'Analog Modulation', 'Digital Comm Systems'],
-    heroImage: 'https://images.unsplash.com/photo-1601132359864-c974e79890ac?q=80&w=2071&auto=format&fit=crop',
+    heroImage: '/unsplash/img_88d49977aa.webp',
     tagline: 'Master the core of modern electronics and communication protocols.',
     stats: {
       learningMode: 'Online',
@@ -394,7 +394,7 @@ export const courses = [
     title: 'Power Systems & Electrical Machines',
     category: 'eee',
     skills: ['Power Generation Basics', 'Transformers & Motors', 'Protection Relays', 'Grid Analysis'],
-    heroImage: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=2070&auto=format&fit=crop',
+    heroImage: '/unsplash/img_5f544913cd.webp',
     tagline: 'Understand the macro-level engineering of energy generation and distribution.',
     stats: {
       learningMode: 'Online',
@@ -418,7 +418,7 @@ export const courses = [
     title: 'AutoCAD 2D & Engineering Drawing',
     category: 'civil',
     skills: ['AutoCAD 2024 Fundamentals', 'Drafting & Dimensioning', 'Civil Floor Plans', 'Mechanical Parts Drawing'],
-    heroImage: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2071&auto=format&fit=crop',
+    heroImage: '/unsplash/img_2806d1b3ea.webp',
     tagline: 'Draft professional engineering and architectural designs with precision.',
     stats: {
       learningMode: 'Online',

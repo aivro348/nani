@@ -1,15 +1,15 @@
 import { motion } from 'motion/react';
-import googleLogo from '@/shared/assets/companies/google.png';
-import microsoftLogo from '@/shared/assets/companies/microsoft.png';
-import amazonLogo from '@/shared/assets/companies/amazon.png';
-import tcsLogo from '@/shared/assets/companies/tcs.png';
-import wiproLogo from '@/shared/assets/companies/wipro.png';
-import deloitteLogo from '@/shared/assets/companies/deloitte.png';
-import ibmLogo from '@/shared/assets/companies/ibm.png';
-import cognizantLogo from '@/shared/assets/companies/cognizant.png';
-import techmahindraLogo from '@/shared/assets/companies/techmahindra.png';
-import hclLogo from '@/shared/assets/companies/hcl.png';
-import cursorLogo from '@/shared/assets/companies/cursorai.png';
+import googleLogo from '@/shared/assets/companies/google.webp';
+import microsoftLogo from '@/shared/assets/companies/microsoft.webp';
+import amazonLogo from '@/shared/assets/companies/amazon.webp';
+import tcsLogo from '@/shared/assets/companies/tcs.webp';
+import wiproLogo from '@/shared/assets/companies/wipro.webp';
+import deloitteLogo from '@/shared/assets/companies/deloitte.webp';
+import ibmLogo from '@/shared/assets/companies/ibm.webp';
+import cognizantLogo from '@/shared/assets/companies/cognizant.webp';
+import techmahindraLogo from '@/shared/assets/companies/techmahindra.webp';
+import hclLogo from '@/shared/assets/companies/hcl.webp';
+import cursorLogo from '@/shared/assets/companies/cursorai.webp';
 
 const companies = [
   { name: 'Google', logo: googleLogo },

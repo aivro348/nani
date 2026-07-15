@@ -50,8 +50,7 @@ export function AIAboutPage() {
           <div className="lg:col-span-5 flex justify-center">
             <div className="relative w-full max-w-[380px] aspect-[4/5] rounded-3xl overflow-hidden border border-white/10 group shadow-2xl">
               <div className="absolute inset-0 bg-gradient-to-t from-[#0A0506] via-transparent to-transparent z-10" />
-              <img 
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800" 
+              <img loading="lazy" decoding="async" src="/unsplash/img_427867cc48.webp" 
                 alt="Charan - Founder & Lead AI Educator" 
                 className="w-full h-full object-cover filter grayscale group-hover:filter-none transition-all duration-700"
               />

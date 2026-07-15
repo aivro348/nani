@@ -13,7 +13,7 @@ const BLOG_POSTS = [
     category: 'AI & Education',
     icon: Brain,
     color: 'from-blue-600 to-cyan-500',
-    image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800'
+    image: '/unsplash/img_1ae33772be.webp'
   },
   {
     id: 2,
@@ -25,7 +25,7 @@ const BLOG_POSTS = [
     category: 'Development',
     icon: Cpu,
     color: 'from-purple-600 to-indigo-500',
-    image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800'
+    image: '/unsplash/img_727e4663c6.webp'
   },
   {
     id: 3,
@@ -37,7 +37,7 @@ const BLOG_POSTS = [
     category: 'Sustainability',
     icon: Rocket,
     color: 'from-emerald-600 to-teal-500',
-    image: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800'
+    image: '/unsplash/img_6f576b3a4e.webp'
   },
   {
     id: 4,
@@ -49,7 +49,7 @@ const BLOG_POSTS = [
     category: 'Electrical',
     icon: TrendingUp,
     color: 'from-amber-600 to-orange-500',
-    image: 'https://images.unsplash.com/photo-1593941707874-ef25b8b4a92b?w=800'
+    image: '/unsplash/img_147375acf5.webp'
   },
   {
     id: 5,
@@ -61,7 +61,7 @@ const BLOG_POSTS = [
     category: 'Electronics',
     icon: Sparkles,
     color: 'from-rose-600 to-pink-500',
-    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800'
+    image: '/unsplash/img_49ff13ca9c.webp'
   },
   {
     id: 6,
@@ -73,7 +73,7 @@ const BLOG_POSTS = [
     category: 'Robotics',
     icon: Rocket,
     color: 'from-cyan-600 to-blue-500',
-    image: 'https://images.unsplash.com/photo-1563207153-f403bf289096?w=800'
+    image: '/unsplash/img_01106f5d8e.webp'
   },
   {
     id: 7,
@@ -125,8 +125,7 @@ export function BlogsPage() {
             <ChevronRight className="w-5 h-5 rotate-180" /> Back to Blogs
           </button>
           
-          <img 
-            src={selectedPost.image} 
+          <img loading="lazy" decoding="async" src={selectedPost.image} 
             alt={selectedPost.title} 
             className="w-full h-[400px] object-cover rounded-3xl mb-10 shadow-2xl"
           />
@@ -209,8 +208,7 @@ export function BlogsPage() {
           transition={{ delay: 0.2 }}
           className="relative rounded-3xl overflow-hidden mb-16 h-[500px] group cursor-pointer"
         >
-          <img 
-            src={BLOG_POSTS[0].image} 
+          <img loading="lazy" decoding="async" src={BLOG_POSTS[0].image} 
             alt="Featured" 
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
           />
@@ -245,8 +243,7 @@ export function BlogsPage() {
             >
               {/* Image Container */}
               <div className="relative h-56 overflow-hidden">
-                <img 
-                  src={post.image} 
+                <img loading="lazy" decoding="async" src={post.image} 
                   alt={post.title} 
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />

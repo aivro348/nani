@@ -7,7 +7,7 @@ const trainers = [
     id: 1,
     name: 'Dr. Rajesh Kumar',
     title: 'Lead AI & Machine Learning Expert',
-    photo: 'https://images.unsplash.com/photo-1511629091441-ee46146481b6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjB0ZWNoJTIwaW5zdHJ1Y3RvciUyMHRlYWNoaW5nfGVufDF8fHx8MTc2OTQyNzg0NXww&ixlib=rb-4.1.0&q=80&w=1080',
+    photo: '/unsplash/img_d2bf443eed.webp',
     bio: 'Passionate educator with over 15 years of experience in AI and Machine Learning. Former Google AI researcher and IIT Bombay faculty member. Committed to making complex AI concepts accessible to engineering students across all branches.',
     education: [
       'Ph.D. in Computer Science, IIT Bombay',
@@ -31,7 +31,7 @@ const trainers = [
     id: 2,
     name: 'Priya Sharma',
     title: 'Full-Stack Development & Cloud Expert',
-    photo: 'https://images.unsplash.com/photo-1573495612937-f01934eeaaa7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3b21hbiUyMHNvZnR3YXJlJTIwZW5naW5lZXIlMjBtZW50b3J8ZW58MXx8fHwxNzY5NDI3ODQ2fDA&ixlib=rb-4.1.0&q=80&w=1080',
+    photo: '/unsplash/img_e890cb3dca.webp',
     bio: 'Dynamic software architect specializing in modern web technologies and cloud computing. Ex-Microsoft engineer with a proven track record of training thousands of developers. Believes in hands-on project-based learning.',
     education: [
       'M.S. in Software Engineering, Stanford University',
@@ -55,7 +55,7 @@ const trainers = [
     id: 3,
     name: 'Prof. Arun Patel',
     title: 'IoT & Embedded Systems Specialist',
-    photo: 'https://images.unsplash.com/photo-1758685848208-e108b6af94cc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxleHBlcmllbmNlZCUyMHRlY2hub2xvZ3klMjBwcm9mZXNzb3J8ZW58MXx8fHwxNzY5NDI3ODQ2fDA&ixlib=rb-4.1.0&q=80&w=1080',
+    photo: '/unsplash/img_b475506558.webp',
     bio: 'Industry veteran with extensive experience in IoT, embedded systems, and hardware-software integration. Previously worked with Texas Instruments and Intel. Specializes in making IoT accessible to ECE, EEE, and ME students.',
     education: [
       'Ph.D. in Electronics & Communication, IISc Bangalore',
@@ -79,7 +79,7 @@ const trainers = [
     id: 4,
     name: 'Dr. Meera Reddy',
     title: 'Data Science & Analytics Expert',
-    photo: 'https://images.unsplash.com/photo-1762968286778-60e65336d5ca?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhaSUyMG1hY2hpbmUlMjBsZWFybmluZyUyMGV4cGVydHxlbnwxfHx8fDE3Njk0Mjc4NDZ8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    photo: '/unsplash/img_35cdc35f91.webp',
     bio: 'Data science pioneer with a passion for extracting insights from complex datasets. Former Amazon data scientist with expertise in big data technologies. Dedicated to helping students master Python, data analytics, and visualization.',
     education: [
       'Ph.D. in Data Science, Carnegie Mellon University',

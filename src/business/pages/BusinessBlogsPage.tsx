@@ -11,7 +11,7 @@ const blogPosts = [
     date: 'July 14, 2026',
     readTime: '5 min read',
     summary: 'Explore why Next.js is the leading framework for corporate portals and custom applications, combining blazing-fast loading speeds with robust SEO architecture.',
-    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800'
+    image: '/unsplash/img_60355e7c29.webp'
   },
   {
     title: 'AI Agents vs Chatbots: How to Automate 24/7 Operations in 2026',
@@ -19,7 +19,7 @@ const blogPosts = [
     date: 'June 28, 2026',
     readTime: '8 min read',
     summary: 'A deep dive into how autonomous AI agents plan, decide and execute complex workflows — and how they differ from simple, rule-based web chatbots.',
-    image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=800'
+    image: '/unsplash/img_dc40c9410f.webp'
   },
   {
     title: 'The E-Commerce Formula: Building Storefronts That Convert Browsers into Buyers',
@@ -27,7 +27,7 @@ const blogPosts = [
     date: 'June 15, 2026',
     readTime: '6 min read',
     summary: 'Learn the exact design patterns, checkout optimizations, and mobile-first UX strategies we use to boost client Shopify and WooCommerce sales.',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800'
+    image: '/unsplash/img_5787d7c6ab.webp'
   }
 ];
 
@@ -90,8 +90,7 @@ export function BusinessBlogsPage() {
             >
               {/* Blog Image */}
               <div className="relative w-full h-[220px] overflow-hidden bg-white/5">
-                <img 
-                  src={post.image} 
+                <img loading="lazy" decoding="async" src={post.image} 
                   alt={post.title} 
                   className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
                 />

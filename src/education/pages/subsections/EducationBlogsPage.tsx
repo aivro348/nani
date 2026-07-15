@@ -18,13 +18,13 @@ export function EducationBlogsPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {[
-            { tag: 'Career', title: 'How to land your first job in VLSI', read: '5 min read', img: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=800&auto=format&fit=crop' },
-            { tag: 'Learning', title: 'Why project-based learning beats traditional exams', read: '4 min read', img: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&auto=format&fit=crop' },
-            { tag: 'Industry', title: 'The growing demand for full-stack developers in 2026', read: '7 min read', img: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=800&auto=format&fit=crop' }
+            { tag: 'Career', title: 'How to land your first job in VLSI', read: '5 min read', img: '/unsplash/img_84b0f23a0a.webp' },
+            { tag: 'Learning', title: 'Why project-based learning beats traditional exams', read: '4 min read', img: '/unsplash/img_b8956b4efe.webp' },
+            { tag: 'Industry', title: 'The growing demand for full-stack developers in 2026', read: '7 min read', img: '/unsplash/img_2c4da1993e.webp' }
           ].map((blog, i) => (
             <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }} className="bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-xl transition-all cursor-pointer group">
               <div className="h-48 overflow-hidden relative">
-                <img src={blog.img} alt={blog.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <img loading="lazy" decoding="async" src={blog.img} alt={blog.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                 <div className="absolute top-4 left-4 bg-white/90 backdrop-blur text-[var(--primary-maroon)] text-xs font-bold px-3 py-1 rounded-full">
                   {blog.tag}
                 </div>

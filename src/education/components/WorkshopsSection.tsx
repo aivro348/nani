@@ -44,7 +44,7 @@ export function WorkshopsSection() {
                 </button>
               </div>
               <div className="w-full sm:w-1/2 h-64 sm:h-full bg-slate-100 relative overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=600&auto=format&fit=crop" alt="Students" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                <img loading="lazy" decoding="async" src="/unsplash/img_829df60c8b.webp" alt="Students" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-[var(--primary-maroon)] mix-blend-multiply opacity-20" />
               </div>
             </motion.div>
@@ -69,58 +69,13 @@ export function WorkshopsSection() {
                 </button>
               </div>
               <div className="w-full sm:w-1/2 h-64 sm:h-full bg-slate-100 relative overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=600&auto=format&fit=crop" alt="Professionals" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                <img loading="lazy" decoding="async" src="/unsplash/img_23b9c0412e.webp" alt="Professionals" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-[var(--primary-gold)] mix-blend-multiply opacity-30" />
               </div>
             </motion.div>
           </div>
         </div>
 
-        {/* Bottom Half: LMS Banner */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="bg-blue-50/50 border border-blue-100 rounded-[3rem] p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-12 relative overflow-hidden"
-        >
-          {/* Background decoration */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-blue-100 rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/4 pointer-events-none" />
-
-          <div className="w-full md:w-1/2 relative z-10">
-            <h2 className="text-4xl sm:text-5xl font-black text-slate-900 mb-6 leading-tight">
-              Learn anytime, <br />
-              <span className="text-blue-600">anywhere</span>
-            </h2>
-            <p className="text-lg text-slate-600 mb-8">
-              Access your courses, track your progress, and continue learning seamlessly across all your devices with the App.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <button className="bg-slate-900 text-white px-8 py-4 rounded-full font-bold hover:bg-[var(--primary-maroon)] transition-colors shadow-lg flex items-center gap-2">
-                Download App
-              </button>
-              <button 
-                onClick={() => navigate('/lms')}
-                className="bg-white text-slate-900 border border-slate-200 px-8 py-4 rounded-full font-bold hover:border-slate-400 transition-colors shadow-sm flex items-center gap-2"
-              >
-                Go to Web Portal
-              </button>
-            </div>
-          </div>
-          
-          <div className="w-full md:w-1/2 flex justify-center relative z-10">
-            <div className="relative w-[280px] h-[580px] bg-white rounded-[3rem] shadow-2xl border-8 border-slate-900 overflow-hidden flex flex-col">
-              <div className="bg-slate-900 text-white p-6 pt-10 rounded-b-3xl text-center">
-                <Smartphone className="w-8 h-8 mx-auto mb-2 opacity-80" />
-                <h3 className="font-bold text-xl">Mobile App</h3>
-              </div>
-              <div className="flex-1 p-6 flex flex-col gap-4 bg-slate-50">
-                <div className="w-full h-24 bg-white rounded-xl shadow-sm border border-slate-100"></div>
-                <div className="w-full h-24 bg-white rounded-xl shadow-sm border border-slate-100"></div>
-                <div className="w-full h-24 bg-white rounded-xl shadow-sm border border-slate-100"></div>
-              </div>
-            </div>
-          </div>
-        </motion.div>
 
       </div>
     </section>

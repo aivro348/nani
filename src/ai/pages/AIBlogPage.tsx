@@ -9,7 +9,7 @@ const blogArticles = [
     date: 'July 12, 2026',
     author: 'Charan',
     readTime: '5 min read',
-    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800'
+    image: '/unsplash/img_7ac4fcfb41.webp'
   },
   {
     title: 'Building Production-Grade AI Agents with Zapier & Make.com',
@@ -17,7 +17,7 @@ const blogArticles = [
     date: 'July 05, 2026',
     author: 'Charan',
     readTime: '8 min read',
-    image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=800'
+    image: '/unsplash/img_bb8bb8c3f6.webp'
   },
   {
     title: 'How to Launch a Successful AI Freelancing Business in 2026',
@@ -25,7 +25,7 @@ const blogArticles = [
     date: 'June 28, 2026',
     author: 'Charan',
     readTime: '10 min read',
-    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800'
+    image: '/unsplash/img_feeb78a628.webp'
   }
 ];
 
@@ -77,8 +77,7 @@ export function AIBlogPage() {
             <div key={idx} className="bg-white/5 border border-white/5 rounded-2xl overflow-hidden group hover:border-[var(--primary-gold)]/20 transition-all duration-300 flex flex-col justify-between">
               <div>
                 <div className="aspect-[16/10] overflow-hidden relative">
-                  <img 
-                    src={article.image} 
+                  <img loading="lazy" decoding="async" src={article.image} 
                     alt={article.title} 
                     className="w-full h-full object-cover filter grayscale group-hover:filter-none transition-all duration-500 group-hover:scale-105"
                   />

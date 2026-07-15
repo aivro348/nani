@@ -6,19 +6,19 @@ export function BusinessTeam() {
     {
       name: 'Sarah Chen',
       role: 'Chief Technology Officer',
-      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800',
+      image: '/unsplash/img_aa36d8457b.webp',
       bio: 'Former VP of Engineering at a Fortune 500. Specializes in scalable microservice architectures.'
     },
     {
       name: 'Marcus Reynolds',
       role: 'Head of AI Research',
-      image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=800',
+      image: '/unsplash/img_b0df3b339c.webp',
       bio: 'Ph.D. in Computer Vision. Leads our enterprise ML implementation and deployment strategy.'
     },
     {
       name: 'Elena Rodriguez',
       role: 'Director of Product',
-      image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=800',
+      image: '/unsplash/img_790d1120d2.webp',
       bio: 'Obsessed with translating complex technical capabilities into intuitive user experiences.'
     }
   ];
@@ -75,8 +75,7 @@ export function BusinessTeam() {
                 <div className="absolute -inset-[1px] bg-gradient-to-b from-[var(--primary-gold)]/30 to-transparent rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0" />
                 
                 <div className="relative w-full h-full rounded-[2rem] overflow-hidden">
-                  <img 
-                    src={member.image} 
+                  <img loading="lazy" decoding="async" src={member.image} 
                     alt={member.name} 
                     className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out scale-100 group-hover:scale-105"
                   />
