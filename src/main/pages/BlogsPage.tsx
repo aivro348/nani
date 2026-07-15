@@ -118,7 +118,7 @@ export function BlogsPage() {
         className="min-h-screen bg-page-bg py-20"
       >
         <div className="max-w-4xl mx-auto px-4">
-          <button 
+          <button aria-label="Action button" 
             onClick={() => setSelectedPost(null)}
             className="flex items-center gap-2 text-blue-400 font-bold mb-8 hover:gap-3 transition-all"
           >
@@ -274,7 +274,7 @@ export function BlogsPage() {
                     </div>
                     <span className="text-xs text-text-secondary font-medium">{post.author}</span>
                   </div>
-                  <button className="flex items-center gap-1 text-blue-400 text-xs font-bold hover:gap-2 transition-all">
+                  <button aria-label="Action button" className="flex items-center gap-1 text-blue-400 text-xs font-bold hover:gap-2 transition-all">
                     Read More <ChevronRight className="w-4 h-4" />
                   </button>
                 </div>
@@ -286,7 +286,7 @@ export function BlogsPage() {
 
         {/* Load More Button */}
         <div className="text-center mt-20">
-          <button className="px-8 py-4 bg-surface border border-surface-border rounded-2xl text-heading font-bold hover:border-blue-500/50 transition-all flex items-center gap-3 mx-auto group">
+          <button aria-label="Action button" className="px-8 py-4 bg-surface border border-surface-border rounded-2xl text-heading font-bold hover:border-blue-500/50 transition-all flex items-center gap-3 mx-auto group">
             Discover More Articles
             <Rocket className="w-5 h-5 text-blue-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
           </button>

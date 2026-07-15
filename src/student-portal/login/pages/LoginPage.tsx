@@ -189,7 +189,7 @@ export function LoginPage() {
               </div>
             </div>
 
-            <button
+            <button aria-label="Action button"
               type="submit"
               disabled={isSubmitting}
               className="w-full bg-black hover:bg-gray-800 text-white font-bold py-3.5 px-4 rounded-xl transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2 group mt-4 text-xs"
@@ -211,7 +211,7 @@ export function LoginPage() {
           {/* Tab/Toggle register mode */}
           <p className="text-center text-xs font-semibold text-text-muted mt-6">
             {isSignUp ? 'Already have an account? ' : "Don't have an account? "}
-            <button 
+            <button aria-label="Action button" 
               onClick={() => {
                 setIsSignUp(!isSignUp);
                 setError('');

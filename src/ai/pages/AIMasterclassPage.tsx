@@ -68,7 +68,7 @@ export function AIMasterclassPage() {
 
               <div className="pt-4 flex flex-wrap gap-4">
                 <a href="https://wa.me/919032517427" target="_blank" rel="noopener noreferrer">
-                  <button className="px-8 py-4 bg-[var(--primary-maroon)] text-white font-bold rounded-xl hover:bg-[var(--primary-maroon)]/80 transition-colors uppercase tracking-wider text-sm flex items-center gap-2 border border-[var(--primary-maroon)] shadow-[0_0_15px_rgba(139,0,0,0.3)]">
+                  <button aria-label="Action button" className="px-8 py-4 bg-[var(--primary-maroon)] text-white font-bold rounded-xl hover:bg-[var(--primary-maroon)]/80 transition-colors uppercase tracking-wider text-sm flex items-center gap-2 border border-[var(--primary-maroon)] shadow-[0_0_15px_rgba(139,0,0,0.3)]">
                     Register Free
                     <ArrowRight className="w-4 h-4" />
                   </button>

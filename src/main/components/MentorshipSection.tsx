@@ -120,7 +120,7 @@ export function MentorshipSection() {
                 </div>
                 <div className="flex items-center gap-4">
                   <span className="text-sm text-text-muted">{session.date}</span>
-                  <button className="px-4 py-2 bg-gradient-to-r from-teal-500 to-cyan-600 text-white rounded-lg hover:shadow-xl transition-all whitespace-nowrap">
+                  <button aria-label="Action button" className="px-4 py-2 bg-gradient-to-r from-teal-500 to-cyan-600 text-white rounded-lg hover:shadow-xl transition-all whitespace-nowrap">
                     Register
                   </button>
                 </div>

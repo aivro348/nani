@@ -241,7 +241,7 @@ export function Navbar() {
 
                 return (
                   <div key={item.id} className="relative group">
-                    <button
+                    <button aria-label="Action button"
                       onClick={() => {
                         if (item.path) navigateToPage(item.path);
                         else if (hasSubItems) navigateToPage(item.subItems![0].path);
@@ -261,7 +261,7 @@ export function Navbar() {
                       <div className="absolute top-full left-0 mt-0 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:mt-2 transition-all duration-300 z-50">
                         <div className="bg-white/95 backdrop-blur-md rounded-xl shadow-2xl border border-gray-100 overflow-hidden flex flex-col py-2">
                           {item.subItems!.map((sub, i) => (
-                            <button
+                            <button aria-label="Action button"
                               key={i}
                               onClick={() => navigateToPage(sub.path)}
                               className="text-left px-5 py-3 text-sm font-semibold text-gray-700 hover:text-[var(--primary-maroon)] hover:bg-gray-50 transition-colors"
@@ -280,7 +280,7 @@ export function Navbar() {
             {/* Right side: mobile menu and CTA */}
             <div className="flex items-center gap-3 ml-auto">
               {isEducationSection && (
-                <button
+                <button aria-label="Action button"
                   onClick={() => navigateToPage('/contact')}
                   className="hidden lg:flex items-center gap-1.5 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white px-4 py-1.5 rounded-full font-bold transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 group whitespace-nowrap text-xs"
                 >
@@ -292,7 +292,7 @@ export function Navbar() {
               )}
 
               {/* Mobile Menu Button */}
-              <button
+              <button aria-label="Action button"
                 className="md:hidden p-2 text-white rounded-lg hover:bg-white/20 transition-colors"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               >
@@ -310,7 +310,7 @@ export function Navbar() {
 
                 return (
                   <div key={item.id} className="flex flex-col">
-                    <button
+                    <button aria-label="Action button"
                       onClick={() => {
                         if (item.path) {
                           navigateToPage(item.path);
@@ -328,7 +328,7 @@ export function Navbar() {
                     {hasSubItems && (
                       <div className="pl-6 flex flex-col space-y-1 mt-1 border-l-2 border-white/10 ml-4">
                         {item.subItems!.map((sub, i) => (
-                          <button
+                          <button aria-label="Action button"
                             key={i}
                             onClick={() => navigateToPage(sub.path)}
                             className="block w-full text-left px-4 py-2 rounded-lg transition-all text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/5"
@@ -342,7 +342,7 @@ export function Navbar() {
                 );
               })}
               <div className="px-4 pt-4 border-t border-white/20 mt-2 space-y-2">
-                <button
+                <button aria-label="Action button"
                   onClick={() => navigateToPage('/contact')}
                   className="w-full flex justify-center items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-5 py-4 rounded-md font-bold text-lg transition-all shadow-md"
                 >

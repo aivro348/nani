@@ -73,7 +73,7 @@ export function BusinessServicesPage() {
             const Icon = service.icon;
             const isSelected = service.id === activeTab;
             return (
-              <button
+              <button aria-label="Action button"
                 key={service.id}
                 onClick={() => {
                   setActiveTab(service.id);

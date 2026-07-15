@@ -39,7 +39,7 @@ export function RoadmapDetailsPage() {
         />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
-          <button 
+          <button aria-label="Action button" 
             onClick={() => navigate('/roadmap')}
             className="flex items-center gap-2 text-slate-400 hover:text-white mb-8 transition-colors text-sm font-semibold uppercase tracking-wider"
           >
@@ -131,7 +131,7 @@ export function RoadmapDetailsPage() {
              <div className="sticky top-32 bg-white rounded-2xl shadow-xl border border-slate-100 p-8">
                 <h3 className="text-2xl font-bold text-slate-900 mb-2">Start this Roadmap</h3>
                 <p className="text-slate-500 mb-6">Join {course.students} other students mastering {course.title}.</p>
-                <button className="w-full bg-[var(--primary-maroon)] text-white font-bold text-lg py-4 rounded-xl hover:opacity-90 hover:shadow-lg transition-all active:scale-95">
+                <button aria-label="Action button" className="w-full bg-[var(--primary-maroon)] text-white font-bold text-lg py-4 rounded-xl hover:opacity-90 hover:shadow-lg transition-all active:scale-95">
                   Begin Learning
                 </button>
              </div>

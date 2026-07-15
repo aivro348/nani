@@ -114,7 +114,7 @@ export function BusinessContact() {
                     ></textarea>
                   </div>
                   
-                  <button 
+                  <button aria-label="Action button" 
                     type="submit" 
                     className="w-full py-4 bg-gradient-to-r from-[var(--primary-maroon)] to-[var(--dark-maroon)] text-white font-bold rounded-xl hover:shadow-[0_0_40px_-10px_var(--primary-maroon)] transition-all text-lg flex items-center justify-center gap-2 group"
                   >

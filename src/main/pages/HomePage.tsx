@@ -76,7 +76,7 @@ export function HomePage() {
             transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
             className="pt-8"
           >
-            <button 
+            <button aria-label="Action button" 
               onClick={() => {
                 document.getElementById('ecosystem')?.scrollIntoView({ behavior: 'smooth' });
               }}
@@ -132,7 +132,7 @@ export function HomePage() {
                     ))}
                   </ul>
                 </div>
-                <button 
+                <button aria-label="Action button" 
                   onClick={() => navigate('/courses')}
                   className="w-max px-8 py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold transition-all flex items-center gap-2"
                 >
@@ -159,7 +159,7 @@ export function HomePage() {
                     Enterprise IT solutions, scalable software, and high-performance web architecture.
                   </p>
                 </div>
-                <button 
+                <button aria-label="Action button" 
                   onClick={() => navigate('/business')}
                   className="w-full py-4 rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 text-white font-bold transition-all flex items-center justify-center gap-2"
                 >
@@ -189,13 +189,13 @@ export function HomePage() {
                   Supercharging our education and business sectors. Explore the ultimate directory of AI tools, access free masterclasses, and automate your workflow.
                 </p>
                 <div className="flex flex-wrap gap-4">
-                  <button 
+                  <button aria-label="Action button" 
                     onClick={() => navigate('/ai')}
                     className="px-8 py-4 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold transition-all flex items-center gap-2"
                   >
                     Enter AI Hub <ArrowRight className="w-4 h-4" />
                   </button>
-                  <button 
+                  <button aria-label="Action button" 
                     onClick={() => navigate('/all-ai-tools')}
                     className="px-8 py-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold transition-all"
                   >

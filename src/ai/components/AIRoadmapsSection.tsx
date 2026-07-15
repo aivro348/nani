@@ -173,7 +173,7 @@ export const AIRoadmapsSection = memo(function AIRoadmapsSection({ previewOnly }
                   </div>
 
                   {/* Expand Week Preview */}
-                  <button
+                  <button aria-label="Action button"
                     onClick={() => setExpandedRoadmap(isExpanded ? null : roadmap.id)}
                     className="flex items-center gap-2 text-[var(--primary-maroon)] font-bold text-sm hover:text-[var(--dark-maroon)] transition-colors mb-6"
                   >
@@ -209,7 +209,7 @@ export const AIRoadmapsSection = memo(function AIRoadmapsSection({ previewOnly }
                   )}
 
                   {/* CTA */}
-                  <button
+                  <button aria-label="Action button"
                     onClick={() => navigate(`/ai/roadmap/${roadmap.id}`)}
                     className="w-full bg-black hover:bg-gray-800 text-white font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2 active:scale-[0.98]"
                   >
@@ -224,7 +224,7 @@ export const AIRoadmapsSection = memo(function AIRoadmapsSection({ previewOnly }
 
         {previewOnly && (
           <div className="flex justify-center pt-16">
-            <button 
+            <button aria-label="Action button" 
               onClick={() => navigate('/all-ai-roadmaps')}
               className="bg-black hover:bg-gray-800 text-white px-10 py-4 rounded-xl font-bold text-lg transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 active:scale-95"
             >

@@ -64,7 +64,7 @@ export function CertificateVerificationPage() {
                 placeholder="e.g. SCA-2026-987654"
                 className="w-full pl-14 pr-32 py-4 bg-page-bg border-2 border-border rounded-xl text-lg font-medium text-page-fg focus:outline-none focus:border-indigo-500 transition-colors uppercase tracking-wider"
               />
-              <button
+              <button aria-label="Action button"
                 type="submit"
                 disabled={isVerifying || !certificateId.trim()}
                 className="absolute right-2 top-2 bottom-2 bg-indigo-600 hover:bg-indigo-700 disabled:bg-indigo-400 text-white font-semibold px-6 rounded-lg transition-colors flex items-center justify-center min-w-[100px]"

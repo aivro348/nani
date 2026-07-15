@@ -98,7 +98,7 @@ export function VirtualLabsSection() {
                   </li>
                 ))}
               </ul>
-              <button className="px-6 py-3 bg-gradient-to-r from-teal-500 to-cyan-600 text-white rounded-lg hover:shadow-xl transition-all">
+              <button aria-label="Action button" className="px-6 py-3 bg-gradient-to-r from-teal-500 to-cyan-600 text-white rounded-lg hover:shadow-xl transition-all">
                 Browse Projects →
               </button>
             </div>

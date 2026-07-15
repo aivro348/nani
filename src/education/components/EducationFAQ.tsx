@@ -51,7 +51,7 @@ export function EducationFAQ() {
                 openIndex === index ? 'bg-slate-50 shadow-lg border-[var(--primary-maroon)]/30' : 'bg-white hover:border-slate-300'
               }`}
             >
-              <button
+              <button aria-label="Action button"
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
                 className="w-full flex items-center justify-between p-6 text-left focus:outline-none"
               >

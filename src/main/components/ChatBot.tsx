@@ -310,7 +310,7 @@ export function ChatBot() {
                   <span className="text-white/80 text-xs">Online • Ready to help</span>
                 </div>
               </div>
-              <button onClick={() => setIsOpen(false)} className="p-1.5 hover:bg-white/20 rounded-lg transition-colors">
+              <button aria-label="Action button" onClick={() => setIsOpen(false)} className="p-1.5 hover:bg-white/20 rounded-lg transition-colors">
                 <X className="w-5 h-5 text-white" />
               </button>
             </div>
@@ -337,7 +337,7 @@ export function ChatBot() {
                     {msg.links && msg.links.length > 0 && (
                       <div className="flex flex-wrap gap-2 mt-3 pt-2 border-t border-white/20 dark:border-slate-600">
                         {msg.links.map((link, i) => (
-                          <button
+                          <button aria-label="Action button"
                             key={i}
                             onClick={() => handleNavigate(link.page)}
                             className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
@@ -378,7 +378,7 @@ export function ChatBot() {
             {/* Quick action buttons */}
             <div className="px-3 py-2 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700 flex gap-2 overflow-x-auto flex-shrink-0">
               {quickButtons.map((btn, i) => (
-                <button
+                <button aria-label="Action button"
                   key={i}
                   onClick={() => {
                     setInput(btn.query);
@@ -417,7 +417,7 @@ export function ChatBot() {
                   placeholder="Ask me anything about Scaro Technologies..."
                   className="flex-1 px-4 py-2.5 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm text-slate-800 dark:text-slate-200 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500 transition-all"
                 />
-                <button
+                <button aria-label="Action button"
                   type="submit"
                   disabled={!input.trim()}
                   className="w-10 h-10 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 text-white flex items-center justify-center hover:shadow-lg hover:shadow-blue-500/40 transition-all disabled:opacity-40 disabled:cursor-not-allowed hover:scale-105 active:scale-95"

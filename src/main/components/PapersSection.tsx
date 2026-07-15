@@ -167,7 +167,7 @@ function PaperCard({ paper, idx }: { paper: typeof PAPERS[0]; idx: number }) {
             </div>
 
             {/* bookmark */}
-            <button onClick={() => setSaved(s => !s)}
+            <button aria-label="Action button" onClick={() => setSaved(s => !s)}
               className="shrink-0 p-1.5 rounded-lg hover:bg-surface transition-colors group/bm">
               {saved
                 ? <BookmarkCheck className="w-4 h-4 text-blue-400" />
@@ -231,7 +231,7 @@ function PaperCard({ paper, idx }: { paper: typeof PAPERS[0]; idx: number }) {
 
             {/* actions */}
             <div className="flex items-center gap-2">
-              <button onClick={() => setExpanded(e => !e)}
+              <button aria-label="Action button" onClick={() => setExpanded(e => !e)}
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-xs transition-all ${
                   expanded
                     ? 'border-blue-500/40 bg-blue-600/10 text-blue-400'
@@ -277,7 +277,7 @@ function FeaturedPaperCard({ paper }: { paper: typeof PAPERS[0] }) {
               <Calendar className="w-3 h-3" /> {paper.year}
             </span>
           </div>
-          <button onClick={() => setSaved(s => !s)} className="shrink-0 p-2 rounded-xl hover:bg-surface transition-colors">
+          <button aria-label="Action button" onClick={() => setSaved(s => !s)} className="shrink-0 p-2 rounded-xl hover:bg-surface transition-colors">
             {saved ? <BookmarkCheck className="w-5 h-5 text-blue-400" /> : <Bookmark className="w-5 h-5 text-text-muted" />}
           </button>
         </div>
@@ -413,7 +413,7 @@ export function PapersSection() {
                 placeholder="Search by title, author, keyword or journal…"
                 className="w-full pl-11 pr-10 py-3 bg-surface border border-surface-border rounded-xl text-text-secondary placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:bg-surface text-sm transition-all" />
               {search && (
-                <button onClick={() => setSearch('')} className="absolute right-4 top-1/2 -translate-y-1/2">
+                <button aria-label="Action button" onClick={() => setSearch('')} className="absolute right-4 top-1/2 -translate-y-1/2">
                   <X className="w-4 h-4 text-text-muted hover:text-heading transition-colors" />
                 </button>
               )}
@@ -434,7 +434,7 @@ export function PapersSection() {
               const Icon = meta?.icon;
               const count = b === 'All' ? PAPERS.length : PAPERS.filter(p => p.branch === b).length;
               return (
-                <button key={b} onClick={() => { setBranch(b); setPage(1); }}
+                <button aria-label="Action button" key={b} onClick={() => { setBranch(b); setPage(1); }}
                   className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm transition-all ${
                     branch === b
                       ? 'bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-lg shadow-blue-500/20'
@@ -455,7 +455,7 @@ export function PapersSection() {
             <div className="flex flex-wrap gap-2 items-center">
               <span className="text-xs text-slate-600 flex items-center gap-1"><Filter className="w-3 h-3" />Impact:</span>
               {IMPACTS.map(i => (
-                <button key={i} onClick={() => { setImpact(i); setPage(1); }}
+                <button aria-label="Action button" key={i} onClick={() => { setImpact(i); setPage(1); }}
                   className={`px-3.5 py-1.5 rounded-xl text-xs transition-all ${
                     impact === i ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/25' : 'bg-surface text-text-muted border border-surface-border hover:border-blue-500/40 hover:text-heading'
                   }`}>{i}</button>
@@ -464,7 +464,7 @@ export function PapersSection() {
             <div className="flex flex-wrap gap-2 items-center">
               <span className="text-xs text-slate-600 flex items-center gap-1"><FileText className="w-3 h-3" />Type:</span>
               {TYPES.map(t => (
-                <button key={t} onClick={() => { setPaperType(t); setPage(1); }}
+                <button aria-label="Action button" key={t} onClick={() => { setPaperType(t); setPage(1); }}
                   className={`px-3.5 py-1.5 rounded-xl text-xs transition-all ${
                     paperType === t ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/25' : 'bg-surface text-text-muted border border-surface-border hover:border-blue-500/40 hover:text-heading'
                   }`}>{t}</button>
@@ -480,7 +480,7 @@ export function PapersSection() {
               {search && <> matching "<span className="text-heading font-medium">{search}</span>"</>}
             </p>
             {isFiltered && (
-              <button onClick={clearFilters} className="text-xs text-text-muted hover:text-blue-400 transition-colors">
+              <button aria-label="Action button" onClick={clearFilters} className="text-xs text-text-muted hover:text-blue-400 transition-colors">
                 Clear filters ×
               </button>
             )}
@@ -494,7 +494,7 @@ export function PapersSection() {
               className="py-24 text-center">
               <Search className="w-14 h-14 mx-auto mb-4 text-slate-700" />
               <p className="text-base text-text-muted mb-2">No papers match your search.</p>
-              <button onClick={clearFilters} className="text-sm text-blue-400 hover:underline">Clear all filters</button>
+              <button aria-label="Action button" onClick={clearFilters} className="text-sm text-blue-400 hover:underline">Clear all filters</button>
             </motion.div>
           ) : (
             <motion.div key="list" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}

@@ -36,7 +36,7 @@ export function WorkshopsSection() {
                 <p className="text-slate-600 mb-8 leading-relaxed">
                   Kickstart your engineering career with essential tools, coding practices, and core domain knowledge.
                 </p>
-                <button 
+                <button aria-label="Action button" 
                   onClick={() => navigate('/workshops')}
                   className="mt-auto flex items-center gap-2 text-[var(--primary-maroon)] font-bold group-hover:text-red-700 transition-colors"
                 >
@@ -61,7 +61,7 @@ export function WorkshopsSection() {
                 <p className="text-slate-600 mb-8 leading-relaxed">
                   Upskill and cross-skill with advanced architectural patterns, system design, and emerging tech stacks.
                 </p>
-                <button 
+                <button aria-label="Action button" 
                   onClick={() => navigate('/workshops')}
                   className="mt-auto flex items-center gap-2 text-[var(--primary-gold)] font-bold group-hover:text-yellow-600 transition-colors"
                 >

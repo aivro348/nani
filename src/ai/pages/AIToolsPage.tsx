@@ -282,7 +282,7 @@ export function AIToolsPage() {
             const isOpen = openFaqIdx === idx;
             return (
               <div key={idx} className="bg-white/5 border border-white/5 rounded-2xl overflow-hidden hover:border-white/10 transition-colors">
-                <button
+                <button aria-label="Action button"
                   onClick={() => setOpenFaqIdx(isOpen ? null : idx)}
                   className="w-full px-6 py-5 flex items-center justify-between text-left gap-4"
                 >

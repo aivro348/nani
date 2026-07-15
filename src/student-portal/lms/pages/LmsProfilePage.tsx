@@ -145,7 +145,7 @@ export function LmsProfilePage() {
       <div className="max-w-4xl mx-auto relative z-10 space-y-10">
         {/* Back navigation */}
         <div className="flex justify-between items-center">
-          <button 
+          <button aria-label="Action button" 
             onClick={() => navigate('/lms')}
             className="p-2 hover:bg-surface-hover rounded-xl border border-surface-border text-heading flex items-center gap-1.5 text-xs font-bold"
           >
@@ -241,7 +241,7 @@ export function LmsProfilePage() {
 
                     <div className="p-3 bg-page-bg/40 border border-surface-border rounded-xl font-mono text-[10px] text-text-secondary flex justify-between items-center">
                       <span>Verification ID: {cert.certId}</span>
-                      <button 
+                      <button aria-label="Action button" 
                         onClick={() => navigate(`/verify-certificate?id=${cert.certId}`)}
                         className="text-[var(--primary-maroon)] dark:text-[var(--primary-gold)] hover:underline flex items-center gap-1 font-bold"
                       >
@@ -249,7 +249,7 @@ export function LmsProfilePage() {
                       </button>
                     </div>
 
-                    <button
+                    <button aria-label="Action button"
                       onClick={() => setActiveCertificate(cert)}
                       className="w-full py-3 bg-[var(--primary-maroon)] text-white font-bold rounded-xl text-xs hover:bg-[var(--dark-maroon)] transition-all flex items-center justify-center gap-2"
                     >
@@ -274,7 +274,7 @@ export function LmsProfilePage() {
               className="bg-white text-slate-900 w-full max-w-4xl rounded-3xl p-6 md:p-8 space-y-6 shadow-2xl relative"
             >
               {/* Close button */}
-              <button 
+              <button aria-label="Action button" 
                 onClick={() => setActiveCertificate(null)}
                 className="absolute top-4 right-4 p-2 bg-slate-100 hover:bg-slate-200 rounded-full text-slate-500 transition-all z-10 print:hidden"
               >
@@ -349,7 +349,7 @@ export function LmsProfilePage() {
 
               {/* Action buttons */}
               <div className="flex gap-4 justify-end print:hidden">
-                <button
+                <button aria-label="Action button"
                   onClick={handlePrint}
                   className="px-6 py-3 bg-amber-900 hover:bg-amber-950 text-white font-bold rounded-xl text-xs flex items-center gap-2 shadow-lg transition-all"
                 >

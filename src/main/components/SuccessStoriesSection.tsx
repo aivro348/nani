@@ -259,7 +259,7 @@ export function SuccessStoriesSection() {
             {/* Dots indicator */}
             <div className="flex gap-2">
               {stories.map((_, index) => (
-                <button
+                <button aria-label="Action button"
                   key={index}
                   onClick={() => setCurrentIndex(index)}
                   className={`w-2 h-2 rounded-full transition-all ${

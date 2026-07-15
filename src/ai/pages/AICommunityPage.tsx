@@ -56,7 +56,7 @@ export function AICommunityPage() {
               <p className="text-xs text-gray-500 mt-2 font-light">Daily AI prompts + drops</p>
             </div>
             <a href="https://wa.me/919032517427" target="_blank" rel="noopener noreferrer" className="w-full">
-              <button className="w-full py-3 bg-[var(--primary-maroon)] text-white hover:bg-[var(--primary-maroon)]/85 transition-all text-xs font-bold uppercase tracking-wider rounded-lg flex items-center justify-center gap-1.5 border border-[var(--primary-maroon)] shadow-[0_0_15px_rgba(139,0,0,0.3)]">
+              <button aria-label="Action button" className="w-full py-3 bg-[var(--primary-maroon)] text-white hover:bg-[var(--primary-maroon)]/85 transition-all text-xs font-bold uppercase tracking-wider rounded-lg flex items-center justify-center gap-1.5 border border-[var(--primary-maroon)] shadow-[0_0_15px_rgba(139,0,0,0.3)]">
                 Open 
                 <ArrowRight className="w-4 h-4" />
               </button>
@@ -73,7 +73,7 @@ export function AICommunityPage() {
               <p className="text-xs text-gray-500 mt-2 font-light">Micro-tips, guides & updates</p>
             </div>
             <a href="#" className="w-full">
-              <button className="w-full py-3 bg-white/5 border border-white/10 hover:border-pink-500/30 text-white font-bold rounded-lg text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all">
+              <button aria-label="Action button" className="w-full py-3 bg-white/5 border border-white/10 hover:border-pink-500/30 text-white font-bold rounded-lg text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all">
                 Open 
                 <ArrowRight className="w-4 h-4" />
               </button>
@@ -90,7 +90,7 @@ export function AICommunityPage() {
               <p className="text-xs text-gray-500 mt-2 font-light">Detailed walkthrough tutorials</p>
             </div>
             <a href="#" className="w-full">
-              <button className="w-full py-3 bg-white/5 border border-white/10 hover:border-red-500/30 text-white font-bold rounded-lg text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all">
+              <button aria-label="Action button" className="w-full py-3 bg-white/5 border border-white/10 hover:border-red-500/30 text-white font-bold rounded-lg text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all">
                 Open 
                 <ArrowRight className="w-4 h-4" />
               </button>

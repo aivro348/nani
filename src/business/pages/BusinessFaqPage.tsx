@@ -92,7 +92,7 @@ export function BusinessFaqPage() {
                 transition={{ delay: idx * 0.05 }}
                 className="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-white/20 transition-all duration-300"
               >
-                <button
+                <button aria-label="Action button"
                   onClick={() => setOpenIdx(isOpen ? null : idx)}
                   className="w-full px-6 py-5 sm:px-8 sm:py-6 flex items-center justify-between text-left gap-4"
                 >

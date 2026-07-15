@@ -38,7 +38,7 @@ export function AICourseDetailsPage() {
         />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
-          <button 
+          <button aria-label="Action button" 
             onClick={() => navigate('/ai#courses')}
             className="flex items-center gap-2 text-slate-400 hover:text-white mb-8 transition-colors text-sm font-semibold uppercase tracking-wider"
           >
@@ -107,7 +107,7 @@ export function AICourseDetailsPage() {
               <div className="space-y-3">
                 {course.curriculum.map((mod, idx) => (
                   <div key={idx} className="border border-slate-100 rounded-xl overflow-hidden">
-                    <button
+                    <button aria-label="Action button"
                       onClick={() => setActiveModule(activeModule === idx ? null : idx)}
                       className="w-full flex items-center justify-between p-4 text-left hover:bg-slate-50 transition-colors"
                     >

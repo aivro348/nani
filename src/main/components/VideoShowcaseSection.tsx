@@ -158,7 +158,7 @@ export function VideoShowcaseSection() {
           viewport={{ once: true }}
           className="text-center mt-12"
         >
-          <button className="px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-500 text-white rounded-xl hover:shadow-2xl hover:shadow-blue-500/50 transition-all flex items-center gap-2 mx-auto group">
+          <button aria-label="Action button" className="px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-500 text-white rounded-xl hover:shadow-2xl hover:shadow-blue-500/50 transition-all flex items-center gap-2 mx-auto group">
             <Play className="w-5 h-5" />
             Watch All Videos
             <TrendingUp className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

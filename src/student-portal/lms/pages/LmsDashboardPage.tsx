@@ -97,13 +97,13 @@ export function LmsDashboardPage() {
             </div>
           </div>
           <div className="flex gap-3 w-full md:w-auto">
-            <button
+            <button aria-label="Action button"
               onClick={() => navigate('/lms/profile')}
               className="flex-1 md:flex-none px-5 py-2.5 bg-surface-hover hover:bg-surface border border-surface-border rounded-xl text-sm font-semibold transition-all flex items-center justify-center gap-2 text-heading"
             >
               <User className="w-4 h-4" /> Profile & Certificates
             </button>
-            <button
+            <button aria-label="Action button"
               onClick={logout}
               className="flex-1 md:flex-none px-5 py-2.5 bg-red-500/10 hover:bg-red-500/20 text-red-500 rounded-xl text-sm font-semibold border border-red-500/20 transition-all text-center"
             >
@@ -294,7 +294,7 @@ export function LmsDashboardPage() {
                           </div>
                         </div>
 
-                        <button
+                        <button aria-label="Action button"
                           onClick={() => navigate(`/lms/course/${course.slug}`)}
                           className="w-full py-3 bg-[var(--primary-maroon)] hover:bg-[var(--dark-maroon)] text-white font-bold rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 group/btn"
                         >
@@ -359,7 +359,7 @@ export function LmsDashboardPage() {
                       <span className="text-xs font-bold text-heading">{course.stats.learningMode}</span>
                     </div>
 
-                    <button
+                    <button aria-label="Action button"
                       onClick={() => handleCourseClick(course.slug, course.title)}
                       className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
                         isEnrolled 

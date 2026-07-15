@@ -157,11 +157,11 @@ export function TrainersSection() {
 
                     {/* Contact Buttons */}
                     <div className="flex gap-3">
-                      <button className="flex-1 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors flex items-center justify-center gap-2">
+                      <button aria-label="Action button" className="flex-1 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors flex items-center justify-center gap-2">
                         <Linkedin className="w-4 h-4" />
                         <span className="text-sm">LinkedIn</span>
                       </button>
-                      <button className="flex-1 px-4 py-2 bg-surface hover:bg-surface-hover border border-surface-border text-heading rounded-lg transition-colors flex items-center justify-center gap-2">
+                      <button aria-label="Action button" className="flex-1 px-4 py-2 bg-surface hover:bg-surface-hover border border-surface-border text-heading rounded-lg transition-colors flex items-center justify-center gap-2">
                         <Mail className="w-4 h-4" />
                         <span className="text-sm">Email</span>
                       </button>
@@ -257,7 +257,7 @@ export function TrainersSection() {
             <p className="text-text-secondary mb-8 max-w-2xl mx-auto">
               Join thousands of students who have transformed their careers under the guidance of our expert trainers. Get personalized mentorship and industry insights.
             </p>
-            <button className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-600 to-cyan-500 text-white rounded-lg hover:shadow-2xl hover:shadow-blue-500/50 transition-all transform hover:scale-105 font-medium">
+            <button aria-label="Action button" className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-600 to-cyan-500 text-white rounded-lg hover:shadow-2xl hover:shadow-blue-500/50 transition-all transform hover:scale-105 font-medium">
               Start Learning Today
             </button>
           </div>

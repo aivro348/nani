@@ -36,7 +36,7 @@ export function AIRoadmapDetailsPage() {
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <button 
+          <button aria-label="Action button" 
             onClick={() => navigate('/ai#roadmaps')}
             className="flex items-center gap-2 text-slate-400 hover:text-white mb-8 transition-colors text-sm font-semibold uppercase tracking-wider"
           >
@@ -127,7 +127,7 @@ export function AIRoadmapDetailsPage() {
             <div className="sticky top-32 bg-white rounded-2xl shadow-xl border border-slate-100 p-8">
               <h3 className="text-2xl font-bold text-slate-900 mb-2">Start this Roadmap</h3>
               <p className="text-slate-500 mb-6">Join {course.students} other students mastering {course.title}.</p>
-              <button className="w-full bg-gradient-to-r from-purple-600 to-cyan-500 text-white font-bold text-lg py-4 rounded-xl hover:opacity-90 hover:shadow-lg transition-all active:scale-95">
+              <button aria-label="Action button" className="w-full bg-gradient-to-r from-purple-600 to-cyan-500 text-white font-bold text-lg py-4 rounded-xl hover:opacity-90 hover:shadow-lg transition-all active:scale-95">
                 Begin Learning
               </button>
               <div className="mt-6 pt-6 border-t border-slate-100">

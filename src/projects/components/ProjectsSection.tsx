@@ -511,7 +511,7 @@ function ProjectCard({ project, idx }: { project: typeof PROJECTS[0]; idx: numbe
                 <ExternalLink className="w-3.5 h-3.5" /> Live Demo
               </a>
             ) : (
-              <button onClick={() => setExpanded(e => !e)}
+              <button aria-label="Action button" onClick={() => setExpanded(e => !e)}
                 className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl border text-xs transition-all hover:scale-[1.02] ${
                   expanded
                     ? 'border-blue-500/40 bg-blue-600/10 text-blue-400'
@@ -522,7 +522,7 @@ function ProjectCard({ project, idx }: { project: typeof PROJECTS[0]; idx: numbe
               </button>
             )}
             {project.demo && (
-              <button onClick={() => setExpanded(e => !e)}
+              <button aria-label="Action button" onClick={() => setExpanded(e => !e)}
                 className={`px-3 py-2.5 rounded-xl border text-xs transition-all ${
                   expanded
                     ? 'border-blue-500/40 bg-blue-600/10 text-blue-400'
@@ -707,7 +707,7 @@ export function ProjectsSection() {
                 placeholder="Search by project name, tech or branch…"
                 className="w-full pl-11 pr-4 py-3 bg-surface/70 border border-surface-border rounded-xl text-text-secondary placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:bg-surface text-sm transition-all" />
               {search && (
-                <button onClick={() => setSearch('')} className="absolute right-4 top-1/2 -translate-y-1/2">
+                <button aria-label="Action button" onClick={() => setSearch('')} className="absolute right-4 top-1/2 -translate-y-1/2">
                   <X className="w-4 h-4 text-text-muted hover:text-heading transition-colors" />
                 </button>
               )}
@@ -728,7 +728,7 @@ export function ProjectsSection() {
               const meta = BRANCH_META[b];
               const Icon = meta?.icon;
               return (
-                <button key={b} onClick={() => { setBranch(b); setPage(1); }}
+                <button aria-label="Action button" key={b} onClick={() => { setBranch(b); setPage(1); }}
                   className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm transition-all ${
                     branch === b
                       ? 'bg-gradient-to-r from-blue-600 to-cyan-500 text-heading shadow-lg shadow-blue-500/20'
@@ -750,7 +750,7 @@ export function ProjectsSection() {
           <div className="flex flex-wrap gap-2 items-center">
             <span className="text-xs text-slate-600 mr-1 flex items-center gap-1"><Filter className="w-3 h-3" />Level:</span>
             {DIFFICULTIES.map(d => (
-              <button key={d} onClick={() => { setDifficulty(d); setPage(1); }}
+              <button aria-label="Action button" key={d} onClick={() => { setDifficulty(d); setPage(1); }}
                 className={`px-3.5 py-1.5 rounded-xl text-xs transition-all ${
                   difficulty === d
                     ? 'bg-blue-600 text-heading shadow-lg shadow-blue-500/25'
@@ -767,7 +767,7 @@ export function ProjectsSection() {
               {search && <> for "<span className="text-heading">{search}</span>"</>}
             </p>
             {isFiltered && (
-              <button onClick={clearFilters} className="text-xs text-text-muted hover:text-blue-400 transition-colors">
+              <button aria-label="Action button" onClick={clearFilters} className="text-xs text-text-muted hover:text-blue-400 transition-colors">
                 Clear filters ×
               </button>
             )}
@@ -781,7 +781,7 @@ export function ProjectsSection() {
               className="py-24 text-center">
               <Search className="w-14 h-14 mx-auto mb-4 text-slate-700" />
               <p className="text-base text-text-muted mb-2">No projects match your search.</p>
-              <button onClick={clearFilters} className="text-sm text-blue-400 hover:underline">Clear all filters</button>
+              <button aria-label="Action button" onClick={clearFilters} className="text-sm text-blue-400 hover:underline">Clear all filters</button>
             </motion.div>
           ) : (
             <motion.div key="grid" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}

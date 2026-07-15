@@ -83,7 +83,7 @@ export const AICoursesSection = memo(function AICoursesSection({ previewOnly }: 
                       ))}
                     </ul>
 
-                    <button 
+                    <button aria-label="Action button" 
                       onClick={() => navigate(`/ai/courses/${course.slug}`)}
                       className="bg-black hover:bg-gray-800 text-white px-7 py-3 rounded-xl font-bold text-sm transition-all w-fit shadow-md hover:shadow-xl hover:-translate-y-0.5 active:scale-95"
                     >
@@ -98,7 +98,7 @@ export const AICoursesSection = memo(function AICoursesSection({ previewOnly }: 
 
         {previewOnly && (
           <div className="flex justify-center pt-8">
-            <button 
+            <button aria-label="Action button" 
               onClick={() => navigate('/all-ai-courses')}
               className="bg-black hover:bg-gray-800 text-white px-10 py-4 rounded-xl font-bold text-lg transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 active:scale-95"
             >

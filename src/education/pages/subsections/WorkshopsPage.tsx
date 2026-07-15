@@ -27,7 +27,7 @@ export function WorkshopsPage() {
                 <div className="flex items-center gap-3 text-slate-600"><Clock className="w-5 h-5 text-slate-400" /> {workshop.date} ({workshop.duration})</div>
                 <div className="flex items-center gap-3 text-slate-600"><Users className="w-5 h-5 text-slate-400" /> {workshop.audience}</div>
               </div>
-              <button className="flex items-center gap-2 text-white bg-slate-900 px-6 py-3 rounded-xl font-bold hover:bg-[var(--primary-maroon)] transition-colors group-hover:shadow-lg w-full justify-center">
+              <button aria-label="Action button" className="flex items-center gap-2 text-white bg-slate-900 px-6 py-3 rounded-xl font-bold hover:bg-[var(--primary-maroon)] transition-colors group-hover:shadow-lg w-full justify-center">
                 Reserve a Seat <ArrowRight className="w-4 h-4" />
               </button>
             </motion.div>

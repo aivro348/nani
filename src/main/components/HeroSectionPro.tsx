@@ -57,7 +57,7 @@ export function HeroSectionPro({ setActiveSection }: HeroSectionProProps) {
           </p>
 
           <div className="flex flex-wrap items-center gap-6">
-            <button
+            <button aria-label="Action button"
               onClick={scrollToDivisions}
               className="group relative overflow-hidden bg-[var(--primary-maroon)] text-white px-8 py-4 rounded-xl font-bold tracking-widest uppercase transition-all shadow-[0_0_30px_rgba(139,0,0,0.4)] hover:shadow-[0_0_50px_rgba(139,0,0,0.6)] hover:-translate-y-1"
             >

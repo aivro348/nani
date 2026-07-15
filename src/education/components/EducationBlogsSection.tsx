@@ -53,7 +53,7 @@ export function EducationBlogsSection() {
               Stay ahead of the curve. Read our latest articles, guides, and success stories to fuel your educational journey.
             </p>
           </div>
-          <button 
+          <button aria-label="Action button" 
             onClick={() => navigate('/blogs')}
             className="group hidden md:inline-flex items-center gap-2 px-6 py-3 bg-white border-2 border-slate-200 hover:border-[var(--primary-maroon)] text-slate-700 hover:text-[var(--primary-maroon)] font-bold rounded-xl transition-all hover:shadow-lg"
           >
@@ -115,7 +115,7 @@ export function EducationBlogsSection() {
         </div>
         
         {/* Mobile button */}
-        <button 
+        <button aria-label="Action button" 
           onClick={() => navigate('/blogs')}
           className="mt-10 w-full md:hidden flex justify-center items-center gap-2 px-6 py-4 bg-white border-2 border-slate-200 text-slate-700 font-bold rounded-xl transition-all active:bg-slate-50"
         >

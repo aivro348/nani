@@ -64,7 +64,7 @@ export function AICoursesPage() {
               </ul>
             </div>
             <a href="https://wa.me/919032517427" target="_blank" rel="noopener noreferrer">
-              <button className="w-full py-4 bg-white/5 border border-white/10 hover:bg-[var(--primary-gold)] hover:text-black hover:border-[var(--primary-gold)] transition-all font-bold rounded-xl uppercase text-xs tracking-wider">
+              <button aria-label="Action button" className="w-full py-4 bg-white/5 border border-white/10 hover:bg-[var(--primary-gold)] hover:text-black hover:border-[var(--primary-gold)] transition-all font-bold rounded-xl uppercase text-xs tracking-wider">
                 Enroll Now
               </button>
             </a>
@@ -90,7 +90,7 @@ export function AICoursesPage() {
               </ul>
             </div>
             <a href="https://wa.me/919032517427" target="_blank" rel="noopener noreferrer">
-              <button className="w-full py-4 bg-[var(--primary-gold)] text-black font-black rounded-xl hover:bg-[var(--primary-gold)]/80 transition-all uppercase text-xs tracking-wider">
+              <button aria-label="Action button" className="w-full py-4 bg-[var(--primary-gold)] text-black font-black rounded-xl hover:bg-[var(--primary-gold)]/80 transition-all uppercase text-xs tracking-wider">
                 Enroll Now
               </button>
             </a>
@@ -113,7 +113,7 @@ export function AICoursesPage() {
               </ul>
             </div>
             <a href="https://wa.me/919032517427" target="_blank" rel="noopener noreferrer">
-              <button className="w-full py-4 bg-white/5 border border-white/10 hover:bg-[var(--primary-gold)] hover:text-black hover:border-[var(--primary-gold)] transition-all font-bold rounded-xl uppercase text-xs tracking-wider">
+              <button aria-label="Action button" className="w-full py-4 bg-white/5 border border-white/10 hover:bg-[var(--primary-gold)] hover:text-black hover:border-[var(--primary-gold)] transition-all font-bold rounded-xl uppercase text-xs tracking-wider">
                 Enroll Now
               </button>
             </a>
@@ -140,7 +140,7 @@ export function AICoursesPage() {
               <div className="text-3xl font-black text-[var(--primary-gold)]">₹99</div>
             </div>
             <a href="https://wa.me/919032517427" target="_blank" rel="noopener noreferrer">
-              <button className="px-6 py-3.5 bg-[var(--primary-maroon)] text-white hover:bg-[var(--primary-maroon)]/85 transition-all text-xs uppercase tracking-wider font-bold rounded-xl border border-[var(--primary-maroon)] shadow-[0_0_15px_rgba(139,0,0,0.3)]">
+              <button aria-label="Action button" className="px-6 py-3.5 bg-[var(--primary-maroon)] text-white hover:bg-[var(--primary-maroon)]/85 transition-all text-xs uppercase tracking-wider font-bold rounded-xl border border-[var(--primary-maroon)] shadow-[0_0_15px_rgba(139,0,0,0.3)]">
                 Book Directly From Website
               </button>
             </a>

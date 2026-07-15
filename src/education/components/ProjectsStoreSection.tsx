@@ -123,7 +123,7 @@ export const ProjectsStoreSection = memo(function ProjectsStoreSection({ preview
               className="w-full pl-11 pr-10 py-3 bg-white border border-slate-200 rounded-xl text-slate-700 placeholder-slate-400 focus:outline-none focus:border-[var(--primary-maroon)] text-sm transition-all shadow-sm"
             />
             {search && (
-              <button onClick={() => setSearch('')} className="absolute right-4 top-1/2 -translate-y-1/2">
+              <button aria-label="Action button" onClick={() => setSearch('')} className="absolute right-4 top-1/2 -translate-y-1/2">
                 <X className="w-4 h-4 text-slate-400 hover:text-slate-700 transition-colors" />
               </button>
             )}
@@ -136,7 +136,7 @@ export const ProjectsStoreSection = memo(function ProjectsStoreSection({ preview
               const Icon = meta?.icon;
               const count = b === 'All' ? PROJECT_STORE.length : PROJECT_STORE.filter(p => p.branch === b).length;
               return (
-                <button
+                <button aria-label="Action button"
                   key={b}
                   onClick={() => setBranch(b)}
                   className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold transition-all ${
@@ -160,7 +160,7 @@ export const ProjectsStoreSection = memo(function ProjectsStoreSection({ preview
             <div className="flex justify-center gap-2">
               <Filter className="w-4 h-4 text-slate-400 mt-2" />
               {DEGREES.map(d => (
-                <button
+                <button aria-label="Action button"
                   key={d}
                   onClick={() => setDegree(d)}
                   className={`px-4 py-2 rounded-xl text-sm font-bold transition-all ${
@@ -178,7 +178,7 @@ export const ProjectsStoreSection = memo(function ProjectsStoreSection({ preview
 
             <div className="flex justify-center gap-2">
               {TYPES.map(t => (
-                <button
+                <button aria-label="Action button"
                   key={t}
                   onClick={() => setType(t)}
                   className={`px-4 py-2 rounded-xl text-sm font-bold transition-all ${

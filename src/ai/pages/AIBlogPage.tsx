@@ -102,7 +102,7 @@ export function AIBlogPage() {
                 </div>
               </div>
               <div className="p-6 pt-0">
-                <button className="text-xs font-bold text-[var(--primary-gold)] flex items-center gap-1.5 hover:underline">
+                <button aria-label="Action button" className="text-xs font-bold text-[var(--primary-gold)] flex items-center gap-1.5 hover:underline">
                   Read Article
                   <ArrowRight className="w-4 h-4" />
                 </button>

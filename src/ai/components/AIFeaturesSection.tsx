@@ -150,13 +150,13 @@ export function AIFeaturesSection() {
           {/* CTA Buttons */}
           <div className="text-center">
             <div className="inline-flex flex-col sm:flex-row items-center gap-4">
-              <button 
+              <button aria-label="Action button" 
                 onClick={() => window.dispatchEvent(new CustomEvent('open-get-started'))}
                 className="px-8 py-4 bg-gradient-to-r from-teal-500 to-cyan-600 text-white rounded-xl hover:shadow-2xl hover:shadow-teal-500/50 transition-all transform hover:scale-105"
               >
                 Try AI Assistant Free
               </button>
-              <button className="px-8 py-4 bg-surface border border-surface-border text-heading rounded-xl hover:bg-surface hover:border-teal-500/50 transition-all theme-transition">
+              <button aria-label="Action button" className="px-8 py-4 bg-surface border border-surface-border text-heading rounded-xl hover:bg-surface hover:border-teal-500/50 transition-all theme-transition">
                 Watch AI Demo
               </button>
             </div>

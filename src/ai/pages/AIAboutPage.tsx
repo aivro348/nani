@@ -125,7 +125,7 @@ export function AIAboutPage() {
               <div className="text-xs text-gray-500 mt-0.5">One-time payment</div>
             </div>
             <a href="https://wa.me/919032517427" target="_blank" rel="noopener noreferrer">
-              <button className="px-6 py-3.5 bg-[var(--primary-maroon)] text-white hover:bg-[var(--primary-maroon)]/80 transition-all text-xs uppercase tracking-wider flex items-center gap-2 font-bold rounded-xl border border-[var(--primary-maroon)] shadow-[0_0_15px_rgba(139,0,0,0.3)]">
+              <button aria-label="Action button" className="px-6 py-3.5 bg-[var(--primary-maroon)] text-white hover:bg-[var(--primary-maroon)]/80 transition-all text-xs uppercase tracking-wider flex items-center gap-2 font-bold rounded-xl border border-[var(--primary-maroon)] shadow-[0_0_15px_rgba(139,0,0,0.3)]">
                 Book Call Now
                 <ArrowUpRight className="w-4 h-4" />
               </button>

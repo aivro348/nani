@@ -140,7 +140,7 @@ export function ProjectIdeasSection() {
                 className="group relative text-left w-full"
               >
                 {/* The card itself */}
-                <button
+                <button aria-label="Action button"
                   onClick={() => setSelectedDepartment(dept.id)}
                   className="w-full text-left bg-card-bg backdrop-blur-sm border border-card-border rounded-2xl p-6 transition-all hover:border-blue-500/50 hover:shadow-xl hover:shadow-blue-500/10 theme-transition"
                 >
@@ -202,7 +202,7 @@ export function ProjectIdeasSection() {
                             <p className="text-lg text-text-muted">{dept.description}</p>
                           </div>
                         </div>
-                        <button 
+                        <button aria-label="Action button" 
                           onClick={() => setSelectedDepartment(null)}
                           className="p-4 bg-white/5 hover:bg-white/10 rounded-2xl border border-white/10 text-white transition-all hover:rotate-90"
                         >
@@ -245,7 +245,7 @@ export function ProjectIdeasSection() {
                         <div className="flex items-center gap-2 text-text-muted text-sm font-medium">
                           <Clock className="w-4 h-4" /> {project.duration}
                         </div>
-                        <button className="flex items-center gap-2 text-blue-400 text-sm font-bold group-hover:gap-3 transition-all">
+                        <button aria-label="Action button" className="flex items-center gap-2 text-blue-400 text-sm font-bold group-hover:gap-3 transition-all">
                           Get Specs <ChevronRight className="w-4 h-4" />
                         </button>
                       </div>

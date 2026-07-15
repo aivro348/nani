@@ -77,13 +77,13 @@ export function AIResourcesPage() {
           </p>
           <div className="flex items-center justify-center gap-4 flex-wrap">
             <a href="https://wa.me/919032517427" target="_blank" rel="noopener noreferrer">
-              <button className="px-6 py-3 bg-[var(--primary-maroon)] text-white hover:bg-[var(--primary-maroon)]/85 transition-all text-xs font-bold uppercase tracking-wider rounded-lg flex items-center gap-2 border border-[var(--primary-maroon)] shadow-[0_0_15px_rgba(139,0,0,0.3)]">
+              <button aria-label="Action button" className="px-6 py-3 bg-[var(--primary-maroon)] text-white hover:bg-[var(--primary-maroon)]/85 transition-all text-xs font-bold uppercase tracking-wider rounded-lg flex items-center gap-2 border border-[var(--primary-maroon)] shadow-[0_0_15px_rgba(139,0,0,0.3)]">
                 <MessageSquare className="w-4 h-4" />
                 Join WhatsApp to Access
               </button>
             </a>
             <a href="/ai-courses">
-              <button className="px-6 py-3 bg-white/5 border border-white/10 hover:border-[var(--primary-gold)]/30 rounded-lg text-xs font-bold uppercase tracking-wider transition-all text-white">
+              <button aria-label="Action button" className="px-6 py-3 bg-white/5 border border-white/10 hover:border-[var(--primary-gold)]/30 rounded-lg text-xs font-bold uppercase tracking-wider transition-all text-white">
                 Explore Courses
               </button>
             </a>

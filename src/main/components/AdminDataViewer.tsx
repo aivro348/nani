@@ -165,7 +165,7 @@ export function AdminDataViewer() {
 
         {/* Tab Navigation */}
         <div className="flex gap-4 mb-6 border-b border-card-border">
-          <button
+          <button aria-label="Action button"
             onClick={() => setActiveTab('enrollments')}
             className={`px-6 py-3 transition-all ${
               activeTab === 'enrollments'
@@ -178,7 +178,7 @@ export function AdminDataViewer() {
               Enrollments ({enrollments.length})
             </div>
           </button>
-          <button
+          <button aria-label="Action button"
             onClick={() => setActiveTab('getstarted')}
             className={`px-6 py-3 transition-all ${
               activeTab === 'getstarted'

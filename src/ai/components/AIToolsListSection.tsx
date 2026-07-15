@@ -793,7 +793,7 @@ export const AIToolsListSection = memo(function AIToolsListSection({ previewOnly
               <div className="mb-12">
                 <div className="flex flex-wrap gap-3 justify-center">
                   {categories.map((category) => (
-                    <button
+                    <button aria-label="Action button"
                       key={category.id}
                       onClick={() => setSelectedCategory(category.id)}
                       className={`px-5 py-2.5 rounded-xl border transition-all duration-300 text-sm flex items-center gap-2 transform active:scale-95 ${
@@ -941,7 +941,7 @@ export const AIToolsListSection = memo(function AIToolsListSection({ previewOnly
         {/* Load More Button */}
         {!previewOnly && visibleCount < filteredTools.length && (
           <div className="mt-12 text-center">
-            <button
+            <button aria-label="Action button"
               onClick={() => setVisibleCount(prev => prev + 12)}
               className="px-8 py-3 bg-surface hover:bg-surface-hover border border-surface-border text-heading rounded-xl font-semibold transition-all shadow-lg hover:shadow-xl hover:-translate-y-1"
             >
@@ -953,7 +953,7 @@ export const AIToolsListSection = memo(function AIToolsListSection({ previewOnly
         {/* Bottom CTA */}
         {previewOnly ? (
           <div className="mt-16 text-center">
-            <button 
+            <button aria-label="Action button" 
               onClick={() => navigate('/all-ai-tools')}
               className="bg-black hover:bg-gray-800 text-white px-10 py-4 rounded-xl font-bold text-lg transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 active:scale-95"
             >
@@ -970,7 +970,7 @@ export const AIToolsListSection = memo(function AIToolsListSection({ previewOnly
                 Join Scaro Technologies to get personalized AI tool recommendations, exclusive tutorials, 
                 and learn how to integrate these tools into your study workflow.
               </p>
-              <button 
+              <button aria-label="Action button" 
                 onClick={() => window.dispatchEvent(new CustomEvent('open-get-started'))}
                 className="px-8 py-4 bg-gradient-to-r from-[var(--primary-maroon)] to-[var(--primary-gold)] text-white rounded-xl hover:shadow-2xl hover:shadow-[var(--primary-maroon)]/30 transition-all transform hover:scale-105 font-bold"
               >

@@ -143,13 +143,13 @@ export function BusinessServicesSlideshow() {
 
       {/* Manual Controls */}
       <div className="absolute bottom-12 right-12 z-20 flex gap-4 hidden md:flex">
-        <button 
+        <button aria-label="Action button" 
           onClick={prevSlide}
           className="w-14 h-14 rounded-full border border-white/20 bg-black/40 backdrop-blur-md flex items-center justify-center text-white hover:border-[var(--primary-gold)] hover:text-[var(--primary-gold)] transition-colors"
         >
           <ChevronLeft className="w-6 h-6" />
         </button>
-        <button 
+        <button aria-label="Action button" 
           onClick={nextSlide}
           className="w-14 h-14 rounded-full border border-white/20 bg-black/40 backdrop-blur-md flex items-center justify-center text-white hover:border-[var(--primary-gold)] hover:text-[var(--primary-gold)] transition-colors"
         >
@@ -160,7 +160,7 @@ export function BusinessServicesSlideshow() {
       {/* Slide Indicators */}
       <div className="absolute bottom-12 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-48 z-20 flex gap-3">
         {services.map((_, idx) => (
-          <button
+          <button aria-label="Action button"
             key={idx}
             onClick={() => setCurrentSlide(idx)}
             className={`h-2 rounded-full transition-all duration-500 ${

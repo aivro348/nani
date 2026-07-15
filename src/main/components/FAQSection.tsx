@@ -63,7 +63,7 @@ export function FAQSection() {
               transition={{ delay: index * 0.1 }}
               className="group"
             >
-              <button
+              <button aria-label="Action button"
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
                 className={`w-full flex items-center justify-between p-6 rounded-2xl border transition-all text-left ${
                   openIndex === index

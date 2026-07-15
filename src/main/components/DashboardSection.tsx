@@ -131,7 +131,7 @@ export function DashboardSection() {
 
         {/* CTA */}
         <div className="text-center mt-12">
-          <button className="px-8 py-3 bg-gradient-to-r from-teal-500 to-cyan-600 text-white rounded-xl hover:shadow-2xl transition-all transform hover:scale-105">
+          <button aria-label="Action button" className="px-8 py-3 bg-gradient-to-r from-teal-500 to-cyan-600 text-white rounded-xl hover:shadow-2xl transition-all transform hover:scale-105">
             Access Your Dashboard →
           </button>
         </div>

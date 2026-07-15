@@ -57,7 +57,7 @@ export function CourseDetailsPage() {
         />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
-          <button 
+          <button aria-label="Action button" 
             onClick={() => navigate('/courses#programs-section')}
             className="flex items-center gap-2 text-slate-400 hover:text-white mb-8 transition-colors text-sm font-semibold uppercase tracking-wider"
           >
@@ -77,7 +77,7 @@ export function CourseDetailsPage() {
                 </p>
               </div>
 
-              <button
+              <button aria-label="Action button"
                 onClick={handleEnrollClick}
                 className="bg-[var(--primary-gold)] hover:bg-[#e63500] text-white font-bold px-8 py-3.5 rounded-xl transition-all shadow-lg hover:shadow-xl active:scale-95 text-sm uppercase tracking-wider block"
               >
@@ -148,7 +148,7 @@ export function CourseDetailsPage() {
              <div className="sticky top-32 bg-white rounded-2xl shadow-xl border border-slate-100 p-8">
                 <h3 className="text-2xl font-bold text-slate-900 mb-2">Ready to start?</h3>
                 <p className="text-slate-500 mb-6">Enroll now and start your journey towards mastering {course.title}.</p>
-                <button 
+                <button aria-label="Action button" 
                   onClick={handleEnrollClick}
                   className="w-full bg-[var(--primary-gold)] text-white font-bold text-lg py-4 rounded-xl hover:bg-[#e63500] hover:shadow-lg transition-all active:scale-95"
                 >
@@ -169,7 +169,7 @@ export function CourseDetailsPage() {
               const isOpen = activeModule === idx;
               return (
                 <div key={idx} className="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm transition-all hover:border-slate-300">
-                  <button
+                  <button aria-label="Action button"
                     onClick={() => setActiveModule(isOpen ? null : idx)}
                     className="w-full px-6 py-5 flex items-center justify-between bg-white text-left focus:outline-none"
                   >

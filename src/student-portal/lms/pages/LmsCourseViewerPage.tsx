@@ -148,7 +148,7 @@ export function LmsCourseViewerPage() {
       <div className="min-h-screen flex items-center justify-center bg-page-bg py-24 text-center text-heading">
         <div>
           <h2 className="text-2xl font-black">Course Not Found</h2>
-          <button onClick={() => navigate('/lms')} className="mt-4 px-6 py-2.5 bg-[var(--primary-maroon)] text-white rounded-xl font-bold">
+          <button aria-label="Action button" onClick={() => navigate('/lms')} className="mt-4 px-6 py-2.5 bg-[var(--primary-maroon)] text-white rounded-xl font-bold">
             Back to Dashboard
           </button>
         </div>
@@ -204,13 +204,13 @@ export function LmsCourseViewerPage() {
           </div>
 
           <div className="flex gap-4 pt-2">
-            <button
+            <button aria-label="Action button"
               onClick={() => navigate('/lms')}
               className="flex-1 py-3.5 bg-surface border border-surface-border hover:bg-surface-hover text-heading font-bold rounded-xl transition-all"
             >
               Cancel
             </button>
-            <button
+            <button aria-label="Action button"
               onClick={() => setShowEnrollModal(true)}
               className="flex-1 py-3.5 bg-gradient-to-r from-[var(--primary-maroon)] to-[var(--primary-gold)] hover:shadow-xl text-white font-bold rounded-xl transition-all flex items-center justify-center gap-2 group"
             >
@@ -261,7 +261,7 @@ export function LmsCourseViewerPage() {
                   <span className="text-[10px] text-text-muted font-bold">{progressPercent}%</span>
                 </div>
               </div>
-              <button 
+              <button aria-label="Action button" 
                 onClick={() => setSidebarOpen(false)} 
                 className="p-1 hover:bg-surface-hover rounded-lg text-text-secondary"
               >
@@ -276,7 +276,7 @@ export function LmsCourseViewerPage() {
                 return (
                   <div key={mod.id} className="space-y-1">
                     {/* Module Title Button */}
-                    <button
+                    <button aria-label="Action button"
                       onClick={() => toggleModule(mod.id)}
                       className="w-full text-left px-3 py-2.5 hover:bg-surface-hover/50 rounded-xl transition-all flex items-center justify-between text-xs font-black text-heading uppercase tracking-wide group"
                     >
@@ -302,7 +302,7 @@ export function LmsCourseViewerPage() {
                             if (les.type === 'quiz') Icon = HelpCircle;
 
                             return (
-                              <button
+                              <button aria-label="Action button"
                                 key={les.id}
                                 onClick={() => setActiveLessonId(les.id)}
                                 className={`w-full text-left px-3 py-2 rounded-xl transition-all flex items-center justify-between gap-3 text-xs font-semibold ${
@@ -339,14 +339,14 @@ export function LmsCourseViewerPage() {
         <div className="px-6 py-4 border-b border-surface-border flex items-center justify-between bg-surface/30 sticky top-0 backdrop-blur-md z-30">
           <div className="flex items-center gap-3">
             {!sidebarOpen && (
-              <button 
+              <button aria-label="Action button" 
                 onClick={() => setSidebarOpen(true)} 
                 className="hidden md:block p-2 hover:bg-surface-hover rounded-xl border border-surface-border text-heading"
               >
                 <Menu className="w-5 h-5" />
               </button>
             )}
-            <button 
+            <button aria-label="Action button" 
               onClick={() => navigate('/lms')} 
               className="p-2 hover:bg-surface-hover rounded-xl border border-surface-border text-heading flex items-center gap-1 text-xs font-bold"
             >
@@ -397,7 +397,7 @@ export function LmsCourseViewerPage() {
                   <div className="flex justify-between items-center bg-surface border border-surface-border rounded-2xl p-4">
                     <div className="flex gap-2">
                       {[1, 1.25, 1.5, 2].map(speed => (
-                        <button
+                        <button aria-label="Action button"
                           key={speed}
                           onClick={() => setVideoSpeed(speed)}
                           className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all border ${
@@ -411,7 +411,7 @@ export function LmsCourseViewerPage() {
                       ))}
                     </div>
 
-                    <button
+                    <button aria-label="Action button"
                       onClick={() => setIsTheatreMode(!isTheatreMode)}
                       className="text-xs font-bold px-4 py-2 hover:bg-surface-hover rounded-xl text-heading border border-surface-border"
                     >
@@ -456,7 +456,7 @@ export function LmsCourseViewerPage() {
                         const code = text.replace(/```[a-z]*\n/, '').replace(/```$/, '');
                         return (
                           <div key={index} className="my-4 bg-slate-900 border border-slate-800 rounded-2xl p-4 overflow-x-auto relative group font-mono text-xs text-slate-200">
-                            <button 
+                            <button aria-label="Action button" 
                               onClick={() => navigator.clipboard.writeText(code)}
                               className="absolute top-3 right-3 text-[10px] font-bold px-2 py-1 bg-slate-800 rounded hover:bg-slate-700 text-slate-400 group-hover:block transition-all"
                             >
@@ -509,7 +509,7 @@ export function LmsCourseViewerPage() {
                             }
 
                             return (
-                              <button
+                              <button aria-label="Action button"
                                 key={optIdx}
                                 onClick={() => handleQuizSelect(q.id, optIdx)}
                                 disabled={quizSubmitted}
@@ -555,7 +555,7 @@ export function LmsCourseViewerPage() {
                     )}
 
                     {!quizSubmitted ? (
-                      <button
+                      <button aria-label="Action button"
                         onClick={handleQuizSubmit}
                         disabled={Object.keys(quizAnswers).length < activeLesson.quiz.questions.length}
                         className="px-6 py-3 bg-[var(--primary-maroon)] text-white font-bold rounded-xl shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed transition-all"
@@ -563,7 +563,7 @@ export function LmsCourseViewerPage() {
                         Submit Test
                       </button>
                     ) : (
-                      <button
+                      <button aria-label="Action button"
                         onClick={handleMarkCompleted}
                         className="px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-500 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all"
                       >
@@ -576,7 +576,7 @@ export function LmsCourseViewerPage() {
 
               {/* Action workspace navigation footers */}
               <div className="pt-6 border-t border-surface-border flex justify-between items-center gap-4">
-                <button
+                <button aria-label="Action button"
                   onClick={handlePrev}
                   disabled={activeLessonIndex === 0}
                   className="px-4 py-2.5 border border-surface-border rounded-xl text-xs font-bold text-heading hover:bg-surface-hover disabled:opacity-40 transition-all"
@@ -585,7 +585,7 @@ export function LmsCourseViewerPage() {
                 </button>
 
                 {activeLesson.type !== 'quiz' && (
-                  <button
+                  <button aria-label="Action button"
                     onClick={handleMarkCompleted}
                     className="px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-500 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2 group"
                   >
@@ -596,7 +596,7 @@ export function LmsCourseViewerPage() {
                 )}
 
                 {activeLesson.type === 'quiz' && quizSubmitted && (
-                  <button
+                  <button aria-label="Action button"
                     onClick={handleNext}
                     disabled={activeLessonIndex === allLessons.length - 1}
                     className="px-4 py-2.5 border border-surface-border rounded-xl text-xs font-bold text-heading hover:bg-surface-hover disabled:opacity-40 transition-all"

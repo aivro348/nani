@@ -511,7 +511,7 @@ export function RoadmapSection() {
               { id: 'intermediate', label: 'Intermediate', on: 'bg-amber-600 text-heading shadow-lg' },
               { id: 'advanced',     label: 'Advanced',     on: 'bg-red-600 text-heading shadow-lg' },
             ].map(f => (
-              <button key={f.id} onClick={() => setFilterDifficulty(f.id)}
+              <button aria-label="Action button" key={f.id} onClick={() => setFilterDifficulty(f.id)}
                 className={`px-4 py-3 rounded-xl text-sm transition-all whitespace-nowrap ${
                   filterDifficulty === f.id ? f.on : 'bg-surface text-text-secondary border border-surface-border hover:border-blue-500/50 hover:text-heading'
                 }`}>
@@ -529,7 +529,7 @@ export function RoadmapSection() {
               <div className="col-span-3 py-20 text-center">
                 <Search className="w-12 h-12 mx-auto mb-4 text-slate-700" />
                 <p className="text-base text-text-muted">No courses match your search.</p>
-                <button onClick={() => { setSearchQuery(''); setFilterDifficulty('all'); }}
+                <button aria-label="Action button" onClick={() => { setSearchQuery(''); setFilterDifficulty('all'); }}
                   className="mt-3 text-sm text-blue-400 hover:underline">Clear filters</button>
               </div>
             ) : filtered.map((course, idx) => {
@@ -589,7 +589,7 @@ export function RoadmapSection() {
                             <div className="text-[10px] text-text-muted truncate">{course.mentor.company}</div>
                           </div>
                         </div>
-                        <button 
+                        <button aria-label="Action button" 
                           onClick={(e) => { e.stopPropagation(); navigateToCourse(course.id); }}
                           className="p-2 rounded-lg bg-surface border border-surface-border hover:border-blue-500/40 hover:text-blue-400 transition-all"
                         >
@@ -617,11 +617,11 @@ export function RoadmapSection() {
             beginners — covers data analysis, automation and real-world project work.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <button onClick={() => navigate('/courses/python')}
+            <button aria-label="Action button" onClick={() => navigate('/courses/python')}
               className="px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-500 text-heading rounded-xl text-sm hover:shadow-2xl hover:shadow-blue-500/40 transition-all hover:scale-105 flex items-center gap-2">
               <PlayCircle className="w-5 h-5" /> Start Python Course
             </button>
-            <button className="px-8 py-4 bg-surface border border-surface-border text-text-secondary rounded-xl text-sm hover:border-blue-500/50 hover:text-heading transition-all flex items-center gap-2">
+            <button aria-label="Action button" className="px-8 py-4 bg-surface border border-surface-border text-text-secondary rounded-xl text-sm hover:border-blue-500/50 hover:text-heading transition-all flex items-center gap-2">
               <BookOpen className="w-5 h-5" /> Explore All Courses
             </button>
           </div>

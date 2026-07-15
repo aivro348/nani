@@ -198,7 +198,7 @@ export const EducationContact = memo(function EducationContact() {
                   />
                 </div>
 
-                <button
+                <button aria-label="Action button"
                   disabled={isSubmitting || submitted}
                   type="submit"
                   className={`w-full py-4 rounded-xl font-bold text-sm tracking-wide flex items-center justify-center gap-2 transition-all ${

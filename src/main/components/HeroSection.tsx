@@ -70,7 +70,7 @@ export function HeroSection({ setActiveSection }: HeroSectionProps) {
             transition={{ duration: 0.6, delay: 0.6 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
           >
-            <button
+            <button aria-label="Action button"
               onClick={() => scrollToSection('branches')}
               className="group px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-500 text-white rounded-xl hover:shadow-2xl hover:shadow-blue-500/50 transition-all flex items-center gap-2 transform hover:scale-105 relative overflow-hidden"
             >
@@ -79,7 +79,7 @@ export function HeroSection({ setActiveSection }: HeroSectionProps) {
               <span className="relative z-10">Start Learning Free</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform relative z-10" />
             </button>
-            <button
+            <button aria-label="Action button"
               onClick={() => scrollToSection('roadmap')}
               className="px-8 py-4 bg-card-bg backdrop-blur-sm border border-blue-500/30 text-heading dark:text-white rounded-xl hover:bg-surface hover:border-blue-400/50 hover:shadow-lg hover:shadow-blue-500/20 transition-all flex items-center gap-2"
             >

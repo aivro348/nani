@@ -203,7 +203,7 @@ export const ContactPage = memo(function ContactPage() {
                   />
                 </div>
 
-                <button
+                <button aria-label="Action button"
                   disabled={isSubmitting || submitted}
                   type="submit"
                   className={`w-full py-5 rounded-xl font-bold text-xl flex items-center justify-center gap-3 transition-all ${

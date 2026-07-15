@@ -239,7 +239,7 @@ export const Footer = memo(function Footer() {
                   placeholder="Enter your email"
                   className="flex-1 px-5 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-[var(--primary-gold)]/50 focus:ring-1 focus:ring-[var(--primary-gold)]/30 text-white placeholder:text-gray-500 transition-all font-medium"
                 />
-                <button className="px-6 py-3 bg-gradient-to-r from-[var(--primary-maroon)] to-[var(--primary-gold)] text-white rounded-xl hover:shadow-[0_0_30px_-8px_var(--primary-gold)] transition-all font-bold flex items-center justify-center gap-2 group uppercase tracking-wider text-sm">
+                <button aria-label="Action button" className="px-6 py-3 bg-gradient-to-r from-[var(--primary-maroon)] to-[var(--primary-gold)] text-white rounded-xl hover:shadow-[0_0_30px_-8px_var(--primary-gold)] transition-all font-bold flex items-center justify-center gap-2 group uppercase tracking-wider text-sm">
                   Subscribe
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
