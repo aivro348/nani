@@ -28,7 +28,7 @@ const companies = [
 export function CompaniesSection() {
 
   return (
-    <div className="py-12 bg-surface/50 relative overflow-hidden theme-transition">
+    <div className="py-12 bg-[#0A0506] relative overflow-hidden theme-transition">
       {/* Background glow */}
       <div className="absolute inset-0 bg-gradient-to-r from-blue-600/5 via-cyan-500/5 to-blue-600/5" />
       
@@ -44,10 +44,10 @@ export function CompaniesSection() {
       </div>
 
       {/* Full-width scrolling marquee */}
-      <div className="relative w-full overflow-hidden">
-        {/* Gradient overlays for smooth fading at edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-24 sm:w-48 z-10 bg-gradient-to-r from-page-bg via-page-bg/80 to-transparent pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-24 sm:w-48 z-10 bg-gradient-to-l from-page-bg via-page-bg/80 to-transparent pointer-events-none" />
+      <div className="relative w-full">
+        {/* Edges Gradient for Smooth Disappearance */}
+        <div className="absolute inset-y-0 left-0 w-24 md:w-48 bg-gradient-to-r from-[#0A0506] to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-24 sm:w-48 z-10 bg-gradient-to-l from-[#0A0506] to-transparent pointer-events-none" />
 
         <motion.div
           animate={{

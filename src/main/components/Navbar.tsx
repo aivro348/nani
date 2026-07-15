@@ -55,6 +55,7 @@ export function Navbar() {
       { id: 'resources', label: 'Resources', path: '/ai-resources' },
       { id: 'community', label: 'Community', path: '/ai-community' },
       { id: 'blogs', label: 'Blog', path: '/ai-blog' },
+      { id: 'contact', label: 'Contact', path: '/contact' },
     ];
   } else if (
     currentPath.startsWith('/courses') ||
