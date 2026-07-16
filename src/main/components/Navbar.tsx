@@ -1,16 +1,77 @@
-import { Menu, X, Mail, GraduationCap, User } from 'lucide-react';
+import { Menu, X, Mail, GraduationCap, User, BookOpen } from 'lucide-react';
 import { Logo } from './Logo';
 import { useState, useEffect, lazy, Suspense } from 'react';
 import { useNavigate, useLocation } from 'react-router';
 import { useLms } from '../../student-portal/lms/context/LmsContext';
-import { SignInButton, SignUpButton, SignedIn, SignedOut, UserButton } from '@clerk/clerk-react';
+import { SignInButton, SignUpButton, SignedIn, SignedOut, useUser, useClerk } from '@clerk/clerk-react';
 
 
 // Lazy load the modal as it contains heavy logic and UI
 const GetStartedModal = lazy(() => import('./GetStartedModal').then(m => ({ default: m.GetStartedModal })));
 
+function ProfileDropdown() {
+  const { user } = useUser();
+  const { signOut } = useClerk();
+  const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    const handleClick = () => setIsOpen(false);
+    if(isOpen) {
+       document.addEventListener('click', handleClick);
+       return () => document.removeEventListener('click', handleClick);
+    }
+  }, [isOpen]);
+
+  if (!user) return null;
+
+  return (
+    <div className="relative" onClick={(e) => e.stopPropagation()}>
+      <button 
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-10 h-10 rounded-full overflow-hidden border-2 border-[var(--primary-gold)] hover:scale-105 transition-transform shadow-lg"
+      >
+        <img src={user.imageUrl} alt={user.fullName || "Profile"} className="w-full h-full object-cover" />
+      </button>
+
+      {isOpen && (
+        <div className="absolute right-0 mt-3 w-64 bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden z-[60] flex flex-col py-2 animate-in fade-in slide-in-from-top-4 duration-200">
+          <div className="px-5 py-3 border-b border-gray-100 flex items-center gap-3">
+             <div className="w-10 h-10 rounded-full bg-[var(--primary-maroon)] text-[var(--primary-gold)] flex items-center justify-center font-black text-lg shrink-0">
+               {user.firstName ? user.firstName[0] : 'U'}
+             </div>
+             <div className="flex flex-col overflow-hidden">
+               <span className="text-sm font-bold text-gray-900 truncate">{user.fullName}</span>
+               <span className="text-xs text-gray-500 truncate">{user.primaryEmailAddress?.emailAddress}</span>
+             </div>
+          </div>
+          
+          <div className="py-2 flex flex-col gap-1">
+             <button onClick={() => { setIsOpen(false); navigate('/lms/profile'); }} className="flex items-center gap-3 px-5 py-2.5 text-sm font-semibold text-gray-700 hover:bg-gray-50 hover:text-[var(--primary-maroon)] transition-colors text-left w-full">
+               <User className="w-4 h-4 text-gray-400" /> Profile Settings
+             </button>
+             <button onClick={() => { setIsOpen(false); navigate('/lms'); }} className="flex items-center gap-3 px-5 py-2.5 text-sm font-semibold text-gray-700 hover:bg-gray-50 hover:text-[var(--primary-maroon)] transition-colors text-left w-full">
+               <BookOpen className="w-4 h-4 text-gray-400" /> Active Enrolled
+             </button>
+             <button onClick={() => { setIsOpen(false); navigate('/lms'); }} className="flex items-center gap-3 px-5 py-2.5 text-sm font-semibold text-gray-700 hover:bg-gray-50 hover:text-[var(--primary-maroon)] transition-colors text-left w-full">
+               <GraduationCap className="w-4 h-4 text-gray-400" /> Available Courses
+             </button>
+          </div>
+
+          <div className="border-t border-gray-100 mt-1 pt-1">
+            <button onClick={() => { setIsOpen(false); signOut(); }} className="w-full flex items-center gap-3 px-5 py-2.5 text-sm font-semibold text-red-600 hover:bg-red-50 transition-colors text-left">
+              <svg className="w-4 h-4 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" /></svg> Sign out
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [expandedMobileItem, setExpandedMobileItem] = useState<string | null>(null);
   const [isGetStartedModalOpen, setIsGetStartedModalOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
@@ -174,11 +235,7 @@ export function Navbar() {
     ];
   }
 
-  if (!currentPath.startsWith('/lms') && !currentPath.startsWith('/login')) {
-    if (user) {
-      navItems.push({ id: 'lms-portal', label: 'LMS Portal', path: '/lms' });
-    }
-  }
+  // LMS Portal link has been removed from the header as requested
 
 
   const navigateToPage = (path: string) => {
@@ -227,7 +284,7 @@ export function Navbar() {
             <div className="flex-shrink-0 mr-4 lg:mr-8">
               <Logo onClick={() => {
                 navigateToPage(isBusinessSection ? '/business' : isEducationSection ? '/courses' : isAISection ? '/ai' : '/');
-              }} iconSize={44} textSize="text-xl hidden lg:block" />
+              }} iconSize={44} textSize="text-base sm:text-xl" />
             </div>
 
             {/* Desktop Navigation */}
@@ -290,11 +347,10 @@ export function Navbar() {
                {(isEducationSection || isAISection) && (
                  <div className="hidden lg:flex items-center gap-3">
                    <SignedOut>
-                     <button onClick={() => navigateToPage('/sign-in')} className="text-sm font-bold text-white hover:text-[var(--primary-gold)] transition-colors">Sign In</button>
                      <button onClick={() => navigateToPage('/sign-up')} className="bg-white/10 hover:bg-white/20 text-white px-4 py-1.5 rounded-full text-sm font-bold transition-all border border-white/20">Sign Up</button>
                    </SignedOut>
                    <SignedIn>
-                     <UserButton afterSignOutUrl="/" />
+                     <ProfileDropdown />
                    </SignedIn>
                  </div>
                )}
@@ -315,31 +371,35 @@ export function Navbar() {
               {navItems.map((item) => {
                 const isActive = item.path ? (currentPath === item.path || (currentPath === '/' && item.id === 'home')) : false;
                 const hasSubItems = item.subItems && item.subItems.length > 0;
+                const isExpanded = expandedMobileItem === item.id;
 
                 return (
                   <div key={item.id} className="flex flex-col">
                     <button aria-label="Action button"
                       onClick={() => {
-                        if (item.path) {
+                        if (hasSubItems) {
+                          setExpandedMobileItem(isExpanded ? null : item.id);
+                        } else if (item.path) {
                           navigateToPage(item.path);
-                        } else if (hasSubItems) {
-                          navigateToPage(item.subItems[0].path);
                         }
                       }}
-                      className={`block w-full text-left px-4 py-3 rounded-lg transition-all text-base uppercase font-medium tracking-wide ${isActive
-                        ? 'bg-red-500 text-white shadow-lg'
-                        : 'text-gray-200 hover:bg-white/10 hover:text-white'
+                      className={`w-full flex justify-between items-center text-left px-4 py-3 rounded-lg transition-all text-base uppercase font-medium tracking-wide ${isActive
+                        ? 'bg-white/10 text-[#D4AF37] border border-[#D4AF37]/20 shadow-sm'
+                        : 'text-gray-200 hover:bg-white/5 hover:text-[#D4AF37]'
                         }`}
                     >
                       {item.label}
+                      {hasSubItems && (
+                        <svg className={`w-4 h-4 transition-transform ${isExpanded ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                      )}
                     </button>
-                    {hasSubItems && (
+                    {hasSubItems && isExpanded && (
                       <div className="pl-6 flex flex-col space-y-1 mt-1 border-l-2 border-white/10 ml-4">
                         {item.subItems!.map((sub, i) => (
                           <button aria-label="Action button"
                             key={i}
                             onClick={() => navigateToPage(sub.path)}
-                            className="block w-full text-left px-4 py-2 rounded-lg transition-all text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/5"
+                            className="block w-full text-left px-4 py-2 rounded-lg transition-all text-sm font-semibold text-gray-300 hover:text-[#D4AF37] hover:bg-white/5"
                           >
                             {sub.label}
                           </button>
@@ -352,7 +412,7 @@ export function Navbar() {
               <div className="px-4 pt-4 border-t border-white/20 mt-2 space-y-2">
                 <button aria-label="Action button"
                   onClick={() => navigateToPage('/contact')}
-                  className="w-full flex justify-center items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-5 py-4 rounded-md font-bold text-lg transition-all shadow-md"
+                  className="w-full flex justify-center items-center gap-2 bg-gradient-to-r from-[#D4AF37] to-[#B89628] hover:shadow-lg hover:shadow-[#D4AF37]/20 text-[#1E060A] px-5 py-4 rounded-xl font-bold text-lg transition-all"
                 >
                   <Mail className="w-5 h-5" /> Contact Us
                 </button>

@@ -207,7 +207,6 @@ export default function App() {
               <Route path="/team" element={<TrainerPage />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/blogs" element={<BlogsPage />} />
-              <Route path="/login" element={<LoginPage />} />
               <Route path="/verify-certificate" element={<CertificateVerificationPage />} />
               <Route path="/cert-admin" element={<CertAdminLoginPage />} />
               <Route path="/cert-admin/dashboard" element={<CertAdminDashboardPage />} />
@@ -225,7 +224,6 @@ export default function App() {
               <Route path="/" element={<><Navbar /><HomePage /><Footer /></>} />
               
               {/* Auth Routes */}
-              <Route path="/sign-in/*" element={<SignInPage />} />
               <Route path="/sign-up/*" element={<SignUpPage />} />
 
               {/* New Education Routes */}

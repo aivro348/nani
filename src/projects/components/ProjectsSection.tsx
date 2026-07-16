@@ -9,18 +9,18 @@ import { useState, useMemo } from 'react';
 
 /* ─────────────────────── branch config ─────────────────────── */
 const BRANCH_META: Record<string, { gradient: string; accent: string; icon: React.ElementType; color: string }> = {
-  'CS/IT':       { gradient: 'from-blue-600 to-indigo-600',   accent: 'blue',    icon: Code,      color: 'text-blue-600 dark:text-blue-400 bg-blue-500/10 border-blue-500/25' },
-  'AI/DS':       { gradient: 'from-teal-500 to-cyan-600',     accent: 'teal',    icon: Brain,     color: 'text-teal-600 dark:text-teal-400 bg-teal-500/10 border-teal-500/25' },
-  'ECE':         { gradient: 'from-violet-600 to-purple-600', accent: 'violet',  icon: Cpu,       color: 'text-violet-600 dark:text-violet-400 bg-violet-500/10 border-violet-500/25' },
-  'EEE':         { gradient: 'from-amber-600 to-orange-600',  accent: 'amber',   icon: Zap,       color: 'text-amber-600 dark:text-amber-400 bg-amber-500/10 border-amber-500/25' },
-  'Mechanical':  { gradient: 'from-emerald-600 to-teal-600',  accent: 'emerald', icon: Wrench,    color: 'text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 border-emerald-500/25' },
-  'Civil':       { gradient: 'from-rose-600 to-pink-600',     accent: 'rose',    icon: Building2, color: 'text-rose-600 dark:text-rose-400 bg-rose-500/10 border-rose-500/25' },
+  'CS/IT':       { gradient: 'from-[#5C141D] to-[#80202B]',   accent: 'blue',    icon: Code,      color: 'text-[#5C141D] bg-[#5C141D]/10 border-[#5C141D]/25' },
+  'AI/DS':       { gradient: 'from-[#D4AF37] to-[#B89628]',     accent: 'teal',    icon: Brain,     color: 'text-[#D4AF37] bg-[#D4AF37]/10 border-[#D4AF37]/25' },
+  'ECE':         { gradient: 'from-[#5C141D] to-[#80202B]', accent: 'violet',  icon: Cpu,       color: 'text-[#5C141D] bg-[#5C141D]/10 border-[#5C141D]/25' },
+  'EEE':         { gradient: 'from-[#D4AF37] to-[#B89628]',  accent: 'amber',   icon: Zap,       color: 'text-[#D4AF37] bg-[#D4AF37]/10 border-[#D4AF37]/25' },
+  'Mechanical':  { gradient: 'from-[#5C141D] to-[#80202B]',  accent: 'emerald', icon: Wrench,    color: 'text-[#5C141D] bg-[#5C141D]/10 border-[#5C141D]/25' },
+  'Civil':       { gradient: 'from-[#D4AF37] to-[#B89628]',     accent: 'rose',    icon: Building2, color: 'text-[#D4AF37] bg-[#D4AF37]/10 border-[#D4AF37]/25' },
 };
 
 const DIFFICULTY_META: Record<string, { cls: string; dot: string }> = {
-  'Beginner':     { cls: 'text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 border-emerald-500/25', dot: 'bg-emerald-500 dark:bg-emerald-400' },
-  'Intermediate': { cls: 'text-amber-600 dark:text-amber-400  bg-amber-500/10  border-amber-500/25',     dot: 'bg-amber-500 dark:bg-amber-400'  },
-  'Advanced':     { cls: 'text-red-600 dark:text-red-400    bg-red-500/10    border-red-500/25',       dot: 'bg-red-500 dark:bg-red-400'    },
+  'Beginner':     { cls: 'text-emerald-600 bg-emerald-500/10 border-emerald-500/25', dot: 'bg-emerald-500' },
+  'Intermediate': { cls: 'text-[#D4AF37] bg-[#D4AF37]/10  border-[#D4AF37]/25',     dot: 'bg-[#D4AF37]'  },
+  'Advanced':     { cls: 'text-[#5C141D] bg-[#5C141D]/10    border-[#5C141D]/25',       dot: 'bg-[#5C141D]'    },
 };
 
 /* ─────────────────────── project data ─────────────────────── */
@@ -405,8 +405,8 @@ function ProjectCard({ project, idx }: { project: typeof PROJECTS[0]; idx: numbe
       transition={{ delay: (idx % PAGE_SIZE) * 0.05, type: 'spring', stiffness: 90 }}
       viewport={{ once: true }}
     >
-      <div className={`group h-full flex flex-col bg-card-bg border rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-blue-500/10 ${
-        expanded ? 'border-blue-500/50 shadow-xl shadow-blue-900/20' : 'border-card-border hover:border-blue-500/50'
+      <div className={`group h-full flex flex-col bg-[#FAF8F5] border rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-[#5C141D]/10 ${
+        expanded ? 'border-[#5C141D]/50 shadow-xl shadow-[#5C141D]/20' : 'border-[rgba(92,20,29,0.06)] hover:border-[#5C141D]/30'
       }`}>
 
         {/* ── image ── */}
@@ -451,10 +451,10 @@ function ProjectCard({ project, idx }: { project: typeof PROJECTS[0]; idx: numbe
 
         {/* ── body ── */}
         <div className="flex flex-col flex-1 p-5">
-          <h3 className="text-lg font-bold text-heading leading-snug mb-2 group-hover:text-blue-300 transition-colors line-clamp-1">
+          <h3 className="text-lg font-bold text-[#1E060A] leading-snug mb-2 group-hover:text-[#5C141D] transition-colors line-clamp-1">
             {project.title}
           </h3>
-          <p className="text-lg text-text-muted leading-relaxed mb-4 line-clamp-2">{project.description}</p>
+          <p className="text-lg text-slate-600 leading-relaxed mb-4 line-clamp-2">{project.description}</p>
 
           {/* tech stack */}
           <div className="flex flex-wrap gap-1.5 mb-4">
@@ -462,7 +462,7 @@ function ProjectCard({ project, idx }: { project: typeof PROJECTS[0]; idx: numbe
               <span key={i} className={`text-xs px-2.5 py-1 rounded-full border ${meta.color}`}>{t}</span>
             ))}
             {project.tech.length > 4 && (
-              <span className="text-xs px-2.5 py-1 rounded-full border border-surface-border bg-surface text-text-muted">+{project.tech.length - 4}</span>
+              <span className="text-xs px-2.5 py-1 rounded-full border border-slate-200 bg-white text-slate-500">+{project.tech.length - 4}</span>
             )}
           </div>
 
@@ -502,7 +502,7 @@ function ProjectCard({ project, idx }: { project: typeof PROJECTS[0]; idx: numbe
           {/* actions */}
           <div className="flex items-center gap-2 mt-auto">
             <a href={project.github} target="_blank" rel="noopener noreferrer"
-              className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl border border-surface-border bg-surface border border-surface-border text-text-secondary text-xs hover:border-slate-500 hover:text-heading transition-all hover:scale-[1.02]">
+              className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-600 text-xs hover:border-[#5C141D] hover:text-[#5C141D] transition-all hover:scale-[1.02]">
               <Github className="w-3.5 h-3.5" /> GitHub
             </a>
             {project.demo ? (
@@ -514,8 +514,8 @@ function ProjectCard({ project, idx }: { project: typeof PROJECTS[0]; idx: numbe
               <button aria-label="Action button" onClick={() => setExpanded(e => !e)}
                 className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl border text-xs transition-all hover:scale-[1.02] ${
                   expanded
-                    ? 'border-blue-500/40 bg-blue-600/10 text-blue-400'
-                    : 'border-surface-border bg-surface border border-surface-border text-text-muted hover:border-blue-500/30 hover:text-heading'
+                    ? 'border-[#5C141D]/40 bg-[#5C141D]/10 text-[#5C141D]'
+                    : 'border-slate-200 bg-white text-slate-500 hover:border-[#5C141D]/30 hover:text-[#5C141D]'
                 }`}>
                 <Target className="w-3.5 h-3.5" />
                 {expanded ? 'Hide Details' : 'What You\'ll Build'}
@@ -525,8 +525,8 @@ function ProjectCard({ project, idx }: { project: typeof PROJECTS[0]; idx: numbe
               <button aria-label="Action button" onClick={() => setExpanded(e => !e)}
                 className={`px-3 py-2.5 rounded-xl border text-xs transition-all ${
                   expanded
-                    ? 'border-blue-500/40 bg-blue-600/10 text-blue-400'
-                    : 'border-surface-border bg-surface border border-surface-border text-text-muted hover:border-blue-500/30 hover:text-heading'
+                    ? 'border-[#5C141D]/40 bg-[#5C141D]/10 text-[#5C141D]'
+                    : 'border-slate-200 bg-white text-slate-500 hover:border-[#5C141D]/30 hover:text-[#5C141D]'
                 }`}>
                 <ChevronDown className={`w-3.5 h-3.5 transition-transform ${expanded ? 'rotate-180' : ''}`} />
               </button>
@@ -654,13 +654,13 @@ export function ProjectsSection() {
   const isFiltered   = branch !== 'All' || difficulty !== 'All Levels' || search;
 
   return (
-    <div className="py-20 bg-page-bg theme-transition relative overflow-hidden">
+    <div className="py-20 bg-white border-b border-[rgba(92,20,29,0.06)] relative overflow-hidden">
 
       {/* ── background ── */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-0 w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-3xl" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#0B4F8A06_1px,transparent_1px),linear-gradient(to_bottom,#0B4F8A06_1px,transparent_1px)] bg-[size:3rem_3rem]" />
+        <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-[#5C141D]/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-0 w-[500px] h-[500px] bg-[var(--primary-gold)]/5 rounded-full blur-3xl" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(92,20,29,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(92,20,29,0.03)_1px,transparent_1px)] bg-[size:3rem_3rem]" />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -678,10 +678,10 @@ export function ProjectsSection() {
           ] as const).map((s, i) => (
             <motion.div key={i} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }}
               transition={{ delay: i * 0.08 }} viewport={{ once: true }} whileHover={{ y: -4 }}
-              className="bg-card-bg border border-card-border rounded-2xl p-5 text-center hover:border-blue-500/40 hover:shadow-lg hover:shadow-blue-500/10 transition-all">
-              <div className="text-3xl font-bold text-heading bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent mb-1">{s.value}</div>
-              <div className="text-base font-medium text-text-secondary mb-1">{s.label}</div>
-              <div className="text-sm text-slate-600">{s.sub}</div>
+              className="bg-[#FAF8F5] border border-[rgba(92,20,29,0.06)] rounded-2xl p-5 text-center hover:border-[#5C141D]/30 hover:shadow-lg hover:shadow-[#5C141D]/10 transition-all">
+              <div className="text-3xl font-bold text-[#1E060A] mb-1">{s.value}</div>
+              <div className="text-base font-medium text-slate-700 mb-1">{s.label}</div>
+              <div className="text-sm text-slate-500">{s.sub}</div>
             </motion.div>
           ))}
         </motion.div>
@@ -689,8 +689,8 @@ export function ProjectsSection() {
         {/* ════════ FEATURED PROJECT ════════ */}
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <div className="flex items-center gap-2 mb-4">
-            <Sparkles className="w-4 h-4 text-amber-400" />
-            <span className="text-sm text-text-muted">Featured Project</span>
+            <Sparkles className="w-4 h-4 text-[#D4AF37]" />
+            <span className="text-sm text-slate-500">Featured Project</span>
           </div>
           <FeaturedProjectCard project={topProject} />
         </motion.div>
@@ -702,23 +702,23 @@ export function ProjectsSection() {
           {/* search + sort */}
           <div className="flex flex-col sm:flex-row gap-3">
             <div className="relative flex-1">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
               <input type="text" value={search} onChange={e => { setSearch(e.target.value); setPage(1); }}
                 placeholder="Search by project name, tech or branch…"
-                className="w-full pl-11 pr-4 py-3 bg-surface/70 border border-surface-border rounded-xl text-text-secondary placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:bg-surface text-sm transition-all" />
+                className="w-full pl-11 pr-4 py-3 bg-[#FAF8F5] border border-slate-200 rounded-xl text-slate-700 placeholder-slate-400 focus:outline-none focus:border-[#5C141D]/30 focus:bg-white text-sm transition-all" />
               {search && (
                 <button aria-label="Action button" onClick={() => setSearch('')} className="absolute right-4 top-1/2 -translate-y-1/2">
-                  <X className="w-4 h-4 text-text-muted hover:text-heading transition-colors" />
+                  <X className="w-4 h-4 text-slate-400 hover:text-[#1E060A] transition-colors" />
                 </button>
               )}
             </div>
             {/* sort */}
             <div className="relative">
               <select value={sort} onChange={e => { setSort(e.target.value); setPage(1); }}
-                className="appearance-none pl-4 pr-10 py-3 bg-surface/70 border border-surface-border rounded-xl text-text-secondary text-sm focus:outline-none focus:border-blue-500 transition-all">
+                className="appearance-none pl-4 pr-10 py-3 bg-[#FAF8F5] border border-slate-200 rounded-xl text-slate-700 text-sm focus:outline-none focus:border-[#5C141D]/30 transition-all">
                 {SORT_OPTIONS.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
               </select>
-              <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted pointer-events-none" />
+              <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
             </div>
           </div>
 
@@ -731,13 +731,13 @@ export function ProjectsSection() {
                 <button aria-label="Action button" key={b} onClick={() => { setBranch(b); setPage(1); }}
                   className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm transition-all ${
                     branch === b
-                      ? 'bg-gradient-to-r from-blue-600 to-cyan-500 text-heading shadow-lg shadow-blue-500/20'
-                      : 'bg-surface/70 text-text-secondary border border-surface-border hover:border-blue-500/40 hover:text-heading'
+                      ? 'bg-[#5C141D] text-white shadow-lg shadow-[#5C141D]/20'
+                      : 'bg-[#FAF8F5] text-slate-600 border border-slate-200 hover:border-[#5C141D]/30 hover:text-[#1E060A]'
                   }`}>
                   {Icon && <Icon className="w-3.5 h-3.5" />}
                   {b}
                   <span className={`text-xs px-1.5 py-0.5 rounded-full ${
-                    branch === b ? 'bg-white/20 text-heading' : 'bg-surface text-text-muted'
+                    branch === b ? 'bg-white/20 text-white' : 'bg-white text-slate-500'
                   }`}>
                     {b === 'All' ? PROJECTS.length : PROJECTS.filter(p => p.branch === b).length}
                   </span>
@@ -753,21 +753,21 @@ export function ProjectsSection() {
               <button aria-label="Action button" key={d} onClick={() => { setDifficulty(d); setPage(1); }}
                 className={`px-3.5 py-1.5 rounded-xl text-xs transition-all ${
                   difficulty === d
-                    ? 'bg-blue-600 text-heading shadow-lg shadow-blue-500/25'
-                    : 'bg-surface/70 text-text-muted border border-surface-border hover:border-blue-500/40 hover:text-heading'
+                    ? 'bg-[#D4AF37] text-white shadow-lg shadow-[#D4AF37]/20'
+                    : 'bg-[#FAF8F5] text-slate-500 border border-slate-200 hover:border-[#5C141D]/30 hover:text-[#1E060A]'
                 }`}>{d}</button>
             ))}
           </div>
 
           {/* result count + clear */}
           <div className="flex items-center justify-between">
-            <p className="text-xs text-text-muted">
-              Showing <span className="text-blue-400">{Math.min(visible.length, filtered.length)}</span> of{' '}
-              <span className="text-blue-400">{filtered.length}</span> projects
-              {search && <> for "<span className="text-heading">{search}</span>"</>}
+            <p className="text-xs text-slate-500">
+              Showing <span className="text-[#5C141D] font-bold">{Math.min(visible.length, filtered.length)}</span> of{' '}
+              <span className="text-[#5C141D] font-bold">{filtered.length}</span> projects
+              {search && <> for "<span className="text-[#1E060A] font-bold">{search}</span>"</>}
             </p>
             {isFiltered && (
-              <button aria-label="Action button" onClick={clearFilters} className="text-xs text-text-muted hover:text-blue-400 transition-colors">
+              <button aria-label="Action button" onClick={clearFilters} className="text-xs text-slate-500 hover:text-[#5C141D] transition-colors">
                 Clear filters ×
               </button>
             )}

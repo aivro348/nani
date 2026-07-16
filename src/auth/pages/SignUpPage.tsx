@@ -38,13 +38,7 @@ export function SignUpPage() {
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-10"></div>
         
         <div className="w-full max-w-md relative z-10">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            <SignUp path="/sign-up" routing="path" signInUrl="/sign-in" />
-          </motion.div>
+            <SignUp path="/sign-up" routing="path" fallbackRedirectUrl="/lms" />
         </div>
       </div>
 
