@@ -176,13 +176,19 @@ export function HomePage() {
 
 
       {/* ─── SECTION 3: SCARO ACADEMY DEEP-DIVE (WHITE BACKGROUND) ─── */}
-      <section id="academy-section" className="py-24 bg-white border-b border-[rgba(92,20,29,0.06)] relative z-10">
+      <section id="academy-section" className="py-24 bg-white border-b border-[rgba(92,20,29,0.06)] relative z-10 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-12 gap-16 items-center">
             
             {/* Visual Media Column */}
-            <div className="lg:col-span-5 flex justify-center">
-              <div className="relative w-full max-w-[420px] aspect-[3/4] rounded-3xl overflow-hidden border border-[rgba(92,20,29,0.08)] shadow-2xl p-2 bg-[#FAF8F5]">
+            <motion.div 
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="lg:col-span-5 flex justify-center"
+            >
+              <div className="relative w-full max-w-[420px] aspect-[3/4] rounded-3xl overflow-hidden border border-[rgba(92,20,29,0.08)] shadow-2xl p-2 bg-[#FAF8F5] hover:scale-[1.02] transition-transform duration-500">
                 <div className="absolute inset-0 border border-[var(--primary-gold)]/20 rounded-3xl pointer-events-none" />
                 <img
                   loading="lazy"
@@ -191,10 +197,16 @@ export function HomePage() {
                   className="w-full h-full object-cover rounded-2xl"
                 />
               </div>
-            </div>
+            </motion.div>
 
             {/* Content Column */}
-            <div className="lg:col-span-7 space-y-8 text-left">
+            <motion.div 
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="lg:col-span-7 space-y-8 text-left"
+            >
               <div className="space-y-2">
                 <span className="text-xs font-black tracking-widest text-[#5C141D] uppercase bg-[#5C141D]/5 px-3.5 py-1.5 rounded-full inline-block">01. Educational Sector</span>
                 <h2 className="text-3xl sm:text-5xl font-black text-[#1E060A] tracking-tight">
@@ -214,15 +226,17 @@ export function HomePage() {
                     { id: 7, title: 'IoT & Embedded Systems', desc: 'Arduino, ESP32, MQTT protocols and sensor hubs.', badge: 'Embedded' },
                     { id: 9, title: 'VLSI Design & Verification', desc: 'Digital logic design, Verilog HDL and RTL simulation.', badge: 'ECE' }
                   ].map((cohort, index) => (
-                    <div 
+                    <motion.div 
                       key={index} 
                       onClick={() => navigate(`/courses/${cohort.id}`)}
+                      whileHover={{ y: -6, scale: 1.02 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
                       className="p-5 bg-[#FAF8F5] border border-[rgba(92,20,29,0.06)] rounded-xl relative space-y-2 hover:border-[#5C141D]/30 hover:shadow-md transition-all duration-300 cursor-pointer group"
                     >
                       <span className="text-[9px] font-bold text-[#5C141D] bg-[#5C141D]/5 px-2 py-0.5 rounded inline-block">{cohort.badge}</span>
                       <h5 className="text-[#1E060A] font-extrabold text-sm group-hover:text-[#5C141D] transition-colors">{cohort.title}</h5>
                       <p className="text-[11px] text-slate-500 font-light leading-relaxed">{cohort.desc}</p>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               </div>
@@ -235,9 +249,11 @@ export function HomePage() {
                     { id: 1, title: 'Student Result Management System', tech: ['PHP', 'MySQL', 'Bootstrap'], desc: 'Web platform allowing admins to upload grades and students to view them securely.' },
                     { id: 2, title: 'Online Quiz Application', tech: ['React', 'Firebase', 'CSS'], desc: 'Interactive platform with real-time scoring, questions, and leaderboards.' }
                   ].map((project, index) => (
-                    <div 
+                    <motion.div 
                       key={index} 
                       onClick={() => navigate(`/projects/${project.id}`)}
+                      whileHover={{ y: -6, scale: 1.02 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
                       className="p-5 bg-[#FAF8F5] border border-[rgba(92,20,29,0.06)] rounded-xl relative space-y-2 hover:border-[#5C141D]/30 hover:shadow-md transition-all duration-300 cursor-pointer group"
                     >
                       <div className="flex flex-wrap gap-1.5">
@@ -247,7 +263,7 @@ export function HomePage() {
                       </div>
                       <h5 className="text-[#1E060A] font-bold text-sm group-hover:text-[#5C141D] transition-colors">{project.title}</h5>
                       <p className="text-[11px] text-slate-500 font-light leading-relaxed">{project.desc}</p>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               </div>
@@ -277,7 +293,7 @@ export function HomePage() {
                   Explore Learning Cohorts <ChevronRight className="w-4 h-4" />
                 </button>
               </div>
-            </div>
+            </motion.div>
 
           </div>
         </div>
@@ -291,7 +307,13 @@ export function HomePage() {
           <div className="grid lg:grid-cols-12 gap-16 items-center">
             
             {/* Content Column */}
-            <div className="lg:col-span-7 space-y-8 text-left">
+            <motion.div 
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="lg:col-span-7 space-y-8 text-left"
+            >
               <div className="space-y-2">
                 <span className="text-xs font-black tracking-widest text-[#5C141D] uppercase bg-[#5C141D]/10 px-3.5 py-1.5 rounded-full inline-block">02. Automation Sector</span>
                 <h2 className="text-3xl sm:text-5xl font-black text-[#1E060A] tracking-tight">
@@ -311,17 +333,19 @@ export function HomePage() {
                     { title: 'Bolt.new', desc: 'Coding assistant that builds and deploys applications instantly.', badge: 'Code Builder', url: 'https://bolt.new' },
                     { title: 'ChatGPT Pro', desc: 'Advanced writing, coding and business workflow automations.', badge: 'Core LLM', url: 'https://chat.openai.com' }
                   ].map((tool, index) => (
-                    <a 
+                    <motion.a 
                       key={index} 
                       href={tool.url}
                       target="_blank"
                       rel="noopener noreferrer"
+                      whileHover={{ y: -6, scale: 1.02 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
                       className="p-5 bg-white/40 border border-[#5C141D]/15 rounded-xl relative space-y-2 hover:border-[#5C141D]/40 hover:shadow-md transition-all duration-300 block group"
                     >
                       <span className="text-[9px] font-bold text-[#5C141D] bg-[#5C141D]/10 px-2 py-0.5 rounded inline-block">{tool.badge}</span>
                       <h5 className="text-[#1E060A] font-extrabold text-sm group-hover:text-[#5C141D] transition-colors">{tool.title}</h5>
                       <p className="text-[11px] text-slate-600 font-light leading-relaxed">{tool.desc}</p>
-                    </a>
+                    </motion.a>
                   ))}
                 </div>
               </div>
@@ -334,15 +358,17 @@ export function HomePage() {
                     { title: 'Syllabus Prompt Engine', desc: 'Guides for engineering students utilizing optimized prompts for study and code revision.', badge: 'Learning' },
                     { title: 'No-Code Tool Stacks', desc: 'Workshops showing how to connect website builders, prompt databases, and pipelines.', badge: 'Building' }
                   ].map((feature, index) => (
-                    <div 
+                    <motion.div 
                       key={index} 
                       onClick={() => navigate('/ai')}
+                      whileHover={{ y: -6, scale: 1.02 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
                       className="p-5 bg-white/40 border border-[#5C141D]/15 rounded-xl relative space-y-2 hover:border-[#5C141D]/40 hover:shadow-md transition-all duration-300 cursor-pointer group"
                     >
                       <span className="text-[9px] font-bold text-[#5C141D] bg-[#5C141D]/10 px-2 py-0.5 rounded inline-block">{feature.badge}</span>
                       <h5 className="text-[#1E060A] font-bold text-sm group-hover:text-[#5C141D] transition-colors">{feature.title}</h5>
                       <p className="text-[11px] text-slate-600 font-light leading-relaxed">{feature.desc}</p>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               </div>
@@ -378,11 +404,17 @@ export function HomePage() {
                   60+ AI Tools Directory
                 </button>
               </div>
-            </div>
+            </motion.div>
 
             {/* Media Image Column */}
-            <div className="lg:col-span-5 relative flex justify-center">
-              <div className="relative w-full max-w-[420px] aspect-[3/4] rounded-3xl overflow-hidden border border-[#5C141D]/15 shadow-2xl p-2 bg-[#FAF8F5]">
+            <motion.div 
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="lg:col-span-5 relative flex justify-center"
+            >
+              <div className="relative w-full max-w-[420px] aspect-[3/4] rounded-3xl overflow-hidden border border-[#5C141D]/15 shadow-2xl p-2 bg-[#FAF8F5] hover:scale-[1.02] transition-transform duration-500">
                 <div className="absolute inset-0 border border-white/20 rounded-3xl pointer-events-none" />
                 <img
                   loading="lazy"
@@ -391,20 +423,26 @@ export function HomePage() {
                   className="w-full h-full object-cover rounded-2xl"
                 />
               </div>
-            </div>
+            </motion.div>
 
           </div>
         </div>
       </section>
 
       {/* ─── SECTION 6: OUR SERVICES - SCARO BUSINESS (WHITE BACKGROUND) ─── */}
-      <section id="services-section" className="py-24 relative bg-white border-b border-[rgba(92,20,29,0.06)]">
+      <section id="services-section" className="py-24 relative bg-white border-b border-[rgba(92,20,29,0.06)] overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-12 gap-16 items-center">
             
             {/* Visual Column */}
-            <div className="lg:col-span-5 relative flex justify-center">
-              <div className="relative w-full max-w-[420px] aspect-[3/4] rounded-3xl overflow-hidden border border-[rgba(92,20,29,0.08)] shadow-2xl p-2 bg-[#FAF8F5]">
+            <motion.div 
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="lg:col-span-5 relative flex justify-center"
+            >
+              <div className="relative w-full max-w-[420px] aspect-[3/4] rounded-3xl overflow-hidden border border-[rgba(92,20,29,0.08)] shadow-2xl p-2 bg-[#FAF8F5] hover:scale-[1.02] transition-transform duration-500">
                 <div className="absolute inset-0 border border-[var(--primary-gold)]/20 rounded-3xl pointer-events-none" />
                 <img
                   loading="lazy"
@@ -413,10 +451,16 @@ export function HomePage() {
                   className="w-full h-full object-cover rounded-2xl"
                 />
               </div>
-            </div>
+            </motion.div>
 
             {/* Content Column */}
-            <div className="lg:col-span-7 space-y-8 text-left">
+            <motion.div 
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="lg:col-span-7 space-y-8 text-left"
+            >
               <div className="space-y-2">
                 <span className="text-xs font-black tracking-widest text-[#5C141D] uppercase bg-[#5C141D]/5 px-3.5 py-1.5 rounded-full inline-block">03. Corporate Sector</span>
                 <h2 className="text-3xl sm:text-5xl font-black text-[#1E060A] tracking-tight">
@@ -435,14 +479,22 @@ export function HomePage() {
                     { title: 'Geo-Silicon', category: 'Enterprise Tech', link: 'https://geo-silicon.com', desc: 'Next-generation enterprise technology portal with advanced data visualization and control.' },
                     { title: 'Balu Associates', category: 'Corporate Website', link: 'https://baluassociates.net', desc: 'Professional corporate presence with highly optimized performance and scalable architecture.' }
                   ].map((proj, index) => (
-                    <a href={proj.link} target="_blank" rel="noopener noreferrer" key={index} className="p-5 bg-[#FAF8F5] border border-[rgba(92,20,29,0.06)] rounded-xl relative space-y-2 hover:border-[#5C141D]/30 hover:shadow-md transition-all duration-300 block">
+                    <motion.a 
+                      href={proj.link} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      key={index} 
+                      whileHover={{ y: -6, scale: 1.02 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                      className="p-5 bg-[#FAF8F5] border border-[rgba(92,20,29,0.06)] rounded-xl relative space-y-2 hover:border-[#5C141D]/30 hover:shadow-md transition-all duration-300 block"
+                    >
                       <div className="flex justify-between items-center">
                         <span className="text-[9px] font-bold text-slate-500 bg-white border border-slate-200/60 px-1.5 py-0.5 rounded">{proj.category}</span>
                         <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#5C141D]" />
                       </div>
                       <h5 className="text-[#1E060A] font-bold text-sm pt-1">{proj.title}</h5>
                       <p className="text-[11px] text-slate-500 font-light leading-relaxed">{proj.desc}</p>
-                    </a>
+                    </motion.a>
                   ))}
                 </div>
               </div>
@@ -455,13 +507,17 @@ export function HomePage() {
                   { title: 'Mobile Applications', desc: 'Optimized native and cross-platform mobile apps releases.', icon: Smartphone },
                   { title: 'Enterprise AI Setups', desc: 'Custom databases, prompt pipelines, and analytics setups.', icon: Cpu }
                 ].map((service, index) => (
-                  <div key={index} className="p-5 bg-[#FAF8F5] border border-[rgba(92,20,29,0.06)] rounded-xl flex gap-3.5">
+                  <motion.div 
+                    key={index} 
+                    whileHover={{ y: -4 }}
+                    className="p-5 bg-[#FAF8F5] border border-[rgba(92,20,29,0.06)] rounded-xl flex gap-3.5"
+                  >
                     <service.icon className="w-5 h-5 text-[#5C141D] shrink-0 mt-0.5" />
                     <div>
                       <h5 className="text-[#1E060A] font-bold text-sm mb-1">{service.title}</h5>
                       <p className="text-[11px] text-slate-500 font-light leading-relaxed">{service.desc}</p>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
 
@@ -488,16 +544,22 @@ export function HomePage() {
               >
                 View Service Packages <ChevronRight className="w-4 h-4" />
               </button>
-            </div>
+            </motion.div>
 
           </div>
         </div>
       </section>
 
       {/* ─── SECTION 7: DETAILED ACHIEVEMENTS & AWARDS (WHITE BACKGROUND) ─── */}
-      <section id="achievements-section" className="py-24 bg-white border-b border-[rgba(92,20,29,0.06)]">
+      <section id="achievements-section" className="py-24 bg-white border-b border-[rgba(92,20,29,0.06)] overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="text-center max-w-3xl mx-auto mb-16"
+          >
             <span className="text-xs font-black tracking-widest text-[#5C141D] uppercase">Recognitions</span>
             <h2 className="text-3xl sm:text-5xl font-black text-[#1E060A] tracking-tight mt-2">
               Awards & Credentials
@@ -505,7 +567,7 @@ export function HomePage() {
             <p className="text-base text-slate-500 font-light mt-3">
               Recognized by industry leaders and educational institutions for innovation and student choice.
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
@@ -514,19 +576,33 @@ export function HomePage() {
               { title: 'Innovation in AI Education', org: 'National Education Summit', icon: '🎓' },
               { title: 'Student Choice Award', org: 'Campus Connect', icon: '💡' }
             ].map((rec, i) => (
-              <div key={i} className="bg-[#FAF8F5] border border-[rgba(92,20,29,0.05)] rounded-2xl p-6 text-center hover:shadow-md transition-all duration-300">
+              <motion.div 
+                key={i} 
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.1 }}
+                whileHover={{ y: -6, scale: 1.02 }}
+                className="bg-[#FAF8F5] border border-[rgba(92,20,29,0.05)] rounded-2xl p-6 text-center hover:shadow-md transition-all duration-300 cursor-default"
+              >
                 <div className="text-4xl mb-4">{rec.icon}</div>
                 <h4 className="text-sm font-extrabold text-[#1E060A] mb-2">{rec.title}</h4>
                 <p className="text-xs text-slate-500 font-light">{rec.org}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
       {/* ─── SECTION 8: REALITY PHILOSOPHY ─── */}
-      <section className="py-28 relative bg-[#FAF3D1] border-b border-[rgba(92,20,29,0.06)] text-center">
-        <div className="max-w-4xl mx-auto px-4 space-y-6">
+      <section className="py-28 relative bg-[#FAF3D1] border-b border-[rgba(92,20,29,0.06)] text-center overflow-hidden">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="max-w-4xl mx-auto px-4 space-y-6"
+        >
           <div className="w-10 h-10 rounded-full bg-[#5C141D]/10 border border-[#5C141D]/10 flex items-center justify-center mx-auto">
             <Code2 className="w-5 h-5 text-[#5C141D]" />
           </div>
@@ -538,11 +614,11 @@ export function HomePage() {
             <span className="text-[10px] font-black tracking-widest text-[#5C141D] uppercase">Philosophy & DNA</span>
             <span className="h-[1px] w-8 bg-[#5C141D]" />
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* ─── SECTION 9: PLATFORM STATISTICS ─── */}
-      <section className="py-24 relative bg-white border-b border-[rgba(92,20,29,0.06)]">
+      <section className="py-24 relative bg-white border-b border-[rgba(92,20,29,0.06)] overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {[
@@ -551,13 +627,21 @@ export function HomePage() {
               { num: '20+', label: 'Domains Cover', desc: 'Engineering & Software' },
               { num: '100+', label: 'Hands-on Projects', desc: 'Live System Tasks' }
             ].map((stat, i) => (
-              <div key={i} className="text-center p-6 bg-[#FAF8F5] border border-[rgba(92,20,29,0.05)] rounded-2xl group transition-all duration-300 hover:shadow-md">
+              <motion.div 
+                key={i} 
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.1 }}
+                whileHover={{ scale: 1.03 }}
+                className="text-center p-6 bg-[#FAF8F5] border border-[rgba(92,20,29,0.05)] rounded-2xl group transition-all duration-300 hover:shadow-md cursor-default"
+              >
                 <h3 className="text-3xl sm:text-4xl font-black text-[#5C141D] tracking-tight mb-1">
                   {stat.num}
                 </h3>
                 <h4 className="text-[#1E060A] font-extrabold text-sm mb-1">{stat.label}</h4>
                 <p className="text-[10px] text-slate-400 font-light">{stat.desc}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

@@ -162,17 +162,15 @@ export function Navbar() {
   } else if (currentPath === '/') {
     // Default / Home
     navItems = [
-      { id: 'home', label: 'Home', path: '/' },
-      { id: 'business', label: 'Business', path: '/business' },
       { id: 'courses', label: 'Scaro Academy', path: '/courses' },
-      { id: 'ai', label: 'AI Tools', path: '/ai' },
+      { id: 'ai', label: 'AI Academy', path: '/ai' },
+      { id: 'business', label: 'Business', path: '/business' },
     ];
   } else {
     navItems = [
-      { id: 'home', label: 'Home', path: '/' },
-      { id: 'business', label: 'Business', path: '/business' },
       { id: 'courses', label: 'Scaro Academy', path: '/courses' },
-      { id: 'ai', label: 'AI Tools', path: '/ai' },
+      { id: 'ai', label: 'AI Academy', path: '/ai' },
+      { id: 'business', label: 'Business', path: '/business' },
     ];
   }
 
@@ -289,13 +287,17 @@ export function Navbar() {
                   </div>
                 </button>
               )}
-              {!isBusinessSection && (
-                <div className="hidden lg:flex items-center gap-3">
-                  <SignedIn>
-                    <UserButton afterSignOutUrl="/" />
-                  </SignedIn>
-                </div>
-              )}
+               {(isEducationSection || isAISection) && (
+                 <div className="hidden lg:flex items-center gap-3">
+                   <SignedOut>
+                     <button onClick={() => navigateToPage('/sign-in')} className="text-sm font-bold text-white hover:text-[var(--primary-gold)] transition-colors">Sign In</button>
+                     <button onClick={() => navigateToPage('/sign-up')} className="bg-white/10 hover:bg-white/20 text-white px-4 py-1.5 rounded-full text-sm font-bold transition-all border border-white/20">Sign Up</button>
+                   </SignedOut>
+                   <SignedIn>
+                     <UserButton afterSignOutUrl="/" />
+                   </SignedIn>
+                 </div>
+               )}
 
               {/* Mobile Menu Button */}
               <button aria-label="Action button"
