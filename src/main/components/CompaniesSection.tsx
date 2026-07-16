@@ -33,14 +33,6 @@ export function CompaniesSection() {
       <div className="absolute inset-0 bg-gradient-to-r from-blue-600/5 via-cyan-500/5 to-blue-600/5" />
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-8"
-        >
-          <p className="text-text-muted text-base font-medium mb-6">Our students got placed at</p>
-        </motion.div>
       </div>
 
       {/* Full-width scrolling marquee */}

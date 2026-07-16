@@ -2,20 +2,30 @@ import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useNavigate, useLocation } from 'react-router';
 import {
-  GraduationCap, Briefcase, Cpu, ArrowRight, CheckCircle2, Sparkles,
-  Building2, Terminal, Code2, ShieldCheck, Zap, Database, Smartphone,
-  Users, Mail, Phone, MapPin, Trophy, BookOpen, Layers, Check,
-  Laptop, Globe, ArrowUpRight, Play, Server, MessageSquare, ArrowRightLeft,
-  ChevronRight, Calendar, Star, HelpCircle, Instagram, Quote, ExternalLink
+  GraduationCap, Cpu, ArrowRight, X, Play,
+  Building2, Trophy, Code2,
+  Quote, ChevronRight, Laptop, Globe, Smartphone, ExternalLink
 } from 'lucide-react';
 import { useSEO } from '../../main/utils/useSEO';
-import { CompaniesSection } from '../components/CompaniesSection';
 
-export function HomePage() {
+export function HomePage({ setActiveSection }: { setActiveSection?: (section: string) => void }) {
   const navigate = useNavigate();
   const location = useLocation();
-  const [email, setEmail] = useState('');
-  const [subscribed, setSubscribed] = useState(false);
+  const [showWebinar, setShowWebinar] = useState(true);
+  const [bgIndex, setBgIndex] = useState(0);
+  
+  const bgImages = [
+    '/bg_academy.jpg',
+    '/bg_ai.jpg',
+    '/bg_business.jpg'
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setBgIndex((prev) => (prev + 1) % bgImages.length);
+    }, 6000);
+    return () => clearInterval(interval);
+  }, []);
 
   const educationSitelinks = {
     "@context": "https://schema.org",
@@ -86,94 +96,108 @@ export function HomePage() {
     window.scrollTo(0, 0);
   }, [location]);
 
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email.trim()) {
-      setSubscribed(true);
-      setEmail('');
-      setTimeout(() => setSubscribed(false), 4000);
-    }
-  };
-
   return (
     <div className="bg-[#FAF8F5] min-h-screen text-[#1E060A] overflow-hidden font-sans relative">
-      
-      {/* ─── SECTION 1: HERO (LOGO MAROON BACKGROUND) ─── */}
-      <section className="relative min-h-[80vh] flex items-center bg-[#5C141D] text-white overflow-hidden py-16">
-        {/* Precise engineering grid background */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px] opacity-70" />
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-radial from-[var(--primary-gold)]/10 via-transparent to-transparent blur-[120px] pointer-events-none" />
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="grid lg:grid-cols-12 gap-12 items-center">
-            {/* Left Copy */}
-            <div className="lg:col-span-7 space-y-8 text-left">
+      {/* ─── SECTION 1: HERO (IMMERSIVE BACKGROUND SLIDESHOW) ─── */}
+      <section className="relative min-h-screen flex items-center bg-[#111] overflow-hidden">
+        {/* Background Animation/Image */}
+        <div className="absolute inset-0 bg-[#111]">
+          <AnimatePresence mode="popLayout">
+            <motion.img 
+              key={bgIndex}
+              initial={{ opacity: 0, scale: 1.05 }}
+              animate={{ opacity: 0.5, scale: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.5, ease: "easeInOut" }}
+              src={bgImages[bgIndex]} 
+              alt="Scaro Background Slide" 
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+          </AnimatePresence>
+          {/* Subtle gradient overlay to ensure text readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#111] via-transparent to-black/30" />
+        </div>
 
-
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.1 }}
-                className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight leading-[1.05]"
-              >
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-20">
+          <div className="max-w-3xl space-y-8">
+            <motion.div
+               initial={{ opacity: 0, y: 20 }}
+               animate={{ opacity: 1, y: 0 }}
+               transition={{ duration: 0.7 }}
+            >
+              <h1 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight leading-[1.05] text-white">
                 We build products.<br/>
                 We teach engineers.<br/>
                 <span className="text-[var(--primary-gold)]">We automate growth.</span>
-              </motion.h1>
+              </h1>
+            </motion.div>
 
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.2 }}
-                className="text-lg text-slate-200 font-light leading-relaxed max-w-2xl"
-              >
-                Scaro Technologies operates a continuous innovation loop that links our enterprise solutions agency, hands-on student cohorts, and advanced AI platforms.
-              </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="text-lg sm:text-xl text-slate-300 font-light leading-relaxed max-w-2xl"
+            >
+              Scaro Technologies operates a continuous innovation loop that links our enterprise solutions agency, hands-on student cohorts, and advanced AI platforms.
+            </motion.p>
 
-              <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.3 }}
-                className="flex flex-col sm:flex-row items-center gap-4 pt-2"
-              >
-                <button aria-label="Action button" 
-                  onClick={() => document.getElementById('academy-section')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="w-full sm:w-auto px-8 py-4 rounded-xl bg-[var(--primary-gold)] text-black font-black text-sm transition-all hover:bg-[#FAF8F5] active:scale-98 flex items-center justify-center gap-2 cursor-pointer shadow-lg"
-                >
-                  Explore Academy Paths
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-                <button aria-label="Action button" 
-                  onClick={() => document.getElementById('services-section')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="w-full sm:w-auto px-8 py-4 rounded-xl bg-white/5 border border-white/20 hover:bg-white/10 text-white font-bold text-sm transition-all flex items-center justify-center gap-2 cursor-pointer"
-                >
-                  View Corporate Services
-                </button>
-              </motion.div>
-            </div>
-
-            {/* Right Graphics */}
-            <div className="lg:col-span-5 relative flex justify-center">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="relative w-full max-w-[460px] aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 shadow-2xl p-2 bg-[#FAF8F5]/5 backdrop-blur-md"
-              >
-                <div className="absolute inset-0 border border-[var(--primary-gold)]/20 rounded-2xl pointer-events-none" />
-                <img
-                  loading="eager"
-                  src="/scaro_sectors_wide_banner.webp"
-                  alt="Scaro Technologies Sectors"
-                  className="w-full h-full object-cover rounded-xl"
-                />
-              </motion.div>
-            </div>
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.3 }}
+              className="flex flex-col sm:flex-row items-center gap-4 pt-4"
+            >
+              <button aria-label="Action button" onClick={() => navigate('/courses')} className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-[#D4AF37] to-[#B89628] hover:from-white hover:to-white text-black font-black text-sm transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(212,175,55,0.4)]">
+                Explore Academy Paths
+                <ArrowRight className="w-4 h-4" />
+              </button>
+              <button aria-label="Action button" onClick={() => navigate('/business')} className="w-full sm:w-auto px-8 py-4 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 text-white font-bold text-sm transition-all flex items-center justify-center gap-2">
+                View Corporate Services
+              </button>
+            </motion.div>
           </div>
         </div>
+
+        {/* Floating Webinar Widget */}
+        <AnimatePresence>
+          {showWebinar && (
+            <motion.div
+              initial={{ opacity: 0, x: -50, y: 50 }}
+              animate={{ opacity: 1, x: 0, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ duration: 0.5, delay: 1 }}
+              className="absolute bottom-6 left-6 lg:left-8 z-40 hidden sm:block"
+            >
+              <div className="bg-[#1a1a1a] rounded-2xl shadow-2xl p-1 w-[320px] border border-white/10 overflow-hidden relative group">
+                <button aria-label="Action button" onClick={() => setShowWebinar(false)} className="absolute top-3 right-3 z-50 bg-black/40 hover:bg-black/60 text-white p-1 rounded-full transition-colors backdrop-blur-sm">
+                  <X className="w-3.5 h-3.5" />
+                </button>
+                <div 
+                  className="relative h-44 rounded-xl overflow-hidden bg-gray-900 cursor-pointer"
+                  onClick={() => navigate('/courses')}
+                >
+                  <img src="/vlsi.webp" alt="Webinar" className="w-full h-full object-cover opacity-70 group-hover:scale-105 transition-transform duration-700" />
+                  <div className="absolute inset-0 flex flex-col justify-between p-5 bg-gradient-to-t from-black/90 to-transparent">
+                    <span className="bg-red-500/90 backdrop-blur-md text-white text-[10px] font-black uppercase px-2.5 py-1 rounded w-fit flex items-center gap-1.5 border border-red-500/50 shadow-[0_0_10px_rgba(239,68,68,0.5)]">
+                      <span className="w-2 h-2 bg-white rounded-full animate-ping mr-0.5"></span> Live Masterclass
+                    </span>
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 rounded-full bg-[var(--primary-gold)] flex items-center justify-center shadow-[0_0_15px_rgba(212,175,55,0.6)] transform group-hover:scale-110 transition-transform">
+                        <Play className="w-5 h-5 text-black ml-1" fill="black" />
+                      </div>
+                      <div>
+                        <p className="text-white text-sm font-bold leading-tight drop-shadow-md">AI & Systems Architecture</p>
+                        <p className="text-gray-300 text-[11px] mt-0.5">Reserve your spot now</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </section>
-
-
 
       {/* ─── SECTION 3: SCARO ACADEMY DEEP-DIVE (WHITE BACKGROUND) ─── */}
       <section id="academy-section" className="py-24 bg-white border-b border-[rgba(92,20,29,0.06)] relative z-10 overflow-hidden">
@@ -279,8 +303,8 @@ export function HomePage() {
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-full bg-blue-500/10 flex items-center justify-center font-bold text-xs text-blue-600">PS</div>
                   <div>
-                    <h5 className="text-[#1E060A] font-bold text-xs">Priya Sharma</h5>
-                    <p className="text-[10px] text-slate-400">Software Engineer at Google • CS/IT</p>
+                     <h5 className="text-[#1E060A] font-bold text-xs">Priya Sharma</h5>
+                     <p className="text-[10px] text-slate-400">Software Engineer at Google • CS/IT</p>
                   </div>
                 </div>
               </div>
@@ -550,104 +574,86 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* ─── SECTION 7: DETAILED ACHIEVEMENTS & AWARDS (WHITE BACKGROUND) ─── */}
-      <section id="achievements-section" className="py-24 bg-white border-b border-[rgba(92,20,29,0.06)] overflow-hidden">
+      {/* ─── SECTION 3: PLATFORM STATISTICS ─── */}
+      <section className="py-24 relative bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="text-center max-w-3xl mx-auto mb-16"
-          >
-            <span className="text-xs font-black tracking-widest text-[#5C141D] uppercase">Recognitions</span>
-            <h2 className="text-3xl sm:text-5xl font-black text-[#1E060A] tracking-tight mt-2">
-              Awards & Credentials
-            </h2>
-            <p className="text-base text-slate-500 font-light mt-3">
-              Recognized by industry leaders and educational institutions for innovation and student choice.
-            </p>
-          </motion.div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { title: 'Best EdTech Platform 2025', org: 'Tech Excellence Awards', icon: '🏆' },
-              { title: 'Top 10 Learning Platforms', org: 'EdTech India', icon: '⭐' },
-              { title: 'Innovation in AI Education', org: 'National Education Summit', icon: '🎓' },
-              { title: 'Student Choice Award', org: 'Campus Connect', icon: '💡' }
-            ].map((rec, i) => (
-              <motion.div 
-                key={i} 
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                whileHover={{ y: -6, scale: 1.02 }}
-                className="bg-[#FAF8F5] border border-[rgba(92,20,29,0.05)] rounded-2xl p-6 text-center hover:shadow-md transition-all duration-300 cursor-default"
-              >
-                <div className="text-4xl mb-4">{rec.icon}</div>
-                <h4 className="text-sm font-extrabold text-[#1E060A] mb-2">{rec.title}</h4>
-                <p className="text-xs text-slate-500 font-light">{rec.org}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ─── SECTION 8: REALITY PHILOSOPHY ─── */}
-      <section className="py-28 relative bg-[#FAF3D1] border-b border-[rgba(92,20,29,0.06)] text-center overflow-hidden">
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="max-w-4xl mx-auto px-4 space-y-6"
-        >
-          <div className="w-10 h-10 rounded-full bg-[#5C141D]/10 border border-[#5C141D]/10 flex items-center justify-center mx-auto">
-            <Code2 className="w-5 h-5 text-[#5C141D]" />
-          </div>
-          <h2 className="text-xl sm:text-3xl font-extrabold text-[#1E060A] leading-relaxed italic px-4">
-            "We aren't just teaching theory. We are an active IT company building real products, and we bring that exact industry DNA into our Academy and AI tools."
-          </h2>
-          <div className="flex items-center justify-center gap-2">
-            <span className="h-[1px] w-8 bg-[#5C141D]" />
-            <span className="text-[10px] font-black tracking-widest text-[#5C141D] uppercase">Philosophy & DNA</span>
-            <span className="h-[1px] w-8 bg-[#5C141D]" />
-          </div>
-        </motion.div>
-      </section>
-
-      {/* ─── SECTION 9: PLATFORM STATISTICS ─── */}
-      <section className="py-24 relative bg-white border-b border-[rgba(92,20,29,0.06)] overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {[
               { num: '5K+', label: 'Learners Trained', desc: 'Digital & Live Cohorts' },
               { num: '25+', label: 'Industry Experts', desc: 'Corporate Mentors' },
-              { num: '20+', label: 'Domains Cover', desc: 'Engineering & Software' },
+              { num: '20+', label: 'Domains Covered', desc: 'Engineering & Software' },
               { num: '100+', label: 'Hands-on Projects', desc: 'Live System Tasks' }
             ].map((stat, i) => (
               <motion.div 
                 key={i} 
-                initial={{ opacity: 0, y: 25 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
                 whileHover={{ scale: 1.03 }}
-                className="text-center p-6 bg-[#FAF8F5] border border-[rgba(92,20,29,0.05)] rounded-2xl group transition-all duration-300 hover:shadow-md cursor-default"
+                className="text-center p-6 md:p-8 bg-gray-50 border border-gray-100 rounded-3xl hover:shadow-xl transition-all duration-300"
               >
-                <h3 className="text-3xl sm:text-4xl font-black text-[#5C141D] tracking-tight mb-1">
+                <h3 className="text-4xl sm:text-5xl font-black text-[#5C141D] tracking-tight mb-3">
                   {stat.num}
                 </h3>
-                <h4 className="text-[#1E060A] font-extrabold text-sm mb-1">{stat.label}</h4>
-                <p className="text-[10px] text-slate-400 font-light">{stat.desc}</p>
+                <h4 className="text-gray-900 font-extrabold text-sm mb-1">{stat.label}</h4>
+                <p className="text-xs text-gray-500 font-medium tracking-wide uppercase mt-2">{stat.desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
+      {/* ─── SECTION 4: AWARDS & PHILOSOPHY ─── */}
+      <section className="py-24 bg-[#FAF8F5] border-t border-[rgba(92,20,29,0.06)] overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+           <div className="grid lg:grid-cols-2 gap-16 items-center">
+              <div>
+                <span className="text-xs font-black tracking-widest text-[#5C141D] uppercase">Recognitions</span>
+                <h2 className="text-3xl sm:text-4xl font-black text-[#1E060A] tracking-tight mt-2 mb-8">
+                  Awards & Credentials
+                </h2>
+                <div className="grid grid-cols-2 gap-4">
+                  {[
+                    { title: 'Best EdTech 2025', org: 'Tech Excellence', icon: '🏆' },
+                    { title: 'Top 10 Platforms', org: 'EdTech India', icon: '⭐' },
+                    { title: 'Innovation in AI', org: 'National Summit', icon: '🎓' },
+                    { title: 'Student Choice', org: 'Campus Connect', icon: '💡' }
+                  ].map((rec, i) => (
+                    <motion.div 
+                      key={i} 
+                      whileHover={{ y: -4 }}
+                      className="bg-white border border-[rgba(92,20,29,0.05)] rounded-2xl p-5 shadow-sm hover:shadow-md transition-all cursor-default"
+                    >
+                      <div className="text-3xl mb-3 drop-shadow-sm">{rec.icon}</div>
+                      <h4 className="text-sm font-extrabold text-[#1E060A] mb-1">{rec.title}</h4>
+                      <p className="text-[10px] text-slate-500 font-semibold uppercase tracking-wider">{rec.org}</p>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
 
+              <motion.div 
+                 initial={{ opacity: 0, x: 40 }}
+                 whileInView={{ opacity: 1, x: 0 }}
+                 viewport={{ once: true }}
+                 transition={{ duration: 0.8 }}
+                 className="bg-gradient-to-br from-[#5C141D] to-[#3a0a10] rounded-3xl p-10 md:p-14 text-center relative overflow-hidden text-white shadow-2xl"
+              >
+                 <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:20px_20px]" />
+                 <Quote className="w-12 h-12 text-[var(--primary-gold)] opacity-80 mx-auto mb-6 relative z-10" />
+                 <h2 className="text-xl sm:text-3xl font-bold leading-relaxed italic relative z-10 text-slate-100">
+                   "We aren't just teaching theory. We are an active IT company building real products, and we bring that exact industry DNA into our Academy."
+                 </h2>
+                 <div className="mt-8 flex items-center justify-center gap-3 relative z-10">
+                   <div className="w-12 h-[2px] bg-[var(--primary-gold)]"></div>
+                   <div className="w-3 h-3 rounded-full bg-[var(--primary-gold)]"></div>
+                   <div className="w-12 h-[2px] bg-[var(--primary-gold)]"></div>
+                 </div>
+              </motion.div>
+           </div>
+        </div>
+      </section>
 
     </div>
   );

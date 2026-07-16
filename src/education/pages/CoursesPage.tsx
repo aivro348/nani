@@ -37,7 +37,7 @@ export function CoursesPage() {
     <div className="min-h-screen bg-white">
       
       {/* Split-Screen Hero Section */}
-      <section className="relative w-full min-h-[600px] xl:min-h-[700px] flex items-center overflow-hidden">
+      <section className="relative w-full min-h-screen flex items-center overflow-hidden">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <img fetchPriority="high" decoding="async" src="/hero-1.webp" alt="Students collaborating" className="w-full h-full object-cover object-center" />
