@@ -2,8 +2,9 @@ import { useState, useEffect, lazy, Suspense } from 'react';
 import { Routes, Route, useLocation, Navigate } from 'react-router';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
-import { HomePage } from './pages/HomePage';
 import { LmsProvider, useLms } from '../student-portal/lms/context/LmsContext';
+import { HomePage } from './pages/HomePage';
+import { ChatBot } from './components/ChatBot';
 
 const LmsDashboardPage = lazy(() => import('../student-portal/lms/pages/LmsDashboardPage').then(m => ({ default: m.LmsDashboardPage })));
 const LmsCourseViewerPage = lazy(() => import('../student-portal/lms/pages/LmsCourseViewerPage').then(m => ({ default: m.LmsCourseViewerPage })));
@@ -249,6 +250,7 @@ export default function App() {
         {!location.pathname.startsWith('/sign-') && (
           <>
             <Footer />
+            <ChatBot />
           </>
         )}
       </div>

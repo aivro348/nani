@@ -1,6 +1,7 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, memo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { X, Send, Bot, Sparkles, ArrowRight } from 'lucide-react';
+import { X, Send, Bot, Sparkles, ArrowRight, GraduationCap, Cpu, Building2 } from 'lucide-react';
+import { useNavigate, useLocation } from 'react-router';
 
 interface Message {
   id: number;
@@ -9,201 +10,195 @@ interface Message {
   links?: { label: string; page: string }[];
 }
 
-// Complete website knowledge base
-const WEBSITE_KNOWLEDGE = {
-  about: {
-    name: 'Scaro Technologies',
-    tagline: 'Your AI-Powered Learning Assistant',
-    description: 'Scaro Technologies is a comprehensive AI-powered learning platform designed to empower engineering students across all branches with personalized learning and career guidance. We help students go from classroom to career excellence.',
-    phone: '+91 99899 99099',
+// Context-focused website knowledge bases
+const KNOWLEDGE_BASES = {
+  general: {
+    tagline: 'Your Unified Ecosystem Guide',
+    phone: '+91 9949167458',
     email: 'support@scaro.com',
-    location: 'Ground Floor, Renigunta Rd, near Indian Bank, Chadalawada Nagar, Tirupati, Daminedu, Andhra Pradesh 517506',
-    workingHours: '09.00am - 9.00pm (IST)',
-    students: '1,000+',
-    courses: '10+',
-    placementSupport: '100%',
-    certifications: '24+',
-    partnerCompanies: '10+',
-    avgCTC: '₹7.2 LPA',
+    location: 'Ground Floor, Renigunta Rd, Tirupati',
+    text: `🏢 **Scaro Technologies** connects enterprise IT solutions, elite skill-based education, and cutting-edge AI tools into one unified platform.\n\nAsk me details about:\n• **Scaro Academy** (Courses & Capstones)\n• **AI Academy** (Tools & Masterclasses)\n• **Scaro Business** (Enterprise Services & Pricing)`
   },
-  pages: {
-    home: { label: 'Home', description: 'Main landing page with platform overview, features, and live activity stats' },
-    branches: { label: 'Branches', description: 'All engineering branches - CSE/IT, AI/DS, ECE, EEE, Mechanical, Civil with detailed skills, career paths, and tools' },
-    roadmap: { label: 'Roadmap', description: 'Structured learning roadmaps for Java, Python, Web Dev, Testing, IoT, Embedded Systems, VLSI, CAD/CAM' },
-    courses: { label: 'Courses', description: 'Industry-curated courses with curriculum details, pricing, and enrollment options' },
-    projects: { label: 'Projects', description: 'Real-world project ideas and virtual labs for hands-on experience' },
-    papers: { label: 'Papers', description: 'Previous year papers and study materials for exam preparation' },
-    ai: { label: 'AI Tools', description: 'AI-powered learning tools including code review, career guidance, and personalized recommendations' },
-    trainer: { label: 'Trainers', description: 'Meet our expert trainers with industry experience and proven track records' },
+  academy: {
+    tagline: 'Scaro Academy Academic Counselor',
+    phone: '+91 9949167458',
+    email: 'support@scaro.com',
+    location: 'Chadalawada Nagar, Tirupati',
+    text: `🎓 **Scaro Academy** offers industry-led engineering cohorts featuring:\n• Live developer mentorship\n• 100% Placement Support (Avg CTC: ₹7.2 LPA)\n• Real capstone projects (PHP, React, Firebase)\n\nAvailable tracks include Python Programming, IoT & Embedded Systems, and VLSI Design.`
   },
-  branches: [
-    { name: 'Computer Science / IT (CSE/IT)', skills: 'C, Java, Python, DSA, Web Dev, AI/ML, DevOps, Databases', salary: '₹6–12 LPA', placement: '94%' },
-    { name: 'AI & Data Science (AI/DS)', skills: 'Python, R, ML/DL, NLP, Computer Vision, Big Data, MLOps', salary: '₹7–15 LPA', placement: '91%' },
-    { name: 'Electronics & Communication (ECE)', skills: 'VLSI, Embedded Systems, IoT, Signal Processing, RF Engineering', salary: '₹5–10 LPA', placement: '87%' },
-    { name: 'Electrical & Electronics (EEE)', skills: 'Power Systems, EV Technology, Smart Grids, Renewable Energy, PLC', salary: '₹5–11 LPA', placement: '85%' },
-    { name: 'Mechanical Engineering (MECH)', skills: 'CAD/CAM, SolidWorks, ANSYS, Robotics, Industry 4.0, 3D Printing', salary: '₹4–9 LPA', placement: '83%' },
-    { name: 'Civil Engineering (CIVIL)', skills: 'AutoCAD, STAAD Pro, BIM, Construction Management, Smart Cities', salary: '₹4–8 LPA', placement: '80%' },
-  ],
-  features: [
-    'AI-powered personalized learning paths',
-    'Industry-certified courses',
-    'Real-world projects and virtual labs',
-    '100% placement support',
-    '1-on-1 mentorship from industry experts',
-    'Previous year papers and study materials',
-    'Mock interviews and resume building',
-    'Direct company connections for recruitment',
-  ],
+  ai: {
+    tagline: 'AI Hub Specialist',
+    phone: '+91 9949167458',
+    email: 'support@scaro.com',
+    location: 'AI Division, Tirupati',
+    text: `🤖 **AI Hub & Academy** connects you with modern AI utilities:\n• Curated AI Tools Directory (Lovable, Bolt.new, ChatGPT, Claude)\n• Free AI Masterclasses & Prompt engineering guides\n• Autonomous Agent development tutorials`
+  },
+  business: {
+    tagline: 'Enterprise Solutions Consultant',
+    phone: '+91 81067 95810',
+    email: 'hr@scaro.in',
+    location: 'Chadalawada Nagar, Tirupati',
+    text: `🏢 **Scaro Business** designs scalable software for modern organizations:\n• Custom React/Next.js Web Portals\n• High-performance E-Commerce engines\n• Cloud architectures, microservices, and databases\n• Custom Enterprise AI Prompt pipelines`
+  }
 };
 
-function findBestResponse(query: string): Message {
+function getContextualResponse(query: string, vertical: 'general' | 'academy' | 'ai' | 'business'): Message {
   const q = query.toLowerCase().trim();
   const id = Date.now();
 
-  // Keyword categories and their weights
-  const categories = [
-    {
-      id: 'greeting',
-      keywords: ['hi', 'hello', 'hey', 'namaste', 'good morning', 'good evening', 'hi bot'],
-      response: {
-        text: `Hello! 👋 Welcome to Scaro Technologies! I'm your AI assistant. How can I help you today? You can ask me about:\n\n• Our branches & courses\n• Learning roadmaps\n• Career guidance & placements\n• AI tools\n• Contact information\n\nJust type your question! 😊`,
-        links: [
-          { label: 'View Branches', page: 'branches' },
-          { label: 'Explore Courses', page: 'courses' },
-          { label: 'See Roadmaps', page: 'roadmap' },
-        ]
-      }
-    },
-    {
-      id: 'about',
-      keywords: ['what is scaro', 'about platform', 'tell me about', 'who are you', 'what do you do', 'company info'],
-      response: {
-        text: `🎓 **Scaro Technologies** - ${WEBSITE_KNOWLEDGE.about.tagline}\n\n${WEBSITE_KNOWLEDGE.about.description}\n\n📊 Key Numbers:\n• ${WEBSITE_KNOWLEDGE.about.students} Active Students\n• ${WEBSITE_KNOWLEDGE.about.courses} Industry Courses\n• ${WEBSITE_KNOWLEDGE.about.placementSupport} Placement Support\n• ${WEBSITE_KNOWLEDGE.about.certifications} Industry Certifications\n• Avg CTC: ${WEBSITE_KNOWLEDGE.about.avgCTC}`,
-        links: [
-          { label: 'Go to Home', page: 'home' },
-          { label: 'View Branches', page: 'branches' },
-        ]
-      }
-    },
-    {
-      id: 'branches',
-      keywords: ['branch', 'department', 'stream', 'engineering', 'cse', 'it', 'ece', 'eee', 'mech', 'civil', 'ai', 'data science'],
-      response: {
-        text: (() => {
-          let branchInfo = '🏛️ **Our Engineering Branches:**\n\n';
-          WEBSITE_KNOWLEDGE.branches.forEach((b, i) => {
-            branchInfo += `${i + 1}. **${b.name}**\n   💰 Salary: ${b.salary} | 🎯 Placement: ${b.placement}\n   🔧 Skills: ${b.skills}\n\n`;
-          });
-          return branchInfo + 'Click below to explore all branches in detail! 👇';
-        })(),
-        links: [{ label: 'Explore All Branches', page: 'branches' }]
-      }
-    },
-    {
-      id: 'courses',
-      keywords: ['course', 'curriculum', 'syllabus', 'learn', 'enroll', 'program', 'study', 'teaching'],
-      response: {
-        text: `📚 **Scaro Technologies Courses:**\n\nWe offer ${WEBSITE_KNOWLEDGE.about.courses} industry-curated courses covering:\n\n• Programming (Java, Python, C)\n• Web Development (MERN/MEAN Stack)\n• AI & Machine Learning\n• Data Science & Analytics\n• VLSI Design & Verification\n• Embedded Systems & IoT\n• CAD/CAM Design\n• Cloud Computing & DevOps\n\nAll courses include hands-on projects, industry mentorship, and certification! 🎯`,
-        links: [
-          { label: 'Browse All Courses', page: 'courses' },
-          { label: 'View Roadmaps', page: 'roadmap' },
-        ]
-      }
-    },
-    {
-      id: 'roadmap',
-      keywords: ['roadmap', 'learning path', 'career path', 'how to start', 'where to begin', 'guide', 'steps', 'process'],
-      response: {
-        text: `🗺️ **Learning Roadmaps:**\n\nWe have structured learning paths for:\n\n1. ☕ Java Full Stack Development\n2. 🐍 Python Programming\n3. 🌐 Web Development (HTML/CSS/JS)\n4. 🧪 Software Testing\n5. 📡 IoT Development\n6. 🔌 Embedded Systems\n7. 💻 VLSI Design\n8. 📐 CAD/CAM Design\n\nEach roadmap includes curriculum, projects, career paths, and industry tools! 🚀`,
-        links: [{ label: 'View All Roadmaps', page: 'roadmap' }]
-      }
-    },
-    {
-      id: 'placement',
-      keywords: ['placement', 'job', 'hire', 'recruit', 'salary', 'package', 'ctc', 'intern', 'company', 'career', 'employment', 'hiring'],
-      response: {
-        text: `💼 **Placement & Career Support:**\n\n• 🎯 100% Placement Support Guaranteed\n• 💰 Average CTC: ₹7.2 LPA\n• 🏢 ${WEBSITE_KNOWLEDGE.about.partnerCompanies} Hiring Partners\n• 📊 Up to 94% Placement Rate\n\n**Top Recruiters:** Google, Microsoft, Amazon, TCS, Infosys, Intel, Siemens, L&T, Bosch, and more!\n\n**We offer:**\n• Resume building & ATS optimization\n• Mock interviews with AI & mentors\n• Direct company referrals\n• 1-on-1 career mentorship`,
-        links: [
-          { label: 'Explore Branches', page: 'branches' },
-          { label: 'View Projects', page: 'projects' },
-        ]
-      }
-    },
-    {
-      id: 'contact',
-      keywords: ['contact', 'phone', 'call', 'email', 'reach', 'address', 'location', 'where', 'whatsapp', 'number', 'support'],
-      response: {
-        text: `📞 **Contact Scaro Technologies:**\n\n📱 Phone: ${WEBSITE_KNOWLEDGE.about.phone}\n📧 Email: ${WEBSITE_KNOWLEDGE.about.email}\n📍 Location: ${WEBSITE_KNOWLEDGE.about.location}\n🕐 Working Hours: ${WEBSITE_KNOWLEDGE.about.workingHours}\n\nYou can also use our social widgets on the left side of the page to reach us on WhatsApp, Instagram, or Email! 💬`,
-      }
-    },
-    {
-      id: 'thanks',
-      keywords: ['thank', 'thanks', 'thx', 'appreciate', 'great', 'awesome', 'good job'],
-      response: {
-        text: `You're welcome! 😊 I'm glad I could help. If you have any more questions about Scaro Technologies, feel free to ask!\n\n🌟 Remember, you can always reach us at ${WEBSITE_KNOWLEDGE.about.phone} or ${WEBSITE_KNOWLEDGE.about.email}`,
-      }
-    }
-  ];
+  const info = KNOWLEDGE_BASES[vertical];
 
-  // Scoring algorithm
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  let bestMatch: any = null;
-  let highestScore = 0;
-
-  categories.forEach(cat => {
-    let score = 0;
-    cat.keywords.forEach(kw => {
-      if (q.includes(kw)) {
-        // Higher score for longer keyword matches
-        score += kw.length;
-        // Bonus for exact word match
-        if (new RegExp(`\\b${kw}\\b`, 'i').test(q)) {
-          score += 10;
-        }
-      }
-    });
-
-    if (score > highestScore) {
-      highestScore = score;
-      bestMatch = cat;
-    }
-  });
-
-  if (bestMatch && highestScore > 2) {
-    return { id, sender: 'bot', ...bestMatch.response };
+  if (q.includes('contact') || q.includes('phone') || q.includes('call') || q.includes('email') || q.includes('address') || q.includes('location')) {
+    return {
+      id,
+      sender: 'bot',
+      text: `📞 **Contact Information:**\n\n📱 Phone: ${info.phone}\n📧 Email: ${info.email}\n📍 Address: ${info.location}\n🕐 Active Hours: 09:00 AM - 09:00 PM (IST)\n\nFeel free to write to us directly!`,
+    };
   }
 
-  // Default fallback if no good match
+  // Branch-specific logic
+  if (vertical === 'academy') {
+    if (q.includes('course') || q.includes('learn') || q.includes('study') || q.includes('python') || q.includes('iot') || q.includes('vlsi')) {
+      return {
+        id,
+        sender: 'bot',
+        text: `📚 **Featured Cohorts:**\n\n1. **Python Programming Mastery** (Django, APIs, database architectures)\n2. **IoT & Embedded Systems** (ESP32, MQTT protocols, sensor arrays)\n3. **VLSI Design & Verification** (Digital logic, Verilog HDL, Verification systems)\n\nAll courses feature live mentor sessions and internship guarantees.`,
+        links: [{ label: 'View All Courses', page: 'courses' }]
+      };
+    }
+    if (q.includes('project') || q.includes('capstone') || q.includes('student')) {
+      return {
+        id,
+        sender: 'bot',
+        text: `💻 **Student Capstone Projects:**\n\nStudents build production-ready projects like:\n• *Student Result Management System* (PHP/MySQL)\n• *Online Quiz App* (React/Firebase/Tailwind)\n\nClick below to explore full details!`,
+        links: [{ label: 'Explore Capstones', page: 'projects' }]
+      };
+    }
+    if (q.includes('placement') || q.includes('job') || q.includes('career') || q.includes('ctc') || q.includes('salary')) {
+      return {
+        id,
+        sender: 'bot',
+        text: `💼 **Placement Record:**\n\n• 100% Placement Guidance\n• Avg CTC: ₹7.2 LPA\n• Top Hire Partners: Google, Microsoft, TCS, Infosys, Intel, Siemens\n• Features Mock Interview prep & ATS Resume optimization.`,
+        links: [{ label: 'View Placements', page: 'courses' }]
+      };
+    }
+  }
+
+  if (vertical === 'ai') {
+    if (q.includes('tool') || q.includes('lovable') || q.includes('bolt') || q.includes('chatgpt') || q.includes('directory')) {
+      return {
+        id,
+        sender: 'bot',
+        text: `🚀 **AI Tools Directory:**\n\nExplore our curated list of 60+ AI tools, including:\n• **Lovable.ai** (AI Web Builder)\n• **Bolt.new** (Full-Stack Deployment)\n• **ChatGPT & Claude** (Advanced LLM Chat)\n\nSubmit your own AI tool to reach our directory of developers!`,
+        links: [{ label: 'Open AI Tools Directory', page: 'all-ai-tools' }]
+      };
+    }
+    if (q.includes('masterclass') || q.includes('prompt') || q.includes('agent')) {
+      return {
+        id,
+        sender: 'bot',
+        text: `🎓 **AI Masterclasses:**\n\nWe provide free prompt engineering libraries and agent tutorials to help you connect prompt databases and build custom AI pipelines.`,
+        links: [{ label: 'AI Resources & Prompts', page: 'ai-resources' }]
+      };
+    }
+  }
+
+  if (vertical === 'business') {
+    if (q.includes('service') || q.includes('web') || q.includes('app') || q.includes('design') || q.includes('price')) {
+      return {
+        id,
+        sender: 'bot',
+        text: `🏢 **Scaro Enterprise Services:**\n\nWe design high-speed architectures:\n• **Custom Web Design** (React, Next.js, Node.js)\n• **E-Commerce Solutions** (Scalable engines, payment setups)\n• **Mobile Apps** (iOS & Android platforms)\n• **Enterprise AI Integration** (custom data pipelines)\n\nCheck out our transparent service pricing packages below!`,
+        links: [{ label: 'View Packages & Pricing', page: 'business-pricing' }]
+      };
+    }
+    if (q.includes('project') || q.includes('client') || q.includes('shipped') || q.includes('portfolio')) {
+      return {
+        id,
+        sender: 'bot',
+        text: `💻 **Shipped Client Solutions:**\n\n• **Geo-Silicon** (Enterprise technology portal)\n• **Balu Associates** (Professional corporate presence)\n\nClick below to check out our complete client portfolio!`,
+        links: [{ label: 'View Case Studies', page: 'all-business-projects' }]
+      };
+    }
+  }
+
+  // Fallback inside active vertical
   return {
-    id, sender: 'bot',
-    text: `I'm not sure I understood that correctly, but I'm here to help! 🤔\n\nHere are some things I can help you with:\n\n• 📚 Courses & curriculum info\n• 🏛️ Branch details & career paths\n• 🗺️ Learning roadmaps\n• 💼 Placement & job support\n• 🤖 AI tools & features\n• 📞 Contact information\n\nTry asking me about any of these topics! 😊`,
-    links: [
-      { label: 'Home', page: 'home' },
-      { label: 'Branches', page: 'branches' },
-      { label: 'Courses', page: 'courses' },
-      { label: 'Roadmaps', page: 'roadmap' },
-    ],
+    id,
+    sender: 'bot',
+    text: `👋 I'm the **${info.tagline}**.\n\n${info.text}\n\nHow can I help you today? Feel free to ask about contact information, services, or pricing!`,
   };
 }
 
-export function ChatBot() {
+export const ChatBot = memo(function ChatBot() {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: 0,
-      sender: 'bot',
-      text: `Hey! 👋 How can I help you?\n\nI'm **Scaro Technologies Bot**, your AI assistant. I can help you with:\n• Branch & course info\n• Career guidance\n• Placement details\n• Navigation help\n\nAsk me anything! 😊`,
-      links: [
-        { label: 'View Branches', page: 'branches' },
-        { label: 'Explore Courses', page: 'courses' },
-        { label: 'Contact Info', page: 'home' },
-      ],
-    },
-  ]);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const currentPath = location.pathname;
+
+  // Determine active vertical context
+  let vertical: 'general' | 'academy' | 'ai' | 'business' = 'general';
+  if (currentPath.startsWith('/business')) {
+    vertical = 'business';
+  } else if (currentPath.startsWith('/ai') || currentPath.startsWith('/all-ai-')) {
+    vertical = 'ai';
+  } else if (
+    currentPath.startsWith('/courses') || 
+    currentPath.startsWith('/all-courses') || 
+    currentPath.startsWith('/projects') || 
+    currentPath.startsWith('/all-projects') || 
+    currentPath.startsWith('/roadmap')
+  ) {
+    vertical = 'academy';
+  }
+
+  const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  // Update initial message and options when vertical changes
+  useEffect(() => {
+    const welcomeMessages = {
+      general: `Hey! 👋 How can I help you?\n\nI'm **Scaro Ecosystem Bot**, your unified guide. Ask me about Academy, AI Hub, or Corporate Services! 😊`,
+      academy: `Welcome to **Scaro Academy Support**! 🎓\n\nI can assist you with:\n• Engineering Courses & Syllabus\n• Real Capstone Projects\n• Learning Roadmaps\n• Admissions & Placements\n\nHow can I guide your learning journey today? 📚`,
+      ai: `Hi there! I'm your **Scaro AI Hub Assistant**! 🤖\n\nAsk me about:\n• Curated AI Tools Directory\n• Free AI Masterclasses & Prompts\n• Autonomous Agent builds\n\nLet's automate the future! 🚀`,
+      business: `Hello! Welcome to **Scaro Enterprise Support**! 🏢\n\nI can help you with:\n• Custom Software & Web Design\n• E-Commerce Engines\n• Mobile Applications\n• Cloud Architecture & APIs\n\nLet's discuss your project scope! 💼`
+    };
+
+    const initialLinks = {
+      general: [
+        { label: 'Scaro Academy', page: 'courses' },
+        { label: 'AI Academy', page: 'ai' },
+        { label: 'Corporate Services', page: 'business' },
+      ],
+      academy: [
+        { label: 'Explore Courses', page: 'courses' },
+        { label: 'Capstone Projects', page: 'projects' },
+        { label: 'Study Roadmaps', page: 'roadmap' }
+      ],
+      ai: [
+        { label: 'AI Tools Directory', page: 'all-ai-tools' },
+        { label: 'AI Masterclass', page: 'ai-masterclass' },
+        { label: 'Prompt Library', page: 'ai-resources' }
+      ],
+      business: [
+        { label: 'Enterprise Pricing', page: 'business-pricing' },
+        { label: 'Case Studies', page: 'all-business-projects' },
+        { label: 'Start Project', page: 'business#contact' }
+      ]
+    };
+
+    setMessages([
+      {
+        id: 0,
+        sender: 'bot',
+        text: welcomeMessages[vertical],
+        links: initialLinks[vertical]
+      }
+    ]);
+  }, [vertical]);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -219,7 +214,7 @@ export function ChatBot() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsOpen(true);
-    }, 3000);
+    }, 4000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -236,9 +231,8 @@ export function ChatBot() {
     setInput('');
     setIsTyping(true);
 
-    // Simulate a brief thinking delay
     setTimeout(() => {
-      const response = findBestResponse(input);
+      const response = getContextualResponse(input, vertical);
       setMessages((prev) => [...prev, response]);
       setIsTyping(false);
     }, 600 + Math.random() * 400);
@@ -246,17 +240,63 @@ export function ChatBot() {
 
   const handleNavigate = (page: string) => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    const event = new CustomEvent('navigate', { detail: page });
-    window.dispatchEvent(event);
+    if (page.startsWith('http')) {
+      window.open(page, '_blank', 'noopener,noreferrer');
+    } else {
+      navigate('/' + page);
+    }
     setIsOpen(false);
   };
 
-  const quickButtons = [
-    { label: '📚 Courses', query: 'courses' },
-    { label: '🏛️ Branches', query: 'branches' },
-    { label: '💼 Placements', query: 'placements' },
-    { label: '📞 Contact', query: 'contact info' },
-  ];
+  // Theming based on vertical
+  const themes = {
+    general: {
+      headerBg: 'from-[#5C141D] to-[#80202B]',
+      icon: Bot,
+      title: 'Scaro Technologies Bot'
+    },
+    academy: {
+      headerBg: 'from-[#5C141D] to-[#80202B]',
+      icon: GraduationCap,
+      title: 'Scaro Academy Guide'
+    },
+    ai: {
+      headerBg: 'from-[#D4AF37] to-[#B89628]',
+      icon: Cpu,
+      title: 'Scaro AI Hub Guide'
+    },
+    business: {
+      headerBg: 'from-[#1E293B] to-[#334155]',
+      icon: Building2,
+      title: 'Scaro Business Assistant'
+    }
+  };
+
+  const currentTheme = themes[vertical];
+  const ActiveIcon = currentTheme.icon;
+
+  const quickButtons = {
+    general: [
+      { label: '🎓 Academy', query: 'Academy courses' },
+      { label: '🤖 AI Hub', query: 'AI Tools' },
+      { label: '🏢 Services', query: 'business services' }
+    ],
+    academy: [
+      { label: '📚 Courses', query: 'courses' },
+      { label: '💻 Capstones', query: 'capstone projects' },
+      { label: '💼 Placements', query: 'placements support' }
+    ],
+    ai: [
+      { label: '🚀 AI Tools', query: 'ai tools directory' },
+      { label: '💡 Masterclass', query: 'AI masterclass' },
+      { label: '📞 Contact', query: 'contact' }
+    ],
+    business: [
+      { label: '🏢 Services', query: 'business services' },
+      { label: '💻 Shipped Apps', query: 'client projects' },
+      { label: '📞 Contact Sales', query: 'contact' }
+    ]
+  }[vertical];
 
   return (
     <>
@@ -277,7 +317,7 @@ export function ChatBot() {
             </motion.div>
           ) : (
             <motion.div key="open" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }}>
-              <Bot className="w-7 h-7" />
+              <ActiveIcon className="w-7 h-7" />
             </motion.div>
           )}
         </AnimatePresence>
@@ -296,18 +336,18 @@ export function ChatBot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
             transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-            className="fixed bottom-24 right-4 sm:right-6 z-50 w-[calc(100%-2rem)] sm:w-[400px] h-[520px] bg-white dark:bg-slate-900 rounded-2xl shadow-2xl shadow-blue-500/20 border border-slate-200 dark:border-slate-700 flex flex-col overflow-hidden"
+            className="fixed bottom-24 right-4 sm:right-6 z-50 w-[calc(100%-2rem)] sm:w-[400px] h-[520px] bg-white rounded-2xl shadow-2xl shadow-black/20 border border-slate-200 flex flex-col overflow-hidden"
           >
-            {/* Header */}
-            <div className="bg-gradient-to-r from-blue-600 to-cyan-500 p-4 flex items-center gap-3 flex-shrink-0">
+            {/* Contextually Themed Header */}
+            <div className={`bg-gradient-to-r ${currentTheme.headerBg} p-4 flex items-center gap-3 flex-shrink-0 transition-all duration-500`}>
               <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
-                <Bot className="w-6 h-6 text-white" />
+                <ActiveIcon className="w-6 h-6 text-white" />
               </div>
               <div className="flex-1">
-                <h3 className="text-white font-bold text-base">Scaro Technologies Bot</h3>
-                <div className="flex items-center gap-1.5">
+                <h3 className="text-white font-bold text-sm tracking-tight">{currentTheme.title}</h3>
+                <div className="flex items-center gap-1.5 mt-0.5">
                   <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-                  <span className="text-white/80 text-xs">Online • Ready to help</span>
+                  <span className="text-white/80 text-[10px] uppercase font-bold tracking-wider">Context Assistant</span>
                 </div>
               </div>
               <button aria-label="Action button" onClick={() => setIsOpen(false)} className="p-1.5 hover:bg-white/20 rounded-lg transition-colors">
@@ -316,7 +356,7 @@ export function ChatBot() {
             </div>
 
             {/* Messages */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-slate-50 dark:bg-slate-900/50">
+            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-slate-50">
               {messages.map((msg) => (
                 <motion.div
                   key={msg.id}
@@ -327,27 +367,27 @@ export function ChatBot() {
                   <div
                     className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
                       msg.sender === 'user'
-                        ? 'bg-gradient-to-r from-blue-600 to-cyan-500 text-white rounded-br-sm'
-                        : 'bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 rounded-bl-sm shadow-sm'
+                        ? 'bg-slate-900 text-white rounded-br-sm'
+                        : 'bg-white text-slate-800 border border-slate-200 rounded-bl-sm shadow-sm'
                     }`}
                   >
-                    <div className="whitespace-pre-line">{msg.text}</div>
+                    <div className="whitespace-pre-line text-xs font-medium">{msg.text}</div>
                     
                     {/* Navigation links */}
                     {msg.links && msg.links.length > 0 && (
-                      <div className="flex flex-wrap gap-2 mt-3 pt-2 border-t border-white/20 dark:border-slate-600">
+                      <div className="flex flex-col gap-1.5 mt-3 pt-2 border-t border-slate-100">
                         {msg.links.map((link, i) => (
                           <button aria-label="Action button"
                             key={i}
                             onClick={() => handleNavigate(link.page)}
-                            className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                            className={`flex items-center justify-between px-3 py-2 rounded-xl text-[10px] font-bold uppercase tracking-wider transition-all text-left ${
                               msg.sender === 'user'
                                 ? 'bg-white/20 hover:bg-white/30 text-white'
-                                : 'bg-blue-50 dark:bg-blue-500/10 hover:bg-blue-100 dark:hover:bg-blue-500/20 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-500/30'
+                                : 'bg-[#5C141D]/5 hover:bg-[#5C141D]/10 text-[#5C141D]'
                             }`}
                           >
-                            {link.label}
-                            <ArrowRight className="w-3 h-3" />
+                            <span>{link.label}</span>
+                            <ArrowRight className="w-3.5 h-3.5" />
                           </button>
                         ))}
                       </div>
@@ -363,7 +403,7 @@ export function ChatBot() {
                   animate={{ opacity: 1, y: 0 }}
                   className="flex justify-start"
                 >
-                  <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl rounded-bl-sm px-4 py-3 shadow-sm">
+                  <div className="bg-white border border-slate-200 rounded-2xl rounded-bl-sm px-4 py-3 shadow-sm">
                     <div className="flex items-center gap-1.5">
                       <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
                       <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
@@ -376,7 +416,7 @@ export function ChatBot() {
             </div>
 
             {/* Quick action buttons */}
-            <div className="px-3 py-2 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700 flex gap-2 overflow-x-auto flex-shrink-0">
+            <div className="px-3 py-2 bg-white border-t border-slate-100 flex gap-2 overflow-x-auto flex-shrink-0 scrollbar-none">
               {quickButtons.map((btn, i) => (
                 <button aria-label="Action button"
                   key={i}
@@ -387,13 +427,13 @@ export function ChatBot() {
                       setMessages((prev) => [...prev, userMsg]);
                       setIsTyping(true);
                       setTimeout(() => {
-                        setMessages((prev) => [...prev, findBestResponse(btn.query)]);
+                        setMessages((prev) => [...prev, getContextualResponse(btn.query, vertical)]);
                         setIsTyping(false);
-                      }, 600);
+                      }, 500);
                       setInput('');
                     }, 100);
                   }}
-                  className="flex-shrink-0 px-3 py-1.5 bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 text-xs font-medium rounded-full border border-blue-200 dark:border-blue-500/30 hover:bg-blue-100 dark:hover:bg-blue-500/20 transition-all whitespace-nowrap"
+                  className="flex-shrink-0 px-3.5 py-1.5 bg-[#5C141D]/5 text-[#5C141D] text-[10px] font-bold uppercase tracking-wider rounded-full border border-[#5C141D]/10 hover:bg-[#5C141D]/10 transition-all whitespace-nowrap"
                 >
                   {btn.label}
                 </button>
@@ -401,7 +441,7 @@ export function ChatBot() {
             </div>
 
             {/* Input */}
-            <div className="p-3 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700 flex-shrink-0">
+            <div className="p-3 bg-white border-t border-slate-200 flex-shrink-0">
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
@@ -414,20 +454,20 @@ export function ChatBot() {
                   type="text"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  placeholder="Ask me anything about Scaro Technologies..."
-                  className="flex-1 px-4 py-2.5 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm text-slate-800 dark:text-slate-200 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500 transition-all"
+                  placeholder={`Ask ${currentTheme.title}...`}
+                  className="flex-1 px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#5C141D]/15 focus:border-[#5C141D] transition-all"
                 />
                 <button aria-label="Action button"
                   type="submit"
                   disabled={!input.trim()}
-                  className="w-10 h-10 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 text-white flex items-center justify-center hover:shadow-lg hover:shadow-blue-500/40 transition-all disabled:opacity-40 disabled:cursor-not-allowed hover:scale-105 active:scale-95"
+                  className="w-10 h-10 rounded-xl bg-slate-900 text-white flex items-center justify-center hover:shadow-lg transition-all disabled:opacity-40 disabled:cursor-not-allowed hover:scale-105 active:scale-95"
                 >
                   <Send className="w-4 h-4" />
                 </button>
               </form>
-              <div className="text-center mt-2">
-                <span className="text-[10px] text-slate-400 dark:text-slate-500 flex items-center justify-center gap-1">
-                  <Sparkles className="w-3 h-3" /> Powered by Scaro Technologies AI
+              <div className="text-center mt-2.5">
+                <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest flex items-center justify-center gap-1">
+                  <Sparkles className="w-3 h-3 text-[var(--primary-gold)]" /> Powered by Scaro Technologies AI
                 </span>
               </div>
             </div>
@@ -436,4 +476,4 @@ export function ChatBot() {
       </AnimatePresence>
     </>
   );
-}
+});
