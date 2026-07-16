@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useNavigate, useLocation } from 'react-router';
 import {
@@ -6,9 +6,10 @@ import {
   Building2, Terminal, Code2, ShieldCheck, Zap, Database, Smartphone,
   Users, Mail, Phone, MapPin, Trophy, BookOpen, Layers, Check,
   Laptop, Globe, ArrowUpRight, Play, Server, MessageSquare, ArrowRightLeft,
-  ChevronRight, Calendar, Star, HelpCircle
+  ChevronRight, Calendar, Star, HelpCircle, Instagram
 } from 'lucide-react';
 import { useSEO } from '../../main/utils/useSEO';
+import { CompaniesSection } from '../components/CompaniesSection';
 
 export function HomePage() {
   const navigate = useNavigate();
@@ -98,7 +99,7 @@ export function HomePage() {
     <div className="bg-[#FAF8F5] min-h-screen text-[#1E060A] overflow-hidden font-sans relative">
       
       {/* ─── SECTION 1: HERO (LOGO MAROON BACKGROUND) ─── */}
-      <section className="relative min-h-[85vh] flex items-center bg-[#5C141D] text-white overflow-hidden py-20">
+      <section className="relative min-h-[80vh] flex items-center bg-[#5C141D] text-white overflow-hidden py-16">
         {/* Precise engineering grid background */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px] opacity-70" />
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-radial from-[var(--primary-gold)]/10 via-transparent to-transparent blur-[120px] pointer-events-none" />
@@ -144,18 +145,19 @@ export function HomePage() {
                 className="flex flex-col sm:flex-row items-center gap-4 pt-2"
               >
                 <button aria-label="Action button" 
-                  onClick={() => document.getElementById('academy-section')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="w-full sm:w-auto px-8 py-4 rounded-xl bg-[var(--primary-gold)] text-black font-black text-sm transition-all hover:bg-[#FAF8F5] active:scale-98 flex items-center justify-center gap-2 cursor-pointer shadow-lg hover:shadow-[var(--primary-gold)]/10"
+                  onClick={() => document.getElementById('explore-hub')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="w-full sm:w-auto px-8 py-4 rounded-xl bg-[var(--primary-gold)] text-black font-black text-sm transition-all hover:bg-[#FAF8F5] active:scale-98 flex items-center justify-center gap-2 cursor-pointer shadow-lg"
                 >
-                  Explore Academy Paths
+                  Explore Ecosystem Hubs
                   <ArrowRight className="w-4 h-4" />
                 </button>
-                <button aria-label="Action button" 
-                  onClick={() => document.getElementById('services-section')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="w-full sm:w-auto px-8 py-4 rounded-xl bg-white/5 border border-white/20 hover:bg-white/10 text-white font-bold text-sm transition-all flex items-center justify-center gap-2 cursor-pointer"
-                >
-                  View Corporate Services
-                </button>
+                <a href="#achievements-section" className="w-full sm:w-auto">
+                  <button aria-label="Action button" 
+                    className="w-full px-8 py-4 rounded-xl bg-white/5 border border-white/20 hover:bg-white/10 text-white font-bold text-sm transition-all flex items-center justify-center gap-2 cursor-pointer"
+                  >
+                    Our Achievements
+                  </button>
+                </a>
               </motion.div>
             </div>
 
@@ -180,20 +182,128 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* ─── SECTION 2: SCARO ACADEMY (WHITE BACKGROUND) ─── */}
-      <section id="academy-section" className="py-28 relative bg-white border-b border-[rgba(92,20,29,0.06)]">
+      {/* ─── SECTION 2: DYNAMIC CUSTOMER HUB ENTRY POINT (FAST NAVIGATION) ─── */}
+      <section id="explore-hub" className="py-20 bg-white border-b border-[rgba(92,20,29,0.06)] relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-xs font-black tracking-widest text-[#5C141D] uppercase">Select Your Pathway</span>
+            <h2 className="text-3xl sm:text-5xl font-black text-[#1E060A] tracking-tight mt-2">
+              Where would you like to start?
+            </h2>
+            <p className="text-base text-slate-500 font-light mt-3">
+              Explore our core pillars. Select the sector that matches your goals.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            
+            {/* Scaro Academy Card */}
+            <motion.div 
+              whileHover={{ y: -8 }}
+              className="p-8 rounded-3xl bg-[#FAF8F5] border border-[rgba(92,20,29,0.08)] shadow-sm hover:border-[#5C141D]/30 transition-all duration-300 flex flex-col justify-between"
+            >
+              <div>
+                <div className="w-14 h-14 rounded-2xl bg-[#5C141D]/5 flex items-center justify-center mb-6">
+                  <GraduationCap className="w-8 h-8 text-[#5C141D]" />
+                </div>
+                <h3 className="text-2xl font-black text-[#1E060A] mb-3">Scaro Academy</h3>
+                <p className="text-sm text-slate-500 font-light leading-relaxed mb-6">
+                  Elite engineering cohorts featuring live developer mentorship, guaranteed internships, and real capstone builds.
+                </p>
+                <ul className="space-y-2.5 mb-8">
+                  {['Full Stack Web Cohort', 'Embedded & IoT Systems', 'ML & AI Programming', 'UI/UX Masterclass'].map((item, i) => (
+                    <li key={i} className="flex items-center gap-2 text-xs text-slate-600">
+                      <Check className="w-4 h-4 text-emerald-500" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <button aria-label="Action button" 
+                onClick={() => navigate('/courses')}
+                className="w-full py-4 bg-[#5C141D] hover:bg-[#470f15] text-white font-bold text-sm rounded-xl transition-all flex items-center justify-center gap-2 shadow-sm"
+              >
+                Go to Scaro Academy <ChevronRight className="w-4 h-4" />
+              </button>
+            </motion.div>
+
+            {/* AI Academy Card */}
+            <motion.div 
+              whileHover={{ y: -8 }}
+              className="p-8 rounded-3xl bg-[#FAF3D1] border border-[#5C141D]/10 shadow-sm hover:border-[var(--primary-gold)] transition-all duration-300 flex flex-col justify-between"
+            >
+              <div>
+                <div className="w-14 h-14 rounded-2xl bg-white border border-[#5C141D]/15 flex items-center justify-center mb-6">
+                  <Cpu className="w-8 h-8 text-[#5C141D]" />
+                </div>
+                <h3 className="text-2xl font-black text-[#1E060A] mb-3">AI Academy</h3>
+                <p className="text-sm text-slate-700 font-light leading-relaxed mb-6">
+                  Learn to leverage cutting-edge AI utilities, build custom prompt stacks, and automate pipelines.
+                </p>
+                <ul className="space-y-2.5 mb-8">
+                  {['Syllabus Prompt Engine', 'No-code stack building', 'Automation pipelines', '60+ AI tools directory'].map((item, i) => (
+                    <li key={i} className="flex items-center gap-2 text-xs text-slate-700">
+                      <Check className="w-4 h-4 text-emerald-600" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <button aria-label="Action button" 
+                onClick={() => navigate('/ai')}
+                className="w-full py-4 bg-[#5C141D] hover:bg-[#470f15] text-white font-bold text-sm rounded-xl transition-all flex items-center justify-center gap-2 shadow-sm"
+              >
+                Enter AI Academy <ChevronRight className="w-4 h-4" />
+              </button>
+            </motion.div>
+
+            {/* Corporate Services Card */}
+            <motion.div 
+              whileHover={{ y: -8 }}
+              className="p-8 rounded-3xl bg-[#FAF8F5] border border-[rgba(92,20,29,0.08)] shadow-sm hover:border-[#5C141D]/30 transition-all duration-300 flex flex-col justify-between"
+            >
+              <div>
+                <div className="w-14 h-14 rounded-2xl bg-[#5C141D]/5 flex items-center justify-center mb-6">
+                  <Building2 className="w-8 h-8 text-[#5C141D]" />
+                </div>
+                <h3 className="text-2xl font-black text-[#1E060A] mb-3">Corporate Services</h3>
+                <p className="text-sm text-slate-500 font-light leading-relaxed mb-6">
+                  Enterprise-grade custom IT layouts, e-commerce engines, database configurations, and app development.
+                </p>
+                <ul className="space-y-2.5 mb-8">
+                  {['Custom Web Design', 'Scalable Mobile Apps', 'API & Integration setups', 'Database configurations'].map((item, i) => (
+                    <li key={i} className="flex items-center gap-2 text-xs text-slate-600">
+                      <Check className="w-4 h-4 text-emerald-500" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <button aria-label="Action button" 
+                onClick={() => navigate('/business')}
+                className="w-full py-4 bg-[#5C141D] hover:bg-[#470f15] text-white font-bold text-sm rounded-xl transition-all flex items-center justify-center gap-2 shadow-sm"
+              >
+                View Services & Pricing <ChevronRight className="w-4 h-4" />
+              </button>
+            </motion.div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ─── SECTION 3: PLACEMENTS SCROLLING MARQUEE ─── */}
+      <section className="border-b border-[rgba(92,20,29,0.06)]">
+        <CompaniesSection />
+      </section>
+
+      {/* ─── SECTION 4: SCARO ACADEMY DEEP-DIVE (WHITE BACKGROUND) ─── */}
+      <section className="py-28 bg-white border-b border-[rgba(92,20,29,0.06)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-12 gap-16 items-center">
             
             {/* Visual Media Column */}
-            <div className="lg:col-span-5 relative flex justify-center">
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="relative w-full max-w-[420px] aspect-[3/4] rounded-3xl overflow-hidden border border-[rgba(92,20,29,0.08)] shadow-2xl p-2 bg-[#FAF8F5]"
-              >
+            <div className="lg:col-span-5 flex justify-center">
+              <div className="relative w-full max-w-[420px] aspect-[3/4] rounded-3xl overflow-hidden border border-[rgba(92,20,29,0.08)] shadow-2xl p-2 bg-[#FAF8F5]">
                 <div className="absolute inset-0 border border-[var(--primary-gold)]/20 rounded-3xl pointer-events-none" />
                 <img
                   loading="lazy"
@@ -201,13 +311,13 @@ export function HomePage() {
                   alt="Academy Engineering Class"
                   className="w-full h-full object-cover rounded-2xl"
                 />
-              </motion.div>
+              </div>
             </div>
 
             {/* Content Column */}
             <div className="lg:col-span-7 space-y-8 text-left">
               <div className="space-y-2">
-                <span className="text-xs font-black tracking-widest text-[#5C141D] uppercase bg-[#5C141D]/5 px-3.5 py-1.5 rounded-full inline-block">01. Educational Pillar</span>
+                <span className="text-xs font-black tracking-widest text-[#5C141D] uppercase bg-[#5C141D]/5 px-3.5 py-1.5 rounded-full inline-block">01. Educational Sector</span>
                 <h2 className="text-3xl sm:text-5xl font-black text-[#1E060A] tracking-tight">
                   Scaro Academy
                 </h2>
@@ -266,9 +376,8 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* ─── SECTION 3: AI ACADEMY / AI DIVISION (GOLD / IVORY BACKGROUND) ─── */}
-      <section id="ai-section" className="py-28 relative bg-[#FAF3D1] border-b border-[rgba(92,20,29,0.06)] overflow-hidden">
-        {/* Subtle grid elements */}
+      {/* ─── SECTION 5: AI ACADEMY / AI DIVISION (GOLD / IVORY BACKGROUND) ─── */}
+      <section className="py-28 relative bg-[#FAF3D1] border-b border-[rgba(92,20,29,0.06)] overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#5c141d03_1px,transparent_1px),linear-gradient(to_bottom,#5c141d03_1px,transparent_1px)] bg-[size:32px_32px]" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -324,13 +433,7 @@ export function HomePage() {
 
             {/* Media Image Column */}
             <div className="lg:col-span-5 relative flex justify-center">
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="relative w-full max-w-[420px] aspect-[3/4] rounded-3xl overflow-hidden border border-[#5C141D]/15 shadow-2xl p-2 bg-[#FAF8F5]"
-              >
+              <div className="relative w-full max-w-[420px] aspect-[3/4] rounded-3xl overflow-hidden border border-[#5C141D]/15 shadow-2xl p-2 bg-[#FAF8F5]">
                 <div className="absolute inset-0 border border-white/20 rounded-3xl pointer-events-none" />
                 <img
                   loading="lazy"
@@ -338,27 +441,21 @@ export function HomePage() {
                   alt="Scaro AI Engine Visuals"
                   className="w-full h-full object-cover rounded-2xl"
                 />
-              </motion.div>
+              </div>
             </div>
 
           </div>
         </div>
       </section>
 
-      {/* ─── SECTION 4: OUR SERVICES - SCARO BUSINESS (WHITE BACKGROUND) ─── */}
+      {/* ─── SECTION 6: OUR SERVICES - SCARO BUSINESS (WHITE BACKGROUND) ─── */}
       <section id="services-section" className="py-28 relative bg-white border-b border-[rgba(92,20,29,0.06)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-12 gap-16 items-center">
             
             {/* Visual Column */}
             <div className="lg:col-span-5 relative flex justify-center">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="relative w-full max-w-[420px] aspect-[3/4] rounded-3xl overflow-hidden border border-[rgba(92,20,29,0.08)] shadow-2xl p-2 bg-[#FAF8F5]"
-              >
+              <div className="relative w-full max-w-[420px] aspect-[3/4] rounded-3xl overflow-hidden border border-[rgba(92,20,29,0.08)] shadow-2xl p-2 bg-[#FAF8F5]">
                 <div className="absolute inset-0 border border-[var(--primary-gold)]/20 rounded-3xl pointer-events-none" />
                 <img
                   loading="lazy"
@@ -366,7 +463,7 @@ export function HomePage() {
                   alt="Scaro Business Services"
                   className="w-full h-full object-cover rounded-2xl"
                 />
-              </motion.div>
+              </div>
             </div>
 
             {/* Content Column */}
@@ -409,7 +506,37 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* ─── SECTION 5: REALITY PHILOSOPHY ─── */}
+      {/* ─── SECTION 7: DETAILED ACHIEVEMENTS & AWARDS (WHITE BACKGROUND) ─── */}
+      <section id="achievements-section" className="py-24 bg-white border-b border-[rgba(92,20,29,0.06)]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-xs font-black tracking-widest text-[#5C141D] uppercase">Recognitions</span>
+            <h2 className="text-3xl sm:text-5xl font-black text-[#1E060A] tracking-tight mt-2">
+              Awards & Credentials
+            </h2>
+            <p className="text-base text-slate-500 font-light mt-3">
+              Recognized by industry leaders and educational institutions for innovation and student choice.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              { title: 'Best EdTech Platform 2025', org: 'Tech Excellence Awards', icon: '🏆' },
+              { title: 'Top 10 Learning Platforms', org: 'EdTech India', icon: '⭐' },
+              { title: 'Innovation in AI Education', org: 'National Education Summit', icon: '🎓' },
+              { title: 'Student Choice Award', org: 'Campus Connect', icon: '💡' }
+            ].map((rec, i) => (
+              <div key={i} className="bg-[#FAF8F5] border border-[rgba(92,20,29,0.05)] rounded-2xl p-6 text-center hover:shadow-md transition-all duration-300">
+                <div className="text-4xl mb-4">{rec.icon}</div>
+                <h4 className="text-sm font-extrabold text-[#1E060A] mb-2">{rec.title}</h4>
+                <p className="text-xs text-slate-500 font-light">{rec.org}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── SECTION 8: REALITY PHILOSOPHY ─── */}
       <section className="py-28 relative bg-[#FAF3D1] border-b border-[rgba(92,20,29,0.06)] text-center">
         <div className="max-w-4xl mx-auto px-4 space-y-6">
           <div className="w-10 h-10 rounded-full bg-[#5C141D]/10 border border-[#5C141D]/10 flex items-center justify-center mx-auto">
@@ -426,7 +553,7 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* ─── SECTION 6: PLATFORM STATISTICS ─── */}
+      {/* ─── SECTION 9: PLATFORM STATISTICS ─── */}
       <section className="py-24 relative bg-white border-b border-[rgba(92,20,29,0.06)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
@@ -448,7 +575,7 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* ─── SECTION 7: PREMIUM FOOTER (LOGO MAROON BACKGROUND) ─── */}
+      {/* ─── SECTION 10: PREMIUM FOOTER (LOGO MAROON BACKGROUND) ─── */}
       <footer className="relative bg-[#5C141D] text-white pt-24 pb-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-12 gap-12 pb-16 border-b border-white/10">
@@ -517,44 +644,81 @@ export function HomePage() {
               </div>
             </div>
 
-            {/* Newsletter Column */}
-            <div className="lg:col-span-4 space-y-4 text-left">
-              <h4 className="text-xs font-black tracking-wider text-[var(--primary-gold)] uppercase">Join the Academy</h4>
-              <p className="text-xs text-slate-200 font-light leading-relaxed">
-                Subscribe to get direct links to learning resources, code templates, and workshop invites.
-              </p>
-              
-              <form onSubmit={handleSubscribe} className="space-y-2">
-                <div className="relative flex">
-                  <input
-                    type="email"
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter your email"
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-xs text-white placeholder-slate-300 focus:outline-none focus:border-[var(--primary-gold)] transition-colors"
-                  />
-                  <button aria-label="Action button" 
-                    type="submit"
-                    className="absolute right-1.5 top-1.5 bottom-1.5 px-4 bg-[var(--primary-gold)] text-black font-bold text-[10px] uppercase tracking-wider rounded-lg hover:bg-[#FAF8F5] transition-all cursor-pointer"
-                  >
-                    Subscribe
-                  </button>
-                </div>
-              </form>
+            {/* Newsletter Column & Social Widgets */}
+            <div className="lg:col-span-4 space-y-6 text-left">
+              <div className="space-y-3">
+                <h4 className="text-xs font-black tracking-wider text-[var(--primary-gold)] uppercase">Join the Academy</h4>
+                <p className="text-xs text-slate-200 font-light leading-relaxed">
+                  Subscribe to get direct links to learning resources, code templates, and workshop invites.
+                </p>
+                
+                <form onSubmit={handleSubscribe} className="space-y-2">
+                  <div className="relative flex">
+                    <input
+                      type="email"
+                      required
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="Enter your email"
+                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-xs text-white placeholder-slate-300 focus:outline-none focus:border-[var(--primary-gold)] transition-colors"
+                    />
+                    <button aria-label="Action button" 
+                      type="submit"
+                      className="absolute right-1.5 top-1.5 bottom-1.5 px-4 bg-[var(--primary-gold)] text-black font-bold text-[10px] uppercase tracking-wider rounded-lg hover:bg-[#FAF8F5] transition-all cursor-pointer"
+                    >
+                      Subscribe
+                    </button>
+                  </div>
+                </form>
 
-              <AnimatePresence>
-                {subscribed && (
-                  <motion.p
-                    initial={{ opacity: 0, y: 5 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0 }}
-                    className="text-xs text-[var(--primary-gold)] font-semibold"
-                  >
-                    Successfully joined Scaro Newsletter! ✓
+                <AnimatePresence>
+                  {subscribed && (
+                    <motion.p
+                      initial={{ opacity: 0, y: 5 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0 }}
+                      className="text-xs text-[var(--primary-gold)] font-semibold"
+                    >
+                      Successfully joined Scaro Newsletter! ✓
                   </motion.p>
                 )}
               </AnimatePresence>
+              </div>
+
+              {/* NEW: Dynamic Contact Widgets (WhatsApp, Instagram, Email) */}
+              <div className="space-y-3 pt-2">
+                <h4 className="text-xs font-black tracking-wider text-[var(--primary-gold)] uppercase">Direct Channels</h4>
+                <div className="flex gap-3">
+                  {/* WhatsApp Widget */}
+                  <a
+                    href="https://wa.me/919949167458"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500 hover:text-white transition-all hover:scale-105 active:scale-95"
+                    title="Chat on WhatsApp"
+                  >
+                    <MessageSquare className="w-5 h-5" />
+                  </a>
+                  {/* Instagram Widget */}
+                  <a
+                    href="https://instagram.com/scaro_technologies"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center w-10 h-10 rounded-xl bg-pink-500/10 border border-pink-500/30 text-pink-400 hover:bg-pink-500 hover:text-white transition-all hover:scale-105 active:scale-95"
+                    title="Follow on Instagram"
+                  >
+                    <Instagram className="w-5 h-5" />
+                  </a>
+                  {/* Email Widget */}
+                  <a
+                    href="mailto:support@scaro.com"
+                    className="flex items-center justify-center w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/30 text-blue-400 hover:bg-blue-500 hover:text-white transition-all hover:scale-105 active:scale-95"
+                    title="Send Email"
+                  >
+                    <Mail className="w-5 h-5" />
+                  </a>
+                </div>
+              </div>
             </div>
 
           </div>
