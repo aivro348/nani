@@ -3,7 +3,7 @@ import { CoursesSection } from '../components/CoursesSection';
 import { EducationContact } from '../components/EducationContact';
 import { ProjectsStoreSection } from '../components/ProjectsStoreSection';
 import { ProgramsOverview } from '../components/ProgramsOverview';
-import { ReviewsSection } from '../components/ReviewsSection';
+
 import { EducationFAQ } from '../components/EducationFAQ';
 import { EducationBlogsSection } from '../components/EducationBlogsSection';
 import { CoursesDemoSessions } from '../components/CoursesDemoSessions';
@@ -113,10 +113,7 @@ export function CoursesPage() {
         <ProjectsStoreSection previewOnly={true} />
       </section>
 
-      {/* Past Reviews / Testimonials */}
-      <section id="reviews-section">
-        <ReviewsSection />
-      </section>
+
 
       {/* Workshops & LMS Banner */}
       <section id="workshops-section">

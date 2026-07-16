@@ -53,9 +53,62 @@ export function AIToolsPage() {
   const location = useLocation();
   const [openFaqIdx, setOpenFaqIdx] = useState<number | null>(0);
 
+  const aiSitelinks = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "url": "https://scarotechnologies.vercel.app/ai",
+    "name": "Scaro AI Academy",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://scarotechnologies.vercel.app/all-ai-tools?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    },
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": [
+        {
+          "@type": "SiteNavigationElement",
+          "position": 1,
+          "name": "AI Tools Directory",
+          "description": "Explore our comprehensive database of curated AI tools.",
+          "url": "https://scarotechnologies.vercel.app/all-ai-tools"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 2,
+          "name": "Free AI Masterclass",
+          "description": "Join the 2-hour Live Free AI masterclass program.",
+          "url": "https://scarotechnologies.vercel.app/ai-masterclass"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 3,
+          "name": "Premium AI Courses",
+          "description": "Explore cohorts, direct mentorship, and AI roadmaps.",
+          "url": "https://scarotechnologies.vercel.app/ai-courses"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 4,
+          "name": "AI Resources & Prompts",
+          "description": "Download prompt libraries, templates, and guides.",
+          "url": "https://scarotechnologies.vercel.app/ai-resources"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 5,
+          "name": "WhatsApp Community",
+          "description": "Join our local students sharing AI prompts and freelancing leads.",
+          "url": "https://scarotechnologies.vercel.app/ai-community"
+        }
+      ]
+    }
+  };
+
   useSEO(
     'Scaro AI Academy | Premium AI Learning Ecosystem',
-    'Learn practical AI skills, master ChatGPT, Claude, Midjourney, and build digital income systems with Charan at Scaro AI Academy.'
+    'Learn practical AI skills, master ChatGPT, Claude, Midjourney, and build digital income systems with Charan at Scaro AI Academy.',
+    aiSitelinks
   );
 
   // Handle hash scrolling

@@ -1,19 +1,76 @@
-import { lazy, Suspense, useEffect } from 'react';
-import { SectionSkeleton } from '../../main/components/ui/skeleton';
+import { useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { useNavigate, useLocation } from 'react-router';
 import { GraduationCap, Briefcase, Cpu, ArrowRight, CheckCircle2, Sparkles, Building2, Terminal, Code2 } from 'lucide-react';
 import { useSEO } from '../../main/utils/useSEO';
-import { ReviewsSection } from '../../education/components/ReviewsSection';
 
-// Lazy load the companies section
-const CompaniesSection = lazy(() => import('../components/CompaniesSection').then(m => ({ default: m.CompaniesSection })));
+
+
 
 export function HomePage() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  useSEO('Scaro Technologies | The Ultimate Ecosystem', 'Scaro Technologies connects enterprise IT solutions, elite skill-based education, and cutting-edge AI tools into one unified platform.');
+  const educationSitelinks = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "url": "https://scarotechnologies.vercel.app/",
+    "name": "Scaro Academy",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://scarotechnologies.vercel.app/courses?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    },
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": [
+        {
+          "@type": "SiteNavigationElement",
+          "position": 1,
+          "name": "Scaro Academy Courses",
+          "description": "Explore premium engineering and AI courses at Scaro Academy.",
+          "url": "https://scarotechnologies.vercel.app/courses"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 2,
+          "name": "Explore Projects",
+          "description": "Browse hands-on engineering and software projects.",
+          "url": "https://scarotechnologies.vercel.app/projects"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 3,
+          "name": "Engineering Roadmaps",
+          "description": "Step-by-step career roadmaps for engineering students.",
+          "url": "https://scarotechnologies.vercel.app/roadmap"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 4,
+          "name": "About the Academy",
+          "description": "Learn more about Scaro Academy and our mission.",
+          "url": "https://scarotechnologies.vercel.app/about"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 5,
+          "name": "Login to Portal",
+          "description": "Sign in to your Scaro Academy account to access your courses.",
+          "url": "https://scarotechnologies.vercel.app/login"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 6,
+          "name": "Contact Academy",
+          "description": "Get in touch with the Scaro Academy team.",
+          "url": "https://scarotechnologies.vercel.app/contact"
+        }
+      ]
+    }
+  };
+
+  useSEO('Scaro Technologies | The Ultimate Ecosystem', 'Scaro Technologies connects enterprise IT solutions, elite skill-based education, and cutting-edge AI tools into one unified platform.', educationSitelinks);
 
   const { scrollYProgress } = useScroll();
   const heroOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
@@ -229,18 +286,7 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* 4. RETAINED SECTIONS (Themed Dark) */}
-      <div className="bg-[#0a0a0a]">
-        <Suspense fallback={<SectionSkeleton />}>
-          <div className="[&>section]:bg-transparent [&>section]:py-32 [&_h2]:text-white [&_p]:text-slate-400 [&_.bg-slate-50]:bg-white/5 [&_.bg-white]:bg-black/40 [&_.border-slate-200]:border-white/10">
-            <CompaniesSection />
-          </div>
-        </Suspense>
-        
-        <div className="[&>section]:bg-[#0a0a0a] [&_h2]:text-white [&_p]:text-slate-400 [&_.bg-white]:bg-white/5 [&_.border-slate-200]:border-white/10 [&_.text-slate-900]:text-white [&_.text-slate-600]:text-slate-300 [&_.shadow-sm]:shadow-none">
-          <ReviewsSection />
-        </div>
-      </div>
+
 
     </div>
   );

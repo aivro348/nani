@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-export function useSEO(title: string, description: string) {
+export function useSEO(title: string, description: string, jsonLd?: object) {
   useEffect(() => {
     document.title = title;
     
@@ -41,5 +41,22 @@ export function useSEO(title: string, description: string) {
     // Canonical
     updateMeta('link[rel="canonical"]', 'href', window.location.href.split('?')[0]);
 
-  }, [title, description]);
+    // Handle JSON-LD Structured Data
+    if (jsonLd) {
+      let script = document.querySelector('script[type="application/ld+json"]');
+      if (!script) {
+        script = document.createElement('script');
+        script.setAttribute('type', 'application/ld+json');
+        document.head.appendChild(script);
+      }
+      script.textContent = JSON.stringify(jsonLd);
+    } else {
+      // Clean up if the current page doesn't provide structured data
+      const script = document.querySelector('script[type="application/ld+json"]');
+      if (script) {
+        script.remove();
+      }
+    }
+
+  }, [title, description, jsonLd]);
 }

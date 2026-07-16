@@ -46,6 +46,10 @@ const BlogsPage = lazy(() => import('./pages/BlogsPage').then(m => ({ default: m
 const LoginPage = lazy(() => import('../student-portal/login/pages/LoginPage').then(m => ({ default: m.LoginPage })));
 const CommunityHubPage = lazy(() => import('./pages/CommunityHubPage').then(m => ({ default: m.CommunityHubPage })));
 const CertificateVerificationPage = lazy(() => import('../student-portal/certificate/pages/CertificateVerificationPage').then(m => ({ default: m.CertificateVerificationPage })));
+
+// Certificate Admin Pages
+const CertAdminLoginPage = lazy(() => import('../certificate-admin/pages/CertAdminLoginPage'));
+const CertAdminDashboardPage = lazy(() => import('../certificate-admin/pages/CertAdminDashboardPage'));
 const RoadmapDetailsPage = lazy(() => import('./pages/RoadmapDetailsPage').then(m => ({ default: m.RoadmapDetailsPage })));
 const AICourseDetailsPage = lazy(() => import('../ai/pages/AICourseDetailsPage').then(m => ({ default: m.AICourseDetailsPage })));
 const AIRoadmapDetailsPage = lazy(() => import('../ai/pages/AIRoadmapDetailsPage').then(m => ({ default: m.AIRoadmapDetailsPage })));
@@ -205,6 +209,8 @@ export default function App() {
               <Route path="/blogs" element={<BlogsPage />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/verify-certificate" element={<CertificateVerificationPage />} />
+              <Route path="/cert-admin" element={<CertAdminLoginPage />} />
+              <Route path="/cert-admin/dashboard" element={<CertAdminDashboardPage />} />
               <Route path="/courses" element={<CoursesPage />} />
               <Route path="/all-courses" element={<AllCoursesPage />} />
               <Route path="/courses/:courseId" element={<CourseDetailsPage />} />
