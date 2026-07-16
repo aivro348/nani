@@ -162,7 +162,7 @@ const BusinessFooter = () => {
             <div className="space-y-4 text-sm text-slate-600 mb-8 font-medium">
               <p className="flex items-center gap-3"><Mail className="w-4 h-4 text-slate-400"/> hr@scaro.in</p>
               <p className="flex items-center gap-3"><Phone className="w-4 h-4 text-slate-400"/> +91 81067 95810</p>
-              <p className="flex items-center gap-3"><MapPin className="w-4 h-4 text-slate-400"/> Tirupati, AP, India</p>
+              <p className="flex items-start gap-3"><MapPin className="w-4 h-4 text-slate-400 mt-1 shrink-0"/> <span>Ground Floor, Renigunta Rd, near Indian Bank, Chadalawada Nagar, Tirupati, Daminedu, Andhra Pradesh 517506</span></p>
             </div>
             <button aria-label="Action button" onClick={() => nav('/business#contact')} className="w-full bg-slate-900 text-white font-bold py-3.5 rounded-xl hover:bg-[var(--primary-maroon)] hover:shadow-lg transition-all text-xs uppercase tracking-wider">
               Start a Project

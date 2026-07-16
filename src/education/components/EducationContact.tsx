@@ -22,8 +22,8 @@ const CONTACT_INFO = [
   {
     icon: MapPin,
     label: 'Visit Us',
-    value: 'Tirupati, AP, India',
-    sub: 'Tech Hub, Tirupati',
+    value: 'Ground Floor, Renigunta Rd, near Indian Bank, Chadalawada Nagar, Tirupati, Daminedu, Andhra Pradesh 517506',
+    sub: 'Chadalawada Nagar, Tirupati',
     color: 'text-purple-400',
     bg: 'bg-purple-500/10',
   },

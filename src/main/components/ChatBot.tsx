@@ -17,7 +17,7 @@ const WEBSITE_KNOWLEDGE = {
     description: 'Scaro Technologies is a comprehensive AI-powered learning platform designed to empower engineering students across all branches with personalized learning and career guidance. We help students go from classroom to career excellence.',
     phone: '+91 99899 99099',
     email: 'support@scaro.com',
-    location: 'Tirupati, AP, India',
+    location: 'Ground Floor, Renigunta Rd, near Indian Bank, Chadalawada Nagar, Tirupati, Daminedu, Andhra Pradesh 517506',
     workingHours: '09.00am - 9.00pm (IST)',
     students: '1,000+',
     courses: '10+',
