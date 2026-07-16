@@ -3,7 +3,6 @@ import { Routes, Route, useLocation, Navigate } from 'react-router';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { HomePage } from './pages/HomePage';
-import { SocialWidgets } from './components/SocialWidgets';
 import { LmsProvider, useLms } from '../student-portal/lms/context/LmsContext';
 
 const LmsDashboardPage = lazy(() => import('../student-portal/lms/pages/LmsDashboardPage').then(m => ({ default: m.LmsDashboardPage })));
@@ -250,7 +249,6 @@ export default function App() {
         {!location.pathname.startsWith('/sign-') && (
           <>
             <Footer />
-            <SocialWidgets />
           </>
         )}
       </div>

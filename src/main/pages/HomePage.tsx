@@ -6,7 +6,7 @@ import {
   Building2, Terminal, Code2, ShieldCheck, Zap, Database, Smartphone,
   Users, Mail, Phone, MapPin, Trophy, BookOpen, Layers, Check,
   Laptop, Globe, ArrowUpRight, Play, Server, MessageSquare, ArrowRightLeft,
-  ChevronRight, Calendar, Star, HelpCircle, Instagram
+  ChevronRight, Calendar, Star, HelpCircle, Instagram, Quote, ExternalLink
 } from 'lucide-react';
 import { useSEO } from '../../main/utils/useSEO';
 import { CompaniesSection } from '../components/CompaniesSection';
@@ -108,15 +108,7 @@ export function HomePage() {
           <div className="grid lg:grid-cols-12 gap-12 items-center">
             {/* Left Copy */}
             <div className="lg:col-span-7 space-y-8 text-left">
-              <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md shadow-sm"
-              >
-                <Sparkles className="w-4 h-4 text-[var(--primary-gold)]" />
-                <span className="text-[10px] font-black tracking-widest text-[var(--primary-gold)] uppercase">Unified Corporate Ecosystem</span>
-              </motion.div>
+
 
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
@@ -145,19 +137,18 @@ export function HomePage() {
                 className="flex flex-col sm:flex-row items-center gap-4 pt-2"
               >
                 <button aria-label="Action button" 
-                  onClick={() => document.getElementById('explore-hub')?.scrollIntoView({ behavior: 'smooth' })}
+                  onClick={() => document.getElementById('academy-section')?.scrollIntoView({ behavior: 'smooth' })}
                   className="w-full sm:w-auto px-8 py-4 rounded-xl bg-[var(--primary-gold)] text-black font-black text-sm transition-all hover:bg-[#FAF8F5] active:scale-98 flex items-center justify-center gap-2 cursor-pointer shadow-lg"
                 >
-                  Explore Ecosystem Hubs
+                  Explore Academy Paths
                   <ArrowRight className="w-4 h-4" />
                 </button>
-                <a href="#achievements-section" className="w-full sm:w-auto">
-                  <button aria-label="Action button" 
-                    className="w-full px-8 py-4 rounded-xl bg-white/5 border border-white/20 hover:bg-white/10 text-white font-bold text-sm transition-all flex items-center justify-center gap-2 cursor-pointer"
-                  >
-                    Our Achievements
-                  </button>
-                </a>
+                <button aria-label="Action button" 
+                  onClick={() => document.getElementById('services-section')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="w-full sm:w-auto px-8 py-4 rounded-xl bg-white/5 border border-white/20 hover:bg-white/10 text-white font-bold text-sm transition-all flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  View Corporate Services
+                </button>
               </motion.div>
             </div>
 
@@ -182,122 +173,10 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* ─── SECTION 2: DYNAMIC CUSTOMER HUB ENTRY POINT (FAST NAVIGATION) ─── */}
-      <section id="explore-hub" className="py-20 bg-white border-b border-[rgba(92,20,29,0.06)] relative z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-xs font-black tracking-widest text-[#5C141D] uppercase">Select Your Pathway</span>
-            <h2 className="text-3xl sm:text-5xl font-black text-[#1E060A] tracking-tight mt-2">
-              Where would you like to start?
-            </h2>
-            <p className="text-base text-slate-500 font-light mt-3">
-              Explore our core pillars. Select the sector that matches your goals.
-            </p>
-          </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            
-            {/* Scaro Academy Card */}
-            <motion.div 
-              whileHover={{ y: -8 }}
-              className="p-8 rounded-3xl bg-[#FAF8F5] border border-[rgba(92,20,29,0.08)] shadow-sm hover:border-[#5C141D]/30 transition-all duration-300 flex flex-col justify-between"
-            >
-              <div>
-                <div className="w-14 h-14 rounded-2xl bg-[#5C141D]/5 flex items-center justify-center mb-6">
-                  <GraduationCap className="w-8 h-8 text-[#5C141D]" />
-                </div>
-                <h3 className="text-2xl font-black text-[#1E060A] mb-3">Scaro Academy</h3>
-                <p className="text-sm text-slate-500 font-light leading-relaxed mb-6">
-                  Elite engineering cohorts featuring live developer mentorship, guaranteed internships, and real capstone builds.
-                </p>
-                <ul className="space-y-2.5 mb-8">
-                  {['Full Stack Web Cohort', 'Embedded & IoT Systems', 'ML & AI Programming', 'UI/UX Masterclass'].map((item, i) => (
-                    <li key={i} className="flex items-center gap-2 text-xs text-slate-600">
-                      <Check className="w-4 h-4 text-emerald-500" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <button aria-label="Action button" 
-                onClick={() => navigate('/courses')}
-                className="w-full py-4 bg-[#5C141D] hover:bg-[#470f15] text-white font-bold text-sm rounded-xl transition-all flex items-center justify-center gap-2 shadow-sm"
-              >
-                Go to Scaro Academy <ChevronRight className="w-4 h-4" />
-              </button>
-            </motion.div>
 
-            {/* AI Academy Card */}
-            <motion.div 
-              whileHover={{ y: -8 }}
-              className="p-8 rounded-3xl bg-[#FAF3D1] border border-[#5C141D]/10 shadow-sm hover:border-[var(--primary-gold)] transition-all duration-300 flex flex-col justify-between"
-            >
-              <div>
-                <div className="w-14 h-14 rounded-2xl bg-white border border-[#5C141D]/15 flex items-center justify-center mb-6">
-                  <Cpu className="w-8 h-8 text-[#5C141D]" />
-                </div>
-                <h3 className="text-2xl font-black text-[#1E060A] mb-3">AI Academy</h3>
-                <p className="text-sm text-slate-700 font-light leading-relaxed mb-6">
-                  Learn to leverage cutting-edge AI utilities, build custom prompt stacks, and automate pipelines.
-                </p>
-                <ul className="space-y-2.5 mb-8">
-                  {['Syllabus Prompt Engine', 'No-code stack building', 'Automation pipelines', '60+ AI tools directory'].map((item, i) => (
-                    <li key={i} className="flex items-center gap-2 text-xs text-slate-700">
-                      <Check className="w-4 h-4 text-emerald-600" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <button aria-label="Action button" 
-                onClick={() => navigate('/ai')}
-                className="w-full py-4 bg-[#5C141D] hover:bg-[#470f15] text-white font-bold text-sm rounded-xl transition-all flex items-center justify-center gap-2 shadow-sm"
-              >
-                Enter AI Academy <ChevronRight className="w-4 h-4" />
-              </button>
-            </motion.div>
-
-            {/* Corporate Services Card */}
-            <motion.div 
-              whileHover={{ y: -8 }}
-              className="p-8 rounded-3xl bg-[#FAF8F5] border border-[rgba(92,20,29,0.08)] shadow-sm hover:border-[#5C141D]/30 transition-all duration-300 flex flex-col justify-between"
-            >
-              <div>
-                <div className="w-14 h-14 rounded-2xl bg-[#5C141D]/5 flex items-center justify-center mb-6">
-                  <Building2 className="w-8 h-8 text-[#5C141D]" />
-                </div>
-                <h3 className="text-2xl font-black text-[#1E060A] mb-3">Corporate Services</h3>
-                <p className="text-sm text-slate-500 font-light leading-relaxed mb-6">
-                  Enterprise-grade custom IT layouts, e-commerce engines, database configurations, and app development.
-                </p>
-                <ul className="space-y-2.5 mb-8">
-                  {['Custom Web Design', 'Scalable Mobile Apps', 'API & Integration setups', 'Database configurations'].map((item, i) => (
-                    <li key={i} className="flex items-center gap-2 text-xs text-slate-600">
-                      <Check className="w-4 h-4 text-emerald-500" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <button aria-label="Action button" 
-                onClick={() => navigate('/business')}
-                className="w-full py-4 bg-[#5C141D] hover:bg-[#470f15] text-white font-bold text-sm rounded-xl transition-all flex items-center justify-center gap-2 shadow-sm"
-              >
-                View Services & Pricing <ChevronRight className="w-4 h-4" />
-              </button>
-            </motion.div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* ─── SECTION 3: PLACEMENTS SCROLLING MARQUEE ─── */}
-      <section className="border-b border-[rgba(92,20,29,0.06)]">
-        <CompaniesSection />
-      </section>
-
-      {/* ─── SECTION 4: SCARO ACADEMY DEEP-DIVE (WHITE BACKGROUND) ─── */}
-      <section className="py-28 bg-white border-b border-[rgba(92,20,29,0.06)]">
+      {/* ─── SECTION 3: SCARO ACADEMY DEEP-DIVE (WHITE BACKGROUND) ─── */}
+      <section id="academy-section" className="py-24 bg-white border-b border-[rgba(92,20,29,0.06)] relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-12 gap-16 items-center">
             
@@ -322,54 +201,82 @@ export function HomePage() {
                   Scaro Academy
                 </h2>
                 <p className="text-lg text-slate-600 font-light leading-relaxed">
-                  Elite engineering cohorts designed to bridge the gap between academic syllabus and modern industry production environments. We teach what we engineer daily inside our IT division.
+                  Elite engineering cohorts featuring live developer mentorship, guaranteed internships, and real capstone builds. We teach what we engineer daily inside our IT division.
                 </p>
               </div>
 
-              {/* Learning Pathways List */}
-              <div className="grid sm:grid-cols-2 gap-6">
-                {[
-                  { title: 'Full Stack Web Cohort', desc: 'React, Node.js, databases and robust pipelines design.', badge: '100+ Tasks' },
-                  { title: 'Embedded & IoT Design', desc: 'ESP32 controllers, sensors layouts, and firmware codes.', badge: 'Hardware' },
-                  { title: 'ML & Data Sciences', desc: 'Python programming, mathematical models, training pipelines.', badge: 'Algorithms' },
-                  { title: 'UI/UX Visual Assets', desc: 'Figma layout systems, typography grid styles, vector structures.', badge: 'Design' }
-                ].map((cohort, index) => (
-                  <div key={index} className="p-6 bg-[#FAF8F5] border border-[rgba(92,20,29,0.06)] rounded-2xl relative space-y-2 hover:border-[var(--primary-gold)] hover:shadow-md transition-all duration-300">
-                    <span className="absolute top-4 right-4 text-[9px] font-bold text-[#5C141D] bg-[#5C141D]/5 px-2 py-0.5 rounded">{cohort.badge}</span>
-                    <h4 className="text-[#1E060A] font-extrabold text-base pt-2">{cohort.title}</h4>
-                    <p className="text-xs text-slate-500 font-light leading-relaxed">{cohort.desc}</p>
-                  </div>
-                ))}
+              {/* Real Course Preview Glimpse */}
+              <div className="space-y-4">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">Featured Learning Paths</h4>
+                <div className="grid sm:grid-cols-3 gap-4">
+                  {[
+                    { id: 1, title: 'Python Programming Mastery', desc: 'Django, APIs, databases and automation.', badge: 'CSE / Coding' },
+                    { id: 7, title: 'IoT & Embedded Systems', desc: 'Arduino, ESP32, MQTT protocols and sensor hubs.', badge: 'Embedded' },
+                    { id: 9, title: 'VLSI Design & Verification', desc: 'Digital logic design, Verilog HDL and RTL simulation.', badge: 'ECE' }
+                  ].map((cohort, index) => (
+                    <div 
+                      key={index} 
+                      onClick={() => navigate(`/courses/${cohort.id}`)}
+                      className="p-5 bg-[#FAF8F5] border border-[rgba(92,20,29,0.06)] rounded-xl relative space-y-2 hover:border-[#5C141D]/30 hover:shadow-md transition-all duration-300 cursor-pointer group"
+                    >
+                      <span className="text-[9px] font-bold text-[#5C141D] bg-[#5C141D]/5 px-2 py-0.5 rounded inline-block">{cohort.badge}</span>
+                      <h5 className="text-[#1E060A] font-extrabold text-sm group-hover:text-[#5C141D] transition-colors">{cohort.title}</h5>
+                      <p className="text-[11px] text-slate-500 font-light leading-relaxed">{cohort.desc}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
 
-              {/* Guarantees Box */}
-              <div className="p-6 bg-[#FAF8F5] border border-[rgba(92,20,29,0.06)] rounded-2xl space-y-4">
-                <h4 className="text-sm font-extrabold text-[#5C141D] flex items-center gap-2">
-                  <Trophy className="w-5 h-5 text-[var(--primary-gold)]" />
-                  Your Academy Career Guarantee
-                </h4>
-                <div className="grid sm:grid-cols-3 gap-4 text-xs font-semibold text-slate-600">
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-                    <span>Guaranteed Internships</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-                    <span>Real-world Capstones</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-                    <span>Expert Live Mentors</span>
+              {/* Real Student Projects Preview Glimpse */}
+              <div className="space-y-4">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">Sample Student Capstone Projects</h4>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  {[
+                    { id: 1, title: 'Student Result Management System', tech: ['PHP', 'MySQL', 'Bootstrap'], desc: 'Web platform allowing admins to upload grades and students to view them securely.' },
+                    { id: 2, title: 'Online Quiz Application', tech: ['React', 'Firebase', 'CSS'], desc: 'Interactive platform with real-time scoring, questions, and leaderboards.' }
+                  ].map((project, index) => (
+                    <div 
+                      key={index} 
+                      onClick={() => navigate(`/projects/${project.id}`)}
+                      className="p-5 bg-[#FAF8F5] border border-[rgba(92,20,29,0.06)] rounded-xl relative space-y-2 hover:border-[#5C141D]/30 hover:shadow-md transition-all duration-300 cursor-pointer group"
+                    >
+                      <div className="flex flex-wrap gap-1.5">
+                        {project.tech.map((t, idx) => (
+                          <span key={idx} className="text-[9px] font-bold text-slate-500 bg-white border border-slate-200/60 px-1.5 py-0.5 rounded">{t}</span>
+                        ))}
+                      </div>
+                      <h5 className="text-[#1E060A] font-bold text-sm group-hover:text-[#5C141D] transition-colors">{project.title}</h5>
+                      <p className="text-[11px] text-slate-500 font-light leading-relaxed">{project.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Testimonial Glimpse */}
+              <div className="p-5 bg-[#FAF8F5] border border-[rgba(92,20,29,0.06)] rounded-xl relative">
+                <div className="absolute top-4 right-4 text-[#5C141D]/10">
+                  <Quote className="w-10 h-10" />
+                </div>
+                <p className="text-xs text-slate-500 italic mb-4 leading-relaxed">
+                  "Scaro Technologies transformed my career! The structured roadmap and live projects helped me land my dream job at Google. The mentorship was invaluable."
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-blue-500/10 flex items-center justify-center font-bold text-xs text-blue-600">PS</div>
+                  <div>
+                    <h5 className="text-[#1E060A] font-bold text-xs">Priya Sharma</h5>
+                    <p className="text-[10px] text-slate-400">Software Engineer at Google • CS/IT</p>
                   </div>
                 </div>
               </div>
 
-              <button aria-label="Action button" 
-                onClick={() => navigate('/courses')}
-                className="px-6 py-3.5 bg-[#5C141D] hover:bg-[#470f15] text-white font-bold rounded-xl text-xs transition-all flex items-center gap-2 cursor-pointer shadow-md shadow-[#5c141d]/10"
-              >
-                Explore Learning Cohorts <ChevronRight className="w-4 h-4" />
-              </button>
+              <div className="flex gap-4">
+                <button aria-label="Action button" 
+                  onClick={() => navigate('/courses')}
+                  className="px-6 py-3.5 bg-[#5C141D] hover:bg-[#470f15] text-white font-bold rounded-xl text-xs transition-all flex items-center gap-2 cursor-pointer shadow-md shadow-[#5c141d]/10"
+                >
+                  Explore Learning Cohorts <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
             </div>
 
           </div>
@@ -377,7 +284,7 @@ export function HomePage() {
       </section>
 
       {/* ─── SECTION 5: AI ACADEMY / AI DIVISION (GOLD / IVORY BACKGROUND) ─── */}
-      <section className="py-28 relative bg-[#FAF3D1] border-b border-[rgba(92,20,29,0.06)] overflow-hidden">
+      <section className="py-24 relative bg-[#FAF3D1] border-b border-[rgba(92,20,29,0.06)] overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#5c141d03_1px,transparent_1px),linear-gradient(to_bottom,#5c141d03_1px,transparent_1px)] bg-[size:32px_32px]" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -386,7 +293,7 @@ export function HomePage() {
             {/* Content Column */}
             <div className="lg:col-span-7 space-y-8 text-left">
               <div className="space-y-2">
-                <span className="text-xs font-black tracking-widest text-[#5C141D] uppercase bg-[#5C141D]/10 px-3.5 py-1.5 rounded-full inline-block">02. Automation Engine</span>
+                <span className="text-xs font-black tracking-widest text-[#5C141D] uppercase bg-[#5C141D]/10 px-3.5 py-1.5 rounded-full inline-block">02. Automation Sector</span>
                 <h2 className="text-3xl sm:text-5xl font-black text-[#1E060A] tracking-tight">
                   Scaro AI Academy
                 </h2>
@@ -395,24 +302,66 @@ export function HomePage() {
                 </p>
               </div>
 
-              {/* AI Details grid */}
-              <div className="grid sm:grid-cols-2 gap-6">
-                {[
-                  { title: 'Syllabus Prompt Engine', desc: 'Custom optimized AI prompts built specifically for engineering student curriculum.', icon: Terminal },
-                  { title: 'No-Code Tool Stacks', desc: 'Integrating website generators, prompt libraries, and automation setups.', icon: Layers },
-                  { title: 'Automation Pipelines', desc: 'Custom webhook triggers, scheduled operations, and automated asset builders.', icon: Zap },
-                  { title: 'AI Cohorts Schedules', desc: 'Access 2-hour ChatGPT Pro masterclasses and virtual training channels.', icon: Calendar }
-                ].map((item, index) => (
-                  <div key={index} className="p-5 bg-white/40 border border-[#5C141D]/10 rounded-2xl flex gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-white border border-[#5C141D]/10 flex items-center justify-center shrink-0">
-                      <item.icon className="w-5 h-5 text-[#5C141D]" />
+              {/* Real AI Tools Preview Glimpse */}
+              <div className="space-y-4">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-[#5C141D]/60">Curated AI Tools Glimpse</h4>
+                <div className="grid sm:grid-cols-3 gap-4">
+                  {[
+                    { title: 'Lovable.ai', desc: 'AI full-stack web builder generating production-ready code.', badge: 'Popular', url: 'https://lovable.ai' },
+                    { title: 'Bolt.new', desc: 'Coding assistant that builds and deploys applications instantly.', badge: 'Code Builder', url: 'https://bolt.new' },
+                    { title: 'ChatGPT Pro', desc: 'Advanced writing, coding and business workflow automations.', badge: 'Core LLM', url: 'https://chat.openai.com' }
+                  ].map((tool, index) => (
+                    <a 
+                      key={index} 
+                      href={tool.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-5 bg-white/40 border border-[#5C141D]/15 rounded-xl relative space-y-2 hover:border-[#5C141D]/40 hover:shadow-md transition-all duration-300 block group"
+                    >
+                      <span className="text-[9px] font-bold text-[#5C141D] bg-[#5C141D]/10 px-2 py-0.5 rounded inline-block">{tool.badge}</span>
+                      <h5 className="text-[#1E060A] font-extrabold text-sm group-hover:text-[#5C141D] transition-colors">{tool.title}</h5>
+                      <p className="text-[11px] text-slate-600 font-light leading-relaxed">{tool.desc}</p>
+                    </a>
+                  ))}
+                </div>
+              </div>
+
+              {/* Real AI Syllabus Prompt Glimpse */}
+              <div className="space-y-4">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-[#5C141D]/60">AI Integration Features</h4>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  {[
+                    { title: 'Syllabus Prompt Engine', desc: 'Guides for engineering students utilizing optimized prompts for study and code revision.', badge: 'Learning' },
+                    { title: 'No-Code Tool Stacks', desc: 'Workshops showing how to connect website builders, prompt databases, and pipelines.', badge: 'Building' }
+                  ].map((feature, index) => (
+                    <div 
+                      key={index} 
+                      onClick={() => navigate('/ai')}
+                      className="p-5 bg-white/40 border border-[#5C141D]/15 rounded-xl relative space-y-2 hover:border-[#5C141D]/40 hover:shadow-md transition-all duration-300 cursor-pointer group"
+                    >
+                      <span className="text-[9px] font-bold text-[#5C141D] bg-[#5C141D]/10 px-2 py-0.5 rounded inline-block">{feature.badge}</span>
+                      <h5 className="text-[#1E060A] font-bold text-sm group-hover:text-[#5C141D] transition-colors">{feature.title}</h5>
+                      <p className="text-[11px] text-slate-600 font-light leading-relaxed">{feature.desc}</p>
                     </div>
-                    <div>
-                      <h4 className="text-[#1E060A] font-extrabold text-sm mb-1">{item.title}</h4>
-                      <p className="text-xs text-slate-600 font-light leading-relaxed">{item.desc}</p>
-                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* AI Testimonial Glimpse */}
+              <div className="p-5 bg-white/40 border border-[#5C141D]/15 rounded-xl relative">
+                <div className="absolute top-4 right-4 text-[#5C141D]/10">
+                  <Quote className="w-10 h-10" />
+                </div>
+                <p className="text-xs text-slate-700 italic mb-4 leading-relaxed">
+                  "The AI-powered learning paths are incredible. I went from basics to building ML models in 12 weeks. Now working on cutting-edge AI projects!"
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-[#5C141D]/10 flex items-center justify-center font-bold text-xs text-[#5C141D]">RV</div>
+                  <div>
+                    <h5 className="text-[#1E060A] font-bold text-xs">Rahul Verma</h5>
+                    <p className="text-[10px] text-slate-500">Data Scientist at Microsoft • AI/DS</p>
                   </div>
-                ))}
+                </div>
               </div>
 
               <div className="flex gap-4">
@@ -449,7 +398,7 @@ export function HomePage() {
       </section>
 
       {/* ─── SECTION 6: OUR SERVICES - SCARO BUSINESS (WHITE BACKGROUND) ─── */}
-      <section id="services-section" className="py-28 relative bg-white border-b border-[rgba(92,20,29,0.06)]">
+      <section id="services-section" className="py-24 relative bg-white border-b border-[rgba(92,20,29,0.06)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-12 gap-16 items-center">
             
@@ -469,7 +418,7 @@ export function HomePage() {
             {/* Content Column */}
             <div className="lg:col-span-7 space-y-8 text-left">
               <div className="space-y-2">
-                <span className="text-xs font-black tracking-widest text-[#5C141D] uppercase bg-[#5C141D]/5 px-3.5 py-1.5 rounded-full inline-block">03. Corporate Services</span>
+                <span className="text-xs font-black tracking-widest text-[#5C141D] uppercase bg-[#5C141D]/5 px-3.5 py-1.5 rounded-full inline-block">03. Corporate Sector</span>
                 <h2 className="text-3xl sm:text-5xl font-black text-[#1E060A] tracking-tight">
                   Scaro Business
                 </h2>
@@ -478,20 +427,59 @@ export function HomePage() {
                 </p>
               </div>
 
-              {/* Services Sub grid */}
-              <div className="grid sm:grid-cols-2 gap-6">
+              {/* Real Corporate Projects Preview Glimpse */}
+              <div className="space-y-4">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">Shipped Corporate Platforms</h4>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  {[
+                    { title: 'Geo-Silicon', category: 'Enterprise Tech', link: 'https://geo-silicon.com', desc: 'Next-generation enterprise technology portal with advanced data visualization and control.' },
+                    { title: 'Balu Associates', category: 'Corporate Website', link: 'https://baluassociates.net', desc: 'Professional corporate presence with highly optimized performance and scalable architecture.' }
+                  ].map((proj, index) => (
+                    <a href={proj.link} target="_blank" rel="noopener noreferrer" key={index} className="p-5 bg-[#FAF8F5] border border-[rgba(92,20,29,0.06)] rounded-xl relative space-y-2 hover:border-[#5C141D]/30 hover:shadow-md transition-all duration-300 block">
+                      <div className="flex justify-between items-center">
+                        <span className="text-[9px] font-bold text-slate-500 bg-white border border-slate-200/60 px-1.5 py-0.5 rounded">{proj.category}</span>
+                        <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#5C141D]" />
+                      </div>
+                      <h5 className="text-[#1E060A] font-bold text-sm pt-1">{proj.title}</h5>
+                      <p className="text-[11px] text-slate-500 font-light leading-relaxed">{proj.desc}</p>
+                    </a>
+                  ))}
+                </div>
+              </div>
+
+              {/* Corporate Services Grid */}
+              <div className="grid sm:grid-cols-2 gap-4">
                 {[
-                  { title: 'Custom Web Design', desc: 'Premium user experience, responsive web portals using Next.js.', icon: Laptop },
-                  { title: 'E-Commerce Engines', desc: 'High-speed online shopping systems integrated with secure payment paths.', icon: Globe },
-                  { title: 'Mobile Applications', desc: 'Fully optimized native and cross-platform apps.', icon: Smartphone },
-                  { title: 'Enterprise AI Setups', desc: 'Internal custom tooling, data analysis nodes, automation setups.', icon: Cpu }
+                  { title: 'Custom Web Design', desc: 'Responsive web portals using Next.js & React frameworks.', icon: Laptop },
+                  { title: 'E-Commerce Engines', desc: 'High-speed online shopping systems integrated with payment nodes.', icon: Globe },
+                  { title: 'Mobile Applications', desc: 'Optimized native and cross-platform mobile apps releases.', icon: Smartphone },
+                  { title: 'Enterprise AI Setups', desc: 'Custom databases, prompt pipelines, and analytics setups.', icon: Cpu }
                 ].map((service, index) => (
-                  <div key={index} className="p-6 bg-[#FAF8F5] border border-[rgba(92,20,29,0.06)] rounded-2xl hover:border-[var(--primary-gold)] hover:shadow-md transition-all duration-300">
-                    <service.icon className="w-8 h-8 text-[#5C141D] mb-4" />
-                    <h4 className="text-[#1E060A] font-extrabold text-base mb-2">{service.title}</h4>
-                    <p className="text-xs text-slate-500 font-light leading-relaxed">{service.desc}</p>
+                  <div key={index} className="p-5 bg-[#FAF8F5] border border-[rgba(92,20,29,0.06)] rounded-xl flex gap-3.5">
+                    <service.icon className="w-5 h-5 text-[#5C141D] shrink-0 mt-0.5" />
+                    <div>
+                      <h5 className="text-[#1E060A] font-bold text-sm mb-1">{service.title}</h5>
+                      <p className="text-[11px] text-slate-500 font-light leading-relaxed">{service.desc}</p>
+                    </div>
                   </div>
                 ))}
+              </div>
+
+              {/* Client Testimonial */}
+              <div className="p-5 bg-[#FAF8F5] border border-[rgba(92,20,29,0.06)] rounded-xl relative">
+                <div className="absolute top-4 right-4 text-[#5C141D]/10">
+                  <Quote className="w-10 h-10" />
+                </div>
+                <p className="text-xs text-slate-500 italic mb-4 leading-relaxed">
+                  "Scaro Business delivered high-performance web architecture on time, helping our operational efficiency scale by 200%. Highly recommended!"
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-emerald-500/10 flex items-center justify-center font-bold text-xs text-emerald-600">CO</div>
+                  <div>
+                    <h5 className="text-[#1E060A] font-bold text-xs">Corporate Client</h5>
+                    <p className="text-[10px] text-slate-400">Enterprise Partner • Operations Lead</p>
+                  </div>
+                </div>
               </div>
 
               <button aria-label="Action button" 
@@ -575,163 +563,7 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* ─── SECTION 10: PREMIUM FOOTER (LOGO MAROON BACKGROUND) ─── */}
-      <footer className="relative bg-[#5C141D] text-white pt-24 pb-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-12 gap-12 pb-16 border-b border-white/10">
-            
-            {/* Logo column & visitor badge */}
-            <div className="lg:col-span-5 space-y-6 text-left">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center border border-white/10">
-                  <span className="text-[#5C141D] font-black text-xl">S</span>
-                </div>
-                <div>
-                  <h4 className="text-white font-black text-lg tracking-tight">Scaro Technologies</h4>
-                  <p className="text-[9px] text-[var(--primary-gold)] font-bold uppercase tracking-wider">Education & IT Ecosystem</p>
-                </div>
-              </div>
-              
-              <p className="text-xs text-slate-200 font-light leading-relaxed max-w-sm">
-                Empowering the next generation of engineers with actual industry production setups and modern AI tools.
-              </p>
 
-              <div className="space-y-2.5 pt-1">
-                <div className="flex items-center gap-3 text-xs text-slate-200 font-light">
-                  <Mail className="w-4 h-4 text-[var(--primary-gold)] shrink-0" />
-                  <span>support@scaro.com</span>
-                </div>
-                <div className="flex items-center gap-3 text-xs text-slate-200 font-light">
-                  <Phone className="w-4 h-4 text-[var(--primary-gold)] shrink-0" />
-                  <span>+91 9949167458</span>
-                </div>
-              </div>
-
-              {/* Visitor counter badge with gold digits */}
-              <div className="p-4 bg-white/5 border border-white/10 rounded-xl max-w-xs flex items-center justify-between">
-                <div>
-                  <span className="text-[9px] text-slate-300 font-bold uppercase tracking-wider block">Live Platform Audit</span>
-                  <span className="text-white text-xs font-semibold">Total Visitors</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  {[5, 9, 2].map((num, i) => (
-                    <div key={i} className="w-7 h-9 bg-[#5C141D] border border-white/10 rounded-lg flex items-center justify-center shadow-inner">
-                      <span className="text-[var(--primary-gold)] font-mono font-black text-lg">{num}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Nav Columns */}
-            <div className="lg:col-span-3 grid grid-cols-2 gap-8 text-left">
-              <div className="space-y-4">
-                <h4 className="text-xs font-black tracking-wider text-[var(--primary-gold)] uppercase">Learning paths</h4>
-                <ul className="space-y-2.5">
-                  <li><a href="/courses" className="text-xs text-slate-200 hover:text-[var(--primary-gold)] transition-colors">Explore Courses</a></li>
-                  <li><a href="/projects" className="text-xs text-slate-200 hover:text-[var(--primary-gold)] transition-colors">Virtual Labs</a></li>
-                  <li><a href="/ai" className="text-xs text-slate-200 hover:text-[var(--primary-gold)] transition-colors">AI Masterclass</a></li>
-                  <li><a href="/blogs" className="text-xs text-slate-200 hover:text-[var(--primary-gold)] transition-colors">Resources & Blogs</a></li>
-                </ul>
-              </div>
-              <div className="space-y-4">
-                <h4 className="text-xs font-black tracking-wider text-[var(--primary-gold)] uppercase">Services</h4>
-                <ul className="space-y-2.5">
-                  <li><a href="/business" className="text-xs text-slate-200 hover:text-[var(--primary-gold)] transition-colors">IT Solutions</a></li>
-                  <li><a href="/business-pricing" className="text-xs text-slate-200 hover:text-[var(--primary-gold)] transition-colors">Pricing Options</a></li>
-                  <li><a href="/all-business-projects" className="text-xs text-slate-200 hover:text-[var(--primary-gold)] transition-colors">Project Portfolio</a></li>
-                </ul>
-              </div>
-            </div>
-
-            {/* Newsletter Column & Social Widgets */}
-            <div className="lg:col-span-4 space-y-6 text-left">
-              <div className="space-y-3">
-                <h4 className="text-xs font-black tracking-wider text-[var(--primary-gold)] uppercase">Join the Academy</h4>
-                <p className="text-xs text-slate-200 font-light leading-relaxed">
-                  Subscribe to get direct links to learning resources, code templates, and workshop invites.
-                </p>
-                
-                <form onSubmit={handleSubscribe} className="space-y-2">
-                  <div className="relative flex">
-                    <input
-                      type="email"
-                      required
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="Enter your email"
-                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-xs text-white placeholder-slate-300 focus:outline-none focus:border-[var(--primary-gold)] transition-colors"
-                    />
-                    <button aria-label="Action button" 
-                      type="submit"
-                      className="absolute right-1.5 top-1.5 bottom-1.5 px-4 bg-[var(--primary-gold)] text-black font-bold text-[10px] uppercase tracking-wider rounded-lg hover:bg-[#FAF8F5] transition-all cursor-pointer"
-                    >
-                      Subscribe
-                    </button>
-                  </div>
-                </form>
-
-                <AnimatePresence>
-                  {subscribed && (
-                    <motion.p
-                      initial={{ opacity: 0, y: 5 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0 }}
-                      className="text-xs text-[var(--primary-gold)] font-semibold"
-                    >
-                      Successfully joined Scaro Newsletter! ✓
-                  </motion.p>
-                )}
-              </AnimatePresence>
-              </div>
-
-              {/* NEW: Dynamic Contact Widgets (WhatsApp, Instagram, Email) */}
-              <div className="space-y-3 pt-2">
-                <h4 className="text-xs font-black tracking-wider text-[var(--primary-gold)] uppercase">Direct Channels</h4>
-                <div className="flex gap-3">
-                  {/* WhatsApp Widget */}
-                  <a
-                    href="https://wa.me/919949167458"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500 hover:text-white transition-all hover:scale-105 active:scale-95"
-                    title="Chat on WhatsApp"
-                  >
-                    <MessageSquare className="w-5 h-5" />
-                  </a>
-                  {/* Instagram Widget */}
-                  <a
-                    href="https://instagram.com/scaro_technologies"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center w-10 h-10 rounded-xl bg-pink-500/10 border border-pink-500/30 text-pink-400 hover:bg-pink-500 hover:text-white transition-all hover:scale-105 active:scale-95"
-                    title="Follow on Instagram"
-                  >
-                    <Instagram className="w-5 h-5" />
-                  </a>
-                  {/* Email Widget */}
-                  <a
-                    href="mailto:support@scaro.com"
-                    className="flex items-center justify-center w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/30 text-blue-400 hover:bg-blue-500 hover:text-white transition-all hover:scale-105 active:scale-95"
-                    title="Send Email"
-                  >
-                    <Mail className="w-5 h-5" />
-                  </a>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-8 text-[11px] text-slate-300 font-medium">
-            <p>© 2026 Scaro Technologies. All rights reserved.</p>
-            <div className="flex items-center gap-6">
-              <a href="/privacy" className="hover:text-white transition-colors">Privacy Policy</a>
-              <a href="/terms" className="hover:text-white transition-colors">Terms of Service</a>
-            </div>
-          </div>
-        </div>
-      </footer>
 
     </div>
   );

@@ -4,6 +4,7 @@ import { motion } from 'motion/react';
 
 export const VisitorCounter = memo(function VisitorCounter() {
   const [count, setCount] = useState<number | null>(null);
+  const [displayCount, setDisplayCount] = useState<number>(0);
 
   useEffect(() => {
     // Fetch and increment the visitor count using a free open-source API
@@ -16,6 +17,34 @@ export const VisitorCounter = memo(function VisitorCounter() {
       })
       .catch(err => console.error('Failed to fetch visitor count:', err));
   }, []);
+
+  useEffect(() => {
+    if (count !== null) {
+      const start = 0;
+      const end = count;
+      const duration = 1800; // 1.8 seconds animation
+      const startTime = performance.now();
+
+      const animateCount = (currentTime: number) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Easing function: easeOutQuad
+        const ease = progress * (2 - progress);
+        
+        const currentCount = Math.floor(ease * (end - start) + start);
+        setDisplayCount(currentCount);
+
+        if (progress < 1) {
+          requestAnimationFrame(animateCount);
+        } else {
+          setDisplayCount(end);
+        }
+      };
+
+      requestAnimationFrame(animateCount);
+    }
+  }, [count]);
 
   if (count === null) return null;
 
@@ -31,7 +60,7 @@ export const VisitorCounter = memo(function VisitorCounter() {
       <div className="flex flex-col">
         <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest leading-none">Total Visitors</span>
         <span className="text-sm font-black text-slate-200 leading-none mt-0.5">
-          {count.toLocaleString()}
+          {displayCount.toLocaleString()}
         </span>
       </div>
     </motion.div>

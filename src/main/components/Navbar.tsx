@@ -166,7 +166,6 @@ export function Navbar() {
       { id: 'business', label: 'Business', path: '/business' },
       { id: 'courses', label: 'Scaro Academy', path: '/courses' },
       { id: 'ai', label: 'AI Tools', path: '/ai' },
-      { id: 'community', label: 'Community Hub', path: '/community' },
     ];
   } else {
     navItems = [
@@ -174,7 +173,6 @@ export function Navbar() {
       { id: 'business', label: 'Business', path: '/business' },
       { id: 'courses', label: 'Scaro Academy', path: '/courses' },
       { id: 'ai', label: 'AI Tools', path: '/ai' },
-      { id: 'community', label: 'Community Hub', path: '/community' },
     ];
   }
 
@@ -293,10 +291,6 @@ export function Navbar() {
               )}
               {!isBusinessSection && (
                 <div className="hidden lg:flex items-center gap-3">
-                  <SignedOut>
-                    <button onClick={() => navigateToPage('/sign-in')} className="text-sm font-bold text-white hover:text-[var(--primary-gold)] transition-colors">Sign In</button>
-                    <button onClick={() => navigateToPage('/sign-up')} className="bg-white/10 hover:bg-white/20 text-white px-4 py-1.5 rounded-full text-sm font-bold transition-all border border-white/20">Sign Up</button>
-                  </SignedOut>
                   <SignedIn>
                     <UserButton afterSignOutUrl="/" />
                   </SignedIn>
