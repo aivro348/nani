@@ -94,86 +94,51 @@ export function Navbar() {
     return () => window.removeEventListener('open-get-started', handleOpenModal);
   }, []);
 
-  const isEducationSection = currentPath.startsWith('/courses') || currentPath.startsWith('/all-courses') || currentPath.startsWith('/all-projects') || currentPath.startsWith('/branches') || currentPath.startsWith('/roadmap') || currentPath.startsWith('/projects') || currentPath.startsWith('/trainer') || currentPath.startsWith('/papers') || currentPath.startsWith('/about') || currentPath.startsWith('/partners') || currentPath.startsWith('/news-events') || currentPath.startsWith('/success-stories') || currentPath.startsWith('/podcast') || currentPath.startsWith('/workshops') || currentPath.startsWith('/education-blogs');
+  const isEducationSection = true;
+  const isBusinessSection = false;
+  const isAISection = false;
 
   return (
     <div className="sticky top-0 z-50 theme-transition shadow-lg shadow-black/5">
-      {/* 1. TOP UTILITY BAR */}
-      <div className="hidden lg:flex bg-[#1E060A] text-white/80 border-b border-white/5 py-1.5 px-6 items-center justify-between text-[10px] uppercase font-bold tracking-widest">
-        <div className="flex items-center gap-6">
-          <button onClick={() => navigateToPage('/internship')} className="hover:text-white transition-colors">INTERNSHIP</button>
-          <button onClick={() => navigateToPage('/all-courses')} className="hover:text-white transition-colors">JOB ORIENTED COURSES</button>
-          <button onClick={() => navigateToPage('/placements')} className="hover:text-white transition-colors">PLACEMENTS</button>
-          <button onClick={() => navigateToPage('/admission')} className="hover:text-white transition-colors">ADMISSION</button>
-        </div>
-        <div className="flex items-center gap-6 opacity-80">
-          <a href="mailto:ENQUIRE@SCAROTECHNOLOGIES.COM" className="flex items-center gap-1.5 hover:text-white transition-colors">
-            <Mail className="w-3.5 h-3.5" />
-            ENQUIRE@SCAROTECHNOLOGIES.COM
-          </a>
-          <span className="w-px h-3 bg-white/20"></span>
-          <a href="tel:08069096313" className="flex items-center gap-1.5 hover:text-white transition-colors">
-            <Phone className="w-3.5 h-3.5" />
-            080 6909 6313 | +91 98000 00000
-          </a>
-        </div>
-      </div>
-
-      {/* 2. MAIN NAVIGATION BAR */}
-      <nav className="bg-[#140407] backdrop-blur-xl border-b border-white/10 transition-colors py-2 px-6">
-        <div className="max-w-[1440px] mx-auto">
-          <div className="flex items-center justify-between h-[4.5rem]">
-            {/* Logo Group */}
-            <div className="flex-shrink-0 mr-8 flex items-center cursor-pointer" onClick={() => navigateToPage('/')}>
-              {/* Logo Icon with glowing background */}
-              <div className="w-12 h-12 bg-gradient-to-br from-[#FFECCC] to-[#F1B15A] rounded-2xl flex items-center justify-center p-0.5 shadow-[0_0_20px_rgba(241,177,90,0.3)] mr-3">
-                <div className="w-full h-full bg-[#1E060A] rounded-xl flex items-center justify-center relative overflow-hidden">
-                   {/* Simplified S icon */}
-                   <span className="text-[#F1B15A] font-serif font-black text-2xl italic z-10 leading-none mt-[-4px]">S</span>
-                   <span className="absolute bottom-1 text-[5px] text-[#F1B15A] tracking-[0.2em] uppercase font-bold z-10">SCARO</span>
-                   <div className="absolute inset-0 bg-gradient-to-t from-[#F1B15A]/20 to-transparent"></div>
-                </div>
-              </div>
-              {/* Logo Text */}
-              <div className="flex flex-col justify-center">
-                <div className="flex items-baseline gap-1.5">
-                  <span className="text-white font-black text-xl tracking-tight">Scaro</span>
-                  <span className="text-[#F1B15A] font-black text-xl tracking-tight">Technologies</span>
-                </div>
-                <span className="text-gray-400 text-[9px] uppercase tracking-[0.3em] font-semibold mt-[-2px]">
-                  SILICON & AI ACADEMY
-                </span>
-              </div>
+      {/* Main Navigation Bar */}
+      <nav className="bg-[var(--primary-maroon)] dark:bg-[var(--dark-maroon)] backdrop-blur-xl border-b border-white/10 transition-colors py-1">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            {/* Logo */}
+            <div className="flex-shrink-0 mr-4 lg:mr-8">
+              <Logo onClick={() => {
+                navigateToPage('/');
+              }} iconSize={44} textSize="text-base sm:text-xl" />
             </div>
 
-            {/* Desktop Navigation Links */}
-            <div className="hidden md:flex items-center justify-center gap-6 whitespace-nowrap flex-1 px-4">
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center justify-start gap-1 lg:gap-2 whitespace-nowrap flex-nowrap overflow-visible">
               {navItems.map((item) => {
+                const isActive = item.path ? (currentPath === item.path || (currentPath === '/' && item.id === 'home')) : false;
                 const hasSubItems = item.subItems && item.subItems.length > 0;
+
                 return (
                   <div key={item.id} className="relative group">
-                    <a href={item.path || (hasSubItems ? item.subItems![0].path : '#')}
+                    <a aria-label="Action button" href={item.path || (hasSubItems ? item.subItems![0].path : '#')}
                       onClick={(e) => { e.preventDefault(); if (item.path) navigateToPage(item.path); else if (hasSubItems) navigateToPage(item.subItems![0].path); }}
-                      className={`flex items-center gap-1.5 text-xs font-bold transition-all duration-300 py-6
-                        ${item.isHighlight ? 'text-pink-400 hover:text-pink-300' : 'text-gray-200 hover:text-white'}
-                      `}
+                      className={`relative px-1.5 lg:px-2.5 py-2 flex items-center gap-0.5 text-[10px] lg:text-xs font-bold uppercase tracking-wider transition-colors duration-300 ${isActive ? 'text-[var(--primary-gold)]' : 'text-gray-200 hover:text-white'
+                        }`}
                     >
                       {item.label}
-                      {hasSubItems && (
-                        <svg className="w-3.5 h-3.5 text-gray-400 group-hover:rotate-180 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      )}
+                      {hasSubItems && <svg className="w-3.5 h-3.5 ml-0.5 group-hover:rotate-180 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>}
+
+                      <span className={`absolute left-0 bottom-0 w-full h-[2px] transition-transform duration-300 origin-left ${isActive ? 'bg-[var(--primary-gold)] scale-x-100' : 'bg-white scale-x-0 group-hover:scale-x-100'
+                        }`} />
                     </a>
 
                     {/* Dropdown Menu */}
                     {hasSubItems && (
-                      <div className="absolute top-full left-0 mt-0 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:mt-0 transition-all duration-300 z-50">
-                        <div className="bg-[#1E060A]/95 backdrop-blur-md rounded-xl shadow-2xl border border-white/10 overflow-hidden flex flex-col py-2">
+                      <div className="absolute top-full left-0 mt-0 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:mt-2 transition-all duration-300 z-50">
+                        <div className="bg-white/95 backdrop-blur-md rounded-xl shadow-2xl border border-gray-100 overflow-hidden flex flex-col py-2">
                           {item.subItems!.map((sub, i) => (
-                            <a key={i}
+                            <a aria-label="Action button" key={i}
                               href={sub.path} onClick={(e) => { e.preventDefault(); navigateToPage(sub.path); }}
-                              className="text-left px-5 py-3 text-sm font-semibold text-gray-300 hover:text-[#F1B15A] hover:bg-white/5 transition-colors"
+                              className="text-left px-5 py-3 text-sm font-semibold text-gray-700 hover:text-[var(--primary-maroon)] hover:bg-gray-50 transition-colors"
                             >
                               {sub.label}
                             </a>
@@ -186,33 +151,29 @@ export function Navbar() {
               })}
             </div>
 
-            {/* Right side: Actions (Dark mode, CTA, Auth) */}
-            <div className="flex items-center gap-4 ml-auto">
-              {/* Dark mode toggle */}
-              <button className="hidden lg:flex w-10 h-10 rounded-full border border-white/20 items-center justify-center text-pink-200 hover:bg-white/10 transition-colors">
-                <Moon className="w-4 h-4" />
-              </button>
-
-              {/* Free Courses CTA */}
-              <button 
-                onClick={() => navigateToPage('/courses')}
-                className="hidden lg:flex items-center gap-2 bg-gradient-to-r from-emerald-500 to-emerald-400 hover:from-emerald-400 hover:to-emerald-300 text-white px-5 py-2.5 rounded-full font-black text-[11px] uppercase tracking-wider transition-all shadow-[0_0_20px_rgba(16,185,129,0.4)] hover:shadow-[0_0_30px_rgba(16,185,129,0.6)] hover:-translate-y-0.5 group"
-              >
-                FREE ONLINE COURSES
-                <div className="bg-white rounded-full p-0.5 flex items-center justify-center group-hover:translate-x-1 transition-transform">
-                  <ArrowRight className="w-3.5 h-3.5 text-emerald-600 stroke-[3px]" />
-                </div>
-              </button>
-
-              {/* Auth */}
-              <div className="hidden lg:flex items-center">
-                
-                
-              </div>
+            {/* Right side: mobile menu and CTA */}
+            <div className="flex items-center gap-3 ml-auto">
+              {isEducationSection && (
+                <button aria-label="Action button"
+                  onClick={() => navigateToPage('/contact')}
+                  className="hidden lg:flex items-center gap-1.5 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white px-4 py-1.5 rounded-full font-bold transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 group whitespace-nowrap text-xs"
+                >
+                  Free Courses
+                  <div className="bg-white/20 rounded-full p-1 group-hover:translate-x-1 transition-transform">
+                    <svg className="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                  </div>
+                </button>
+              )}
+               {(isEducationSection || isAISection) && (
+                 <div className="hidden lg:flex items-center gap-3">
+                   
+                   
+                 </div>
+               )}
 
               {/* Mobile Menu Button */}
-              <button 
-                className="md:hidden p-2 text-white rounded-lg hover:bg-white/20 transition-colors ml-2"
+              <button aria-label="Action button"
+                className="md:hidden p-2 text-white rounded-lg hover:bg-white/20 transition-colors"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               >
                 {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -224,16 +185,18 @@ export function Navbar() {
           {mobileMenuOpen && (
             <div className="md:hidden py-4 space-y-1 border-t border-white/20">
               {navItems.map((item) => {
+                const isActive = item.path ? (currentPath === item.path || (currentPath === '/' && item.id === 'home')) : false;
                 const hasSubItems = item.subItems && item.subItems.length > 0;
                 const isExpanded = expandedMobileItem === item.id;
 
                 return (
                   <div key={item.id} className="flex flex-col">
-                    <a href={item.path || '#'}
+                    <a aria-label="Action button" href={item.path || '#'}
                       onClick={(e) => { e.preventDefault(); if (hasSubItems) { setExpandedMobileItem(isExpanded ? null : item.id); } else if (item.path) { navigateToPage(item.path); } }}
-                      className={`w-full flex justify-between items-center text-left px-4 py-3 rounded-lg transition-all text-sm uppercase font-bold tracking-wide ${
-                        item.isHighlight ? 'text-pink-400' : 'text-gray-200'
-                      } hover:bg-white/5`}
+                      className={`w-full flex justify-between items-center text-left px-4 py-3 rounded-lg transition-all text-base uppercase font-medium tracking-wide ${isActive
+                        ? 'bg-white/10 text-[#D4AF37] border border-[#D4AF37]/20 shadow-sm'
+                        : 'text-gray-200 hover:bg-white/5 hover:text-[#D4AF37]'
+                        }`}
                     >
                       {item.label}
                       {hasSubItems && (
@@ -243,9 +206,9 @@ export function Navbar() {
                     {hasSubItems && isExpanded && (
                       <div className="pl-6 flex flex-col space-y-1 mt-1 border-l-2 border-white/10 ml-4">
                         {item.subItems!.map((sub, i) => (
-                          <a key={i}
+                          <a aria-label="Action button" key={i}
                             href={sub.path} onClick={(e) => { e.preventDefault(); navigateToPage(sub.path); }}
-                            className="block w-full text-left px-4 py-2 rounded-lg transition-all text-xs font-bold text-gray-400 hover:text-white hover:bg-white/5"
+                            className="block w-full text-left px-4 py-2 rounded-lg transition-all text-sm font-semibold text-gray-300 hover:text-[#D4AF37] hover:bg-white/5"
                           >
                             {sub.label}
                           </a>
@@ -255,17 +218,13 @@ export function Navbar() {
                   </div>
                 );
               })}
-              <div className="px-4 pt-4 border-t border-white/20 mt-2 space-y-3">
-                <button 
-                  onClick={() => navigateToPage('/courses')}
-                  className="w-full flex justify-center items-center gap-2 bg-gradient-to-r from-emerald-500 to-emerald-400 text-white px-5 py-3.5 rounded-xl font-black text-sm uppercase tracking-wider shadow-[0_0_15px_rgba(16,185,129,0.3)] transition-all"
+              <div className="px-4 pt-4 border-t border-white/20 mt-2 space-y-2">
+                <button aria-label="Action button"
+                  onClick={() => navigateToPage('/contact')}
+                  className="w-full flex justify-center items-center gap-2 bg-gradient-to-r from-[#D4AF37] to-[#B89628] hover:shadow-lg hover:shadow-[#D4AF37]/20 text-[#1E060A] px-5 py-4 rounded-xl font-bold text-lg transition-all"
                 >
-                  FREE ONLINE COURSES
+                  <Mail className="w-5 h-5" /> Contact Us
                 </button>
-                <div className="flex flex-col gap-2 pt-2 pb-2 text-[10px] text-gray-400 uppercase font-bold text-center border-t border-white/10">
-                   <a href="mailto:ENQUIRE@SCAROTECHNOLOGIES.COM" className="py-2">ENQUIRE@SCAROTECHNOLOGIES.COM</a>
-                   <a href="tel:08069096313" className="py-2">080 6909 6313 | +91 98000 00000</a>
-                </div>
               </div>
             </div>
           )}
