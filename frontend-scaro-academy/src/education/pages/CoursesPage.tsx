@@ -1,6 +1,6 @@
 import { useSEO } from '../../main/utils/useSEO';
 import { CoursesSection } from '../components/CoursesSection';
-import { EducationContact } from '../components/EducationContact';
+import { StudentProjectsCarousel } from '../components/StudentProjectsCarousel';
 import { ProjectsStoreSection } from '../components/ProjectsStoreSection';
 import { ProgramsOverview } from '../components/ProgramsOverview';
 
@@ -126,8 +126,8 @@ export function CoursesPage() {
       {/* Blogs / Resources */}
       <EducationBlogsSection />
       
-      {/* Dedicated Education Contact Section */}
-      <EducationContact />
+      {/* Student Projects Carousel */}
+      <StudentProjectsCarousel />
     </div>
   );
 }

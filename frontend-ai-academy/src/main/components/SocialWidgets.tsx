@@ -46,7 +46,7 @@ export function SocialWidgets() {
       bgColor: 'bg-gradient-to-br from-[#f09433] via-[#e6683c] via-[#dc2743] via-[#cc2366] to-[#bc1888]',
       hoverBg: '',
       shadowColor: 'shadow-[#e6683c]/40',
-      href: 'https://instagram.com/scaro',
+      href: 'https://www.instagram.com/scarotechnologie?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==',
       tooltip: 'Follow on Instagram',
     },
     {

@@ -35,8 +35,8 @@ const Socials = ({ lightMode = false }: { lightMode?: boolean }) => (
       { icon: Github, href: 'https://github.com/ScaroTechnologies', hoverClass: 'hover:bg-[#24292e] hover:text-white hover:border-[#24292e]', isCustom: false },
       { icon: Linkedin, href: 'https://linkedin.com/company/scaro', hoverClass: 'hover:bg-[#0A66C2] hover:text-white hover:border-[#0A66C2]', isCustom: false },
       { icon: Twitter, href: 'https://twitter.com/scaro', hoverClass: 'hover:bg-[#1DA1F2] hover:text-white hover:border-[#1DA1F2]', isCustom: false },
-      { icon: Youtube, href: 'https://youtube.com/@scaro', hoverClass: 'hover:bg-[#FF0000] hover:text-white hover:border-[#FF0000]', isCustom: false },
-      { icon: Instagram, href: 'https://instagram.com/scaro_technologies', hoverClass: 'hover:bg-[#E1306C] hover:text-white hover:border-[#E1306C]', isCustom: false },
+      { icon: Youtube, href: 'https://www.youtube.com/channel/UCvaxC65BV8YzxAPwtJzSd7A', hoverClass: 'hover:bg-[#FF0000] hover:text-white hover:border-[#FF0000]', isCustom: false },
+      { icon: Instagram, href: 'https://www.instagram.com/scarotechnologie?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==', hoverClass: 'hover:bg-[#E1306C] hover:text-white hover:border-[#E1306C]', isCustom: false },
       { icon: WhatsAppIcon, href: 'https://wa.me/919949167458', hoverClass: 'hover:bg-[#25D366] hover:text-white hover:border-[#25D366]', isCustom: true },
       { icon: Mail, href: 'mailto:support@scaro.com', hoverClass: 'hover:bg-[#EA4335] hover:text-white hover:border-[#EA4335]', isCustom: false },
     ].map((social, idx) => (
