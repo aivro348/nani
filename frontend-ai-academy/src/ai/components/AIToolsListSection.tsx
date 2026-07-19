@@ -728,7 +728,7 @@ export const AIToolsListSection = memo(function AIToolsListSection({ previewOnly
   }, [selectedCategory, searchQuery]);
 
   const displayTools = useMemo(() => {
-    return previewOnly ? filteredTools.slice(0, 8) : filteredTools.slice(0, visibleCount);
+    return previewOnly ? filteredTools.slice(0, 4) : filteredTools.slice(0, visibleCount);
   }, [filteredTools, previewOnly, visibleCount]);
 
   return (
@@ -758,16 +758,18 @@ export const AIToolsListSection = memo(function AIToolsListSection({ previewOnly
           >
             Ultimate AI Tools <span className="bg-gradient-to-r from-[var(--primary-maroon)] to-[var(--primary-gold)] bg-clip-text text-transparent">Directory</span>
           </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            viewport={{ once: true }}
-            className="text-xl text-text-muted max-w-3xl mx-auto leading-relaxed"
-          >
-            Explore our hand-picked collection of AI tools across coding, design, research, and productivity 
-            to supercharge your engineering workflow and learning experience.
-          </motion.p>
+          {!previewOnly && (
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              viewport={{ once: true }}
+              className="text-xl text-text-muted max-w-3xl mx-auto leading-relaxed"
+            >
+              Explore our hand-picked collection of AI tools across coding, design, research, and productivity 
+              to supercharge your engineering workflow and learning experience.
+            </motion.p>
+          )}
         </div>
 
           {!previewOnly && (

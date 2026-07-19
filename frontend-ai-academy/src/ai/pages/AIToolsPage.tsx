@@ -309,7 +309,7 @@ export function AIToolsPage() {
       </section>
 
       {/* AI Tools List Section */}
-      <AIToolsListSection />
+      <AIToolsListSection previewOnly={true} />
 
       {/* FAQ Section */}
       <section id="faq" className="py-24 max-w-4xl mx-auto px-4 sm:px-6 scroll-mt-20">
