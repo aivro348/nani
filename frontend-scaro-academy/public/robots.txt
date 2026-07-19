@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://academy.scarotechnologies.com/sitemap.xml
