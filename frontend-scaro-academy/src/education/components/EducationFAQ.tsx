@@ -28,8 +28,8 @@ export function EducationFAQ() {
     <section id="faq-section" className="py-24 bg-white">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center justify-center p-3 bg-[var(--primary-maroon)]/10 rounded-2xl mb-6">
-            <HelpCircle className="w-8 h-8 text-[var(--primary-maroon)]" />
+          <div className="inline-flex items-center justify-center p-3 bg-[var(--primary-gold)]/10 rounded-2xl mb-6">
+            <HelpCircle className="w-8 h-8 text-[var(--primary-gold)]" />
           </div>
           <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight">
             Frequently Asked <span className="text-[var(--primary-maroon)]">Questions</span>
@@ -48,7 +48,7 @@ export function EducationFAQ() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               className={`border border-slate-200 rounded-2xl overflow-hidden transition-all duration-300 ${
-                openIndex === index ? 'bg-slate-50 shadow-lg border-[var(--primary-maroon)]/30' : 'bg-white hover:border-slate-300'
+                openIndex === index ? 'bg-slate-50 shadow-lg border-[var(--primary-gold)]' : 'bg-white hover:border-slate-300'
               }`}
             >
               <button aria-label="Action button"
@@ -59,7 +59,7 @@ export function EducationFAQ() {
                   {faq.question}
                 </span>
                 <div className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-transform duration-300 ${
-                  openIndex === index ? 'bg-[var(--primary-maroon)] text-white rotate-180' : 'bg-slate-100 text-slate-500'
+                  openIndex === index ? 'bg-[var(--primary-maroon)] text-[var(--primary-gold)] rotate-180' : 'bg-slate-100 text-slate-500'
                 }`}>
                   <ChevronDown className="w-5 h-5" />
                 </div>

@@ -100,6 +100,31 @@ export function Navbar() {
 
   return (
     <div className="sticky top-0 z-50 theme-transition shadow-lg shadow-black/5">
+      {/* Top Contact Bar */}
+      <div className="bg-[#4a0000] text-gray-200 text-xs py-1.5 border-b border-white/5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+          <div className="flex items-center gap-5">
+            <a href="mailto:support@scarotechnologies.com" className="flex items-center gap-1.5 hover:text-white transition-colors">
+              <Mail className="w-3 h-3 text-[#D4AF37]" />
+              <span className="font-medium">support@scarotechnologies.com</span>
+            </a>
+            <a href="tel:+919949167458" className="hidden sm:flex items-center gap-1.5 hover:text-white transition-colors">
+              <Phone className="w-3 h-3 text-[#D4AF37]" />
+              <span className="font-medium">+91 99491 67458</span>
+            </a>
+          </div>
+          <div className="hidden md:flex items-center gap-4">
+            <span className="flex items-center gap-1.5 text-gray-300 font-medium">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+              </span>
+              Online support 24/7
+            </span>
+          </div>
+        </div>
+      </div>
+
       {/* Main Navigation Bar */}
       <nav className="bg-[var(--primary-maroon)] dark:bg-[var(--dark-maroon)] backdrop-blur-xl border-b border-white/10 transition-colors py-1">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

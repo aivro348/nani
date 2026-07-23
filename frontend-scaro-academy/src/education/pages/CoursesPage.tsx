@@ -47,19 +47,49 @@ export function CoursesPage() {
 
         {/* Content */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-32">
-          <div
-            className="max-w-2xl text-white animate-slide-in-left"
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="max-w-2xl text-white relative z-10"
           >
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1] mb-6 drop-shadow-lg">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[#D4AF37] text-sm font-bold tracking-wider uppercase mb-6"
+            >
+              <span className="w-2 h-2 rounded-full bg-[#D4AF37] animate-pulse" />
+              Welcome to Scaro Academy
+            </motion.div>
+
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+              className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.05] mb-6 drop-shadow-2xl"
+            >
               Bridging Education <br />
-              & Industry
-            </h1>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-yellow-200">
+                & Industry
+              </span>
+            </motion.h1>
             
-            <p className="text-lg text-slate-200 font-medium mb-10 leading-relaxed max-w-xl">
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+              className="text-lg sm:text-xl text-slate-200 font-medium mb-10 leading-relaxed max-w-xl drop-shadow-md"
+            >
               Scaro Technologie empowers students with industry-relevant skills through MOOCs, certified programs, internships, and expert-led professional training.
-            </p>
+            </motion.p>
             
-            <div className="flex flex-wrap gap-4">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+              className="flex flex-wrap gap-4"
+            >
               <motion.button 
                 onClick={() => {
                   const el = document.getElementById('programs-section');
@@ -67,11 +97,11 @@ export function CoursesPage() {
                 }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-[var(--primary-gold)] hover:bg-yellow-500 text-slate-900 px-6 py-3 rounded-full font-bold transition-all shadow-lg flex items-center gap-2 group"
+                className="bg-gradient-to-r from-[#D4AF37] to-[#B89628] hover:from-yellow-400 hover:to-[#D4AF37] text-[#1E060A] px-8 py-4 rounded-full font-black text-lg transition-all shadow-[0_0_30px_rgba(212,175,55,0.4)] hover:shadow-[0_0_40px_rgba(212,175,55,0.6)] flex items-center gap-3 group"
               >
                 Explore Programs
-                <span className="w-6 h-6 rounded-full bg-white flex items-center justify-center group-hover:translate-x-1 transition-transform">
-                  <svg className="w-4 h-4 text-slate-900" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
+                <span className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center group-hover:translate-x-1 transition-transform">
+                  <svg className="w-5 h-5 text-[#1E060A]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
                 </span>
               </motion.button>
 
@@ -82,15 +112,15 @@ export function CoursesPage() {
                 }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-transparent border border-white hover:bg-white/10 text-white px-6 py-3 rounded-full font-bold transition-all shadow-lg flex items-center gap-2 group"
+                className="bg-black/30 backdrop-blur-md border border-white/20 hover:bg-white/10 text-white px-8 py-4 rounded-full font-bold text-lg transition-all shadow-lg flex items-center gap-3 group"
               >
                 View Recent Projects
-                <span className="w-6 h-6 rounded-full bg-white flex items-center justify-center group-hover:translate-x-1 transition-transform">
-                  <svg className="w-4 h-4 text-slate-900" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M12 5l7 7-7 7" /></svg>
+                <span className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-hover:translate-x-1 transition-transform">
+                  <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M12 5l7 7-7 7" /></svg>
                 </span>
               </motion.button>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
 
         {/* Slanted Curved Divider (Matches Image 1) */}
@@ -120,14 +150,11 @@ export function CoursesPage() {
         <WorkshopsSection />
       </section>
 
-      {/* FAQs */}
-      <EducationFAQ />
-
-      {/* Blogs / Resources */}
-      <EducationBlogsSection />
-      
       {/* Student Projects Carousel */}
       <StudentProjectsCarousel />
+      
+      {/* FAQs */}
+      <EducationFAQ />
     </div>
   );
 }

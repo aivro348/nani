@@ -118,20 +118,20 @@ export function TrainersSection() {
               transition={{ delay: index * 0.1 }}
               className="group"
             >
-              <div className="bg-card-bg backdrop-blur-sm rounded-2xl border border-card-border overflow-hidden hover:border-blue-500/50 transition-all duration-500 shadow-lg hover:shadow-2xl hover:shadow-blue-500/20 theme-transition">
+              <div className="bg-card-bg backdrop-blur-sm rounded-2xl border border-card-border overflow-hidden hover:border-[#D4AF37]/50 transition-all duration-500 shadow-lg hover:shadow-2xl hover:shadow-[#D4AF37]/20 theme-transition">
                 <div className="grid md:grid-cols-3 gap-8 p-8">
                   {/* Left Column - Photo and Quick Stats */}
                   <div className="md:col-span-1 space-y-6">
                     {/* Photo */}
                     <div className="relative">
-                      <div className="absolute inset-0 bg-gradient-to-br from-blue-600/30 to-cyan-500/30 rounded-2xl blur-xl group-hover:blur-2xl transition-all"></div>
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#800000]/30 to-[#D4AF37]/30 rounded-2xl blur-xl group-hover:blur-2xl transition-all"></div>
                       <ImageWithFallback
                         src={trainer.photo}
                         alt={trainer.name}
-                        className="relative w-full h-80 object-cover rounded-2xl border-2 border-blue-500/30 group-hover:border-cyan-400/50 transition-all"
+                        className="relative w-full h-80 object-cover rounded-2xl border-2 border-[#D4AF37]/30 group-hover:border-[#D4AF37]/80 transition-all"
                       />
                       {/* Rating Badge */}
-                      <div className="absolute top-4 right-4 bg-gradient-to-br from-blue-600 to-cyan-500 px-3 py-1.5 rounded-full flex items-center gap-1 shadow-lg">
+                      <div className="absolute top-4 right-4 bg-gradient-to-br from-[#800000] to-[#D4AF37] px-3 py-1.5 rounded-full flex items-center gap-1 shadow-lg">
                         <Star className="w-4 h-4 text-white fill-white" />
                         <span className="text-sm text-white font-medium">{trainer.rating}</span>
                       </div>
@@ -140,14 +140,14 @@ export function TrainersSection() {
                     {/* Quick Stats */}
                     <div className="space-y-3">
                       <div className="bg-surface rounded-lg p-4 border border-surface-border theme-transition">
-                        <div className="flex items-center gap-2 text-cyan-500 mb-1">
+                        <div className="flex items-center gap-2 text-[#D4AF37] mb-1">
                           <Briefcase className="w-4 h-4" />
                           <span className="text-sm font-medium">Experience</span>
                         </div>
                         <p className="text-heading font-medium">{trainer.experience}</p>
                       </div>
                       <div className="bg-surface rounded-lg p-4 border border-surface-border theme-transition">
-                        <div className="flex items-center gap-2 text-cyan-500 mb-1">
+                        <div className="flex items-center gap-2 text-[#D4AF37] mb-1">
                           <GraduationCap className="w-4 h-4" />
                           <span className="text-sm font-medium">Students Guided</span>
                         </div>
@@ -157,7 +157,7 @@ export function TrainersSection() {
 
                     {/* Contact Buttons */}
                     <div className="flex gap-3">
-                      <button aria-label="Action button" className="flex-1 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors flex items-center justify-center gap-2">
+                      <button aria-label="Action button" className="flex-1 px-4 py-2 bg-[#800000] hover:bg-[#5c0000] text-white rounded-lg transition-colors flex items-center justify-center gap-2">
                         <Linkedin className="w-4 h-4" />
                         <span className="text-sm">LinkedIn</span>
                       </button>
@@ -175,7 +175,7 @@ export function TrainersSection() {
                       <h3 className="text-3xl text-heading mb-2">
                         {trainer.name}
                       </h3>
-                      <p className="text-xl bg-gradient-to-r from-blue-400 to-cyan-500 bg-clip-text text-transparent font-medium">
+                      <p className="text-xl bg-gradient-to-r from-[#800000] to-[#D4AF37] bg-clip-text text-transparent font-medium">
                         {trainer.title}
                       </p>
                     </div>
@@ -189,7 +189,7 @@ export function TrainersSection() {
 
                     {/* Specializations */}
                     <div>
-                      <h4 className="flex items-center gap-2 text-cyan-500 mb-3 font-medium">
+                      <h4 className="flex items-center gap-2 text-[#D4AF37] mb-3 font-medium">
                         <Award className="w-5 h-5" />
                         Specializations
                       </h4>
@@ -197,7 +197,7 @@ export function TrainersSection() {
                         {trainer.specializations.map((spec, idx) => (
                           <span
                             key={idx}
-                            className="px-4 py-1.5 bg-gradient-to-r from-blue-600/10 to-cyan-500/10 border border-blue-500/30 rounded-full text-sm text-blue-600 dark:text-cyan-400 font-medium"
+                            className="px-4 py-1.5 bg-gradient-to-r from-[#800000]/10 to-[#D4AF37]/10 border border-[#D4AF37]/30 rounded-full text-sm text-[#800000] dark:text-[#D4AF37] font-medium"
                           >
                             {spec}
                           </span>
@@ -207,14 +207,14 @@ export function TrainersSection() {
 
                     {/* Education */}
                     <div>
-                      <h4 className="flex items-center gap-2 text-cyan-500 mb-3 font-medium">
+                      <h4 className="flex items-center gap-2 text-[#D4AF37] mb-3 font-medium">
                         <GraduationCap className="w-5 h-5" />
                         Education
                       </h4>
                       <div className="space-y-2">
                         {trainer.education.map((edu, idx) => (
                           <div key={idx} className="flex items-start gap-2">
-                            <div className="w-1.5 h-1.5 bg-cyan-500 rounded-full mt-2"></div>
+                            <div className="w-1.5 h-1.5 bg-[#D4AF37] rounded-full mt-2"></div>
                             <p className="text-text-secondary">{edu}</p>
                           </div>
                         ))}
@@ -223,14 +223,14 @@ export function TrainersSection() {
 
                     {/* Professional Background */}
                     <div>
-                      <h4 className="flex items-center gap-2 text-cyan-500 mb-3 font-medium">
+                      <h4 className="flex items-center gap-2 text-[#D4AF37] mb-3 font-medium">
                         <Briefcase className="w-5 h-5" />
                         Professional Background
                       </h4>
                       <div className="space-y-2">
                         {trainer.background.map((bg, idx) => (
                           <div key={idx} className="flex items-start gap-2">
-                            <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2"></div>
+                            <div className="w-1.5 h-1.5 bg-[#800000] rounded-full mt-2"></div>
                             <p className="text-text-secondary">{bg}</p>
                           </div>
                         ))}
@@ -257,7 +257,7 @@ export function TrainersSection() {
             <p className="text-text-secondary mb-8 max-w-2xl mx-auto">
               Join thousands of students who have transformed their careers under the guidance of our expert trainers. Get personalized mentorship and industry insights.
             </p>
-            <button aria-label="Action button" className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-600 to-cyan-500 text-white rounded-lg hover:shadow-2xl hover:shadow-blue-500/50 transition-all transform hover:scale-105 font-medium">
+            <button aria-label="Action button" className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-[#800000] to-[#D4AF37] text-white rounded-lg hover:shadow-2xl hover:shadow-[#D4AF37]/50 transition-all transform hover:scale-105 font-medium">
               Start Learning Today
             </button>
           </div>

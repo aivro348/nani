@@ -54,8 +54,8 @@ export const StudentProjectsCarousel = memo(function StudentProjectsCarousel() {
     <section className="py-24 bg-page-bg relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-[100px]" />
-        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-purple-600/5 rounded-full blur-[100px]" />
+        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#800000]/5 rounded-full blur-[100px]" />
+        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-[#D4AF37]/5 rounded-full blur-[100px]" />
       </div>
 
       <div className="relative z-10 w-full">
@@ -65,10 +65,10 @@ export const StudentProjectsCarousel = memo(function StudentProjectsCarousel() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 rounded-full border border-blue-500/20 mb-6"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-[#800000]/10 rounded-full border border-[#800000]/20 mb-6"
           >
-            <Play className="w-4 h-4 text-blue-400" />
-            <span className="text-sm font-bold text-blue-400 uppercase tracking-wider">Showcase</span>
+            <Play className="w-4 h-4 text-[#D4AF37]" />
+            <span className="text-sm font-bold text-[#D4AF37] uppercase tracking-wider">Showcase</span>
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -77,7 +77,7 @@ export const StudentProjectsCarousel = memo(function StudentProjectsCarousel() {
             transition={{ delay: 0.1 }}
             className="text-4xl md:text-5xl font-black text-heading mb-6 tracking-tight"
           >
-            Our Students <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Projects</span>
+            Our Students <span className="bg-gradient-to-r from-[#800000] to-[#D4AF37] bg-clip-text text-transparent">Projects</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}

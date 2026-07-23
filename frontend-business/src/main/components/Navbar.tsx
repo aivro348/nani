@@ -49,18 +49,19 @@ export function Navbar() {
       setMobileMenuOpen(false);
       return;
     }
-    if (path.includes('#') && path.split('#')[0] === currentPath) {
-      const hash = path.split('#')[1];
-      const element = document.getElementById(hash);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-        window.history.pushState({}, '', path);
-      } else {
-        navigate(path);
+    if (path.includes('#')) {
+      const [targetPath, hash] = path.split('#');
+      if (targetPath === currentPath) {
+        window.location.hash = hash;
+        const element = document.getElementById(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+        setMobileMenuOpen(false);
+        return;
       }
-    } else {
-      navigate(path);
     }
+    navigate(path);
     setMobileMenuOpen(false);
   };
 

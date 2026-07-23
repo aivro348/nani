@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router';
+import { useLocation, Link } from 'react-router';
 import { useSEO } from '../../main/utils/useSEO';
-import { servicesData, ServiceHub } from '../components/servicesData';
+import { servicesData, ServiceHub, SubService } from '../components/servicesData';
 import { BusinessCTA } from '../components/BusinessCTA';
 import { motion, AnimatePresence } from 'motion/react';
-import { Check, Phone, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router';
+import { Check, Phone, ArrowRight, X, Sparkles, Send } from 'lucide-react';
 
 export function BusinessServicesPage() {
   useSEO(
@@ -15,20 +14,34 @@ export function BusinessServicesPage() {
 
   const location = useLocation();
   const [activeTab, setActiveTab] = useState('web-design');
+  const [selectedSubService, setSelectedSubService] = useState<SubService | null>(null);
+  const [inquirySent, setInquirySent] = useState(false);
 
   useEffect(() => {
-    // Parse URL hash on mount or route update
-    const hash = location.hash.replace('#', '');
-    if (hash && servicesData.some(s => s.id === hash)) {
-      setActiveTab(hash);
-    } else {
-      setActiveTab('web-design');
-    }
-    // Scroll to top of window or component if hash changes
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace('#', '');
+      if (hash && servicesData.some(s => s.id === hash)) {
+        setActiveTab(hash);
+      } else if (!hash) {
+        setActiveTab('web-design');
+      }
+    };
+
+    handleHashChange();
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
   }, [location.hash]);
 
   const activeService: ServiceHub = servicesData.find(s => s.id === activeTab) || servicesData[0];
+
+  const handleSubServiceInquiry = (e: React.FormEvent) => {
+    e.preventDefault();
+    setInquirySent(true);
+    setTimeout(() => {
+      setInquirySent(false);
+      setSelectedSubService(null);
+    }, 2500);
+  };
 
   return (
     <div className="min-h-screen bg-[#0A0506] text-white selection:bg-[var(--primary-gold)] selection:text-black pt-28 pb-16 relative overflow-hidden">
@@ -75,6 +88,7 @@ export function BusinessServicesPage() {
             return (
               <button aria-label="Action button"
                 key={service.id}
+                id={service.id}
                 onClick={() => {
                   setActiveTab(service.id);
                   window.history.pushState({}, '', `#${service.id}`);
@@ -118,7 +132,7 @@ export function BusinessServicesPage() {
                     <motion.button 
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="px-8 py-4 bg-gradient-to-r from-[var(--primary-gold)] to-[var(--accent-gold)] text-[#0A0506] font-black rounded-xl hover:shadow-[0_0_30px_var(--primary-gold)] transition-all flex items-center gap-2 uppercase tracking-wider text-sm"
+                      className="px-8 py-4 bg-gradient-to-r from-[var(--primary-gold)] to-[var(--accent-gold)] text-[#0A0506] font-black rounded-xl hover:shadow-[0_0_30px_var(--primary-gold)] transition-all flex items-center gap-2 uppercase tracking-wider text-sm cursor-pointer"
                     >
                       Get Free Quote
                       <ArrowRight className="w-5 h-5" />
@@ -147,7 +161,7 @@ export function BusinessServicesPage() {
             {/* Sub Services Cards Grid */}
             <div className="space-y-8">
               <div className="border-l-4 border-[var(--primary-gold)] pl-4">
-                <span className="text-xs font-bold text-[var(--primary-gold)] uppercase tracking-[0.2em]">Offerings</span>
+                <span className="text-xs font-bold text-[var(--primary-gold)] uppercase tracking-[0.2em]">Offerings & Sub-Services</span>
                 <h3 className="text-2xl md:text-3xl font-black text-white mt-1">{activeService.subServicesTitle}</h3>
               </div>
               
@@ -158,7 +172,8 @@ export function BusinessServicesPage() {
                     <motion.div
                       key={sIdx}
                       whileHover={{ y: -6 }}
-                      className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-[var(--primary-gold)]/30 transition-all flex flex-col justify-between group"
+                      onClick={() => setSelectedSubService(sub)}
+                      className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-[var(--primary-gold)]/50 transition-all flex flex-col justify-between group cursor-pointer"
                     >
                       <div className="space-y-4">
                         <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 text-[var(--primary-gold)] flex items-center justify-center group-hover:bg-[var(--primary-gold)]/10 transition-colors">
@@ -171,10 +186,10 @@ export function BusinessServicesPage() {
                           {sub.description}
                         </p>
                       </div>
-                      <Link to="/contact" className="text-sm font-bold text-[var(--primary-gold)] hover:underline flex items-center gap-2 mt-6 group/link">
-                        Learn More 
+                      <div className="text-sm font-bold text-[var(--primary-gold)] hover:underline flex items-center gap-2 mt-6 group/link">
+                        View Details & Request Quote
                         <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
-                      </Link>
+                      </div>
                     </motion.div>
                   );
                 })}
@@ -227,7 +242,82 @@ export function BusinessServicesPage() {
         </AnimatePresence>
 
       </div>
+
+      {/* Sub-Service Details Modal */}
+      <AnimatePresence>
+        {selectedSubService && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="bg-[#12080a] border border-white/15 rounded-3xl max-w-xl w-full overflow-hidden shadow-2xl p-6 md:p-8 relative"
+            >
+              <button 
+                onClick={() => setSelectedSubService(null)}
+                aria-label="Close modal"
+                className="absolute top-5 right-5 p-2 text-gray-400 hover:text-white rounded-full bg-white/5 hover:bg-white/10 transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-12 h-12 rounded-xl bg-[var(--primary-gold)]/10 border border-[var(--primary-gold)]/30 text-[var(--primary-gold)] flex items-center justify-center">
+                  {(() => {
+                    const SubIcon = selectedSubService.icon;
+                    return <SubIcon className="w-6 h-6" />;
+                  })()}
+                </div>
+                <div>
+                  <span className="text-[10px] font-bold text-[var(--primary-gold)] uppercase tracking-widest bg-[var(--primary-gold)]/10 px-2 py-0.5 rounded">
+                    {activeService.title.split('&')[0]} Sub-Service
+                  </span>
+                  <h3 className="text-2xl font-black text-white leading-tight mt-1">
+                    {selectedSubService.title}
+                  </h3>
+                </div>
+              </div>
+
+              <p className="text-gray-300 text-sm leading-relaxed mb-6 font-light">
+                {selectedSubService.description} Our engineering team builds tailored solution packages with enterprise reliability, high-speed optimization, and full source code access.
+              </p>
+
+              {inquirySent ? (
+                <div className="p-6 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl text-center space-y-2">
+                  <Sparkles className="w-8 h-8 text-emerald-400 mx-auto" />
+                  <h4 className="text-lg font-bold text-white">Inquiry Received!</h4>
+                  <p className="text-xs text-gray-300">Our technical consultant will reach out to you within 2 hours.</p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubServiceInquiry} className="space-y-4">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-gray-400">Request Custom Scope & Quote</h4>
+                  <input 
+                    type="text" 
+                    required 
+                    placeholder="Your Name or Business Name" 
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[var(--primary-gold)] transition-colors"
+                  />
+                  <input 
+                    type="email" 
+                    required 
+                    placeholder="Email Address or Phone Number" 
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[var(--primary-gold)] transition-colors"
+                  />
+                  <button 
+                    type="submit" 
+                    className="w-full py-3.5 bg-gradient-to-r from-[var(--primary-gold)] to-[var(--accent-gold)] text-[#0A0506] font-black rounded-xl hover:shadow-[0_0_20px_var(--primary-gold)] transition-all flex items-center justify-center gap-2 text-sm uppercase tracking-wider cursor-pointer"
+                  >
+                    Submit Scope Request <Send className="w-4 h-4" />
+                  </button>
+                </form>
+              )}
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
       <BusinessCTA />
     </div>
   );
 }
+

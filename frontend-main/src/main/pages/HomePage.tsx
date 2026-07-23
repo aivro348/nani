@@ -11,7 +11,6 @@ import { useSEO } from '../../main/utils/useSEO';
 export function HomePage({ setActiveSection }: { setActiveSection?: (section: string) => void }) {
   const navigate = useNavigate();
   const location = useLocation();
-  const [showWebinar, setShowWebinar] = useState(true);
   const [bgIndex, setBgIndex] = useState(0);
   
   const bgImages = [
@@ -159,44 +158,6 @@ export function HomePage({ setActiveSection }: { setActiveSection?: (section: st
           </div>
         </div>
 
-        {/* Floating Webinar Widget */}
-        <AnimatePresence>
-          {showWebinar && (
-            <motion.div
-              initial={{ opacity: 0, x: -50, y: 50 }}
-              animate={{ opacity: 1, x: 0, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              transition={{ duration: 0.5, delay: 1 }}
-              className="absolute bottom-6 left-6 lg:left-8 z-40 hidden sm:block"
-            >
-              <div className="bg-[#1a1a1a] rounded-2xl shadow-2xl p-1 w-[320px] border border-white/10 overflow-hidden relative group">
-                <button aria-label="Action button" onClick={() => setShowWebinar(false)} className="absolute top-3 right-3 z-50 bg-black/40 hover:bg-black/60 text-white p-1 rounded-full transition-colors backdrop-blur-sm">
-                  <X className="w-3.5 h-3.5" />
-                </button>
-                <div 
-                  className="relative h-44 rounded-xl overflow-hidden bg-gray-900 cursor-pointer"
-                  onClick={() => window.location.href = 'http://localhost:5173/'}
-                >
-                  <img src="/vlsi.webp" alt="Webinar" className="w-full h-full object-cover opacity-70 group-hover:scale-105 transition-transform duration-700" />
-                  <div className="absolute inset-0 flex flex-col justify-between p-5 bg-gradient-to-t from-black/90 to-transparent">
-                    <span className="bg-red-500/90 backdrop-blur-md text-white text-[10px] font-black uppercase px-2.5 py-1 rounded w-fit flex items-center gap-1.5 border border-red-500/50 shadow-[0_0_10px_rgba(239,68,68,0.5)]">
-                      <span className="w-2 h-2 bg-white rounded-full animate-ping mr-0.5"></span> Live Masterclass
-                    </span>
-                    <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 rounded-full bg-[var(--primary-gold)] flex items-center justify-center shadow-[0_0_15px_rgba(212,175,55,0.6)] transform group-hover:scale-110 transition-transform">
-                        <Play className="w-5 h-5 text-black ml-1" fill="black" />
-                      </div>
-                      <div>
-                        <p className="text-white text-sm font-bold leading-tight drop-shadow-md">AI & Systems Architecture</p>
-                        <p className="text-gray-300 text-[11px] mt-0.5">Reserve your spot now</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </section>
 
       {/* ─── SECTION 3: SCARO ACADEMY DEEP-DIVE (WHITE BACKGROUND) ─── */}
@@ -323,34 +284,51 @@ export function HomePage({ setActiveSection }: { setActiveSection?: (section: st
         </div>
       </section>
 
-      {/* ─── SECTION 5: AI ACADEMY / AI DIVISION (GOLD / IVORY BACKGROUND) ─── */}
-      <section className="py-24 relative bg-[#FAF3D1] border-b border-[rgba(92,20,29,0.06)] overflow-hidden">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#5c141d03_1px,transparent_1px),linear-gradient(to_bottom,#5c141d03_1px,transparent_1px)] bg-[size:32px_32px]" />
-        
+      {/* ─── SECTION 5: AI ACADEMY / AI DIVISION (UNIFIED BRAND THEME) ─── */}
+      <section className="py-24 relative bg-white border-b border-[rgba(92,20,29,0.06)] overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-12 gap-16 items-center">
             
-            {/* Content Column */}
+            {/* Visual Media Column (Matching order of Sector 01 & 03) */}
             <motion.div 
               initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="lg:col-span-5 flex justify-center"
+            >
+              <div className="relative w-full max-w-[420px] aspect-[3/4] rounded-3xl overflow-hidden border border-[rgba(92,20,29,0.08)] shadow-2xl p-2 bg-[#FAF8F5] hover:scale-[1.02] transition-transform duration-500">
+                <div className="absolute inset-0 border border-[var(--primary-gold)]/20 rounded-3xl pointer-events-none" />
+                <img
+                  loading="lazy"
+                  src="/ai-hero.webp"
+                  alt="Scaro AI Engine Visuals"
+                  className="w-full h-full object-cover rounded-2xl"
+                />
+              </div>
+            </motion.div>
+
+            {/* Content Column */}
+            <motion.div 
+              initial={{ opacity: 0, x: 40 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="lg:col-span-7 space-y-8 text-left"
             >
               <div className="space-y-2">
-                <span className="text-xs font-black tracking-widest text-[#5C141D] uppercase bg-[#5C141D]/10 px-3.5 py-1.5 rounded-full inline-block">02. Automation Sector</span>
+                <span className="text-xs font-black tracking-widest text-[#5C141D] uppercase bg-[#5C141D]/5 px-3.5 py-1.5 rounded-full inline-block">02. Automation Sector</span>
                 <h2 className="text-3xl sm:text-5xl font-black text-[#1E060A] tracking-tight">
                   Scaro AI Academy
                 </h2>
-                <p className="text-lg text-slate-700 font-light leading-relaxed">
+                <p className="text-lg text-slate-600 font-light leading-relaxed">
                   Supercharging our education system and internal dev workflows. Explore our directory of AI assets, master professional prompt structures, and build using modern no-code builders.
                 </p>
               </div>
 
               {/* Real AI Tools Preview Glimpse */}
               <div className="space-y-4">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-[#5C141D]/60">Curated AI Tools Glimpse</h4>
+                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">Curated AI Tools Glimpse</h4>
                 <div className="grid sm:grid-cols-3 gap-4">
                   {[
                     { title: 'Lovable.ai', desc: 'AI full-stack web builder generating production-ready code.', badge: 'Popular', url: 'https://lovable.ai' },
@@ -364,11 +342,11 @@ export function HomePage({ setActiveSection }: { setActiveSection?: (section: st
                       rel="noopener noreferrer"
                       whileHover={{ y: -6, scale: 1.02 }}
                       transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                      className="p-5 bg-white/40 border border-[#5C141D]/15 rounded-xl relative space-y-2 hover:border-[#5C141D]/40 hover:shadow-md transition-all duration-300 block group"
+                      className="p-5 bg-[#FAF8F5] border border-[rgba(92,20,29,0.06)] rounded-xl relative space-y-2 hover:border-[#5C141D]/30 hover:shadow-md transition-all duration-300 block group"
                     >
-                      <span className="text-[9px] font-bold text-[#5C141D] bg-[#5C141D]/10 px-2 py-0.5 rounded inline-block">{tool.badge}</span>
+                      <span className="text-[9px] font-bold text-[#5C141D] bg-[#5C141D]/5 px-2 py-0.5 rounded inline-block">{tool.badge}</span>
                       <h5 className="text-[#1E060A] font-extrabold text-sm group-hover:text-[#5C141D] transition-colors">{tool.title}</h5>
-                      <p className="text-[11px] text-slate-600 font-light leading-relaxed">{tool.desc}</p>
+                      <p className="text-[11px] text-slate-500 font-light leading-relaxed">{tool.desc}</p>
                     </motion.a>
                   ))}
                 </div>
@@ -376,7 +354,7 @@ export function HomePage({ setActiveSection }: { setActiveSection?: (section: st
 
               {/* Real AI Syllabus Prompt Glimpse */}
               <div className="space-y-4">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-[#5C141D]/60">AI Integration Features</h4>
+                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">AI Integration Features</h4>
                 <div className="grid sm:grid-cols-2 gap-4">
                   {[
                     { title: 'Syllabus Prompt Engine', desc: 'Guides for engineering students utilizing optimized prompts for study and code revision.', badge: 'Learning' },
@@ -387,29 +365,29 @@ export function HomePage({ setActiveSection }: { setActiveSection?: (section: st
                       onClick={() => window.location.href = 'http://localhost:5174/'}
                       whileHover={{ y: -6, scale: 1.02 }}
                       transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                      className="p-5 bg-white/40 border border-[#5C141D]/15 rounded-xl relative space-y-2 hover:border-[#5C141D]/40 hover:shadow-md transition-all duration-300 cursor-pointer group"
+                      className="p-5 bg-[#FAF8F5] border border-[rgba(92,20,29,0.06)] rounded-xl relative space-y-2 hover:border-[#5C141D]/30 hover:shadow-md transition-all duration-300 cursor-pointer group"
                     >
-                      <span className="text-[9px] font-bold text-[#5C141D] bg-[#5C141D]/10 px-2 py-0.5 rounded inline-block">{feature.badge}</span>
+                      <span className="text-[9px] font-bold text-[#5C141D] bg-[#5C141D]/5 px-2 py-0.5 rounded inline-block">{feature.badge}</span>
                       <h5 className="text-[#1E060A] font-bold text-sm group-hover:text-[#5C141D] transition-colors">{feature.title}</h5>
-                      <p className="text-[11px] text-slate-600 font-light leading-relaxed">{feature.desc}</p>
+                      <p className="text-[11px] text-slate-500 font-light leading-relaxed">{feature.desc}</p>
                     </motion.div>
                   ))}
                 </div>
               </div>
 
               {/* AI Testimonial Glimpse */}
-              <div className="p-5 bg-white/40 border border-[#5C141D]/15 rounded-xl relative">
+              <div className="p-5 bg-[#FAF8F5] border border-[rgba(92,20,29,0.06)] rounded-xl relative">
                 <div className="absolute top-4 right-4 text-[#5C141D]/10">
                   <Quote className="w-10 h-10" />
                 </div>
-                <p className="text-xs text-slate-700 italic mb-4 leading-relaxed">
+                <p className="text-xs text-slate-500 italic mb-4 leading-relaxed">
                   "The AI-powered learning paths are incredible. I went from basics to building ML models in 12 weeks. Now working on cutting-edge AI projects!"
                 </p>
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-full bg-[#5C141D]/10 flex items-center justify-center font-bold text-xs text-[#5C141D]">RV</div>
                   <div>
                     <h5 className="text-[#1E060A] font-bold text-xs">Rahul Verma</h5>
-                    <p className="text-[10px] text-slate-500">Data Scientist at Microsoft • AI/DS</p>
+                    <p className="text-[10px] text-slate-400">Data Scientist at Microsoft • AI/DS</p>
                   </div>
                 </div>
               </div>
@@ -427,25 +405,6 @@ export function HomePage({ setActiveSection }: { setActiveSection?: (section: st
                 >
                   60+ AI Tools Directory
                 </button>
-              </div>
-            </motion.div>
-
-            {/* Media Image Column */}
-            <motion.div 
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="lg:col-span-5 relative flex justify-center"
-            >
-              <div className="relative w-full max-w-[420px] aspect-[3/4] rounded-3xl overflow-hidden border border-[#5C141D]/15 shadow-2xl p-2 bg-[#FAF8F5] hover:scale-[1.02] transition-transform duration-500">
-                <div className="absolute inset-0 border border-white/20 rounded-3xl pointer-events-none" />
-                <img
-                  loading="lazy"
-                  src="/ai-hero.webp"
-                  alt="Scaro AI Engine Visuals"
-                  className="w-full h-full object-cover rounded-2xl"
-                />
               </div>
             </motion.div>
 
@@ -575,7 +534,7 @@ export function HomePage({ setActiveSection }: { setActiveSection?: (section: st
       </section>
 
       {/* ─── SECTION 3: PLATFORM STATISTICS ─── */}
-      <section className="py-24 relative bg-white overflow-hidden">
+      <section className="py-24 relative bg-white border-b border-[rgba(92,20,29,0.06)] overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {[
@@ -591,13 +550,13 @@ export function HomePage({ setActiveSection }: { setActiveSection?: (section: st
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 whileHover={{ scale: 1.03 }}
-                className="text-center p-6 md:p-8 bg-gray-50 border border-gray-100 rounded-3xl hover:shadow-xl transition-all duration-300"
+                className="text-center p-6 md:p-8 bg-[#FAF8F5] border border-[rgba(92,20,29,0.06)] rounded-3xl hover:border-[#5C141D]/30 hover:shadow-xl transition-all duration-300"
               >
                 <h3 className="text-4xl sm:text-5xl font-black text-[#5C141D] tracking-tight mb-3">
                   {stat.num}
                 </h3>
-                <h4 className="text-gray-900 font-extrabold text-sm mb-1">{stat.label}</h4>
-                <p className="text-xs text-gray-500 font-medium tracking-wide uppercase mt-2">{stat.desc}</p>
+                <h4 className="text-[#1E060A] font-extrabold text-sm mb-1">{stat.label}</h4>
+                <p className="text-xs text-slate-500 font-medium tracking-wide uppercase mt-2">{stat.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -605,12 +564,12 @@ export function HomePage({ setActiveSection }: { setActiveSection?: (section: st
       </section>
 
       {/* ─── SECTION 4: AWARDS & PHILOSOPHY ─── */}
-      <section className="py-24 bg-[#FAF8F5] border-t border-[rgba(92,20,29,0.06)] overflow-hidden">
+      <section className="py-24 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
            <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div>
-                <span className="text-xs font-black tracking-widest text-[#5C141D] uppercase">Recognitions</span>
-                <h2 className="text-3xl sm:text-4xl font-black text-[#1E060A] tracking-tight mt-2 mb-8">
+                <span className="text-xs font-black tracking-widest text-[#5C141D] uppercase bg-[#5C141D]/5 px-3.5 py-1.5 rounded-full inline-block">Recognitions</span>
+                <h2 className="text-3xl sm:text-4xl font-black text-[#1E060A] tracking-tight mt-3 mb-8">
                   Awards & Credentials
                 </h2>
                 <div className="grid grid-cols-2 gap-4">
@@ -623,7 +582,7 @@ export function HomePage({ setActiveSection }: { setActiveSection?: (section: st
                     <motion.div 
                       key={i} 
                       whileHover={{ y: -4 }}
-                      className="bg-white border border-[rgba(92,20,29,0.05)] rounded-2xl p-5 shadow-sm hover:shadow-md transition-all cursor-default"
+                      className="bg-[#FAF8F5] border border-[rgba(92,20,29,0.06)] rounded-2xl p-5 shadow-sm hover:border-[#5C141D]/30 hover:shadow-md transition-all cursor-default"
                     >
                       <div className="text-3xl mb-3 drop-shadow-sm">{rec.icon}</div>
                       <h4 className="text-sm font-extrabold text-[#1E060A] mb-1">{rec.title}</h4>

@@ -14,7 +14,7 @@ export function AllProjectsPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-page-bg pt-20">
+    <div className="min-h-screen bg-page-bg">
       <ProjectsStoreSection previewOnly={false} />
       
       <EducationContact />
