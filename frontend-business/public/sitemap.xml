@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://businessscarotechnologies.vercel.app/</loc><priority>1.0</priority></url>
-  <url><loc>https://businessscarotechnologies.vercel.app/business-services</loc><priority>0.9</priority></url>
-  <url><loc>https://businessscarotechnologies.vercel.app/business-pricing</loc><priority>0.8</priority></url>
-  <url><loc>https://businessscarotechnologies.vercel.app/all-business-projects</loc><priority>0.8</priority></url>
-  <url><loc>https://businessscarotechnologies.vercel.app/business-team</loc><priority>0.7</priority></url>
-  <url><loc>https://businessscarotechnologies.vercel.app/business-faq</loc><priority>0.7</priority></url>
-  <url><loc>https://businessscarotechnologies.vercel.app/business-about</loc><priority>0.6</priority></url>
+  <url><loc>https://businessscarotechnologie.vercel.app/</loc><priority>1.0</priority></url>
+  <url><loc>https://businessscarotechnologie.vercel.app/business-services</loc><priority>0.9</priority></url>
+  <url><loc>https://businessscarotechnologie.vercel.app/business-pricing</loc><priority>0.8</priority></url>
+  <url><loc>https://businessscarotechnologie.vercel.app/all-business-projects</loc><priority>0.8</priority></url>
+  <url><loc>https://businessscarotechnologie.vercel.app/business-team</loc><priority>0.7</priority></url>
+  <url><loc>https://businessscarotechnologie.vercel.app/business-faq</loc><priority>0.7</priority></url>
+  <url><loc>https://businessscarotechnologie.vercel.app/business-about</loc><priority>0.6</priority></url>
 </urlset>

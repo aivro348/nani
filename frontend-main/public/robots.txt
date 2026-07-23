@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://scarotechnologies.vercel.app/sitemap.xml
+Sitemap: https://scarotechnologie.vercel.app/sitemap.xml
